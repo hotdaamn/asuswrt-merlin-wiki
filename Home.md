@@ -6,6 +6,7 @@ If you have the time and the willingness to help with this Wiki, please do!  Wri
 1. [About Asuswrt and Asuswrt-merlin](https://github.com/RMerl/asuswrt-merlin/wiki/About-Asuswrt/)
 2. Features
 3. Supported devices
+4. [Changelog](http://www.lostrealm.ca/asuswrt-merlin/changelog.txt)
 4. Installation
 5. Reverting back
 
