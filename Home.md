@@ -3,7 +3,7 @@ This is a very early work-in-progress Wiki, where I will start collecting docume
 If you have the time and the willingness to help with this Wiki, please do!  Writing documentation is quite time-consuming, and most likely I will only have time to work on this during free times.
 
 ### About
-1. About Asuswrt and Asuswrt-merlin
+1. [About Asuswrt and Asuswrt-merlin](https://github.com/RMerl/asuswrt-merlin/wiki/About-Asuswrt/)
 2. Features
 3. Supported devices
 4. Installation
