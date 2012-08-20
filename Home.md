@@ -1,6 +1,7 @@
-This is a very early work-in-progress Wiki, where I will start collecting documentations, tips, tricks, etc...
+This is the official Wiki/documentation for Asuswrt-merlin, a custom firmware designed for Asus routers.
 
-If you have the time and the willingness to help with this Wiki, please do!  Writing documentation is quite time-consuming, and most likely I will only have time to work on this during free times.
+_This is an early work-in-progress documentation.  I will gradually fill the sections as time permits._
+_If you have the time and the willingness to help with this Wiki, please let me know._
 
 ### About
 1. [About Asuswrt and Asuswrt-merlin](https://github.com/RMerl/asuswrt-merlin/wiki/About-Asuswrt/)
@@ -8,7 +9,7 @@ If you have the time and the willingness to help with this Wiki, please do!  Wri
 3. [Supported devices](https://github.com/RMerl/asuswrt-merlin/wiki/Supported-Devices)
 4. [Changelog](http://www.lostrealm.ca/asuswrt-merlin/changelog.txt)
 4. [Installation](https://github.com/RMerl/asuswrt-merlin/wiki/Installation)
-5. Reverting back
+5. [Reverting](https://github.com/RMerl/asuswrt-merlin/wiki/Reverting/)
 
 ### Usage:
 
@@ -18,5 +19,6 @@ If you have the time and the willingness to help with this Wiki, please do!  Wri
 
 ### Reference:
 1. FAQ
-2. Contact
-3. Disclaimer
+2. [Credits](https://github.com/RMerl/asuswrt-merlin/wiki/Credits/)
+3. [Contact](https://github.com/RMerl/asuswrt-merlin/wiki/Contact/)
+4. [Disclaimer](https://github.com/RMerl/asuswrt-merlin/wiki/Disclaimer/)
