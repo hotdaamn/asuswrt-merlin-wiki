@@ -1,6 +1,6 @@
-**Lead development:** Eric Sauvageau
+**Lead developer:** Eric Sauvageau
 
-** Original Asuswrt firmware: ** Asus (based on various bits of code from Tomato, DD-WRT, OpenWRT, etc...)
+**Original Asuswrt firmware:** Asus (based on various bits of code from Tomato, DD-WRT, OpenWRT, etc...)
 
 **Additional contributions:** 
 * Igor Pavlov (no-ip.com support)
