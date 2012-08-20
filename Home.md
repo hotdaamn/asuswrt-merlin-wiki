@@ -7,7 +7,7 @@ If you have the time and the willingness to help with this Wiki, please do!  Wri
 2. [Features](https://github.com/RMerl/asuswrt-merlin/wiki/Features)
 3. [Supported devices](https://github.com/RMerl/asuswrt-merlin/wiki/Supported-Devices)
 4. [Changelog](http://www.lostrealm.ca/asuswrt-merlin/changelog.txt)
-4. Installation
+4. [Installation](https://github.com/RMerl/asuswrt-merlin/wiki/Installation)
 5. Reverting back
 
 ### Usage:
