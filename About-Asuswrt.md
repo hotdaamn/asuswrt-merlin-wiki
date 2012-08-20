@@ -14,9 +14,9 @@ The goal with this project is to provide an alternative to Asuswrt which will be
 
 1. **Stay as close as possible to the original firmware.**  By limiting the amount of sweeping changes made to the code, it means that whenever Asus releases a new version of Asuswrt, it only takes a few hours to re-base Asuswrt-merlin on this new code, and test it.
 
-2. **The world does not need another entirely custom firmware.**  Projects like DD-WRT and Tomato have existed for years, and benefit from those years of development to offer a lot of new features.  There is no point in reinventing the wheel - people looking for a completely different firmware with tons of advanced features should look at those excellent and well-established projects.
+2. **The goal is to improve, not to replace the original firmware's functionality**  Projects like DD-WRT and Tomato have existed for years, and benefit from those years of development to offer a lot of new features.  There is no point in reinventing the wheel - people looking for a completely different firmware with tons of advanced features should look at those excellent and well-established projects.
 
-3. **Priorities: Stability > performance > features.**  Fewer changes to the code means fewer chances that new bugs might be introduced.  A router firmware is the core of your home network.  It must be rock-stable above all.
+3. **Priorities: Stability > performance > features.**  Fewer changes to the code means fewer chances that new bugs might be introduced.  A router firmware is the core of your home network.  It must be rock-stable above all.  And performance optimizations can have unexpected side-effect when dealing with things that aren't fully understood.
 
 4. **Targeting the novice and average user.** Asuswrt is designed to target both the novice and the average users.  This project will aim at the same target userbase.  There is enough doors left open with Optware and user-scripts so advanced users can fulfil their own requirements themselves.  Not overcrowding the webui with esoteric features will ensure that novice users won't be scared away.
 
