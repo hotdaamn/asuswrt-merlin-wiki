@@ -12,9 +12,10 @@ If you have the time and the willingness to help with this Wiki, please do!  Wri
 ### Usage:
 
 1. Optware
-2. Iptables-based tricks
+2. [Iptables tricks and tips](https://github.com/RMerl/asuswrt-merlin/wiki/Iptables-tips)
 
 
 ### Reference:
-1. Contact
-2. Disclaimer
+1. FAQ
+2. Contact
+3. Disclaimer
