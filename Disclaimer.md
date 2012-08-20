@@ -7,3 +7,8 @@ This is the part where you usually put a lot of legalese stuff that nobody reads
 3. I try my best to honor the licences (as far as I can understand them, as a normal human being).  Anything GPL or otherwise open-sourced that I modify will see my changes published to Github at some point.  A release might get delayed if I'm working using pre-release code.  If it's GPL, it will eventually be published - no need to send a horde of legal threats at me.
 
 4. In any other cases not covered, Common Sense prevails,  and I shall also make use of Good Will.
+
+And for those worried about privacy:
+
+This firmware does not contact me back in any way whatsoever.  Not even through any update checker - the only update code there is Asus's.
+
