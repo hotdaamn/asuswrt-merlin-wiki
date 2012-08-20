@@ -1,0 +1,8 @@
+Since Asuswrt-merlin is mostly a variant of the original Asuswrt, it means that there is no special procedure to flash it.  Just flash it the same way you would flash any regular Asus firmware.  A few notes:
+
+* The Asus firmware for the RT-N66U only support 32 KB NVRAM, while Asuswrt-merlin supports 64 KB NVRAM.  The first time you go from 32 KB to 64 KB (and also going back), you will most likely lose ALL your settings!  So, be prepared for that.
+* If coming from a non-Asuswrt firmware (generally if your current firmware version does not start with a 3), you will have to do a factory default reset.
+* While it is generally not necessary to restore to factory defaults, it's not a bad idea, especially if there is a big jump in version number (from 112 to 178 for example).  No need to do the 30/30/30 dance as required by DD-WRT.
+* It is very hard to brick an Asus router.  If something goes wrong during flashing, you can put your router in Recovery mode by powering it on while you keep Reset pressed.  After your release it, the power LED will either blink or stay off (depending on the model).  At that point, you can either access it through http://192.168.1.1 (make sure you first set your PC on a static IP within the same range, i.e. 192.168.1.100 for example), or through the Firmware Recovery Tool provided on Asus's support CD.  You will then be able to flash a working firmware.
+* If something looks weird, don't waste too much time: save your settings, reset to factory default, reconfigure the basics, and see if the issue is resolved.  If not, you can always restore your saved settings.
+* It is NOT recommended to restore settings saved under a different firmware version.  It _might_ work, but there is no guarantee.
