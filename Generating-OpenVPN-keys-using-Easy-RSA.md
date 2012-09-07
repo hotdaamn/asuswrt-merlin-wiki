@@ -31,3 +31,8 @@ Use any name you want instead of "server1", but make sure that when asked for th
 Next, let's build one client key/certificate pair.  Same procedure (and pay attention to the Common Name):
 ./build-key client1
 
+One last thing - we need to generate the Diffie Hellman parameters (DH file), which is used to secure the key exchange between client and router.  Run the following command:
+./build-dh
+
+This operation can take a minute or two due to the low performance of the router's CPU (compared to a desktop).
+
