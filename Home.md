@@ -16,6 +16,10 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 1. Optware
 2. [Iptables tricks and tips](https://github.com/RMerl/asuswrt-merlin/wiki/Iptables-tips)
 
+### OpenVPN
+1. About OpenVPN
+2. Setting up OpenVPN
+3. [Generating certs with Easy-RSA](2. OpenVPN 2.1 [Generating certs on the router using Easy-RSA](https://github.com/RMerl/asuswrt-merlin/wiki/Generating-OpenVPN-keys-using-Easy-RSA))
 
 ### Reference:
 1. FAQ
