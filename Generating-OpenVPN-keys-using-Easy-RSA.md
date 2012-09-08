@@ -9,11 +9,7 @@ This will create an easy-rsa folder on your USB disk, and copy all the required 
 
 `cd /tmp/sda1/easy-rsa`
 
-There, initialize the environment:
-
-`./clean-all`
-
-Next step you will probably want to change the default values offered while generating the certificates.  Edit the file named "vars", either through the built-in "vi" editor (not recommended for novice users), or by installing the "nano" editor using Optware, or simply by copying the file edited on your computer.  The only fields you might want to change are these:
+Now step you will probably want to change the default values offered while generating the certificates.  Edit the file named "vars", either through the built-in "vi" editor (not recommended for novice users), or by installing the "nano" editor using Optware, or simply by copying the file edited on your computer.  The only fields you might want to change are these:
 
 * export KEY_COUNTRY="US"
 * export KEY_PROVINCE="CA"
@@ -27,9 +23,13 @@ Next step you will probably want to change the default values offered while gene
 
 You can also adjust the expiration date for keys if desired.  I do not recommend changing the expiration date for the CA, neither the key size - increasing from 1024 bytes will have a performance impact.
 
-Once done, setup the environment by running the script:
+Once done, setup the environment by running the script this way:
 
-`./vars`
+`source ./vars`
+
+There, initialize the environment:
+
+`./clean-all`
 
 Your environment is now ready to be used to generate your certificates.
 
