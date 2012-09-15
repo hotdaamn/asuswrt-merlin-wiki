@@ -22,7 +22,7 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 3. [Generating certs with Easy-RSA](https://github.com/RMerl/asuswrt-merlin/wiki/Generating-OpenVPN-keys-using-Easy-RSA)
 
 ### Reference:
-1. FAQ
+1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
 2. [Credits](https://github.com/RMerl/asuswrt-merlin/wiki/Credits/)
 3. [Contact](https://github.com/RMerl/asuswrt-merlin/wiki/Contact/)
 4. [Disclaimer](https://github.com/RMerl/asuswrt-merlin/wiki/Disclaimer/)
