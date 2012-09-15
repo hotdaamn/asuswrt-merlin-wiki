@@ -3,9 +3,10 @@
 **Original Asuswrt firmware:** Asus (based on various bits of code from Tomato, DD-WRT, OpenWRT, etc...)
 
 **Additional contributions:** 
-* Igor Pavlov (no-ip.com support)
+* Igor Pavlov (original no-ip.com support, now part of the official firmware)
 * Shantanugoel (original Github repo)
 * Phuzi0n on the DD-WRT forums (new NAT loopback code)
+* Keith Moyer (OpenVPN code, from TomatoUSB/Tomato-RT)
 
 **Special thanks to:**
 * The folks at Asus, especially Adam and Mason, for their support with this project
