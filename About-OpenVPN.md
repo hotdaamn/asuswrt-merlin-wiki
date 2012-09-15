@@ -1,0 +1,1 @@
+OpenVPN is a VPN technology that can be used as a more secure and more advanced alternative to PPTP, the VPN technology Asus included in the original firmware.  You can learn more on the official OpenVPN [website](http://openvpn.net/index.php/open-source/333-what-is-openvpn.html).
