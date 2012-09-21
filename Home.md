@@ -14,12 +14,16 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 ### Usage:
 
 1. Optware
-2. [Iptables tricks and tips](https://github.com/RMerl/asuswrt-merlin/wiki/Iptables-tips)
+2. User scripts
+3. JFFS
 
 ### OpenVPN
 1. [About OpenVPN](https://github.com/RMerl/asuswrt-merlin/wiki/About-OpenVPN)
 2. [Setting up OpenVPN](https://github.com/RMerl/asuswrt-merlin/wiki/Configuring-OpenVPN)
 3. [Generating certs with Easy-RSA](https://github.com/RMerl/asuswrt-merlin/wiki/Generating-OpenVPN-keys-using-Easy-RSA)
+
+### HowTo and Guides
+1. [Iptables tricks and tips](https://github.com/RMerl/asuswrt-merlin/wiki/Iptables-tips)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
