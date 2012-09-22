@@ -1,6 +1,6 @@
 This is the official Wiki/documentation for Asuswrt-merlin, a custom firmware designed for Asus routers.
 
-_This is an early work-in-progress documentation.  I will gradually fill the sections as time permits._
+_This documentation is still a work-in-progress.  I will gradually fill the sections as time permits._
 _If you have the time and the willingness to help with this Wiki, please let me know._
 
 ### About
@@ -24,7 +24,7 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 
 ### HowTo and Guides
 1. [Iptables tricks and tips](https://github.com/RMerl/asuswrt-merlin/wiki/Iptables-tips)
-2. [Traffic Monitoring](https://github.com/RMerl/asuswrt-merlin/wiki/Traffic_Monitoring)
+2. [Traffic Monitoring](https://github.com/RMerl/asuswrt-merlin/wiki/Traffic-Monitoring)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
