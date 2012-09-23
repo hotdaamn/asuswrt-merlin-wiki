@@ -14,7 +14,7 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 ### Usage:
 
 1. Optware
-2. User scripts
+2. [User scripts](User-scripts)
 3. JFFS
 
 ### OpenVPN
