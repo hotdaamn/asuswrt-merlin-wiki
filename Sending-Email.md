@@ -14,7 +14,7 @@ FROMNAME="Your Router"
 TO="you@domain.com"
 
 echo "Subject: WAN state notification" >/tmp/mail.txt
-echo "From: \"$FROMNAME\"<$FROM>" >>/tmp/mail.txt
+echo "From: \\"$FROMNAME\\"<$FROM>" >>/tmp/mail.txt
 echo "I just got connected to the Interwebz." >>/tmp/mail.txt
 echo "My new IP is: `nvram get wan0_ipaddr`" >>/tmp/mail.txt
 echo "" >>/tmp/mail.txt
