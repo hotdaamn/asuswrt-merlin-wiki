@@ -11,7 +11,7 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 4. [Installation](https://github.com/RMerl/asuswrt-merlin/wiki/Installation)
 5. [Reverting](https://github.com/RMerl/asuswrt-merlin/wiki/Reverting/)
 
-### Usage:
+### Usage
 
 1. Optware
 2. [User scripts](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts)
