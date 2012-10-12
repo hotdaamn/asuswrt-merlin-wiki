@@ -1,3 +1,10 @@
+This script is intended for people that want to wake up their server when someone tries to access a port on the server.
+The script doesn't mind which port was used and will respond to any request so if you have much forwarded ports a port scan will wake up your web server every time.
+
+I rewrote the script a little to fit my own needs
+On the bottom of this page you will find another script, that script is intended for people that only want to wake a server on one port.
+
+
 Guide For Wake On Lan Script :
 
 - Go to your router and login (192.168.1.1) With username and password
@@ -68,3 +75,11 @@ We need to do one more final step !
 Now reboot your router , Its time for some testing
 
 ![foto10](http://members.home.nl/frits.pruymboom/Firewall%20packets%207.PNG)
+
+
+
+**ALTERNATIVE**
+
+Use this script if you only want to specify one port to wake up your server
+
+[wake.sh ( alternative )](http://members.home.nl/frits.pruymboom/wake.sh%20alternative.txt)
