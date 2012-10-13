@@ -27,15 +27,48 @@ Guide For Wake On Lan Script :
 - There should be a folder scripts ( if not there create it ! )
 
 - Inside the folder JFFS right click >New>File. Name the file services-start
-Paste in the content of the text file.
+Paste in the content.
 
-[services-start](http://members.home.nl/frits.pruymboom/services-start.txt)
+```
+#!/bin/sh
+
+#script for sending WOL packets when traffic to specified ip's
+sh /jffs/scripts/wake.sh& 
+```
 
 ![foto4](http://members.home.nl/frits.pruymboom/SCRIPT%20SERVICES%20START%205.PNG)
 
 - Create another file name it wake.sh and paste in
+```
+#!/bin/sh
 
-[wake.sh](http://members.home.nl/frits.pruymboom/wake.sh.txt)
+INTERVAL=5
+NUMP=1
+OLD=""
+TARGET=IP OF THE TARGET YOU WANT TO WAKE
+IFACE=br0
+MAC=MAC ADRESS OF THE TARGET YOU WANT TO WAKE
+WOL=/usr/bin/ether-wake
+LOGFILE="/var/log/ether-wake.log"
+
+while sleep $INTERVAL;do
+NEW=`dmesg | awk '/ACCEPT/ && /DST='"$TARGET"'/ {print }' | tail -1`
+SRC=`echo $NEW | awk -F'[=| ]' '{print $8}'`
+DPORT=`echo $NEW | awk -F'[=| ]' '{print $27}'`
+PROTO=`echo $NEW | awk -F'[=| ]' '{print $23}'`
+
+if [ "$NEW" != "" -a "$NEW" != "$OLD" ]; then
+if ! ping -qc $NUMP $TARGET >/dev/null; then
+# echo "NOWAKE $TARGET was accessed by $SRC, port $DPORT, protocol $PROTO and is already alive at" `date`>> $LOGFILE
+# else
+echo "WAKE $TARGET requested by $SRC, port $DPORT, protocol $PROTO at" `date`>> $LOGFILE
+$WOL -i $IFACE $MAC
+sleep 5
+fi
+OLD=$NEW
+fi
+done  
+```
 
 
 - Put the IP and MAC in the script
@@ -58,11 +91,11 @@ Download PUTTY [Download](http://the.earth.li/~sgtatham/putty/latest/x86/putty.e
 Now copy and paste into putty
 
 
+```
+chmod +x /jffs/scripts/wake.sh
 
-`chmod +x /jffs/scripts/wake.sh`
-
-`chmod +x /jffs/scripts/services-start`
-
+chmod +x /jffs/scripts/services-start
+```
 
 
 
@@ -82,4 +115,34 @@ Now reboot your router , Its time for some testing
 
 Use this script if you only want to specify one port to wake up your server
 
-[wake.sh ( alternative )](http://members.home.nl/frits.pruymboom/wake.sh%20alternative.txt)
+```
+#!/bin/sh
+
+INTERVAL=5
+NUMP=3
+OLD=""
+TARGET=PUT YOUR INTERNAL IP ADRESS HERE!
+PORT=SPECIFY YOUR PORT HERE!
+IFACE=br0
+MAC=PUT YOUR MAC ADRESS HERE!
+WOL=/usr/bin/ether-wake
+LOGFILE="/var/log/ether-wake.log"
+
+while sleep $INTERVAL;do
+NEW=`dmesg | awk '/ACCEPT/ && /DST='"$TARGET"'/ && /DPT='"$PORT"'/ {print }' | tail -1`
+SRC=`echo $NEW | awk -F'[=| ]' '{print $8}'`
+DPORT=`echo $NEW | awk -F'[=| ]' '{print $27}'`
+PROTO=`echo $NEW | awk -F'[=| ]' '{print $23}'`
+
+if [ "$NEW" != "" -a "$NEW" != "$OLD" ]; then
+if ! ping -qc $NUMP $TARGET >/dev/null; then
+# echo "NOWAKE $TARGET was accessed by $SRC, port $DPORT, protocol $PROTO and is already alive at" `date`>> $LOGFILE
+# else
+echo "WAKE $TARGET requested by $SRC, port $DPORT, protocol $PROTO at" `date`>> $LOGFILE
+$WOL -i $IFACE $MAC
+sleep 5
+fi
+OLD=$NEW
+fi
+done 
+```
