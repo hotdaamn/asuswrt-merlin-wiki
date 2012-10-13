@@ -26,6 +26,7 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 1. [Iptables tricks and tips](https://github.com/RMerl/asuswrt-merlin/wiki/Iptables-tips)
 2. [Traffic Monitoring](https://github.com/RMerl/asuswrt-merlin/wiki/Traffic-Monitoring)
 3. [Email notification from your router](https://github.com/RMerl/asuswrt-merlin/wiki/Sending-Email)
+4. [WOL Script Wake Up Your Webserver On Internet Traffic] (https://github.com/RMerl/asuswrt-merlin/wiki/WOL-Script-(-Wake-Up-Your-Webserver-On-Internet-Traffic-))
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
