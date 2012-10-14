@@ -55,8 +55,8 @@ synaptic
 
 In Synaptic you are going to search for :
 
-
-        bison
+```
+	bison
 
 	flex
 
@@ -93,6 +93,7 @@ In Synaptic you are going to search for :
 	gperf
 
 	lib32z1-dev
+```
 
 * Installing these should be quite straight forward
 * NOTE: Some of these packages are already installed skip them !
@@ -159,4 +160,3 @@ make clean
 ```
 make rt-ac66u
 ```
-
