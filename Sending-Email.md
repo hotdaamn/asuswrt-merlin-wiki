@@ -21,6 +21,7 @@ echo "My new IP is: `nvram get wan0_ipaddr`" >>/tmp/mail.txt
 echo "" >>/tmp/mail.txt
 echo "--- " >>/tmp/mail.txt
 echo "Your friendly router." >>/tmp/mail.txt
+echi "" ­­>>/tmp/mail.txt
 
 cat /tmp/mail.txt | /usr/sbin/sendmail -S"$SMTP" -f"$FROM" $TO
 
