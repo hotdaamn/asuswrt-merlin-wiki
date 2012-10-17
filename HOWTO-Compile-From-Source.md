@@ -1,13 +1,13 @@
 > WARNING DESPITE THE FACT THAT IT IS POSSIBLE TO COMPILE YOUR OWN FIRMWARE,
-> I DO NOT ADVICE YOU TO DO SO
+> I DO NOT ADVISE YOU TO DO SO
 > THIS GUIDE IS NOT WRITTEN BY A PROFESSIONAL BUT BY AN AMATEUR<>NOVICE
-> THERE ARE A LOT OF THINGS THAT COULD GO WRONG DURING THE PROCESS'S
-> THE AUTHOR OF THIS GUIDE NOR THE SOURCE PROVIDER CAN BE HELD RESPONSIBLY FOR ANY DAMAGE THAT MAY OCCUR BY 
-> FLASHING YOU SELF COMPILED FIRMWARE ON YOUR ROUTER
+> THERE ARE A LOT OF THINGS THAT COULD GO WRONG DURING THE PROCESS
+> THE AUTHOR OF THIS GUIDE NOR THE SOURCE PROVIDER CAN BE HELD RESPONSIBLE FOR ANY DAMAGE THAT MAY OCCUR BY 
+> FLASHING YOUR SELF COMPILED FIRMWARE ON YOUR ROUTER
 > IF YOU REALLY WANT TO LEARN THIS TYPE OF COMPUTING AND CODING I SUGGEST YOU FIRST GET FAMILIAR WITH LINUX
 
 
-But one the same time your router is VERY hard to brick!
+But on the other hand your router is VERY hard to brick!
 
 
 
@@ -28,7 +28,7 @@ Follow these steps :
 ![Select Iso]
 (http://members.home.nl/frits.pruymboom/Howto%20Compile%20From%20Source/installer%20disc%20iso.png)
 
-* When installing Ubuntu it asks for a username its the best if you just name it ''router'' without the quotes because then you can just copy and paste from this guide no need to make everything complicated.
+* When installing Ubuntu it asks for a username it's best if you just name it ''router'' without the quotes because then you can just copy and paste from this guide no need to make everything complicated.
 
 ![Name](http://members.home.nl/frits.pruymboom/Howto%20Compile%20From%20Source/important%20name.png)
 
@@ -36,7 +36,7 @@ Follow these steps :
 
 ![20gb](http://members.home.nl/frits.pruymboom/Howto%20Compile%20From%20Source/20gb.png)
 
-* Crank up some specs give it some more ram and proccesing power, It doesn't sound as a heavy work load but making your .trx image for the router actually takes a long time on a slow proccesor
+* Crank up some specs give it some more ram and procesing power, It doesn't sound as a heavy work load but making your .trx image for the router actually takes a long time on a slow processor
 
 ![customize](http://members.home.nl/frits.pruymboom/Howto%20Compile%20From%20Source/customiza%20hardware.png)
 
@@ -48,7 +48,7 @@ When the Ubuntu installer has finished you can fire up terminal
 
 * Fire up terminal CTRL+ALT+T
 
-We are going to make the root account active because if we don't do that it will give us a lot of error during compilation.
+We are going to make the root account active because if we don't do that it will give us a lot of errors during compilation.
 
 Paste in the following lines in terminal
 
@@ -69,7 +69,7 @@ As you can see you are now running the terminal in root!
 
 ![root](http://members.home.nl/frits.pruymboom/Howto%20Compile%20From%20Source/Root.png)
 
-* Were are going to download some packages ( I am sure there are some you don't need, but this is how i got it working and you can delete Ubuntu afterward so who cares right ? )
+* We are going to download some packages ( I am sure there are some you don't need, but this is how I got it working and you can delete Ubuntu afterward so who cares right ? )
 
 Paste in
 
@@ -80,7 +80,7 @@ sudo apt-get install autoconf automake bash bison bzip2 diffutils file flex g++ 
 * I made you install SYNAPTIC at the end ( that's because i think synaptic is easy to use )
 
 
-Go ahead an fire up synaptic
+Go ahead and fire up synaptic
 
 ```
 synaptic
@@ -130,12 +130,12 @@ In Synaptic you are going to search for :
 	lib32z1-dev
 ```
 
-* Installing these should be quite straight forward
+* Installing these should be quite straightforward
 * NOTE: Some of these packages are already installed skip them !
 
 If you are ready installing all these packages take a coffee or a beer.
 
-Were are going to download merlins hard work with again some terminal commands
+We are going to download merlins hard work with again some terminal commands
 
 ```
 git clone https://github.com/RMerl/asuswrt-merlin.git
@@ -143,9 +143,9 @@ git clone https://github.com/RMerl/asuswrt-merlin.git
 
 Be patient it takes some time
 
-Now if you have read very carefully i told you to give your account the name ''router''
+Now if you have read very carefully I told you to give your account the name ''router''
 
-If you didn't then these command will not work you will have to adjust it to your own name.
+If you didn't then these commands will not work you will have to adjust it to your own name.
 With these command you will build your environment which you will need to work with.
 ```
 sudo ln -s /home/router/asuswrt-merlin/tools/brcm /opt/brcm
