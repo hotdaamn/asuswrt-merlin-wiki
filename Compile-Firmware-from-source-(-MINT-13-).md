@@ -30,8 +30,12 @@ Then follow these steps :
 * Fire up MINT 13 and install everything.
 * When MINT 13 is installed, fire up a terminal by pressing CTRL+ALT+T
 
+![terminal](http://members.home.nl/frits.pruymboom/Compile%20with%20linux%20mint/terminal.png)
 
 From here on it is just copy and paste work !
+
+* Just paste in the commands because some commands require ROOT privilege we use sudo.
+* It will ask you for a password type the password you provided during install.  
 
 * Download Merlins hard work
 
