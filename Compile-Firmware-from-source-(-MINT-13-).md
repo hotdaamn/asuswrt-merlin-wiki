@@ -70,7 +70,7 @@ sudo ln -s $HOME/asuswrt-merlin/media/ASUSWRT/asuswrt
 * Now go to the work folder 
 
 ```
-cd $HOME/asuswrt/release/src-rt
+cd $HOME/asuswrt-merlin/release/src-rt
 ```
 
 * Make it clean
