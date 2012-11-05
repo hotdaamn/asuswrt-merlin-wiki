@@ -37,16 +37,17 @@ From here on it is just copy and paste work !
 * Just paste in the commands because some commands require ROOT privilege we use sudo.
 * It will ask you for a password type the password you provided during install.  
 
-* Download Merlins hard work
-
-```
-git clone https://github.com/RMerl/asuswrt-merlin.git
-```
 
 * Install the base packages you need to compile
 
 ```
 sudo apt-get install bison flex g++ g++-4.4 g++-multilib gawk gcc-multilib gconf-editor gitk lib32z1-dev libncurses5 libncurses5-dev libstdc++6-4.4-dev libtool m4 pkg-config zlib1g-dev gperf lib32z1-dev
+```
+
+* Download Merlins hard work
+
+```
+git clone https://github.com/RMerl/asuswrt-merlin.git
 ```
 
 * Let linux know where to search for the tools to compile
