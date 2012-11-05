@@ -78,5 +78,5 @@ make clean
 * Start building
 
 ```
-make rt-n66-u
+make rt-n66u
 ```
