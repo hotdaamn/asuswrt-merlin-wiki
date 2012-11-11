@@ -16,6 +16,7 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 1. [Initialize OPTWARE] (https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
 2. [User scripts](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts)
 3. [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS)
+4. [Custom configuration files](https://github.com/RMerl/asuswrt-merlin/wiki/Custom-config-files)
 
 ### OpenVPN
 1. [About OpenVPN](https://github.com/RMerl/asuswrt-merlin/wiki/About-OpenVPN)
