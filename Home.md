@@ -30,6 +30,7 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 4. [WOL Script Wake Up Your Webserver On Internet Traffic] (https://github.com/RMerl/asuswrt-merlin/wiki/WOL-Script-Wake-Up-Your-Webserver-On-Internet-Traffic)
 5. [Compile from source using Ubuntu](https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-Ubuntu)
 6. [Compile from source using MINT13] (https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-MINT-13)
+7. [Scheduled LED control](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-LED-control)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
