@@ -1,4 +1,4 @@
-Starting with 3.0.0.4.246.20, the router LEDs can now be controled by the user.  The simplest way is to enable the Stealth Mode option (under Tools -> Other Settings), which will disable them.  It is also possible to turn them on and off on a specific schedule through cronjobs.
+Starting with 3.0.0.4.246.20, the router LEDs can now be controlled by the user.  The simplest way is to enable the Stealth Mode option (under Tools -> Other Settings), which will disable them.  It is also possible to turn them on and off on a specific schedule through cron jobs.
 
 The following example will let you configure your router so that LEDs will turn themselves off at 18:00, and turn back on at 6:00.
 
