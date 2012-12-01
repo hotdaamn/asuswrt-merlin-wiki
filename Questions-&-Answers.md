@@ -37,3 +37,4 @@ But there are some alternatives in the optware repo
 A : It is not recommended to do so, JFFS is flash storage and some optware services do a lot of writes.
 That coul prematurely wear out the flash chips inside the router, It would be better to install a micro-SD or to use a USB stick or HDD. 
 
+( Still underconstruction )
