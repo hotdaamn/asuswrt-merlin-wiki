@@ -12,6 +12,6 @@ The list of available config overrides:
 * hosts (for /etc/hosts)
 * smb.conf
 * minidlna.conf
-* profile (shell profile, only profile.add suypported)
+* profile (shell profile, only profile.add supported)
 * upnp (for miniupnpd)
 * radvd.conf
