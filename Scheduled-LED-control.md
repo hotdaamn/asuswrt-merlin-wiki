@@ -7,8 +7,8 @@ First, make sure you have enabled the [JFFS](https://github.com/RMerl/asuswrt-me
 services-start:
 ```
 #!/bin/sh
-cru a lightsoff 0 18 * * * "/jffs/scripts/ledsoff.sh"
-cru a lightson 0 6 * * * "/jffs/scripts/ledson.sh"
+cru a lightsoff "0 18 * * * /jffs/scripts/ledsoff.sh"
+cru a lightson "0 6 * * * /jffs/scripts/ledson.sh"
 ```
 You can adjust the time at which you want both events to fire off by adjusting the second digit (which represents the hour).
 
