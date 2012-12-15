@@ -12,16 +12,21 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 5. [Reverting](https://github.com/RMerl/asuswrt-merlin/wiki/Reverting/)
 
 ### Usage
-
-1. [Initialize OPTWARE] (https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE) (also, see [Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Entware), a modern alternative)
-2. [User scripts](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts)
-3. [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS)
-4. [Custom configuration files](https://github.com/RMerl/asuswrt-merlin/wiki/Custom-config-files)
+1. [User scripts](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts)
+2. [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS)
+3. [Custom configuration files](https://github.com/RMerl/asuswrt-merlin/wiki/Custom-config-files)
 
 ### OpenVPN
 1. [About OpenVPN](https://github.com/RMerl/asuswrt-merlin/wiki/About-OpenVPN)
 2. [Setting up OpenVPN](https://github.com/RMerl/asuswrt-merlin/wiki/Configuring-OpenVPN)
 3. [Generating certs with Easy-RSA](https://github.com/RMerl/asuswrt-merlin/wiki/Generating-OpenVPN-keys-using-Easy-RSA)
+
+### External software repositories
+1. [Setting up Optware] (https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
+2. [Setting up Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Entware) (Optware alternative)
+3. [Webcam video surveillance](http://forums.smallnetbuilder.com/showthread.php?t=8833)
+4. [Installing Transmission through Optware](http://forums.smallnetbuilder.com/showthread.php?t=8696) (for a more up-to-date version than DownloadMaster uses)
+5. [Cherokee Web Server](http://forums.smallnetbuilder.com/showthread.php?t=8323)
 
 ### HowTo and Guides
 1. [Iptables tricks and tips](https://github.com/RMerl/asuswrt-merlin/wiki/Iptables-tips)
@@ -31,7 +36,6 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 5. [Compile from source using Ubuntu](https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-Ubuntu)
 6. [Compile from source using MINT13] (https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-MINT-13)
 7. [Scheduled LED control](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-LED-control)
-8. [Setting up Entware (Optware alternative)](https://github.com/RMerl/asuswrt-merlin/wiki/Entware)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
