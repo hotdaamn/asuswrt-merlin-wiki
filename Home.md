@@ -13,7 +13,7 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 
 ### Usage
 
-1. [Initialize OPTWARE] (https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
+1. [Initialize OPTWARE] (https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE) (also, see [Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Entware), a modern alternative)
 2. [User scripts](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts)
 3. [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS)
 4. [Custom configuration files](https://github.com/RMerl/asuswrt-merlin/wiki/Custom-config-files)
@@ -31,6 +31,7 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 5. [Compile from source using Ubuntu](https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-Ubuntu)
 6. [Compile from source using MINT13] (https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-MINT-13)
 7. [Scheduled LED control](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-LED-control)
+8. [Setting up Entware (Optware alternative)](https://github.com/RMerl/asuswrt-merlin/wiki/Entware)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
