@@ -1,3 +1,5 @@
+You can download the firmware from [http://www.mediafire.com/asuswrt-merlin/](http://www.mediafire.com/asuswrt-merlin/).
+
 Since Asuswrt-merlin is mostly a variant of the original Asuswrt, it means that there is no special procedure to flash it.  Just flash it the same way you would flash any regular Asus firmware.  A few notes:
 
 * The Asus firmware for the RT-N66U only support 32 KB NVRAM, while Asuswrt-merlin supports 64 KB NVRAM.  The first time you go from 32 KB to 64 KB (and also going back), you will most likely lose ALL your settings!  So, be prepared for that.
