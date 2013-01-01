@@ -25,8 +25,9 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 1. [Setting up Optware] (https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
 2. [Setting up Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Entware) (Optware alternative)
 3. [Webcam video surveillance](http://forums.smallnetbuilder.com/showthread.php?t=8833)
-4. [Installing Transmission through Optware](http://forums.smallnetbuilder.com/showthread.php?t=8696) (for a more up-to-date version than DownloadMaster uses)
-5. [Cherokee Web Server](http://forums.smallnetbuilder.com/showthread.php?t=8323)
+4. [Installing Transmission through Optware](http://forums.smallnetbuilder.com/showthread.php?t=8696)
+5. [Installing Transmission through Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Installing-Transmission-(through-Entware))
+6. [Cherokee Web Server](http://forums.smallnetbuilder.com/showthread.php?t=8323)
 
 ### HowTo and Guides
 1. [Iptables tricks and tips](https://github.com/RMerl/asuswrt-merlin/wiki/Iptables-tips)
