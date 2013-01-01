@@ -29,7 +29,7 @@ Now, let's initialize the Optware support inside Asuswrt:
 
 ```
 mkdir /mnt/sda1/asusware
-touch /mnt/sda1/.asusrouter
+touch /mnt/sda1/asusware/.asusrouter
 ```
 
 This will ensure that Asuswrt will properly mount /opt at boot time.
