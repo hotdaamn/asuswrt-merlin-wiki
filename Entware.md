@@ -30,11 +30,12 @@ Now, let's initialize the Optware support inside Asuswrt:
 ```
 mkdir /mnt/sda1/asusware
 touch /mnt/sda1/asusware/.asusrouter
+reboot
 ```
 
 This will ensure that Asuswrt will properly mount /opt at boot time.
 
-Now that we have the optware directory initialized and automounted by Asuswrt it's time to initialize Entware itself:
+After the reboot, the optware directory should be initialized and automounted by Asuswrt.  It's now time to initialize Entware itself:
 
 ```
 cd /opt
