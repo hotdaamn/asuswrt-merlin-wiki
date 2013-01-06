@@ -37,6 +37,7 @@ Create the data directories (adjust as desired):
 mkdir /mnt/sda1/Torrent/
 mkdir /mnt/sda1/Torrent/Incomplete
 mkdir /mnt/sda1/Torrent/Watch
+mkdir /mnt/sda1/Torrent/Completed
 ```
 
 Make sure Transmission isn't already running, then edit its configuration:
@@ -49,7 +50,7 @@ nano -w /opt/etc/transmission/settings.json
 You will want to adjust the following paths:
 
 ```
-"download-dir": "/mnt/sda1/Torrent",
+"download-dir": "/mnt/sda1/Torrent/Completed",
 "watch-dir": "/mnt/sda1/Torrent/Watch",
 "incomplete-dir": "/mnt/sda1/Torrent/Incomplete",
 ```
