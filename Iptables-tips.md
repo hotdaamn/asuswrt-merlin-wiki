@@ -12,6 +12,16 @@ iptables -I FORWARD 9 -p udp -o `nvram get wan0_ifname` --dport 53 -j DROP
 ```
 (those are backticks, not single quotes)
 
+
+### Redirect all DNS queries to go through the router
+
+Probably a better implementation of the previous trick - this one will redirect all DNS queries to your router, which you can configure with the desired nameservers.  Put the following into a nat-start script:
+
+```
+iptables -I PREROUTING -t nat -p udp -s `nvram get lan_ipaddr`/`nvram get lan_netmask` ! -d `nvram get lan_ipaddr`/`nvram get lan_netmask` --dport 53 -j DNAT --to-destination `nvram get lan_ipaddr`
+```
+
+
 ### Allow port forwarding to a service (like RDesktop) only from a specific IP
 
 Let's say you want to create a port forward that will only accept connections from a specific IP (for example, you want to only allow RDesktop connection coming from IP 10.10.10.10).  First, make sure you do NOT forward that port on the Virtual server page.  Then, use a rule like this inside the nat-start script:
