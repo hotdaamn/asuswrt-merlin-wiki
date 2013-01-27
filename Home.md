@@ -31,7 +31,7 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 
 ### HowTo and Guides
 1. [Iptables tricks and tips](https://github.com/RMerl/asuswrt-merlin/wiki/Iptables-tips)
-2. [Traffic Monitoring](https://github.com/RMerl/asuswrt-merlin/wiki/Traffic-Monitoring)
+2. [Scheduled Reboot](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-Reboot)
 3. [Email notification from your router](https://github.com/RMerl/asuswrt-merlin/wiki/Sending-Email)
 4. [WOL Script Wake Up Your Webserver On Internet Traffic] (https://github.com/RMerl/asuswrt-merlin/wiki/WOL-Script-Wake-Up-Your-Webserver-On-Internet-Traffic)
 5. [Compile from source using Ubuntu](https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-Ubuntu)
