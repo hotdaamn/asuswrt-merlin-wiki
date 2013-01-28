@@ -1,6 +1,8 @@
-Before building the firmware, you may apply patches automatically to source files
+Before building the firmware, you may apply patches to source files
 
 Usage: **patch -p1 < /path/file.patch** but first, navigate to root of directory source
+
+And don't forget to change "router" in paths with your ubuntu username
 
 ***
 
