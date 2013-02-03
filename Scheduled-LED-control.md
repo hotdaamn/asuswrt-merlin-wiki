@@ -18,7 +18,6 @@ ledsoff.sh:
 ```
 #!/bin/sh
 nvram set led_disable=1
-nvram commit
 service restart_leds
 ```
 
@@ -26,7 +25,6 @@ ledson.sh:
 ```
 #!/bin/sh
 nvram set led_disable=0
-nvram commit
 service restart_leds
 ```
 
@@ -37,3 +35,10 @@ cru l
 ```
 
 You should see both scheduled tasks listed.
+
+If you want the current router state to be preserved between reboots, add the following commit call to both scripts (right after the nvram set):
+
+```
+nvram commit
+```
+Note whoever that this will cause additional wear on your flash, and might slightly shorten its life, as the flash RAM has a limited possible amount of write cycles.
