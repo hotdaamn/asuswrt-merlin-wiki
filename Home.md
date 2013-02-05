@@ -12,6 +12,8 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 5. [Reverting](https://github.com/RMerl/asuswrt-merlin/wiki/Reverting/)
 
 ### Usage
+Here is a good place to learn more (hands-on) about the following items: https://github.com/RMerl/asuswrt-merlin/wiki/WOL-Script-Wake-Up-Your-Webserver-On-Internet-Traffic
+
 1. [User scripts](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts)
 2. [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS)
 3. [Custom configuration files](https://github.com/RMerl/asuswrt-merlin/wiki/Custom-config-files)
