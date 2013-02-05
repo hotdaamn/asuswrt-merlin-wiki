@@ -13,7 +13,7 @@ Welcome! This guide will show you how to obtain the latest version of the Asuswr
 To download the source code for compilation purposes, you will need the following:
 
 * A Linux-based operating environment (either a dedicated machine running Linux, or a virtual machine using [VMware](http://www.vmware.com) or [VirtualBox](https://www.virtualbox.org/)).
-* git distributed version control system (usually availble in the package manager of your Linux distribution)
+* git distributed version control system (usually available in the package manager of your Linux distribution)
 * At least 1GB free hard drive space
 
 ## Downloading the Source Code ##
@@ -83,7 +83,7 @@ build@asuswrt-merlin:~/asuswrt-merlin$
 
 At this point, you're now at the tag you'd like to work with, and can continue to patching and/or building the firmware.
 
-We can switch back to the master branch at any time if we'd prefer to work with that instead: `git checkout master`
+We can switch back to the master branch at any time if we'd prefer to work with that instead: `git checkout master` (remember that the master branch is the latest and greatest code!)
 
 ```
 build@asuswrt-merlin:~/asuswrt-merlin$ git checkout master
@@ -111,7 +111,7 @@ Already up-to-date.
 build@asuswrt-merlin:~/asuswrt-merlin$
 ```
 
-Now you're up to date! In this particular case, a new branch called 'nfs' was created between the time we cloned the repository and the time we performed our first `git pull`.
+Now you're up to date! In this particular case, a new branch called 'nfs' was created between the time we cloned the repository and the time we performed our first `git pull`. You could switch to this branch if you'd like (`git checkout nfs`), and any new tags will also be retrieved from the repository during the `git pull` operation.
 
 If your repository is already up to date with the repository on GitHub when you run `git pull`, git will simply tell you you're already up to date.
 
