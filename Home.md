@@ -38,6 +38,7 @@ _If you have the time and the willingness to help with this Wiki, please let me 
 6. [Compile from source using MINT13] (https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-MINT-13)
 7. [Scheduled LED control](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-LED-control)
 8. [Apply patches to source files](https://github.com/RMerl/asuswrt-merlin/wiki/Applying-patches-to-source-files)
+9. [Download the latest source code from GitHub](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
