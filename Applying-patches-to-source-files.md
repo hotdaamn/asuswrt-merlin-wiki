@@ -48,7 +48,7 @@ make clean
 ```
 make rt-n66u
 ```
-
+**The compiled firmware image will be created in /home/router/asuswrt-merlin/release/src-rt/image/**
 * For RT-AC66U
 
 ```
@@ -65,7 +65,5 @@ make clean
 ```
 make rt-ac66u
 ```
-
+**The compiled firmware image will be created in /home/router/asuswrt-merlin/release/src-rt-6.x/image/**
 ***
-
-**The compiled firmware image will be placed in /home/router/asuswrt-merlin/release/src-rt/image/**
