@@ -41,4 +41,4 @@ If you want the current router state to be preserved between reboots, add the fo
 ```
 nvram commit
 ```
-Note whoever that this will cause additional wear on your flash, and might slightly shorten its life, as the flash RAM has a limited possible amount of write cycles.
+Note however that this will cause additional wear on your flash, and might slightly shorten its life, as the flash RAM has a limited possible amount of write cycles.
