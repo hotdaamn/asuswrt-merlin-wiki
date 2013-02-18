@@ -43,6 +43,7 @@ From the section "HowTo and Guides", here is a good place to learn more (hands-o
 9. [Download the latest source code from GitHub](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub)
 10. [How to setup Adblock Plus filters right on router, by ryzhov_al] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-Adblock-Plus-filters-right-on-router,-by-ryzhov_al)
 11. [How to setup SSID for VPN and SSID for Regular ISP using MerlinWRT, by Jobongo] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-MerlinWRT,-by-Jobongo)
+12. [How to NTFS usb hdd was not running stable as media server, by ChrisR] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to--NTFS-usb-hdd-was-not-running-stable-as-media-server,-by-ChrisR)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
