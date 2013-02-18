@@ -30,6 +30,7 @@ From the section "HowTo and Guides", here is a good place to learn more (hands-o
 4. [Installing Transmission through Optware](http://forums.smallnetbuilder.com/showthread.php?t=8696)
 5. [Installing Transmission through Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Installing-Transmission-through-Entware)
 6. [Cherokee Web Server](http://forums.smallnetbuilder.com/showthread.php?t=8323)
+7. [PyLoad Download Manager through Optware] (http://forums.smallnetbuilder.com/showthread.php?t=9890)
 
 ### HowTo and Guides
 1. [Iptables tricks and tips](https://github.com/RMerl/asuswrt-merlin/wiki/Iptables-tips)
