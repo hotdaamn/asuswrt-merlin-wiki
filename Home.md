@@ -41,8 +41,8 @@ From the section "HowTo and Guides", here is a good place to learn more (hands-o
 7. [Scheduled LED control](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-LED-control)
 8. [Apply patches to source files](https://github.com/RMerl/asuswrt-merlin/wiki/Applying-patches-to-source-files)
 9. [Download the latest source code from GitHub](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub)
-10. [How to setup Adblock Plus filters right on router] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-Adblock-Plus-filters-right-on-router)
-11. [How to setup SSID for VPN and SSID for Regular ISP using MerlinWRT, by Jobongo (interim version)] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-MerlinWRT,-by-Jobongo-(interim-version))
+10. [How to setup Adblock Plus filters right on router, by ryzhov_al] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-Adblock-Plus-filters-right-on-router,-by-ryzhov_al)
+11. [How to setup SSID for VPN and SSID for Regular ISP using MerlinWRT, by Jobongo] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-MerlinWRT,-by-Jobongo)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
