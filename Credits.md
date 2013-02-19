@@ -11,5 +11,5 @@
 
 **Special thanks to:**
 * The folks at Asus, especially Adam and Mason, for their support with this project
-* Tim Higgins at SmallNetBuilder for hosting our support forum
+* Tim Higgins at [SmallNetBuilder](http://www.smallnetbuilder.com/) for hosting our [support forum](http://forums.smallnetbuilder.com/forumdisplay.php?f=42)
 * Those who have donated through Paypal
