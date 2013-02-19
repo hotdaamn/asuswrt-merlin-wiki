@@ -29,3 +29,38 @@ rm /tmp/mail.txt
 ```
 
 If your SMTP server requires authentication, you can pass them as additional arguments.  To see the available options, just run "sendmail -h".
+
+***
+If you don't have a smtp mail account from your ISP (gmail doesn't alow plain auth), [JANGO SMTP](https://www.jangosmtp.com/) could be the solution, it ofers 200 emails to send per month for free and should be enough.
+Just [signup](https://www.jangosmtp.com/Free-Account.asp) for a free account, and after email confirmation, go to Settings/Advanced/FromAddresses and create one or more "from address".
+
+![acc](http://i46.tinypic.com/i1iu5w.png)
+
+Now just fill your wan-start script with the following lines but don't forget to replace first **your-jangosmtp-fromaddress**, **your-jangomail-username**, **your-jangomail-password** and **your-email-address** where to receive notifications.
+```
+#!/bin/sh
+SMTP="relay.jangosmtp.net:587"
+FROM="your-jangosmtp-fromaddress"
+FROMNAME="ASUS ROUTER"
+TO="your-email-address"
+
+ntpclient -h pool.ntp.org -s &> /dev/null
+sleep 5
+
+echo "Subject: WAN state notification" >/tmp/mail.txt
+echo "From: \\"$FROMNAME\\"<$FROM>" >>/tmp/mail.txt
+echo "Date: `date -R`" >>/tmp/mail.txt
+echo "" >>/tmp/mail.txt
+echo "I just got connected to the internet." >>/tmp/mail.txt
+echo "" >>/tmp/mail.txt
+echo "My WAN IP is: `nvram get wan0_ipaddr`" >>/tmp/mail.txt
+echo "Uptime is: `uptime | cut -d ',' -f1 | sed 's/^.\{12\}//g'`" >>/tmp/mail.txt
+echo "" >>/tmp/mail.txt
+echo "---- " >>/tmp/mail.txt
+echo "Your friendly router." >>/tmp/mail.txt
+echo "" >>/tmp/mail.txt
+
+cat /tmp/mail.txt | /usr/sbin/sendmail -S"$SMTP" -f"$FROM" $TO -au"your-jangomail-username" -ap"your-jangomail-password"
+
+rm /tmp/mail.txt
+```
