@@ -36,7 +36,7 @@ Just [signup](https://www.jangosmtp.com/Free-Account.asp) for a free account, an
 
 ![acc](http://i46.tinypic.com/i1iu5w.png)
 
-Now just fill your wan-start script with the following lines but don't forget to replace first **your-jangosmtp-fromaddress**, **your-jangomail-username**, **your-jangomail-password** and **your-email-address** where to receive notifications.
+Now just fill your _wan-start script_ with the following lines but don't forget to replace first **your-jangosmtp-fromaddress**, **your-jangomail-username**, **your-jangomail-password** and **your-email-address** where to receive notifications.
 ```
 #!/bin/sh
 SMTP="relay.jangosmtp.net:587"
@@ -64,3 +64,5 @@ cat /tmp/mail.txt | /usr/sbin/sendmail -S"$SMTP" -f"$FROM" $TO -au"your-jangomai
 
 rm /tmp/mail.txt
 ```
+Now saving the script disconnect and connect again to internet or reboot router and check your email inbox.
+![mail](http://i47.tinypic.com/10drrs6.png)
