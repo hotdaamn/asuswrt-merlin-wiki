@@ -64,5 +64,5 @@ cat /tmp/mail.txt | /usr/sbin/sendmail -S"$SMTP" -f"$FROM" $TO -au"your-jangomai
 
 rm /tmp/mail.txt
 ```
-Now saving the script disconnect and connect again to internet or reboot router and check your email inbox.
+After saving the script disconnect and connect again to internet or reboot router and check your email inbox.
 ![mail](http://i47.tinypic.com/10drrs6.png)
