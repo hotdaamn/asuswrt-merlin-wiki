@@ -1,3 +1,5 @@
+THIS WIKI IS NOT FINISHED. IF YOU UNDERSTAND THE SCRIPT AND WOULD LIKE TO USE IT THEN FEEL FREE. THANKS.
+
 = Introduction
 
 This is a tutorial for those who use a VPN and would like to dedicate an SSID for that VPN. This does very minor configuration changes to the router while still keeping the hardware acceleration enabled.  This setup allows you to have vpn access and regular internet on the same router. This (to the best of my knowledge) can be used with any virtual interface (tun, ppp, etc.) that provides an alternate wan gateway and can be used with any wireless interface on the router(eth1,eth2, guest network interfaces). This setup creates an additional network  The script is a single file and is a baseline and can be modified as you see fit.
@@ -100,4 +102,5 @@ Here are a few steps that are necessary for the initial configuration of this se
  cru a VPN_Check "*/30 * * * * /jffs/scripts/VPN_SSID/"
 
 ==Implementing
-This script is all contained in one file. There are several ways you can do this. You can copy the contents of the start-up sections into the services-start script in jffs or you can create a new file and make it executable. In the services-start script, simply point to that file so that it can be executed.
+This script is all contained in one file. There are several ways you can do this. You can copy the contents into the services-start script in jffs or you can create a new file and make it executable. In the services-start script, simply point to that file so that it can be executed.
+
