@@ -20,7 +20,7 @@ Here are a few steps that are necessary for the initial configuration of this se
 * wl1.2-5Ghz Guest Network 2
 * wl1.3-5Ghz Guest Network 3
 
-== The setup: Part 1
+== The Script
 
  #!/bin/sh
  ####### Interface Specific Settings #######
