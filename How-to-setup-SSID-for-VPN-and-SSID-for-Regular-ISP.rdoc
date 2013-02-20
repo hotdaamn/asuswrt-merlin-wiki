@@ -1,0 +1,103 @@
+= Introduction
+
+This is a tutorial for those who use a VPN and would like to dedicate an SSID for that VPN. This does very minor configuration changes to the router while still keeping the hardware acceleration enabled.  This setup allows you to have vpn access and regular internet on the same router. This (to the best of my knowledge) can be used with any virtual interface (tun, ppp, etc.) that provides an alternate wan gateway and can be used with any wireless interface on the router(eth1,eth2, guest network interfaces). This setup creates an additional network  The script is a single file and is a baseline and can be modified as you see fit.
+
+== Initial Setup
+
+Here are a few steps that are necessary for the initial configuration of this setup.
+
+1. Enable jffs. The script can be run from the jffs partition or it can be run from optware (or entware).
+2. Create the start-up scripts in the scripts folder if you are going to use the jffs partition as per the wiki.
+3. Determine the network IP addressing that you would like to assign to this SSID.                         (e.g. 192.168.2.0/24)
+4. Determine the wireless radio that you will be using. Here is a list of which radio corresponds to which SSID. If you are going to be using a guest network, enable this now. Here is a list of the radio-to-interface correlation.
+
+* eth1- Default LAN 2.4Ghz SSID
+* wl0.1-2.4Ghz Guest Network 1
+* wl0.2-2.4Ghz Guest Network 2
+* wl0.3-2.4Ghz Guest Network 3
+* eth2- Default LAN 5Ghz SSID
+* wl1.1-5Ghz Guest Network 1
+* wl1.2-5Ghz Guest Network 2
+* wl1.3-5Ghz Guest Network 3
+
+== The setup: Part 1
+
+ #!/bin/sh
+ ####### Interface Specific Settings #######
+ WRLSS_IF=wl0.1                 
+ WRLSS_IF_NTWK_ADDR=192.168.2.0 
+ WRLSS_IF_INET_ADDR=192.168.2.1 
+ WRLSS_IF_NETMASK=255.255.255.0 
+ TUN_IF=tun0                    
+ ########## DHCP Specific Settings ###########
+ DHCP_OPT1=3                     
+ LS_TIME=86400s                  
+ LS_START=192.168.2.100          
+ LS_END=192.168.2.120            
+ ######## Hide SSID of Guest Network ########
+ HIDE_SSID=1 
+
+
+                 
+ ########## Create New DHCP Server ##########
+ if [ `cat /etc/dnsmasq.conf | grep -c $WRLSS_IF` == 0 ]; then
+ 	killall dnsmasq
+ 	sleep 2
+ 	echo "interface=$WRLSS_IF" >> /etc/dnsmasq.conf
+ 	echo "dhcp-range=$WRLSS_IF,$LS_START,$LS_END,$WRLSS_IF_NETMASK,$LS_TIME" >> /etc/dnsmasq.conf
+ 	echo "dhcp-option=$WRLSS_IF,$DHCP_OPT1,$WRLSS_IF_INET_ADDR" >> /etc/dnsmasq.conf
+ 	dnsmasq --log-async
+ fi
+ ############## Tunnel Module ##############
+ if [ `lsmod | grep -c tun` == 0 ]; then
+ 	insmod tun
+ 	sleep 1
+ fi
+ ####### Standalone Openvpn Specific #######
+ if [ ! -n "`pidof openvpn`" ]; then
+ 	cd /directory/of/openvpn/config
+ 	openvpn --config ./openvpn.conf
+ fi
+ 	sleep 2
+ ### Check to see if tun interface is available###
+ while [ ! -n "`ifconfig | grep $TUN_IF`" ]; do
+ 	sleep 1
+ done
+ ############################################ IP ROUTING ##################################################
+ ifconfig $WRLSS_IF $WRLSS_IF_INET_ADDR netmask $WRLSS_IF_NETMASK
+ ip route show table main | grep -Ev ^default | while read ROUTE; do 
+ ip route add table 10 $ROUTE; 
+ done
+ ip route add default dev $TUN_IF table 10
+ ip rule add dev $WRLSS_IF table 10
+ ip route flush cache
+ ####################################### ETHERNET BRIDGE TABLES RULES #####################################
+ EBT_BRULE1="-p ipv4 -i $WRLSS_IF -j DROP"
+ EBT_BRULE2="-p arp -i $WRLSS_IF -j DROP"
+ if [ -n "$EBT_BRULE1" ] && [ `ebtables -t broute -L | grep -ice "$EBT_BRULE1"` != 1 ]; then
+ 	ebtables -t broute -I BROUTING $EBT_BRULE1
+ fi
+ if [ -n "$EBT_BRULE2" ] && [ `ebtables -t broute -L | grep -ice "$EBT_BRULE2"` != 1 ]; then
+ 	ebtables -t broute -I BROUTING $EBT_BRULE2
+ fi
+ ################################################ IP TABLES RULES #########################################
+ if [ `iptables -L -v | grep -c $WRLSS_IF` == 0 ]; then
+ 	iptables -I INPUT -i $WRLSS_IF -m state --state NEW -j ACCEPT
+ 	iptables -I FORWARD -i $WRLSS_IF -o $TUN_IF -j ACCEPT
+ fi
+ if [ `iptables -t nat -L -v | grep -c $TUN_IF` == 0 ]; then
+ 	iptables -t nat -I POSTROUTING -s $WRLSS_IF_NTWK_ADDR/24 -o $TUN_IF -j MASQUERADE
+ fi
+ ################################################## HIDE SSID #############################################
+ if [ `nvram get "$WRLSS_IF"_closed` != 1 ] && [ $HIDE_SSID == 1 ]; then
+ 	nvram set "$WRLSS_IF"_closed=1
+ 	nvram commit
+ fi
+ if [ `nvram get "$WRLSS_IF"_closed` != 0 ] && [ $HIDE_SSID == 0 ]; then
+ 	nvram set "$WRLSS_IF"_closed=0
+ 	nvram commit
+ fi
+ cru a VPN_Check "*/30 * * * * /jffs/scripts/VPN_SSID/"
+
+==Implementing
+This script is all contained in one file. There are several ways you can do this. You can copy the contents of the start-up sections into the services-start script in jffs or you can create a new file and make it executable. In the services-start script, simply point to that file so that it can be executed.
