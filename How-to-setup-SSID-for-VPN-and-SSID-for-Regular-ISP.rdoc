@@ -2,7 +2,7 @@ THIS WIKI IS NOT FINISHED. IF YOU UNDERSTAND THE SCRIPT AND WOULD LIKE TO USE IT
 
 = Introduction
 
-This is a tutorial for those who use a VPN and would like to dedicate an SSID for that VPN. This does very minor configuration changes to the router while still keeping the hardware acceleration enabled.  This setup allows you to have vpn access and regular internet on the same router. This (to the best of my knowledge) can be used with any virtual interface (tun, ppp, etc.) that provides an alternate wan gateway and can be used with any wireless interface on the router(eth1,eth2, guest network interfaces). This setup creates an additional network  The script is a single file and is a baseline and can be modified as you see fit.
+This is a tutorial for those who use a VPN and would like to dedicate an SSID for that VPN. This does very minor configuration changes to the router while still keeping the hardware acceleration enabled.  This setup allows you to have VPN access and regular internet on the same router. This (to the best of my knowledge) can be used with any virtual interface (tun, ppp, etc.) that provides an alternate wan gateway and can be used with any wireless interface on the router(eth1,eth2, guest network interfaces).
 
 == Initial Setup
 
@@ -26,10 +26,10 @@ Here are a few steps that are necessary for the initial configuration of this se
 
  #!/bin/sh
  ####### Interface Specific Settings #######
- WRLSS_IF=wl0.1                 
- WRLSS_IF_NTWK_ADDR=192.168.2.0 
- WRLSS_IF_INET_ADDR=192.168.2.1 
- WRLSS_IF_NETMASK=255.255.255.0 
+ WRLSS_IF=wl0.1
+ WRLSS_IF_NTWK_ADDR=192.168.2.0
+ WRLSS_IF_INET_ADDR=192.168.2.1
+ WRLSS_IF_NETMASK=255.255.255.0
  TUN_IF=tun0                    
  ########## DHCP Specific Settings ###########
  DHCP_OPT1=3                     
@@ -39,9 +39,9 @@ Here are a few steps that are necessary for the initial configuration of this se
  ######## Hide SSID of Guest Network ########
  HIDE_SSID=1 
 
-
+ ##########################################################################################################
                  
- ########## Create New DHCP Server ##########
+ ######################################## New DHCP Server #################################################
  if [ `cat /etc/dnsmasq.conf | grep -c $WRLSS_IF` == 0 ]; then
  	killall dnsmasq
  	sleep 2
@@ -50,18 +50,8 @@ Here are a few steps that are necessary for the initial configuration of this se
  	echo "dhcp-option=$WRLSS_IF,$DHCP_OPT1,$WRLSS_IF_INET_ADDR" >> /etc/dnsmasq.conf
  	dnsmasq --log-async
  fi
- ############## Tunnel Module ##############
- if [ `lsmod | grep -c tun` == 0 ]; then
- 	insmod tun
- 	sleep 1
- fi
- ####### Standalone Openvpn Specific #######
- if [ ! -n "`pidof openvpn`" ]; then
- 	cd /directory/of/openvpn/config
- 	openvpn --config ./openvpn.conf
- fi
- 	sleep 2
- ### Check to see if tun interface is available###
+ sleep 2
+ ### Check to see if tun interface is available ###
  while [ ! -n "`ifconfig | grep $TUN_IF`" ]; do
  	sleep 1
  done
@@ -82,7 +72,7 @@ Here are a few steps that are necessary for the initial configuration of this se
  if [ -n "$EBT_BRULE2" ] && [ `ebtables -t broute -L | grep -ice "$EBT_BRULE2"` != 1 ]; then
  	ebtables -t broute -I BROUTING $EBT_BRULE2
  fi
- ################################################ IP TABLES RULES #########################################
+ ############################################ IP TABLES RULES #############################################
  if [ `iptables -L -v | grep -c $WRLSS_IF` == 0 ]; then
  	iptables -I INPUT -i $WRLSS_IF -m state --state NEW -j ACCEPT
  	iptables -I FORWARD -i $WRLSS_IF -o $TUN_IF -j ACCEPT
@@ -90,7 +80,7 @@ Here are a few steps that are necessary for the initial configuration of this se
  if [ `iptables -t nat -L -v | grep -c $TUN_IF` == 0 ]; then
  	iptables -t nat -I POSTROUTING -s $WRLSS_IF_NTWK_ADDR/24 -o $TUN_IF -j MASQUERADE
  fi
- ################################################## HIDE SSID #############################################
+ ############################################### HIDE SSID ################################################
  if [ `nvram get "$WRLSS_IF"_closed` != 1 ] && [ $HIDE_SSID == 1 ]; then
  	nvram set "$WRLSS_IF"_closed=1
  	nvram commit
@@ -102,5 +92,17 @@ Here are a few steps that are necessary for the initial configuration of this se
  cru a VPN_Check "*/30 * * * * /jffs/scripts/VPN_SSID/"
 
 ==Implementing
-This script is all contained in one file. There are several ways you can do this. You can copy the contents into the services-start script in jffs or you can create a new file and make it executable. In the services-start script, simply point to that file so that it can be executed.
+Copy the above script to a file named (({vpn_ssid})) in the config folder in the jffs partition. After 
 
+
+ ############## Tunnel Module ##############
+ if [ `lsmod | grep -c tun` == 0 ]; then
+ 	insmod tun
+ 	sleep 1
+ fi
+ ####### Standalone Openvpn Specific #######
+ if [ ! -n "`pidof openvpn`" ]; then
+ 	cd /directory/of/openvpn/config
+ 	openvpn --config ./openvpn.conf
+ fi
+ 	sleep 2
