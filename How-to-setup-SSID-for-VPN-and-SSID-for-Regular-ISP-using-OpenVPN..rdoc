@@ -11,7 +11,8 @@ Here are a few steps that are necessary for the initial configuration of this se
 1. Enable jffs. The script can be run from the jffs partition or it can be run from optware (or entware).
 2. Create the start-up scripts in the scripts folder if you are going to use the jffs partition as per the wiki.
 3. Determine the network IP addressing that you would like to assign to this SSID.                         (e.g. 192.168.2.0/24)
-4. Determine the wireless radio that you will be using. Here is a list of which radio corresponds to which SSID. If you are going to be using a guest network, enable this now. Here is a list of the radio-to-interface correlation.
+4. Setup the VPN and make sure that everything works as it should. 
+5. Determine the wireless radio that you will be using. Here is a list of which radio corresponds to which SSID. If you are going to be using a guest network, enable this now. Here is a list of the radio-to-interface correlation.
 
 * eth1- Default LAN 2.4Ghz SSID
 * wl0.1-2.4Ghz Guest Network 1
@@ -26,22 +27,23 @@ Here are a few steps that are necessary for the initial configuration of this se
 
  #!/bin/sh
  ####### Interface Specific Settings #######
- WRLSS_IF=wl0.1
- WRLSS_IF_NTWK_ADDR=192.168.2.0
- WRLSS_IF_INET_ADDR=192.168.2.1
- WRLSS_IF_NETMASK=255.255.255.0
- TUN_IF=tun0                    
+ WRLSS_IF=wl0.1                   # Name of the wireless interface that will be used.
+ WRLSS_IF_NTWK_ADDR=192.168.2.0   # Network address that the wireless interface will be on.
+ WRLSS_IF_INET_ADDR=192.168.2.1   # IP address that will be assigned to the wireless interface.
+ WRLSS_IF_NETMASK=255.255.255.0   # Netmask of the wireless network to be added.
+ TUN_IF=tun11                     # Interface name of the tunnel interface.
  ########## DHCP Specific Settings ###########
- DHCP_OPT1=3                     
- LS_TIME=86400s                  
- LS_START=192.168.2.100          
- LS_END=192.168.2.120            
+ DHCP_OPT1=3                      # dnsmasq option to specify router.
+ LS_TIME=86400s                   # Duration of the dhcp leases.
+ LS_START=192.168.2.100           # Start address of leases. This needs to be within the same network as above.
+ LS_END=192.168.2.120             # End address of leases. This needs to be within the same network as above.
  ######## Hide SSID of Guest Network ########
- HIDE_SSID=1 
+ HIDE_SSID=1                      # This option is to hide the SSID of a guest network if a guest network is used. Input 1 to hide and 0 to make it visible.
 
  ##########################################################################################################
  ##########################################################################################################                
  ########################################## DHCP Server ###################################################
+
  if [ `cat /etc/dnsmasq.conf | grep -c $WRLSS_IF` == 0 ]; then
  	killall dnsmasq
  	sleep 2
@@ -56,14 +58,18 @@ Here are a few steps that are necessary for the initial configuration of this se
  	sleep 1
  done
  ############################################ IP ROUTING ##################################################
+
  ifconfig $WRLSS_IF $WRLSS_IF_INET_ADDR netmask $WRLSS_IF_NETMASK
  ip route show table main | grep -Ev ^default | while read ROUTE; do 
  ip route add table 10 $ROUTE; 
  done
- ip route add default dev $TUN_IF table 10
+ #ip route del 0.0.0.0/1 table main          # Uncomment this line if you are not using the route-nopull option. 
+ # Many VPN service providers push this route to redirect internet traffic over the tunnel.                                          
+ ip route add default dev $TUN_IF table 10    
  ip rule add dev $WRLSS_IF table 10
  ip route flush cache
  ####################################### ETHERNET BRIDGE TABLES RULES #####################################
+
  EBT_BRULE1="-p ipv4 -i $WRLSS_IF -j DROP"
  EBT_BRULE2="-p arp -i $WRLSS_IF -j DROP"
  if [ -n "$EBT_BRULE1" ] && [ `ebtables -t broute -L | grep -ice "$EBT_BRULE1"` != 1 ]; then
@@ -73,14 +79,16 @@ Here are a few steps that are necessary for the initial configuration of this se
  	ebtables -t broute -I BROUTING $EBT_BRULE2
  fi
  ############################################ IP TABLES RULES #############################################
+
  if [ `iptables -L -v | grep -c $WRLSS_IF` == 0 ]; then
  	iptables -I INPUT -i $WRLSS_IF -m state --state NEW -j ACCEPT
  	iptables -I FORWARD -i $WRLSS_IF -o $TUN_IF -j ACCEPT
  fi
  if [ `iptables -t nat -L -v | grep -c $TUN_IF` == 0 ]; then
- 	iptables -t nat -I POSTROUTING -s $WRLSS_IF_NTWK_ADDR/24 -o $TUN_IF -j MASQUERADE
+ 	iptables -t nat -I POSTROUTING -s $WRLSS_IF_NTWK_ADDR/24 -o $TUN_IF -j MASQUERADE  # Change /24 to the subnet that you will be using.
  fi
  ############################################### HIDE SSID ################################################
+
  if [ `nvram get "$WRLSS_IF"_closed` != 1 ] && [ $HIDE_SSID == 1 ]; then
  	nvram set "$WRLSS_IF"_closed=1
  	nvram commit
@@ -90,39 +98,40 @@ Here are a few steps that are necessary for the initial configuration of this se
  	nvram commit
  fi
 
+
 == Description
 
-The first part of this script is where pertinent information is put in in order to setup the extra network and create the additional routes, rules, and settings. The second part (the part after the two lines of #) is where the commands are executed to set everything up. Nothing should have to be changed. 
-
-=== Part 1
-
+The first part of this script is where information is put in in order to setup the extra network and create the additional routes, rules, and settings. Most of the information that needs to be changed is in this part. The second part (the part after the two lines of #) is where the commands are executed to set everything up. 
 
 ==Implementing
-1. Create a file in the configs folder of jffs and name it what you like (e.g. vpn_ssid) Copy the above script into this file and save.
-Next, place this line
- /jffs/configs/your_file_name (e.g. vpn_ssid)
-in the services-start file in the scripts folder.
 
-2. Open up a terminal to the router or go to the Run Cmd tab in the web interface and type the following command.
+1 .  Create a file in the scripts folder of jffs and name it what you like. I recommend using WinSCP to do the following:
+Copy the above script into this file and save.
 
- chmod 0755 /jffs/config/your_file_name
+2 .  Next, place this line in the services-start file in the scripts folder:
+
+ /jffs/scripts/your_file_name (ex. vpn_ssid)
+
+3 .  Open up a terminal to the router or go to the Run Cmd tab under Tools in the web interface and type the following command:
+
+ chmod 0755 /jffs/scripts/your_file_name
 
 == Optional Settings
 
-These are additional options that you can add to the script above if a standalone openvpn service is being used. This needs to be inserted before "DHCP Server" section. 
+These are additional options that you can add to the script above if a standalone OpenVPN service is being used. This needs to be inserted before "DHCP Server" section. 
 
  ############## Tunnel Module ##############
- if [ `lsmod | grep -c tun` == 0 ]; then
+ if [ `lsmod | grep -c tun` == 0 ]; then    # Change tun to tap if you are connecting using a tap device.
  	insmod tun
  	sleep 1
  fi
  ####### Standalone Openvpn Specific #######
  if [ ! -n "`pidof openvpn`" ]; then
- 	cd /directory/of/openvpn/config
- 	openvpn --config ./openvpn.conf
+ 	cd /directory/of/openvpn/config     # Change to directory of your openvpn configuration.
+ 	openvpn --config ./openvpn.conf     # Change to name of openvpn configuration.
  fi
  	sleep 1
 
-The following is to setup a cron job. This simply reruns this script at whatever times specified to ensure that everything is still setup.
+The following is to setup a cron job. This simply reruns this script at whatever times specified to ensure that everything is still setup. Place this at the end of the file. 
 
- cru a VPN_Check "*/30 * * * * /jffs/scripts/your_file_name/"
+ cru a VPN_Check "*/30 * * * * /jffs/scripts/your_file_name/"  
