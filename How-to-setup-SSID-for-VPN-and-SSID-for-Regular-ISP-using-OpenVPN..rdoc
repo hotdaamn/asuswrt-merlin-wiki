@@ -2,7 +2,7 @@ THIS WIKI IS NOT COMPLETE. IF YOU UNDERSTAND THE SCRIPT AND WOULD LIKE TO USE IT
 
 = Introduction
 
-This is a tutorial for those who use a VPN and would like to dedicate an SSID for that VPN. This does very minor configuration changes to the router while still keeping the hardware acceleration enabled.  This setup allows you to have VPN access and regular internet on the same router. This (to the best of my knowledge) can be used with any virtual interface (tun, ppp, etc.) that provides an alternate wan gateway and can be used with any wireless interface on the router(eth1,eth2, guest network interfaces).
+This is a tutorial for those who use a VPN and would like to dedicate an SSID for that VPN. This does very minor configuration changes to the router while still keeping the hardware acceleration enabled.  This setup allows you to have VPN access and regular internet on the same router. This (to the best of my knowledge) can be used with any virtual interface (tun, ppp, etc.) that provides an alternate wan gateway and can be used with any wireless interface on the router(eth1,eth2, guest network interfaces). This wiki is geared towards those that use OpenVPN but should work with other VPNs such as PPTP and L2TP.
 
 == Initial Setup
 
