@@ -1,4 +1,4 @@
-THIS WIKI IS NOT FINISHED. IF YOU UNDERSTAND THE SCRIPT AND WOULD LIKE TO USE IT THEN FEEL FREE. THANKS.
+THIS WIKI IS NOT COMPLETE. IF YOU UNDERSTAND THE SCRIPT AND WOULD LIKE TO USE IT THEN FEEL FREE. THANKS.
 
 = Introduction
 
@@ -40,8 +40,8 @@ Here are a few steps that are necessary for the initial configuration of this se
  HIDE_SSID=1 
 
  ##########################################################################################################
-                 
- ######################################## New DHCP Server #################################################
+ ##########################################################################################################                
+ ########################################## DHCP Server ###################################################
  if [ `cat /etc/dnsmasq.conf | grep -c $WRLSS_IF` == 0 ]; then
  	killall dnsmasq
  	sleep 2
@@ -89,11 +89,27 @@ Here are a few steps that are necessary for the initial configuration of this se
  	nvram set "$WRLSS_IF"_closed=0
  	nvram commit
  fi
- cru a VPN_Check "*/30 * * * * /jffs/scripts/VPN_SSID/"
+
+== Description
+
+The first part of this script is where pertinent information is put in in order to setup the extra network and create the additional routes, rules, and settings. The second part (the part after the two lines of #) is where the commands are executed to set everything up. Nothing should have to be changed. 
+
+=== Part 1
+
 
 ==Implementing
-Copy the above script to a file named (({vpn_ssid})) in the config folder in the jffs partition. After 
+1. Create a file in the configs folder of jffs and name it what you like (e.g. vpn_ssid) Copy the above script into this file and save.
+Next, place this line
+ /jffs/configs/your_file_name (e.g. vpn_ssid)
+in the services-start file in the scripts folder.
 
+2. Open up a terminal to the router or go to the Run Cmd tab in the web interface and type the following command.
+
+ chmod 0755 /jffs/config/your_file_name
+
+== Optional Settings
+
+These are additional options that you can add to the script above if a standalone openvpn service is being used. This needs to be inserted before "DHCP Server" section. 
 
  ############## Tunnel Module ##############
  if [ `lsmod | grep -c tun` == 0 ]; then
@@ -105,4 +121,8 @@ Copy the above script to a file named (({vpn_ssid})) in the config folder in the
  	cd /directory/of/openvpn/config
  	openvpn --config ./openvpn.conf
  fi
- 	sleep 2
+ 	sleep 1
+
+The following is to setup a cron job. This simply reruns this script at whatever times specified to ensure that everything is still setup.
+
+ cru a VPN_Check "*/30 * * * * /jffs/scripts/your_file_name/"
