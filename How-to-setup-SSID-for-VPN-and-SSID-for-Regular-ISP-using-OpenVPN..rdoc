@@ -25,6 +25,8 @@ Here are a few steps that are necessary for the initial configuration of this se
 
 == The Script
 
+The following script is designed to check if certain parameters are in place before trying to execute. For instance, the tunnel interface is verified as being up before routes are added to the routing table. Most changes should be made only to the first part where variables are assigned. There are a couple of changes that may need to be made further down depending on your VPN and network configuration. These areas are commented.
+
  #!/bin/sh
  ####### Interface Specific Settings #######
  WRLSS_IF=wl0.1                   # Name of the wireless interface that will be used.
@@ -132,6 +134,6 @@ These are additional options that you can add to the script above if a standalon
  fi
  	sleep 1
 
-The following is to setup a cron job. This simply reruns this script at whatever times specified to ensure that everything is still setup. Place this at the end of the file. 
+The following is to setup a cron job. This simply reruns this script at whatever times specified to ensure that everything is still setup. The current setting "*/30" makes it rerun the script every 30 minuts. Place this line in a separate script. 
 
  cru a VPN_Check "*/30 * * * * /jffs/scripts/your_file_name/"  
