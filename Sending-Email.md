@@ -66,3 +66,4 @@ rm /tmp/mail.txt
 ```
 After saving the script disconnect and connect again to internet or reboot router and check your email inbox.
 ![mail](http://i47.tinypic.com/10drrs6.png)
+Please post issues here http://forums.smallnetbuilder.com/showthread.php?t=8190
