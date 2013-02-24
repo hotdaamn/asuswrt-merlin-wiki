@@ -31,7 +31,7 @@ rm /tmp/mail.txt
 If your SMTP server requires authentication, you can pass them as additional arguments.  To see the available options, just run "sendmail -h".
 
 ***
-If you don't have a smtp mail account from your ISP (gmail doesn't alow plain auth), [JANGO SMTP](https://www.jangosmtp.com/) could be the solution, it ofers 200 emails to send per month for free and should be enough.
+If you don't have a smtp email account from your ISP, [JANGO SMTP](https://www.jangosmtp.com/) could be the solution, it ofers 200 emails to send per month for free and should be enough.
 Just [signup](https://www.jangosmtp.com/Free-Account.asp) for a free account, and after email confirmation, go to Settings/Advanced/FromAddresses and create one or more "from address".
 
 ![acc](http://i46.tinypic.com/i1iu5w.png)
@@ -61,6 +61,43 @@ echo "Your friendly router." >>/tmp/mail.txt
 echo "" >>/tmp/mail.txt
 
 cat /tmp/mail.txt | /usr/sbin/sendmail -S"$SMTP" -f"$FROM" $TO -au"your-jangomail-username" -ap"your-jangomail-password"
+
+rm /tmp/mail.txt
+```
+
+***
+
+It's possible to send emails even from gmail account through openssl (thanks [Nerre](http://forums.smallnetbuilder.com/member.php?u=15302))
+For that, fill your _wan-start script_ with the following text but don't forget to replace first **FROM**, **AUTH**, **PASS** and **TO** values
+```
+#!/bin/sh
+FROM="your-gmail-address"
+AUTH="your-gmail-username"
+PASS="your-gmail-password"
+FROMNAME="Your Router"
+TO="your-email-address"
+
+ntpclient -h pool.ntp.org -s &> /dev/null
+sleep 5
+
+echo "Subject: WAN state notification" >/tmp/mail.txt
+echo "From: \\"$FROMNAME\\"<$FROM>" >>/tmp/mail.txt
+echo "Date: `date -R`" >>/tmp/mail.txt
+echo "" >>/tmp/mail.txt
+echo "I just got connected to the internet." >>/tmp/mail.txt
+echo "" >>/tmp/mail.txt
+echo "My WAN IP is: `nvram get wan0_ipaddr`" >>/tmp/mail.txt
+echo "Uptime is: `uptime | cut -d ',' -f1 | sed 's/^.\{12\}//g'`" >>/tmp/mail.txt
+echo "" >>/tmp/mail.txt
+echo "---- " >>/tmp/mail.txt
+echo "Your friendly router." >>/tmp/mail.txt
+echo "" >>/tmp/mail.txt
+
+cat /tmp/mail.txt | sendmail -H"exec openssl s_client -quiet \
+-CAfile /jffs/configs/Equifax_Secure_Certificate_Authority.pem \
+-connect smtp.gmail.com:25 -tls1 -starttls smtp" \
+-f"$FROM" \
+-au"$AUTH" -ap"$PASS" $TO 
 
 rm /tmp/mail.txt
 ```
