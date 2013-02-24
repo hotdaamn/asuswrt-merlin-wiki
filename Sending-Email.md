@@ -67,7 +67,7 @@ rm /tmp/mail.txt
 
 ***
 
-It's possible to send emails even from gmail account through openssl (thanks [Nerre](http://forums.smallnetbuilder.com/member.php?u=15302)), first we need to download a trusted certificate
+It's possible to send emails even from **Gmail** account through openssl (thanks [Nerre](http://forums.smallnetbuilder.com/member.php?u=15302)), first we need to download a trusted certificate
 ```
 wget -c -O /jffs/configs/Equifax_Secure_Certificate_Authority.pem http://www.geotrust.com/resources/root_certificates/certificates/Equifax_Secure_Certificate_Authority.pem
 ```
