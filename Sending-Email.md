@@ -67,9 +67,12 @@ rm /tmp/mail.txt
 
 ***
 
-It's possible to send emails even from gmail account through openssl (thanks [Nerre](http://forums.smallnetbuilder.com/member.php?u=15302))
-
-For that, fill your _wan-start script_ with the following text but don't forget to replace first **FROM**, **AUTH**, **PASS** and **TO** values only in first 6 lines of the script
+It's possible to send emails even from gmail account through openssl (thanks [Nerre](http://forums.smallnetbuilder.com/member.php?u=15302)), first we need to download a trusted certificate
+```
+wget -c -O /jffs/configs/Equifax_Secure_Certificate_Authority.pem http://www.geotrust.com/resources/root_certificates/certificates/Equifax_Secure_Certificate_Authority.pem
+chmod 755 /jffs/configs/Equifax_Secure_Certificate_Authority.pem
+```
+Now fill your _wan-start script_ with the following text but don't forget to replace **FROM**, **AUTH**, **PASS** and **TO** values only in first 6 lines of the script
 ```
 #!/bin/sh
 FROM="your-gmail-address"
