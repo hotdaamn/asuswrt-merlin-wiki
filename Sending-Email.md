@@ -68,7 +68,8 @@ rm /tmp/mail.txt
 ***
 
 It's possible to send emails even from gmail account through openssl (thanks [Nerre](http://forums.smallnetbuilder.com/member.php?u=15302))
-For that, fill your _wan-start script_ with the following text but don't forget to replace first **FROM**, **AUTH**, **PASS** and **TO** values
+
+For that, fill your _wan-start script_ with the following text but don't forget to replace first **FROM**, **AUTH**, **PASS** and **TO** values only in first 6 lines of the script
 ```
 #!/bin/sh
 FROM="your-gmail-address"
