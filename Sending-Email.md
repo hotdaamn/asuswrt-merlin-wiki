@@ -98,7 +98,7 @@ echo "" >>/tmp/mail.txt
 
 cat /tmp/mail.txt | sendmail -H"exec openssl s_client -quiet \
 -CAfile /jffs/configs/Equifax_Secure_Certificate_Authority.pem \
--connect smtp.gmail.com:25 -tls1 -starttls smtp" \
+-connect smtp.gmail.com:587 -tls1 -starttls smtp" \
 -f"$FROM" \
 -au"$AUTH" -ap"$PASS" $TO 
 
