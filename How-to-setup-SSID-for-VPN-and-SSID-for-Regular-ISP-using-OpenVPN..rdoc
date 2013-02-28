@@ -123,7 +123,7 @@ Copy the above script into this file and save.
 These are additional options that you can add to the script above if a standalone OpenVPN service is being used. This needs to be inserted before "DHCP Server" section. 
 
  ############## Tunnel Module ##############
- if [ `lsmod | grep -c tun` == 0 ]; then    # Change tun to tap if you are connecting using a tap device.
+ if [ `lsmod | grep -c tun` == 0 ]; then    # This works with Openvpn using a tun interface.
  	insmod tun
  	sleep 1
  fi
