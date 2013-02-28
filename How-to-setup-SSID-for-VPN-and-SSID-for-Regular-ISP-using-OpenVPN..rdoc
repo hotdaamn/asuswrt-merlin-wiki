@@ -14,14 +14,14 @@ Here are a few steps that are necessary for the initial configuration of this se
 4. Setup the VPN and make sure that everything works as it should. 
 5. Determine the wireless radio that you will be using. Here is a list of which radio corresponds to which SSID. If you are going to be using a guest network, enable this now. Here is a list of the radio-to-interface correlation.
 
-* eth1- Default LAN 2.4Ghz SSID
-* wl0.1-2.4Ghz Guest Network 1
-* wl0.2-2.4Ghz Guest Network 2
-* wl0.3-2.4Ghz Guest Network 3
-* eth2- Default LAN 5Ghz SSID
-* wl1.1-5Ghz Guest Network 1
-* wl1.2-5Ghz Guest Network 2
-* wl1.3-5Ghz Guest Network 3
+* eth1     -     Default LAN 2.4Ghz SSID
+* wl0.1    -    2.4Ghz Guest Network 1
+* wl0.2    -    2.4Ghz Guest Network 2
+* wl0.3    -    2.4Ghz Guest Network 3
+* eth2     -    Default LAN 5Ghz SSID
+* wl1.1    -    5Ghz Guest Network 1
+* wl1.2    -    5Ghz Guest Network 2
+* wl1.3    -    5Ghz Guest Network 3
 
 == The Script
 
