@@ -33,7 +33,7 @@ The following script is designed to check if certain parameters are in place bef
  WRLSS_IF_NTWK_ADDR=192.168.2.0   # Network address that the wireless interface will be on.
  WRLSS_IF_INET_ADDR=192.168.2.1   # IP address that will be assigned to the wireless interface.
  WRLSS_IF_NETMASK=255.255.255.0   # Netmask of the wireless network to be added.
- TUN_IF=tun11                     # Interface name of the tunnel interface.
+ TUN_IF=tun11                     # Name of tunnel interface.
  ########## DHCP Specific Settings ###########
  DHCP_OPT1=3                      # dnsmasq option to specify router.
  LS_TIME=86400s                   # Duration of the dhcp leases.
