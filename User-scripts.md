@@ -43,6 +43,8 @@ And like any Linux script, they need to start with a shebang:
 #!/bin/sh
 ```
 
+Also, you must write files in UNIX mode!
+
 ## Troubleshooting scripts:
 Try running your script manually at first to make sure there is no syntax error in it.  You can also insert some code near the top to be able to easily determine if your script did run or not.  For example:
 
