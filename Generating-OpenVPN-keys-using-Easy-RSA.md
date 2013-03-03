@@ -43,7 +43,7 @@ The Common Name (CN) is the most important field, as it will be what identifies 
 
 Now, we need to build a router key/certificate pair:
 
-`./build-key server1`
+`./build-key-server server1`
 
 Use any name you want instead of "_server1_", but make sure that when asked for the Common Name that you enter the exact same name.  When asked to sign and to commit the new certificate, answer "y" to both questions.
 
