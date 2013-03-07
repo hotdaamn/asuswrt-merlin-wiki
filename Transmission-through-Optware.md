@@ -55,4 +55,6 @@ reboot
 ```
 After rebooting type YourWanIp:9091 on preferred internet browser, or install Transmission Remote GUI from [here](https://code.google.com/p/transmisson-remote-gui/)
 
+See youtube video [here](http://www.youtube.com/watch?v=hHBEMYJfLi8)
+
 Post issues or feedback [here](http://forums.smallnetbuilder.com/showthread.php?t=8696)
