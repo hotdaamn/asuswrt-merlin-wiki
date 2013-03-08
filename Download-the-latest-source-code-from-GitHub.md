@@ -4,7 +4,7 @@ Welcome! This guide will show you how to obtain the latest version of the Asuswr
 
 > **HERE BE DRAGONS!** There are risks when compiling your own firmware. You do so at your own risk, and your compiled firmware cannot be supported by the firmware author should something go wrong. You should be aware and familiar with the Asus recovery utilities and how to access and flash firmware from recovery mode. Your firmware may not build, it may not flash, it may flash but cause the router but not boot, it may flash and boot but work incorrectly or in unexpected ways, your computer may spontaneously combust, you may spontaneously combust, or the world may end.
 
-## Prerequesites ##
+## Prerequisites ##
 
 **Note: this guide assumes a basic working knowledge of a Linux distribution. You should know how to install and access your Linux distribution, access the terminal, and install packages from your distribution's package manager.**
 
