@@ -36,7 +36,7 @@ Just before unmounting a partition.  This is a blocking script, so be careful wi
 ### dhcpc-event
 Called whenever a DHCP event occurs on the WAN interface.  The type of event (bound, release, etc...) is passed as an argument.
 
-
+## Creating scripts
 Don't forget to set any script you create as being executable:
 
 ```
@@ -49,7 +49,8 @@ And like any Linux script, they need to start with a shebang:
 #!/bin/sh
 ```
 
-Also, you must save files in UNIX encoding (Windows's Notepad cannot save with a UNIX encoding - get Notepad++ instead).
+Also, you must save files with a UNIX encoding.  Note that Windows's Notepad cannot save with a UNIX encoding - get Notepad++ instead.  You can also directly edit it on the router through vi (included in the firmware) or nano (available through Optware/Entware) to ensure that your scripts are saved in a valid format.
+
 
 ## Troubleshooting scripts:
 Try running your script manually at first to make sure there is no syntax error in it.  You can also insert some code near the top to be able to easily determine if your script did run or not.  For example:
