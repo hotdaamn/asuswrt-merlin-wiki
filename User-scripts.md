@@ -30,6 +30,12 @@ Just before a partition gets mounted.  This is run in a blocking call and will b
 ### post-mount
 Just after a partition got mounted.
 
+### unmount
+Just before unmounting a partition.  This is a blocking script, so be careful with it.  The mount point is passed as an argument to the script
+
+### dhcpc-event
+Called whenever a DHCP event occurs on the WAN interface.  The type of event (bound, release, etc...) is passed as an argument.
+
 
 Don't forget to set any script you create as being executable:
 
@@ -43,7 +49,7 @@ And like any Linux script, they need to start with a shebang:
 #!/bin/sh
 ```
 
-Also, you must write files in UNIX mode!
+Also, you must save files in UNIX encoding (Windows's Notepad cannot save with a UNIX encoding - get Notepad++ instead).
 
 ## Troubleshooting scripts:
 Try running your script manually at first to make sure there is no syntax error in it.  You can also insert some code near the top to be able to easily determine if your script did run or not.  For example:
