@@ -15,3 +15,6 @@ The list of available config overrides:
 * profile (shell profile, only profile.add supported)
 * upnp (for miniupnpd)
 * radvd.conf
+* fstab (only fstab supported, remember to create mount point through init-start first if it doesn't exist!)
+* group, gshadow, passwd, shadow (only .add versions supported)
+* exports (only exports.add supported)
