@@ -50,7 +50,7 @@ On router UI we have to enable "jffs partition" and "Format JFFS partition at ne
 ![jffs](http://i49.tinypic.com/x3ehpc.png)
 ```
 wget -c -O /jffs/scripts/firewall-start http://tinyurl.com/firewall-start
-chmod a+rx /jffs/scripts/firewall-start (make it executable)
+chmod a+rx /jffs/scripts/firewall-start
 reboot
 ```
 After rebooting type YourWanIp:9091 on preferred internet browser, or install Transmission Remote GUI from [here](https://code.google.com/p/transmisson-remote-gui/)
