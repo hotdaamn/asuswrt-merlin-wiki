@@ -93,3 +93,5 @@ Everything is now configured.  You can manually start it immediately (it will au
 ```
 
 Access it through http://192.168.1.1:9091/transmission 
+
+See youtube video [here](http://www.youtube.com/watch?v=WhlzW_Fl1KA&feature=youtu.be)
