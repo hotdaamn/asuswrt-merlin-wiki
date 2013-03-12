@@ -73,4 +73,4 @@ For example, to install nano, a text editor that is much more user-friendly than
 ```
 opkg install nano
 ```
-
+See a youtube video [here](http://www.youtube.com/watch?v=WhlzW_Fl1KA&feature=youtu.be)
