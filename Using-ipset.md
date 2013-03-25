@@ -26,7 +26,8 @@ IPSET_LISTS_DIR=/jffs/ipset_lists
 
 # Block traffic from Tor nodes
 iptables -D INPUT -m set --set TorNodes src -j DROP
-ipset --destroy TorNodes && ipset -N TorNodes iphash
+ipset --destroy TorNodes
+ipset -N TorNodes iphash
 [ -e $IPSET_LISTS_DIR/tor.lst ] || wget -q -O $IPSET_LISTS_DIR/tor.lst http://torstatus.blutmagie.de/ip_list_all.php/Tor_ip_list_ALL.csv
 for IP in $(cat $IPSET_LISTS_DIR/tor.lst)
 do
@@ -36,7 +37,8 @@ iptables -A INPUT -m set --set TorNodes src -j DROP
 
 # Block incoming traffic from some countries
 iptables -D INPUT -m set --set BlockedCountries src -j DROP
-ipset --destroy BlockedCountries && ipset -N BlockedCountries nethash
+ipset --destroy BlockedCountries
+ipset -N BlockedCountries nethash
 # pk and cn is for Pakistan and China. See other country code at http://www.ipdeny.com/ipblocks/
 for country in pk cn
 do
