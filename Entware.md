@@ -37,11 +37,9 @@ This will ensure that Asuswrt will properly mount /opt at boot time.
 
 After the reboot, the optware directory should be initialized and automounted by Asuswrt.  It's now time to initialize Entware itself:
 
-```
+```shell
 cd /opt
-wget http://wl500g-repo.googlecode.com/svn/ipkg/entware_install.sh
-chmod a+rx entware_install.sh
-./entware_install.sh
+wget -O - http://wl500g-repo.googlecode.com/svn/ipkg/entware_install.sh | sh
 ```
 
 Now we have to configure Asuswrt to automatically stop/start services:
