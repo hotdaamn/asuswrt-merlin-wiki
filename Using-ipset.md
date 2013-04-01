@@ -62,7 +62,7 @@ You may run `/jffs/scripts/firewall-start` from command line or reboot router to
 ## Peer Guardian
 Another example is a [PeerGuardian](http://en.wikipedia.org/wiki/PeerGuardian) functionality right on router.
 
-Please do not add this script to `/jffs/scripts/firewall-start` because it executes too long (~25 min on RT-N66U). Place save following content to `/jffs/scripts/peerguardian.sh`
+Please do not add this script to `/jffs/scripts/firewall-start` because it executes too long (~25 min on RT-N66U). Place following content to `/jffs/scripts/peerguardian.sh`
 ```
 #!/bin/sh
 
@@ -78,7 +78,8 @@ done
 if [ "$(ipset --swap BluetackLevel1 BluetackLevel1 2>&1 | grep 'Unknown set')" != "" ]
 then
     ipset --create BluetackLevel1 iptreemap
-    [ -e /tmp/bluetack_lev1.lst ] || /usr/bin/wget -q -O - "http://list.iblocklist.com/?list=bt_level1&fileformat=p2p&archiveformat=gz" | gunzip | cut -d: -f2 | grep -E "^[-0-9.]+$" > /tmp/bluetack_lev1.lst
+    [ -e /tmp/bluetack_lev1.lst ] || /usr/bin/wget -q -O - "http://list.iblocklist.com/?list=bt_level1&fileformat=p2p&archiveformat=gz" | \
+        gunzip | cut -d: -f2 | grep -E "^[-0-9.]+$" > /tmp/bluetack_lev1.lst
     for IP in $(cat /tmp/bluetack_lev1.lst)
     do
         ipset -A BluetackLevel1 $IP
