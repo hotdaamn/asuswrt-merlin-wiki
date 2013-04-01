@@ -13,11 +13,10 @@ Please, enable and format [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JF
 #!/bin/sh
 
 # Loading ipset modules
-IPSET_PATH=/lib/modules/2.6.22.19/kernel/net/ipv4/netfilter
 lsmod | grep "ipt_set" > /dev/null 2>&1 || \
 for module in ip_set ip_set_nethash ip_set_iphash ip_set_iptreemap ipt_set
 do
-    insmod $IPSET_PATH/$module.ko
+    insmod $module
 done
 
 # Preparing folder to cache downloaded files
@@ -67,11 +66,10 @@ Please do not add this script to `/jffs/scripts/firewall-start` because it execu
 #!/bin/sh
 
 # Loading ipset modules
-IPSET_PATH=/lib/modules/2.6.22.19/kernel/net/ipv4/netfilter
 lsmod | grep "ipt_set" > /dev/null 2>&1 || \
 for module in ip_set ip_set_iptreemap ipt_set
 do
-    insmod $IPSET_PATH/$module.ko
+    insmod $module
 done
 
 # PeerGuardian rules
