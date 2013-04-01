@@ -15,9 +15,9 @@ Please, enable and format [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JF
 # Loading ipset modules
 IPSET_PATH=/lib/modules/2.6.22.19/kernel/net/ipv4/netfilter
 lsmod | grep "ipt_set" > /dev/null 2>&1 || \
-for module in ip_set ip_set_nethash ip_set_iphash ipt_set
+for module in ip_set ip_set_nethash ip_set_iphash ip_set_iptreemap ipt_set
 do
-    insmod $IPSET_PATH/$module.ko
+        insmod $IPSET_PATH/$module.ko
 done
 
 # Preparing folder to cache downloaded files
@@ -25,30 +25,31 @@ IPSET_LISTS_DIR=/jffs/ipset_lists
 [ -d "$IPSET_LISTS_DIR" ] || mkdir -p $IPSET_LISTS_DIR
 
 # Block traffic from Tor nodes
-iptables -D INPUT -m set --set TorNodes src -j DROP
-ipset --destroy TorNodes
-ipset -N TorNodes iphash
-[ -e $IPSET_LISTS_DIR/tor.lst ] || wget -q -O $IPSET_LISTS_DIR/tor.lst http://torstatus.blutmagie.de/ip_list_all.php/Tor_ip_list_ALL.csv
-for IP in $(cat $IPSET_LISTS_DIR/tor.lst)
-do
-    ipset -A TorNodes $IP
-done
-iptables -A INPUT -m set --set TorNodes src -j DROP
+if [ "$(ipset --swap TorNodes TorNodes 2>&1 | grep 'Unknown set')" != "" ]
+then
+    ipset -N TorNodes iphash
+    [ -e $IPSET_LISTS_DIR/tor.lst ] || wget -q -O $IPSET_LISTS_DIR/tor.lst http://torstatus.blutmagie.de/ip_list_all.php/Tor_ip_list_ALL.csv
+    for IP in $(cat $IPSET_LISTS_DIR/tor.lst)
+    do
+        ipset -A TorNodes $IP
+    done
+fi
+iptables-save | grep TorNodes > /dev/null 2>&1 || iptables -I INPUT -m set --set TorNodes src -j DROP
 
 # Block incoming traffic from some countries
-iptables -D INPUT -m set --set BlockedCountries src -j DROP
-ipset --destroy BlockedCountries
-ipset -N BlockedCountries nethash
-# pk and cn is for Pakistan and China. See other country code at http://www.ipdeny.com/ipblocks/
-for country in pk cn
-do
-    [ -e $IPSET_LISTS_DIR/$country.lst ] || wget -q -O $IPSET_LISTS_DIR/$country.lst http://www.ipdeny.com/ipblocks/data/countries/$country.zone
-    for IP in $(cat $IPSET_LISTS_DIR/$country.lst)
+if [ "$(ipset --swap BlockedCountries BlockedCountries 2>&1 | grep 'Unknown set')" != "" ]
+then
+    ipset -N BlockedCountries nethash
+    for country in pk cn
     do
-        ipset -A BlockedCountries $IP
+        [ -e $IPSET_LISTS_DIR/$country.lst ] || wget -q -O $IPSET_LISTS_DIR/$country.lst http://www.ipdeny.com/ipblocks/data/countries/$country.zone
+        for IP in $(cat $IPSET_LISTS_DIR/$country.lst)
+        do
+            ipset -A BlockedCountries $IP
+        done
     done
-done
-iptables -A INPUT -m set --set BlockedCountries src -j DROP
+fi
+iptables-save | grep BlockedCountries > /dev/null 2>&1 || iptables -I INPUT -m set --set BlockedCountries src -j DROP
 ```
 and make it executable:
 ```
