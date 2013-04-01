@@ -78,7 +78,7 @@ done
 if [ "$(ipset --swap BluetackLevel1 BluetackLevel1 2>&1 | grep 'Unknown set')" != "" ]
 then
     ipset --create BluetackLevel1 iptreemap
-    [ -e /tmp/bluetack_lev1.lst ] || /usr/bin/wget -q -O - "http://list.iblocklist.com/?list=bt_level1&fileformat=p2p&archiveformat=gz" | \
+    [ -e /tmp/bluetack_lev1.lst ] || wget -q -O - "http://list.iblocklist.com/?list=bt_level1&fileformat=p2p&archiveformat=gz" | \
         gunzip | cut -d: -f2 | grep -E "^[-0-9.]+$" > /tmp/bluetack_lev1.lst
     for IP in $(cat /tmp/bluetack_lev1.lst)
     do
