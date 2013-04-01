@@ -17,7 +17,7 @@ IPSET_PATH=/lib/modules/2.6.22.19/kernel/net/ipv4/netfilter
 lsmod | grep "ipt_set" > /dev/null 2>&1 || \
 for module in ip_set ip_set_nethash ip_set_iphash ip_set_iptreemap ipt_set
 do
-        insmod $IPSET_PATH/$module.ko
+    insmod $IPSET_PATH/$module.ko
 done
 
 # Preparing folder to cache downloaded files
@@ -56,3 +56,38 @@ and make it executable:
 chmod +x /jffs/scripts/firewall-start
 ```
 You may run `/jffs/scripts/firewall-start` from command line or reboot router to apply new blocking rules immediately. 
+
+
+***
+## Peer Guardian
+Another example is a [PeerGuardian](http://en.wikipedia.org/wiki/PeerGuardian) functionality right on router.
+
+Please do not add this script to `/jffs/scripts/firewall-start` because it executes too long (~25 min on RT-N66U). Place save following content to `/jffs/scripts/peerguardian.sh`
+```
+#!/bin/sh
+
+# Loading ipset modules
+IPSET_PATH=/lib/modules/2.6.22.19/kernel/net/ipv4/netfilter
+lsmod | grep "ipt_set" > /dev/null 2>&1 || \
+for module in ip_set ip_set_iptreemap ipt_set
+do
+    insmod $IPSET_PATH/$module.ko
+done
+
+# PeerGuardian rules
+if [ "$(ipset --swap BluetackLevel1 BluetackLevel1 2>&1 | grep 'Unknown set')" != "" ]
+then
+    ipset --create BluetackLevel1 iptreemap
+    [ -e /tmp/bluetack_lev1.lst ] || /usr/bin/wget -q -O - "http://list.iblocklist.com/?list=bt_level1&fileformat=p2p&archiveformat=gz" | gunzip | cut -d: -f2 | grep -E "^[-0-9.]+$" > /tmp/bluetack_lev1.lst
+    for IP in $(cat /tmp/bluetack_lev1.lst)
+    do
+        ipset -A BluetackLevel1 $IP
+    done
+fi
+iptables -I FORWARD -m set --set BluetackLevel1 src,dst -j DROP
+```
+and run it:
+```
+sh /jffs/scripts/peerguardian.sh
+```
+Please don't close SSH-session until it finishes. Script will blocks [over 8 000 000 IP's addresses](http://www.iblocklist.com/list.php?list=bt_level1) which anti-p2p activity has been seen from.
