@@ -36,7 +36,7 @@ then
 fi
 iptables-save | grep TorNodes > /dev/null 2>&1 || iptables -I INPUT -m set --set TorNodes src -j DROP
 
-# Block incoming traffic from some countries
+# Block incoming traffic from some countries. cn and pk is for China and Pakistan. See other countries code at http://www.ipdeny.com/ipblocks/
 if [ "$(ipset --swap BlockedCountries BlockedCountries 2>&1 | grep 'Unknown set')" != "" ]
 then
     ipset -N BlockedCountries nethash
