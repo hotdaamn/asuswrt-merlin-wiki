@@ -14,7 +14,7 @@ Please, enable and format [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JF
 
 # Loading ipset modules
 lsmod | grep "ipt_set" > /dev/null 2>&1 || \
-for module in ip_set ip_set_nethash ip_set_iphash ip_set_iptreemap ipt_set
+for module in ip_set ip_set_nethash ip_set_iphash ipt_set
 do
     insmod $module
 done
