@@ -74,7 +74,7 @@ As you can see you are now running the terminal in root!
 Paste in
 
 ```
-sudo apt-get install autoconf automake bash bison bzip2 diffutils file flex g++ gawk groff-base libncurses-dev libtool libslang2 make patch perl sed shtool subversion tar texinfo zlib1g zlib1g-dev git-core gettext libexpat1-dev libssl-dev cvs gperf unzip python libxml-parser-perl gcc-multilib gconf-editor gperf synaptic
+sudo apt-get install autoconf automake bash bison bzip2 diffutils file flex g++ gawk groff-base libncurses-dev libtool libslang2 make patch perl sed shtool subversion tar texinfo zlib1g zlib1g-dev git-core gettext libexpat1-dev libssl-dev cvs gperf unzip python libxml-parser-perl gcc-multilib gconf-editor gperf libxml2-dev synaptic
 ```
 
 * I made you install SYNAPTIC at the end ( that's because i think synaptic is easy to use )
@@ -181,9 +181,7 @@ make rt-n66u
 
 * For RT-AC66U
 
-```
-sudo mkdir /home/router/asuswrt-merlin/release/src-rt-6.x/wl/sysdeps/default/linux
-```
+
 
 ```
 cd /home/router/asuswrt-merlin/release/src-rt-6.x
