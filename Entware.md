@@ -12,6 +12,88 @@ Note that you cannot use both Optware and Entware at the same time.
 
 The installation and configuration process must be done through telnet or SSH.  If that part scares you, then forget about Entware already: everything must be installed and configured through telnet/SSH.
 
+###The easy way
+
+Starting with v3.0.0.4.270.25 a new script has been introduced to facilitate Entware installation, just type in terminal:
+```
+entware-setup.sh
+```
+
+```
+admin@RT-AC66U:/tmp/mnt/sda1/asusware# entware-setup.sh
+ Info:  This script will guide you through the Entware installation.
+ Info:  Script modifies only "entware" folder on the chosen drive,
+ Info:  no other data will be touched. Existing installation will be
+ Info:  replaced with this one. Also some start scripts will be installed,
+ Info:  the old ones will be saved to .entwarejffs_scripts_backup.tgz
+
+ Info:  Looking for available partitions...
+[1] --> /tmp/mnt/sda1
+ =>  Please enter partition number or 0 to exit
+```
+Choose a partition where Entware should be installed, in this case is only [1] --> /tmp/mnt/sda1
+```
+[0-1]: 1
+ Info:  /tmp/mnt/sda1 selected.
+
+ Info:  Creating /tmp/mnt/sda1/entware folder...
+ * Warning:  Deleting old /tmp/opt symlink...
+ Info:  Creating /tmp/opt symlink...
+ Info:  Creating /jffs scripts backup...
+tar: removing leading '/' from member names
+ Info:  Modifying start scripts...
+ Info:  Starting Entware deployment....
+
+Connecting to wl500g-repo.googlecode.com (173.194.69.82:80)
+entware_install.sh   100% |*******************************|  1101   0:00:00 ETA
+Info: Checking for prerequisites and creating folders...
+Info: Opkg package manager deployment...
+Connecting to wl500g-repo.googlecode.com (173.194.69.82:80)
+opkg                 100% |*******************************|   456k  0:00:00 ETA
+Connecting to wl500g-repo.googlecode.com (173.194.69.82:80)
+opkg.conf            100% |*******************************|   112   0:00:00 ETA
+Info: Basic packages installation...
+Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/Packages.gz.
+Inflating http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/Packages.gz.
+Updated list of available packages in /opt/var/opkg-lists/openwrt.
+Installing uclibc-opt (0.9.32-4) to root...
+Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/uclibc-opt_0.9.32-4_entware.ipk.
+Installing libc (0.9.32-4) to root...
+Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/libc_0.9.32-4_entware.ipk.
+Installing libgcc (4.6.3-4) to root...
+Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/libgcc_4.6.3-4_entware.ipk.
+Installing libstdcpp (4.6.3-4) to root...
+Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/libstdcpp_4.6.3-4_entware.ipk.
+Installing libpthread (0.9.32-4) to root...
+Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/libpthread_0.9.32-4_entware.ipk.
+Installing librt (0.9.32-4) to root...
+Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/librt_0.9.32-4_entware.ipk.
+Installing ldconfig (0.9.32-4) to root...
+Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/ldconfig_0.9.32-4_entware.ipk.
+Installing findutils (4.5.11-1) to root...
+Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/findutils_4.5.11-1_entware.ipk.
+Configuring ldconfig.
+Configuring libgcc.
+Configuring libc.
+Configuring libpthread.
+Configuring libstdcpp.
+Configuring librt.
+Configuring findutils.
+Configuring uclibc-opt.
+Updating /opt/etc/ld.so.cache... done.
+Info: Cleanup...
+Info: Congratulations!
+Info: If there are no errors above then Entware successfully initialized.
+Info: Found a Bug? Please report at wl500g-repo.googlecode.com
+```
+The script will create a new directory named "entware" and not "asusware" like in the "old" way, but the result is the same:
+```
+admin@RT-AC66U:/tmp/home/root/# cd /opt
+admin@RT-AC66U:/tmp/mnt/sda1/entware# 
+```
+***
+
+### The "old" way
 First, determine which disk will contain your Entware installation.  This is most likely sda1 if you only have one disk plugged in, with one single partition:
 
 ```
