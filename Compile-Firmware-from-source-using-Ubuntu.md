@@ -74,65 +74,16 @@ As you can see you are now running the terminal in root!
 Paste in
 
 ```
-sudo apt-get install autoconf automake bash bison bzip2 diffutils file flex g++ gawk groff-base libncurses-dev libtool libslang2 make patch perl sed shtool subversion tar texinfo zlib1g zlib1g-dev git-core gettext libexpat1-dev libssl-dev cvs gperf unzip python libxml-parser-perl gcc-multilib gconf-editor gperf libxml2-dev synaptic
+sudo apt-get install autoconf automake bash bison bzip2 diffutils file flex m4 \
+g++ gawk groff-base libncurses-dev libtool libslang2 make patch perl sed pkg-config \
+shtool subversion tar texinfo zlib1g zlib1g-dev git-core gettext libexpat1-dev \
+libssl-dev cvs gperf unzip python libxml-parser-perl gcc-multilib gconf-editor \
+libxml2-dev g++-4.4 g++-multilib gitk libncurses5 libncurses5-dev libstdc++6-4.4-dev
 ```
-
-* I made you install SYNAPTIC at the end ( that's because i think synaptic is easy to use )
-
-
-Go ahead and fire up synaptic
-
+If you have Ubuntu x64 edition then you need lib32z1-dev
 ```
-synaptic
+sudo apt-get install lib32z1-dev
 ```
-
-![Synaptic](http://members.home.nl/frits.pruymboom/Howto%20Compile%20From%20Source/Synaptic.png)
-
-In Synaptic you are going to search for :
-
-```
-	bison
-
-	flex
-
-	g++
-
-	g++-4.4
-
-	g++-multilib
-
-	gawk
-
-	gcc-multilib
-
-	gconf (or gconf-editor)
-
-	gitk
-
-	lib32z1-dev
-
-	libncurses5
-
-	libncurses5-dev
-
-	libstdc++6-4.4-dev
-
-	libtool
-
-	m4
-
-	pkg-config
-
-	zlib1g-dev
-
-	gperf
-
-	lib32z1-dev
-```
-
-* Installing these should be quite straightforward
-* NOTE: Some of these packages are already installed skip them !
-
 If you are ready installing all these packages take a coffee or a beer.
 
 We are going to download merlins hard work with again some terminal commands
