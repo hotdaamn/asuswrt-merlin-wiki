@@ -61,7 +61,7 @@ If you have a slow internet connection and you want to be notified when a torren
 #!/bin/sh
 
 SMTP="your-smtp-server:25"
-FROM="your-email-adress"
+FROM="your-email-address"
 TO="your-email-address"
 USER="email-user-name"
 PASS="email-password"
