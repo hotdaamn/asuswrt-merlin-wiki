@@ -40,9 +40,7 @@ Start transmission-daemon again
 ```
 /opt/etc/init.d/S95transmission start
 ```
-***
-
-
+### WAN ACCESS
 If you want to access transmission from WAN like work, school, smartphone, tablet or some other device we need to open the port 9091 but the firmware doesn't allow port forwarding to the router himself, for that we will use the scripts on /jffs partition
 
 On router UI we have to enable "jffs partition" and "Format JFFS partition at next boot" under [Administration / System tab](http://192.168.1.1/Advanced_System_Content.asp) and reboot router
@@ -54,7 +52,41 @@ chmod a+rx /jffs/scripts/firewall-start
 reboot
 ```
 After rebooting type YourWanIp:9091 on preferred internet browser, or install Transmission Remote GUI from [here](https://code.google.com/p/transmisson-remote-gui/)
+### EMAIL NOTIFICATIONS
+If you have a slow internet connection and you want to be notified when a torrent has finished downloading, place the folowing script witch I called _tmail.sh_ in /jffs/scripts but first don't forget to fill: SMTP, FROM, TO, USER and PASS with your credentials.
 
+> WARNING, may become annoying if you are downloading lots of torrents
+
+```
+#!/bin/sh
+
+SMTP="your-smtp-server:25"
+FROM="your-email-adress"
+TO="your-email-address"
+USER="email-user-name"
+PASS="email-password"
+FROMNAME="Asus Router"
+torrent_name="$TR_TORRENT_NAME"
+
+echo "Subject: Download notification!" >/tmp/tmail.txt
+echo "From: \\"$FROMNAME\\"<$FROM>" >>/tmp/tmail.txt
+echo "Date: `date -R`" >>/tmp/tmail.txt
+echo "" >>/tmp/tmail.txt
+echo Transmissionbt has finished downloading "$TR_TORRENT_NAME" on `date +\%d/\%m/\%Y` at `date +\%T` >>/tmp/tmail.txt
+echo "" >>/tmp/tmail.txt
+echo "Your friendly router." >>/tmp/tmail.txt
+echo "" >>/tmp/tmail.txt
+
+cat /tmp/tmail.txt | /usr/sbin/sendmail -S"$SMTP" -f"$FROM" $TO -au"$USER" -ap"$PASS"
+
+rm /tmp/tmail.txt
+```
+Stop transmission daemon, change this two lines in /opt/etc/transmission-daemon/settings.json and start transmission again
+```
+"script-torrent-done-enabled": true, 
+"script-torrent-done-filename": "/jffs/scripts/tmail.sh",
+```
+ 
 See youtube video [here](http://www.youtube.com/watch?v=hHBEMYJfLi8)
 
 Post issues or feedback [here](http://forums.smallnetbuilder.com/showthread.php?t=8696)
