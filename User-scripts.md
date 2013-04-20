@@ -36,6 +36,10 @@ Just before unmounting a partition.  This is a blocking script, so be careful wi
 ### dhcpc-event
 Called whenever a DHCP event occurs on the WAN interface.  The type of event (bound, release, etc...) is passed as an argument.
 
+### openvpn-event
+Called whenever an OpenVPN server gets started/stopped, or an OpenVPN client connects to a remote server.  Uses the same syntax/parameters as the "up" and "down" scripts in OpenVPN.
+
+
 ## Creating scripts
 Don't forget to set any script you create as being executable:
 
