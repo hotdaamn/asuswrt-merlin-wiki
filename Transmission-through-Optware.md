@@ -86,7 +86,45 @@ Stop transmission daemon, change this two lines in /opt/etc/transmission-daemon/
 "script-torrent-done-enabled": true, 
 "script-torrent-done-filename": "/jffs/scripts/tmail.sh",
 ```
- 
+### EMAIL IN HTML FORMAT
+```
+#!/bin/sh
+
+SMTP="your-smtp-server:587"
+FROM="your-email-address"
+TO="your-email-address"
+USER="email-user-name"
+PASS="email-password"
+FROMNAME="Asus Router"
+torrent_name="$TR_TORRENT_NAME"
+torrent_version="$TR_APP_VERSION"
+
+echo MIME-Version: 1.0 >/tmp/tmail.html
+echo Content-Type: text/html >>/tmp/tmail.html
+echo "Subject: Download notification" >>/tmp/tmail.html
+echo "From: \\"$FROMNAME\\"<$FROM>" >>/tmp/tmail.html
+echo "Date: `date -R`" >>/tmp/tmail.html
+echo "" >>/tmp/tmail.html
+echo "<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">" >>/tmp/tmail.html
+echo "<html>" >>/tmp/tmail.html
+echo "<head><title></title>" >>/tmp/tmail.html
+echo "</head>" >>/tmp/tmail.html
+
+echo "<p>Transmissionbt v"$torrent_version" finished downloading:</p>" >>/tmp/tmail.html
+echo "<p><b>"$TR_TORRENT_NAME"<b></p>" >>/tmp/tmail.html
+echo "<p>on `date +\%d/\%m/\%Y` at `date +\%T`</p>" >>/tmp/tmail.html
+echo "" >>/tmp/tmail.html
+echo "<p>Your awesome router.</p>" >>/tmp/tmail.html
+echo "<a href="http://tinypic.com?ref=2zod5ja" target="_blank"><img src="http://i40.tinypic.com/2zod5ja.png" border="0" alt="Image and video hosting by TinyPic"></a>" >>/tmp/tmail.html
+echo "</body>" >>/tmp/tmail.html
+echo "</html>" >>/tmp/tmail.html
+
+cat /tmp/tmail.html | /usr/sbin/sendmail -S"$SMTP" -f"$FROM" $TO -au"$USER" -ap"$PASS"
+
+rm /tmp/tmail.html
+```
+Example of received email:
+![email](http://i40.tinypic.com/2mi2is4.png)
 See youtube video [here](http://www.youtube.com/watch?v=hHBEMYJfLi8)
 
 Post issues or feedback [here](http://forums.smallnetbuilder.com/showthread.php?t=8696)
