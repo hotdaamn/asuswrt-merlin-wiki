@@ -1,4 +1,4 @@
-There are many ways to clear nvram / To do a factory reset:
+There are many ways to clear nvram / To do a factory reset on the Asus RT-N66U N900 Black Diamond (Original and Asuswrt-merlin Firmware):
 
 * Turn the router on with the WPS button pressed
 * Use the option to revert to factory defaults on the webui
