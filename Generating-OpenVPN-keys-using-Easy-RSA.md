@@ -7,7 +7,7 @@ The first step is to initialize your work environment.  Ideally this should be d
 
 This will create an easy-rsa folder on your USB disk, and copy all the required scripts there.  Then, enter that new directory:
 
-`cd /tmp/sda1/easy-rsa`
+`cd /mnt/sda1/easy-rsa`
 
 Now step you will probably want to change the default values offered while generating the certificates.  Edit the file named "vars", either through the built-in "vi" editor (not recommended for novice users), or by installing the "nano" editor using Optware, or simply by copying the file edited on your computer.  The only fields you might want to change are these:
 
