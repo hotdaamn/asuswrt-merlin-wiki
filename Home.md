@@ -48,6 +48,8 @@ From the section "HowTo and Guides", here is a good place to learn more (hands-o
 13. [How to make a NTFS usb hdd running more stable as media server, by ChrisR] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to--NTFS-usb-hdd-was-not-running-stable-as-media-server)
 14. [How to make a factory reset / clear nvram]
 (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-do-a-factory-reset----How-to-clear-nvram---Asus-RT-N66U-N900)
+15. [Improve Your Web Surfing Speed with OpenDNS]
+(https://github.com/RMerl/asuswrt-merlin/wiki/Improve-Your-Web-Surfing-Speed-with-OpenDNS)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
