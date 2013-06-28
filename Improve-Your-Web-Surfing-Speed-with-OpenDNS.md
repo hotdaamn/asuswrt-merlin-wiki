@@ -11,7 +11,7 @@ opkg install dnscrypt-proxy dnscrypt-proxy-hostip
 echo "no-resolv" > /jffs/configs/dnsmasq.conf.add
 echo "server=127.0.0.1#65053" >> /jffs/configs/dnsmasq.conf.add
 ```
-4. Put this content to /jffs/scripts/wan-start:
+4. Paste this content to /jffs/scripts/wan-start:
 ```
 #!/bin/sh
 
@@ -39,7 +39,7 @@ done
 killall ntp && sleep 1
 service restart_ntpc
 ```
-5. and make it executable:
+5. Make the script executable:
 ```
 chmod +x /jffs/scripts/wan-start
 ```
