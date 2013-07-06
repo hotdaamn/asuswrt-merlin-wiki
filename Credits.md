@@ -8,6 +8,7 @@
 * Phuzi0n on the DD-WRT forums (new NAT loopback code)
 * Keith Moyer (OpenVPN code, from TomatoUSB/Tomato-RT)
 * Teaman (original IPTraffic code)
+* All the Tomato devs, Andy Padavan and Leonid Lisovskiy, whose respective projects also provided some patches to Asuswrt-Merlin
 
 **Special thanks to:**
 * The folks at Asus, especially Adam and Mason, for their support with this project
