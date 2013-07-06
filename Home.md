@@ -43,9 +43,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 11. [How to use Adblock Plus filter subscriptions to provide advertisement filtering to devices] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-use-Adblock-Plus-filter-subscriptions-to-provide-advertisement-filtering-to-devices)
 12. [How to dedicate SSID for VPN and SSID for regular ISP using OpenVPN, by Jobongo] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-OpenVPN.)
 13. [How to make a NTFS usb hdd running more stable as media server, by ChrisR] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to--NTFS-usb-hdd-was-not-running-stable-as-media-server)
-14. [How to make a factory reset / clear nvram]
-(https://github.com/RMerl/asuswrt-merlin/wiki/How-to-do-a-factory-reset----How-to-clear-nvram---Asus-RT-N66U-N900)
-15. [Improve Your Web Surfing Speed with OpenDNS]
+14. [Improve Your Web Surfing Speed with OpenDNS]
 (https://github.com/RMerl/asuswrt-merlin/wiki/Improve-Your-Web-Surfing-Speed-with-OpenDNS)
 
 ### Reference:
