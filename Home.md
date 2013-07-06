@@ -11,8 +11,6 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 5. [Reverting](https://github.com/RMerl/asuswrt-merlin/wiki/Reverting/)
 
 ### Usage
-From the section "HowTo and Guides", here is a good place to learn more (hands-on) about "User scripts" and "Jffs" . Don't look at the specifics of the script, more at the process of creating it: https://github.com/RMerl/asuswrt-merlin/wiki/WOL-Script-Wake-Up-Your-Webserver-On-Internet-Traffic
-
 1. [User scripts](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts)
 2. [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS)
 3. [Custom configuration files](https://github.com/RMerl/asuswrt-merlin/wiki/Custom-config-files)
