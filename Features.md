@@ -31,7 +31,6 @@ This is a partial list of features and changes that Asuswrt-merlin offers over t
 **Web interface:**
 * Optionally save traffic stats to disk (USB or JFFS partition)
 * Display monthly traffic reports
-* Display active/tracked network connections
 * Display historical traffic sorted by local IP
 * Name field on the DHCP reservation list and Wireless ACL list
 * System info summary page
