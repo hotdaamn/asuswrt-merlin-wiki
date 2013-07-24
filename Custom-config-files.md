@@ -18,3 +18,12 @@ The list of available config overrides:
 * fstab (only fstab supported, remember to create mount point through init-start first if it doesn't exist!)
 * group, gshadow, passwd, shadow (only .add versions supported)
 * exports (only exports.add supported)
+
+Also, you can put OpenVPN ccd files in the following directories:
+
+```
+/jffs/configs/openvpn/ccd1/
+/jffs/configs/openvpn/ccd2/
+```
+
+The content of these will be copied to their respective server instance's ccd directory when the server is started.
