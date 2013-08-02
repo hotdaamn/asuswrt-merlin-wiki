@@ -6,8 +6,8 @@ Those scripts are stored in the internal non-volatile flash in the [JFFS](https:
 
 ## Available scripts:
 
-These shell scripts will be run when certain events occur.  They must be saved in /jffs/scripts/ 
-(so, [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS) must be enabled and formatted).  Available scripts:
+These shell scripts will be run when certain events occur.  They must be saved in /jffs/scripts/ .
+
 
 ### services-start
 After all other system services have been started at boot.  This is the best place to stop one of these services, and restart it with a different configuration, for example (be aware that any time the service gets manually restarted it will revert back to the original setup however).
