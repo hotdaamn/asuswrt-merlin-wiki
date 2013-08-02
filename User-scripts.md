@@ -1,6 +1,9 @@
 ## About user scripts
 While Asuswrt-Merlin only adds a limited number of new features over the original firmware, a lot of customizations can be achieved through the use of user scripts.  These will allow you to setup custom firewall rules, create jobs that can be run at scheduled intervals, or start new services.
 
+Those scripts are stored in the internal non-volatile flash in the [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS) partition, so this partition must first be enabled before you can use custom scripts.
+
+
 ## Available scripts:
 
 These shell scripts will be run when certain events occur.  They must be saved in /jffs/scripts/ 
