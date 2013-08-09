@@ -22,11 +22,11 @@ Next, download and install the already prepared privoxy configuration file:
 
     cd /opt/etc/privoxy/
     rm ./config
-    wget http://wl500g-common.googlecode.com/files/config
+    wget http://files.ryzhov-al.ru/Routers/adblock-plus/config
 
 Next, download and install the script that will convert Adblock Plus rules for use with our proxy:
 
-    wget http://wl500g-common.googlecode.com/files/privoxy-blocklist_0.2.sh
+    wget http://files.ryzhov-al.ru/Routers/adblock-plus/privoxy-blocklist_0.2.sh
 
 Mark the script as executable so we can run it:
 
