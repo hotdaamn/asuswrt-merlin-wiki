@@ -42,14 +42,14 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 3. [Improve Your Web Surfing Speed with OpenDNS]
 (https://github.com/RMerl/asuswrt-merlin/wiki/Improve-Your-Web-Surfing-Speed-with-OpenDNS)
 4. [Setting up an IPv6 tunnel through Hurricane Electrics] (https://github.com/RMerl/asuswrt-merlin/wiki/IPv6-tunnelling)
+5. [How to dedicate SSID for VPN and SSID for regular ISP using OpenVPN, by Jobongo] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-OpenVPN.)
 
 ### Misc HowTo and Guides
 1. [Scheduled Reboot](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-Reboot)
 2. [Email notification from your router](https://github.com/RMerl/asuswrt-merlin/wiki/Sending-Email)
 3. [WOL Script Wake Up Your Webserver On Internet Traffic] (https://github.com/RMerl/asuswrt-merlin/wiki/WOL-Script-Wake-Up-Your-Webserver-On-Internet-Traffic)
 4. [Scheduled LED control](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-LED-control)
-5. [How to dedicate SSID for VPN and SSID for regular ISP using OpenVPN, by Jobongo] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-OpenVPN.)
-6. [How to make a NTFS usb hdd running more stable as media server, by ChrisR] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to--NTFS-usb-hdd-was-not-running-stable-as-media-server)
+5. [How to make a NTFS usb hdd running more stable as media server, by ChrisR] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to--NTFS-usb-hdd-was-not-running-stable-as-media-server)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
