@@ -29,23 +29,27 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 6. [Cherokee Web Server](http://forums.smallnetbuilder.com/showthread.php?t=8323)
 7. [PyLoad Download Manager through Optware] (http://forums.smallnetbuilder.com/showthread.php?t=9890)
 
-### HowTo and Guides
+### Development
+1. [Download the latest source code from GitHub](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub)
+2. [Compile from source using Ubuntu](https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-Ubuntu)
+3. [Compile from source using MINT13] (https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-MINT-13)
+4. [Compiling from source using a Debian-based Linux Distribution](https://github.com/RMerl/asuswrt-merlin/wiki/Compiling-from-source-using-a-Debian-based-Linux-Distribution)
+5. [Apply patches to source files](https://github.com/RMerl/asuswrt-merlin/wiki/Applying-patches-to-source-files)
+
+### Networking HowTo and Guides
 1. [Iptables tricks and tips](https://github.com/RMerl/asuswrt-merlin/wiki/Iptables-tips)
-2. [Scheduled Reboot](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-Reboot)
-3. [Email notification from your router](https://github.com/RMerl/asuswrt-merlin/wiki/Sending-Email)
-4. [WOL Script Wake Up Your Webserver On Internet Traffic] (https://github.com/RMerl/asuswrt-merlin/wiki/WOL-Script-Wake-Up-Your-Webserver-On-Internet-Traffic)
-5. [Compile from source using Ubuntu](https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-Ubuntu)
-6. [Compile from source using MINT13] (https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-MINT-13)
-7. [Scheduled LED control](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-LED-control)
-8. [Apply patches to source files](https://github.com/RMerl/asuswrt-merlin/wiki/Applying-patches-to-source-files)
-9. [Download the latest source code from GitHub](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub)
-10. [Compiling from source using a Debian-based Linux Distribution](https://github.com/RMerl/asuswrt-merlin/wiki/Compiling-from-source-using-a-Debian-based-Linux-Distribution)
-11. [How to use Adblock Plus filter subscriptions to provide advertisement filtering to devices] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-use-Adblock-Plus-filter-subscriptions-to-provide-advertisement-filtering-to-devices)
-12. [How to dedicate SSID for VPN and SSID for regular ISP using OpenVPN, by Jobongo] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-OpenVPN.)
-13. [How to make a NTFS usb hdd running more stable as media server, by ChrisR] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to--NTFS-usb-hdd-was-not-running-stable-as-media-server)
-14. [Improve Your Web Surfing Speed with OpenDNS]
+2. [How to use Adblock Plus filter subscriptions to provide advertisement filtering to devices] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-use-Adblock-Plus-filter-subscriptions-to-provide-advertisement-filtering-to-devices)
+3. [Improve Your Web Surfing Speed with OpenDNS]
 (https://github.com/RMerl/asuswrt-merlin/wiki/Improve-Your-Web-Surfing-Speed-with-OpenDNS)
-15. [Setting up an IPv6 tunnel through Hurricane Electrics] (https://github.com/RMerl/asuswrt-merlin/wiki/IPv6-tunnelling)
+4. [Setting up an IPv6 tunnel through Hurricane Electrics] (https://github.com/RMerl/asuswrt-merlin/wiki/IPv6-tunnelling)
+
+### Misc HowTo and Guides
+1. [Scheduled Reboot](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-Reboot)
+2. [Email notification from your router](https://github.com/RMerl/asuswrt-merlin/wiki/Sending-Email)
+3. [WOL Script Wake Up Your Webserver On Internet Traffic] (https://github.com/RMerl/asuswrt-merlin/wiki/WOL-Script-Wake-Up-Your-Webserver-On-Internet-Traffic)
+4. [Scheduled LED control](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-LED-control)
+5. [How to dedicate SSID for VPN and SSID for regular ISP using OpenVPN, by Jobongo] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-OpenVPN.)
+6. [How to make a NTFS usb hdd running more stable as media server, by ChrisR] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to--NTFS-usb-hdd-was-not-running-stable-as-media-server)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
