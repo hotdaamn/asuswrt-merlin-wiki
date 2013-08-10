@@ -27,7 +27,7 @@ The next step: you need to somehow tell Hurricane Electrics what your current IP
 
 ### Configuring a tunnel endpoint update script
 
-For the second method, you will need to enable the JFFS partition.  Once that's done, create a wan-start user script that will take care of updating HE with your current WAN IP.  Here is an example script:
+For the second method, you will need to enable the [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS) partition.  Once that's done, create a [wan-start](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts) user script that will take care of updating HE with your current WAN IP.  Here is an example script:
 
 ```
 #!/bin/sh
@@ -108,7 +108,7 @@ ip6tables -A FORWARD -j DROP
 
 The first rule in the FORWARD chain (which is commented out) shows an example on how to open a port to a specific IP on your network (remember to enter the computer's IP in that rule, NOT your WAN IP - you are obtaining an entire IP block here, you are NOT using NAT like you probably do with your unique IPv4!).
 
-Save that script as a firewall-start script.
+Save that script as a [firewall-start](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts) script.
 
 
 ### Conclusion
