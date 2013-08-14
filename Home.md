@@ -5,9 +5,9 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 ### About
 1. [About Asuswrt and Asuswrt-merlin](https://github.com/RMerl/asuswrt-merlin/wiki/About-Asuswrt/)
 2. [Features](https://github.com/RMerl/asuswrt-merlin/wiki/Features)
-3. [Screenshots](http://www.lostrealm.ca/tower/node/134)
+3. [Screenshots](http://www.lostrealm.ca/tower/node/134) (External link)
 4. [Supported devices](https://github.com/RMerl/asuswrt-merlin/wiki/Supported-Devices)
-5. [Changelog](http://www.lostrealm.ca/asuswrt-merlin/changelog.txt)
+5. [Changelog](http://www.lostrealm.ca/asuswrt-merlin/changelog.txt) (External link)
 6. [Installation](https://github.com/RMerl/asuswrt-merlin/wiki/Installation)
 7. [Reverting](https://github.com/RMerl/asuswrt-merlin/wiki/Reverting/)
 
@@ -24,11 +24,11 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 ### External software repositories
 1. [Setting up Optware] (https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
 2. [Setting up Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Entware) (Optware alternative)
-3. [Webcam video surveillance](http://forums.smallnetbuilder.com/showthread.php?t=8833)
+3. [Webcam video surveillance](http://forums.smallnetbuilder.com/showthread.php?t=8833) (External link)
 4. [Installing Transmission through Optware](https://github.com/RMerl/asuswrt-merlin/wiki/Transmission-through-Optware)
 5. [Installing Transmission through Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Installing-Transmission-through-Entware)
-6. [Cherokee Web Server](http://forums.smallnetbuilder.com/showthread.php?t=8323)
-7. [PyLoad Download Manager through Optware] (http://forums.smallnetbuilder.com/showthread.php?t=9890)
+6. [Cherokee Web Server](http://forums.smallnetbuilder.com/showthread.php?t=8323) (External link)
+7. [PyLoad Download Manager through Optware] (http://forums.smallnetbuilder.com/showthread.php?t=9890) (External link)
 
 ### Development
 1. [Download the latest source code from GitHub](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub)
