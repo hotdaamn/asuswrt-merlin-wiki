@@ -5,7 +5,7 @@ sh /jffs/scripts/up.sh &
 </code></pre>
 
 
-create /jffs/scripts/up.sh 
+create /jffs/scripts/up.sh and add the following code, editing the username, password and dyndns host
 
 <pre><code>
 #!/bin/sh
