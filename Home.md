@@ -51,7 +51,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 3. [WOL Script Wake Up Your Webserver On Internet Traffic] (https://github.com/RMerl/asuswrt-merlin/wiki/WOL-Script-Wake-Up-Your-Webserver-On-Internet-Traffic)
 4. [Scheduled LED control](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-LED-control)
 5. [How to make a NTFS usb hdd running more stable as media server, by ChrisR] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to--NTFS-usb-hdd-was-not-running-stable-as-media-server)
-6. [How to update Dyndns to use VPN IP address] (https://github.com/RMerl/asuswrt-merlin/wiki/Update-DYNDNS-with-VPN-IP-Address)
+6. [How to update Dyndns to use VPN IP address, by Janosek] (https://github.com/RMerl/asuswrt-merlin/wiki/Update-DYNDNS-with-VPN-IP-Address)
 
 
 ### Reference:
