@@ -1,0 +1,30 @@
+in openvpn-event script, add:
+`sh /jffs/scripts/up.sh &`
+
+create /jffs/scripts/up.sh 
+
+`
+#!/bin/sh
+
+#keep looping until all the routing for the VPN tunnel is established
+
+while [ ! -n  "`ifconfig | grep tun11`" ]; do
+    sleep 1
+done
+
+
+#once established, get VPN IP
+
+VPNIP=$(wget -qO - http://cfaj.freeshell.org/ipaddr.cgi)
+
+sleep 10
+
+
+#update dyndns with VPN IP
+
+ez-ipupdate -S dyndns -u user:password -h host.dyndns.org -a $VPNIP 
+
+exit 0
+`
+
+do a chmod 700 /jffs/scripts/up.sh
