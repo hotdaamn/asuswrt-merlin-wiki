@@ -3,7 +3,7 @@ in openvpn-event script, add:
 
 create /jffs/scripts/up.sh 
 
-`
+<CODE>
 #!/bin/sh
 
 #keep looping until all the routing for the VPN tunnel is established
@@ -25,6 +25,6 @@ sleep 10
 ez-ipupdate -S dyndns -u user:password -h host.dyndns.org -a $VPNIP 
 
 exit 0
-`
+</CODE>
 
 do a chmod 700 /jffs/scripts/up.sh
