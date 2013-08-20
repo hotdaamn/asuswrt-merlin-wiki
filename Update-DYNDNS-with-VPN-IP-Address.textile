@@ -1,8 +1,8 @@
 in openvpn-event script, add:
 
-
+<pre><code>
 sh /jffs/scripts/up.sh &
-
+</code></pre>
 
 
 create /jffs/scripts/up.sh 
