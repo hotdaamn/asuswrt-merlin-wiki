@@ -93,4 +93,76 @@ Everything is now configured.  You can manually start it immediately (it will au
 ```
 
 Access it through http://192.168.1.1:9091/transmission 
+### EMAIL NOTIFICATIONS
+If you have a slow internet connection and you want to be notified when a torrent has finished downloading, place the folowing script witch I called _tmail.sh_ in /jffs/scripts but first don't forget to fill: SMTP, FROM, TO, USER and PASS with your credentials.
 
+> WARNING, may become annoying if you are downloading lots of torrents
+
+```
+#!/bin/sh
+
+SMTP="your-smtp-server:587"
+FROM="your-email-address"
+TO="your-email-address"
+USER="email-user-name"
+PASS="email-password"
+FROMNAME="Asus Router"
+torrent_name="$TR_TORRENT_NAME"
+
+echo "Subject: Download notification!" >/tmp/tmail.txt
+echo "From: \\"$FROMNAME\\"<$FROM>" >>/tmp/tmail.txt
+echo "Date: `date -R`" >>/tmp/tmail.txt
+echo "" >>/tmp/tmail.txt
+echo Transmissionbt has finished downloading "$TR_TORRENT_NAME" on `date +\%d/\%m/\%Y` at `date +\%T` >>/tmp/tmail.txt
+echo "" >>/tmp/tmail.txt
+echo "Your friendly router." >>/tmp/tmail.txt
+echo "" >>/tmp/tmail.txt
+
+cat /tmp/tmail.txt | /usr/sbin/sendmail -S"$SMTP" -f"$FROM" $TO -au"$USER" -ap"$PASS"
+
+rm /tmp/tmail.txt
+```
+Stop transmission daemon, change this two lines in /opt/etc/transmission/settings.json and start transmission again
+```
+"script-torrent-done-enabled": true, 
+"script-torrent-done-filename": "/jffs/scripts/tmail.sh",
+```
+### EMAIL IN HTML FORMAT
+```
+#!/bin/sh
+
+SMTP="your-smtp-server:587"
+FROM="your-email-address"
+TO="your-email-address"
+USER="email-user-name"
+PASS="email-password"
+FROMNAME="Asus Router"
+torrent_name="$TR_TORRENT_NAME"
+torrent_version="$TR_APP_VERSION"
+
+echo MIME-Version: 1.0 >/tmp/tmail.html
+echo Content-Type: text/html >>/tmp/tmail.html
+echo "Subject: Download notification" >>/tmp/tmail.html
+echo "From: \\"$FROMNAME\\"<$FROM>" >>/tmp/tmail.html
+echo "Date: `date -R`" >>/tmp/tmail.html
+echo "" >>/tmp/tmail.html
+echo "<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">" >>/tmp/tmail.html
+echo "<html>" >>/tmp/tmail.html
+echo "<head><title></title>" >>/tmp/tmail.html
+echo "</head>" >>/tmp/tmail.html
+
+echo "<p>Transmissionbt v"$torrent_version" finished downloading:</p>" >>/tmp/tmail.html
+echo "<p><b>"$TR_TORRENT_NAME"<b></p>" >>/tmp/tmail.html
+echo "<p>on `date +\%d/\%m/\%Y` at `date +\%T`</p>" >>/tmp/tmail.html
+echo "" >>/tmp/tmail.html
+echo "<p>Your awesome router.</p>" >>/tmp/tmail.html
+echo "<a href="http://tinypic.com?ref=2zod5ja" target="_blank"><img src="http://i40.tinypic.com/2zod5ja.png" border="0" alt="Image and video hosting by TinyPic"></a>" >>/tmp/tmail.html
+echo "</body>" >>/tmp/tmail.html
+echo "</html>" >>/tmp/tmail.html
+
+cat /tmp/tmail.html | /usr/sbin/sendmail -S"$SMTP" -f"$FROM" $TO -au"$USER" -ap"$PASS"
+
+rm /tmp/tmail.html
+```
+Example of received email:
+![email](http://i40.tinypic.com/2mi2is4.png)
