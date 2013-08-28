@@ -30,8 +30,8 @@ There is a shell script `/jffs/scripts/wan-start` to update Tunlr's DNS servers 
     IPS=$(wget -q -O - \
         "http://tunlr.net/tunapi.php?action=getdns&version=1&format=json" \
         | sed "s/\"dns.\"://g" | sed "s/[{}]//g" | sed "s/,/\ /g" |sed "s/\"//g")
-        if [ -z "$IPS" ] || [ -n "$(echo $IPS | sed 's/[0-9\.\ ]//g')" ] ; then
-            echo "Tunlr DNS addresses not retrieved, exiting."
+    if [ -z "$IPS" ] || [ -n "$(echo $IPS | sed 's/[0-9\.\ ]//g')" ] ; then
+        echo "Tunlr DNS addresses not retrieved, exiting."
         exit
     fi
     echo -n > $DNSMASQ_CONF
