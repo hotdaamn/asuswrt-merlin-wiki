@@ -1,13 +1,13 @@
-## Introduction ##
+### Introduction ###
 
 This guide will help you use [Tunlr service](http://tunlr.net/) to watch Netflix, MTV, CBS, Hulu & more outside the U.S.
 
-## Prerequisites ##
+### Prerequisites ###
 
 * An Asuswrt-Merlin compatible router with Asuswrt-Merlin installed,
 * [JFFS enabled](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS).
 
-## Installation ##
+### Installation ###
 
 Type
 
@@ -16,7 +16,7 @@ Type
 
 and reboot router.
 
-## Details ##
+### Details ###
 
 There is a shell script `/jffs/scripts/wan-start` to update Tunlr's DNS servers after internet connection has been established:
 
