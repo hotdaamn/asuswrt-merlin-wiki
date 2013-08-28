@@ -43,7 +43,9 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 3. [Improve Your Web Surfing Speed with OpenDNS]
 (https://github.com/RMerl/asuswrt-merlin/wiki/Improve-Your-Web-Surfing-Speed-with-OpenDNS)
 4. [Setting up an IPv6 tunnel through Hurricane Electrics] (https://github.com/RMerl/asuswrt-merlin/wiki/IPv6-tunnelling)
-5. [How to dedicate SSID for VPN and SSID for regular ISP using OpenVPN, by Jobongo] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-OpenVPN.)
+5. [How to dedicate SSID for VPN and SSID for regular ISP using OpenVPN] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-OpenVPN.)
+6. [How to use ipset to block connections from Tor nodes or some countries] (https://github.com/RMerl/asuswrt-merlin/wiki/Using-ipset)
+7. [How to use Tunlr service to watch Netflix, MTV, CBS, Hulu & more outside the U.S.] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-use-Tunlr-service)
 
 ### Misc HowTo and Guides
 1. [Scheduled Reboot](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-Reboot)
@@ -51,7 +53,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 3. [WOL Script Wake Up Your Webserver On Internet Traffic] (https://github.com/RMerl/asuswrt-merlin/wiki/WOL-Script-Wake-Up-Your-Webserver-On-Internet-Traffic)
 4. [Scheduled LED control](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-LED-control)
 5. [How to make a NTFS usb hdd running more stable as media server, by ChrisR] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to--NTFS-usb-hdd-was-not-running-stable-as-media-server)
-6. [How to update Dyndns to use VPN IP address, by Janosek] (https://github.com/RMerl/asuswrt-merlin/wiki/Update-DYNDNS-with-VPN-IP-Address)
+6. [How to update Dyndns to use VPN IP address] (https://github.com/RMerl/asuswrt-merlin/wiki/Update-DYNDNS-with-VPN-IP-Address)
 
 
 ### Reference:
