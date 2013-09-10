@@ -8,7 +8,7 @@ Welcome! This guide will show you how to obtain the latest version of the Asuswr
 
 **Note: this guide assumes a basic working knowledge of a Linux distribution. You should know how to install and access your Linux distribution, access the terminal, and install packages from your distribution's package manager.**
 
-**Note: this guide does not cover any prerequesites for building the firmware - extra packages may need to be installed depending on your distribution. Refer to the guides on building the firmware for any extra packages you may need.**
+**Note: this guide does not cover any prerequisites for building the firmware - extra packages may need to be installed depending on your distribution. Refer to the guides on building the firmware for any extra packages you may need.**
 
 To download the source code for compilation purposes, you will need the following:
 
