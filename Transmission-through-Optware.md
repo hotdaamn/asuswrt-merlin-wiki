@@ -53,7 +53,7 @@ reboot
 ```
 After rebooting type YourWanIp:9091 on preferred internet browser, or install Transmission Remote GUI from [here](https://code.google.com/p/transmisson-remote-gui/)
 ### EMAIL NOTIFICATIONS
-If you have a slow internet connection and you want to be notified when a torrent has finished downloading, place the folowing script witch I called _tmail.sh_ in /jffs/scripts but first don't forget to fill: SMTP, FROM, TO, USER and PASS with your credentials.
+If you have a slow internet connection and you want to be notified when a torrent has finished downloading, place the following script which I called _tmail.sh_ in /jffs/scripts but first don't forget to fill: SMTP, FROM, TO, USER and PASS with your credentials.
 
 > WARNING, may become annoying if you are downloading lots of torrents
 
