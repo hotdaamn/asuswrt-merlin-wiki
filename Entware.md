@@ -3,11 +3,11 @@
 
 Note that Entware is only available on the MIPS-based routers.  This means the RT-AC56U is not supported.
 
-For those unfamiliar with Optware: it's a software repository that offers various software programs that can be installed on your router.  They allow to add new functionalities to your router (provided you have the know-how to properly configure them).  This allows you, for example, to install and run the Asterisk SIP server on your router.
+For those unfamiliar with Optware: it's a software repository that offers various software programs that can be installed on your router.  They allow you to add new functionality to your router (provided you have the know-how to properly configure them).  This allows you, for example, to install and run the Asterisk SIP server on your router.
 
 Note that you cannot use both Optware and Entware at the same time.
 
-**Important:** Asus's DownloadMaster is based on Optware, and therefore is NOT conpatible with Entware.  You will have to uninstall DownloadMaster and look at the alternatives provided by Entware.
+**Important:** Asus's DownloadMaster is based on Optware, and therefore is NOT compatible with Entware.  You will have to uninstall DownloadMaster and look at the alternatives provided by Entware.
 
 
 ### Setup
