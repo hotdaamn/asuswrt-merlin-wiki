@@ -71,7 +71,7 @@ We need to create a user script that will open the required port in the firewall
 nano -w /jffs/scripts/firewall-start
 ```
 
-Enter the following content (ommit the first line if you already have an existing script)
+Enter the following content (omit the first line if you already have an existing script)
 ```
 #!/bin/sh
 iptables -I INPUT -p tcp --destination-port 51413 -j ACCEPT
@@ -94,7 +94,7 @@ Everything is now configured.  You can manually start it immediately (it will au
 
 Access it through http://192.168.1.1:9091/transmission 
 ### EMAIL NOTIFICATIONS
-If you have a slow internet connection and you want to be notified when a torrent has finished downloading, place the folowing script witch I called _tmail.sh_ in /jffs/scripts but first don't forget to fill: SMTP, FROM, TO, USER and PASS with your credentials.
+If you have a slow internet connection and you want to be notified when a torrent has finished downloading, place the following script which I called _tmail.sh_ in /jffs/scripts but first don't forget to fill: SMTP, FROM, TO, USER and PASS with your credentials.
 
 > WARNING, may become annoying if you are downloading lots of torrents
 
