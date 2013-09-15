@@ -33,7 +33,7 @@ then
         ipset -A TorNodes $IP
     done
 fi
-[ -z "$(iptables-save | grep TorNodes" ] && iptables -I INPUT -m set --set TorNodes src -j DROP
+[ -z "$(iptables-save | grep TorNodes)" ] && iptables -I INPUT -m set --set TorNodes src -j DROP
 
 # Block incoming traffic from some countries. cn and pk is for China and Pakistan. See other countries code at http://www.ipdeny.com/ipblocks/
 if [ "$(ipset --swap BlockedCountries BlockedCountries 2>&1 | grep 'Unknown set')" != "" ]
@@ -48,7 +48,7 @@ then
         done
     done
 fi
-[ -z "$(iptables-save | grep BlockedCountries" ] && iptables -I INPUT -m set --set BlockedCountries src -j DROP
+[ -z "$(iptables-save | grep BlockedCountries)" ] && iptables -I INPUT -m set --set BlockedCountries src -j DROP
 ```
 and make it executable:
 ```
