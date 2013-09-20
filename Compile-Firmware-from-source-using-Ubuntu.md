@@ -95,12 +95,9 @@ git clone https://github.com/RMerl/asuswrt-merlin.git
 
 Be patient it takes some time
 
-Now if you have read very carefully I told you to give your account the name ''router''
-
-If you didn't then these commands will not work you will have to adjust it to your own name.
 With these command you will build your environment which you will need to work with.
 ```
-sudo ln -s /home/router/asuswrt-merlin/tools/brcm /opt/brcm
+sudo ln -s ~/asuswrt-merlin/tools/brcm /opt/brcm
 ```
 
 ```
@@ -112,7 +109,7 @@ sudo mkdir -p /media/ASUSWRT/
 ```
 
 ```
-sudo ln -s /home/router/asuswrt-merlin /media/ASUSWRT/asuswrt-merlin
+sudo ln -s ~/asuswrt-merlin /media/ASUSWRT/asuswrt-merlin
 ```
 
 We are now ready to build a image
@@ -120,7 +117,7 @@ We are now ready to build a image
 * For RT-N66U
 
 ```
-cd /home/router/asuswrt-merlin/release/src-rt
+cd ~/asuswrt-merlin/release/src-rt
 ```
 
 ```
@@ -136,7 +133,7 @@ make rt-n66u
 
 
 ```
-cd /home/router/asuswrt-merlin/release/src-rt-6.x
+cd ~/asuswrt-merlin/release/src-rt-6.x
 ```
 
 ```
