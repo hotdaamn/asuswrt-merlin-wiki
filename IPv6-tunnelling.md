@@ -85,30 +85,7 @@ After that, you can test your tunnel by accessing, for example, http://www.whati
 
 ### Security
 
-By default, Asuswrt (and Asuswrt-Merlin) comes with NO firewalling on the IPv6 side of things.  That means that any computer or device obtaining an IPv6 will be directly reachable from the Internet.  A future release of Asuswrt-Merlin will add an IPv6 firewall.  In the mean time, you will have to provide your own firewall rules.
-
-Here is an example script for manually configuring a very basic IPv6 firewall:
-
-```
-#############
-# Firewalling
-#############
-ip6tables -A INPUT -j DROP
-
-ip6tables -I FORWARD 2 -m state --state RELATED,ESTABLISHED -j ACCEPT
-
-# Allowed inbound rules here, such as this one:
-#ip6tables -I FORWARD 2 -p tcp -m state --state NEW -i v6in4 -d 2001:123:44:555:6666:7777:8888:9999 --dport 3389 -j ACCEPT
-ip6tables -A FORWARD -i v6in4 -o br0 -p all -j DROP
-ip6tables -A FORWARD -i br0 -o any -p all -j ACCEPT
-ip6tables -A FORWARD -i br0 -o v6in4 -p all -j ACCEPT
-ip6tables -A FORWARD -i any -o br0 -p all -j ACCEPT
-ip6tables -A FORWARD -j DROP
-```
-
-The first rule in the FORWARD chain (which is commented out) shows an example on how to open a port to a specific IP on your network (remember to enter the computer's IP in that rule, NOT your WAN IP - you are obtaining an entire IP block here, you are NOT using NAT like you probably do with your unique IPv4!).
-
-Save that script as a [firewall-start](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts) script.
+Starting with Asuswrt-Merlin 3.0.0.4.374.32, a user-configurable IPv6 firewall is available (and is enabled by default).  Be aware however that previous versions, as well as the original firmware from Asus provide NO firewalling on the IPv6 interfaces, leaving your whole LAN open for access from the Internet over IPv6 addresses.
 
 
 ### Conclusion
