@@ -44,7 +44,6 @@ Usage is as follows.
 **To Make the Configuration persistent across reboots.**
 
 1. Enable JFFS partition
-
 2. Edit /jffs/scripts/services-start to call the script at each boot
 
 `/Path/to/LinkAgg 3 4`
