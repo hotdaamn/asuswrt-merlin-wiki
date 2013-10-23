@@ -24,7 +24,7 @@ But requires either a Switch/PC/NAS which also supports Link Aggregation.
 
 Which can be downloaded, future firmware versions will include a copy of this script.
 
-[LinkAgg](http://www.mediafire.com/download/kc298caz28y8kda/LinkAgg)
+[LinkAgg](http://www.mediafire.com/?bg6defwchsubyb1)
 
 Usage is as follows.
 
