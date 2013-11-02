@@ -20,6 +20,21 @@ A: This is a kinda grey area for which I have no definitive answer unfortunately
 **Q: Will you support router "RT-xXX" from Asus?**  
 A: Most likely not.  Without having an actual router to test with, building a firmware that people would flash without me having at least confirmed it can be flashed at all would be far too risky.
 
+**Q: What does the version number mean?**  
+A: The format of the version numbers for Asuswrt-Merlin builds is similar to Asuswrt-GPL.  The version string consists of four categories:
+
+    a.a.b.b.xxx.yyy
+
+    a.a = the firmware kernel (not to be confused with the Linux kernel)
+    b.b = the filesystem version (incremented on major feature changes)
+    xxx = the release version, aka serial number
+    yyy = the extendno, aka an incrementing build version
+
+Because the Merlin builds are based on the Asus GPL builds the first three categories can be compared to verify the sync status of major releases.
+
+The extendno number can be used to determine the latest release of a Merlin build because it is incremented with every release.  This extendno has no relationship to the extendno of the GPL build.  To see if features from an Asus GPL build are included in a Merlin release please see the [changelog](http://www.lostrealm.ca/asuswrt-merlin/changelog.txt). 
+
+Note that the extendno number on Asuswrt-GPL firmware is dependent on the build architecture (MIPS,ARM) and therefore cannot by itself be compared to determine if one GPL build is more recent than another.
 
 ### Recovery and resetting
 
