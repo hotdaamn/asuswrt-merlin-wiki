@@ -78,7 +78,7 @@ If you wish to use a custom dnsmasq.conf, you will need a little change to the s
        DNSMASQ_CONF=/jffs/configs/dnsmasq.conf
        cp /jffs/configs/dnsmasq.conf.orig $DNSMASQ_CONF
     else
-       DNSMASQ_CONF=/jffs/configs/dnsmasq.add
+       DNSMASQ_CONF=/jffs/configs/dnsmasq.conf.add
        echo -n > $DNSMASQ_CONF
     fi
 
