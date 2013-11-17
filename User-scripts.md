@@ -6,7 +6,7 @@ Those scripts are stored in the internal non-volatile flash in the [JFFS](https:
 
 ## Available scripts:
 
-These shell scripts will be run when certain events occur.  They must be saved in /jffs/scripts/ .
+These shell scripts will be run when certain events occur.  They must be saved in `/jffs/scripts/`.
 
 
 ### services-start
