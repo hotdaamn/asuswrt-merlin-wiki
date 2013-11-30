@@ -24,11 +24,11 @@ But requires either a Switch/PC/NAS which also supports Link Aggregation.
 
 Which can be downloaded, future firmware versions will include a copy of this script.
 
-[LinkAgg](http://www.mediafire.com/?bg6defwchsubyb1)
+[LinkAgg](http://www.mediafire.com/download/8y3ye3332durchp/LinkAgg)
 
 Usage is as follows.
 
-        ----  Link Aggregation Version 1.3 Help  ----
+        ----  Link Aggregation Version 1.5 Help  ----
 	Dynamically enable Link Aggregation using 802.3ad
 	802.3ad requires a Switch/PC/NAS which...
 	also supports 802.3ad to function correctly
