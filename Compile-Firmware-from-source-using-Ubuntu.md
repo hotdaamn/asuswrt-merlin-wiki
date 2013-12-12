@@ -99,9 +99,11 @@ With these command you will build your environment which you will need to work w
 ```
 sudo ln -s ~/asuswrt-merlin/tools/brcm /opt/brcm
 ```
-
 ```
-export PATH=$PATH:/opt/brcm/hndtools-mipsel-linux/bin:/opt/brcm/hndtools-mipsel-uclibc/bin
+sudo ln -s ~/asuswrt-merlin/release/src-rt-6.x.4708/toolchains/hndtools-arm-linux-2.6.36-uclibc-4.5.3 /opt/brcm-arm
+```
+```
+export PATH=$PATH:/opt/brcm/hndtools-mipsel-linux/bin:/opt/brcm/hndtools-mipsel-uclibc/bin:/opt/brcm-arm/bin
 ```
 
 ```
@@ -141,4 +143,30 @@ make clean
 ```
 ```
 make rt-ac66u
+```
+* For RT-AC56U
+
+```
+cd ~/asuswrt-merlin/release/src-rt-6.x.4708
+```
+
+```
+make clean
+```
+
+```
+make rt-ac56u
+```
+* For RT-AC68U
+
+```
+cd ~/asuswrt-merlin/release/src-rt-6.x.4708
+```
+
+```
+make clean
+```
+
+```
+make rt-ac68u
 ```
