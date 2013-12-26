@@ -4,7 +4,7 @@ nvram get dhcp_staticlist | sed 's/</\n/g' | grep ":" | awk -F">" '{ print $2">"
 ```
 The output is as below, i.e. a ready-to-run command to re-set the list. 
 ```
-nvram set dhcp_staticlist="nvram set dhcp_staticlist="<XX:XX:XX:XX:XX:XX>192.168.1.100>name1<YY:YY:YY:YY:YY:YY>192.168.1.101>name2<ZZ:ZZ:ZZ:ZZ:ZZ:ZZ>192.168.1.102>name3"
+nvram set dhcp_staticlist="<XX:XX:XX:XX:XX:XX>192.168.1.100>name1<YY:YY:YY:YY:YY:YY>192.168.1.101>name2<ZZ:ZZ:ZZ:ZZ:ZZ:ZZ>192.168.1.102>name3"
 ```
 To apply the change, run the command generated followed by 
 ```
