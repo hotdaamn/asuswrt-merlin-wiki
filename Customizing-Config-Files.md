@@ -12,7 +12,7 @@ will be added at the end of the dnsmasq configuration file that is created by th
 ```
 would completely replace it.
 
-Note that replacing a config file with your own implies that you properly fill in all the fields usually dynamically created by the firmware.  Since some of these entries require dynamic parameters, you might be better using the postconf scripts added in 374.36 (see the [postconf][postconf-scripts] scripts section below).
+Note that replacing a config file with your own implies that you properly fill in all the fields usually dynamically created by the firmware.  Since some of these entries require dynamic parameters, you might be better using the postconf scripts added in 374.36 (see the [postconf](postconf-scripts) scripts section below).
 
 The list of available config overrides:
 
