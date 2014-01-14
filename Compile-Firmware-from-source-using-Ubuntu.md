@@ -176,6 +176,8 @@ make rt-ac68u
 
 If you want to build in Ubuntu 13.10, before you make clean / make [router], you might need to perform these steps due to the different version of autoconf.
 
+This works to build 3.0.0.4_374.38_1.
+
 ```
 sudo apt-get install libproxy-dev
 # fix neon missing proxy.h
