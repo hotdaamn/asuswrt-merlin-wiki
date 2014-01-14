@@ -174,7 +174,7 @@ make rt-ac68u
 
 **Notes for Ubuntu 13.10:**
 
-If you want to build in Ubuntu 13.10, before you make clean / make [router], you might need to perform these steps, due to the difference in version of autoconf.
+If you want to build in Ubuntu 13.10, before you make clean / make [router], you might need to perform these steps due to the different version of autoconf.
 
 ```
 sudo apt-get install libproxy-dev
