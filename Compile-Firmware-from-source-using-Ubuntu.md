@@ -171,3 +171,19 @@ make clean
 ```
 make rt-ac68u
 ```
+
+**Notes for Ubuntu 13.10:**
+If you want to build in Ubuntu 13.10, before you make clean and make <router>, you might need to perform these steps, due to the difference in version of autoconf.
+
+```
+sudo apt-get install libproxy-dev
+# fix neon missing proxy.h
+cp /usr/include/proxy.h ~/asuswrt-merlin/release/src/router/neon/
+# fix broken configure script for libdaemon
+cd ~/asuswrt-merlin/release/src/router/libdaemon
+aclocal
+# fix broken configure script for libxml2
+cd ~/asuswrt-merlin/release/src/router/libxml2
+sed -i s/AM_C_PROTOTYPES/#AM_C_PROTOTYPES/g ~/asuswrt-merlin/release/src/router/libxml2/configure.in
+aclocal
+```
