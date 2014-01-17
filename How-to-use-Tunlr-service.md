@@ -1,6 +1,7 @@
 ### Introduction ###
 
 This guide will help you use [Tunlr service](http://tunlr.net/) to watch Netflix, MTV, CBS, Hulu & more outside the U.S.
+**Warning**: it doesn't update [gatekeeper](https://gatekeeper.tunlr.net/dashboard).
 
 ### Prerequisites ###
 
@@ -18,7 +19,7 @@ and reboot router.
 
 ### Details ###
 
-There is a shell script `/jffs/scripts/wan-start` to update Tunlr's DNS servers after internet connection has been established:
+There is a shell script `/jffs/scripts/wan-start` to update Tunlr's DNS servers after internet connection has been established (more info in [wan start](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts#wan-start)):
 
     #!/bin/sh
     PATH='/usr/local/sbin:/usr/sbin:/usr/bin:/sbin:/bin'
@@ -44,7 +45,9 @@ There is a shell script `/jffs/scripts/wan-start` to update Tunlr's DNS servers 
     done
     service restart_dnsmasq
 
-It takes Tunlr's DNS addresses and makes dnsmasq configuration file where some domains will be "served" via Tunlr service. Feel free to add your own domains to `/jffs/configs/domains.txt` file.
+It takes Tunlr's DNS addresses and makes dnsmasq configuration file where some domains will be "served" via Tunlr service. Feel free to add your own domains to `/jffs/configs/domains.txt` file. For instance you might want to add tunlr.net to the list so [Tunlr status](http://tunlr.net/status/) is 100% complete.
+
+    echo tunlr.net >> /jffs/configs/domains.txt
 
 ### Custom dnsmasq.conf users ###
 
