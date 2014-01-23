@@ -63,6 +63,7 @@ The list of available postconf scripts is:
  * pptpd.postconf
  * radvd.postconf
  * shadow.postconf
+ * smb.postconf
  * upnp.postconf
  * vsftpd.postconf
 
