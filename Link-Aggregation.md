@@ -22,7 +22,7 @@ But requires either a Switch/PC/NAS which also supports Link Aggregation.
 
 **To Simplify setup and management a small shell script has been created.**
 
-Which can be downloaded, future firmware versions will include a copy of this script.
+Which can be downloaded
 
 [LinkAgg](http://www.mediafire.com/download/8y3ye3332durchp/LinkAgg)
 
