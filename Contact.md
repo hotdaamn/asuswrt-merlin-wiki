@@ -1,7 +1,9 @@
 * **Homepage:** http://www.lostrealm.ca/asuswrt-merlin/
-* **Download:** http://www.mediafire.com/asuswrt-merlin/
-* **Email:** rmerl (at) lostrealm (dot) ca
-* **Twitter:** https://twitter.com/RMerlinDev
+* **Download:** http://www.lostrealm.ca/asuswrt-merlin/download
 * **SmallNetBuilder forum (official forum support):** http://forums.smallnetbuilder.com/forumdisplay.php?f=37
+* **Twitter:** https://twitter.com/RMerlinDev
+* **Email:** rmerl (at) lostrealm (dot) ca
 
 Development news will be posted on Twitter.  You can also keep track of ongoing development through the Github repository.
+
+The preferred support channel is through the public forums at SmallNetBuilder.
