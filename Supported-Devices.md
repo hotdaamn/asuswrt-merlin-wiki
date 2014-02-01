@@ -3,6 +3,7 @@ While Asuswrt can support many devices (and the list is growing), the list of ro
 The following devices are fully supported:
 
 * RT-N16
-* RT-AC56U (and R)
 * RT-N66U (and R)
 * RT-AC66U (and R)
+* RT-AC56U (and R)
+* RT-AC68U (and R)
