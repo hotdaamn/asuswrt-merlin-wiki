@@ -12,7 +12,7 @@ Now login to router with [putty](http://www.chiark.greenend.org.uk/~sgtatham/put
 ```
 ipkg update
 ipkg upgrade
-ipkg install transmission
+ipkg install transmission libiconv
 wget -c -O /opt/etc/init.d/S95transmission http://tinyurl.com/S95transmission
 chmod 777 /opt/etc/init.d/S95transmission
 /opt/etc/init.d/S95transmission start
