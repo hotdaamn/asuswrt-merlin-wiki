@@ -29,6 +29,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 5. [Installing Transmission through Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Installing-Transmission-through-Entware)
 6. [Cherokee Web Server](http://forums.smallnetbuilder.com/showthread.php?t=8323) (External link)
 7. [PyLoad Download Manager through Optware] (http://forums.smallnetbuilder.com/showthread.php?t=9890) (External link)
+8. [Lighttpd web server with PHP support through Entware] (https://github.com/RMerl/asuswrt-merlin/wiki/Lighttpd-web-server-with-PHP-support-through-Entware)
 
 ### Development
 1. [Download the latest source code from GitHub](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub)
