@@ -1,6 +1,7 @@
 We need a usb-flash formatted EXT2 or a usb-hdd formated EXT3, will not work fine on FAT32 or NTFS.
 
 First, setup Entware from [this](https://github.com/RMerl/asuswrt-merlin/wiki/Entware) guide.
+
 Login to router with a terminal like putty and enter this commands:
 ```
 opkg install lighttpd
@@ -35,7 +36,7 @@ iptables -I INPUT -p tcp --destination-port 81 -j ACCEPT
 
 Save with **CTRL-O** / **Enter** / and exit nano with **CTRL-X**
 
-Give permission
+Give right permission
 ```
 chmod a+rx /jffs/scripts/firewall-start
 ```
