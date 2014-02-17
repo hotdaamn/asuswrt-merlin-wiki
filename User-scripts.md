@@ -37,7 +37,7 @@ Just after a partition got mounted.
 Just before unmounting a partition.  This is a blocking script, so be careful with it.  The mount point is passed as an argument to the script
 
 ### dhcpc-event
-Called whenever a DHCP event occurs on the WAN interface.  The type of event (bound, release, etc...) is passed as an argument.
+Called whenever a DHCP event occurs on the WAN interface.  The type of event is passed as an argument; possible event types in the version of `udhcpc` in ASUSWRT are `deconfig` (when udhcpc starts and when a lease is lost), `bound` (when a lease and new IP address is acquired), and `renew` (when a lease is renewed, but the IP did not change).
 
 ### openvpn-event
 Called whenever an OpenVPN server gets started/stopped, or an OpenVPN client connects to a remote server.  Uses the same syntax/parameters as the "up" and "down" scripts in OpenVPN.
