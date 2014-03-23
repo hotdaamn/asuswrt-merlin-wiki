@@ -13,13 +13,13 @@ Now login to router with [putty](http://www.chiark.greenend.org.uk/~sgtatham/put
 ipkg update
 ipkg upgrade
 ipkg install transmission libiconv
-wget -c -O /opt/etc/init.d/S95transmission http://tinyurl.com/S95transmission
+wget -c -O /opt/etc/init.d/S95transmission http://goo.gl/VCgvw2
 chmod 777 /opt/etc/init.d/S95transmission
 /opt/etc/init.d/S95transmission start
 /opt/etc/init.d/S95transmission stop
 chmod 777 /opt/etc/transmission-daemon/settings.json
 rm -r /opt/etc/transmission-daemon/settings.json
-wget -c -O /opt/etc/transmission-daemon/settings.json http://tinyurl.com/settings-json
+wget -c -O /opt/etc/transmission-daemon/settings.json http://goo.gl/PIHW2f
 app_set_enabled.sh transmission yes
 ```
 
@@ -47,7 +47,7 @@ On router UI we have to enable "jffs partition" and "Format JFFS partition at ne
 
 ![jffs](http://i49.tinypic.com/x3ehpc.png)
 ```
-wget -c -O /jffs/scripts/firewall-start http://tinyurl.com/firewall-start
+wget -c -O /jffs/scripts/firewall-start http://goo.gl/ZFHdHC
 chmod a+rx /jffs/scripts/firewall-start
 reboot
 ```
