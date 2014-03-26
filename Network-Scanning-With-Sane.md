@@ -24,6 +24,7 @@ This page describes how to enable Network Scanning using a USB scanner or multi-
 **`<user>root</user>`**  
 with  
 **`<user>admin</user>`**  
+* Reboot router and make sure that dbus and xinetd are running (this step might not be required if you know how to start the services manually from /opt/etc/init.d)
 
 ### Special Hardware Instructions
 ### HP:
