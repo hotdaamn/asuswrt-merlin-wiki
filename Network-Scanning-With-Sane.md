@@ -3,13 +3,14 @@ This page describes how to enable Network Scanning using a USB scanner or multi-
 ### Requirements:
 * A router running Merlin duh...
 * USB Stick with optware configured [instructions] (https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
-* A Multi-Function USB Scanner or Multi-Function Printer
-* Router is accessible via ssh
+* A USB Scanner or Multi-Function Printer
+* Router accessible via ssh
+* Familiarity with ssh access and command line tools line vi
 
 ### Router Setup Instructions:
-* ssh to router and type **opkg install sane-backends sane-frontends sane-libs
+* Ssh to router and type **opkg install sane-backends sane-frontends sane-libs
  dbus xinetd**
-* create file **/opt/etc/xinetd.d/saned** and put the following content:  
+* Create file **/opt/etc/xinetd.d/saned** and put the following content:  
 **service saned**  
 **{**  
 **socket_type = stream**  
@@ -20,7 +21,7 @@ This page describes how to enable Network Scanning using a USB scanner or multi-
 **wait = no**  
 **disable = no**  
 **}**  
-* edit file **/opt/etc/dbus-1/system.conf** and replace the following line:  
+* Edit file **/opt/etc/dbus-1/system.conf** and replace the following line:  
 **`<user>root</user>`**  
 with  
 **`<user>admin</user>`**  
@@ -28,20 +29,20 @@ with
 
 ### Special Hardware Instructions
 ### HP:
-* **opkg --force-overwrite install hplip**
+* Ssh to router and type the command: **opkg --force-overwrite install hplip**
 
 ### Test functionality:
-* type: **scanimage -L**, your device should be displayed
-* type: **scanimage --test**, your device should start testing and display status
+* Type: **scanimage -L**, your device should be displayed
+* Type: **scanimage --test**, your device should start testing and display status
 
 ### On The Client Side (Linux):
-* install the sane package. This changes by distribution
-* edit file **/etc/sane.d/net.conf** and add the ip or hostname of the router
-* test the same way with the **scanimage** utility
+* Install the sane package. This changes by distribution
+* Edit file **/etc/sane.d/net.conf** and add the ip or hostname of the router
+* Test the same way with the **scanimage** utility
 
 ### On The Client Side (Windows):
-* use SaneTwain [http://sanetwain.ozuzo.net] (http://sanetwain.ozuzo.net)
-* on start-up put the router's ip/host
+* Download SaneTwain [http://sanetwain.ozuzo.net] (http://sanetwain.ozuzo.net)
+* On start-up put the router's ip/host
 
 Suggestions are always welcomed.
  
