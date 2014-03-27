@@ -34,11 +34,14 @@ with
 * type: **scanimage -L**, your device should be displayed
 * type: **scanimage --test**, your device should start testing and display status
 
-### Om The Client Side (Linux):
+### On The Client Side (Linux):
 * install the sane package. This changes by distribution
 * edit file **/etc/sane.d/net.conf** and add the ip or hostname of the router
 * test the same way with the **scanimage** utility
 
+### On The Client Side (Windows):
+* use SaneTwain [http://sanetwain.ozuzo.net] (http://sanetwain.ozuzo.net)
+* on start-up put the router's ip/host
 
 Suggestions are always welcomed.
  
