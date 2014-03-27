@@ -1,17 +1,17 @@
 Here is another tutorial by [ryzhov_al](http://forums.smallnetbuilder.com/member.php?u=13498) about enabling OpenDNS on asuswrt routers
 
-1. Install [Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Entware)
+1 - Install [Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Entware)
 
-2. Install dnscrypt:
+2 - Install dnscrypt:
 ```
 opkg install dnscrypt-proxy dnscrypt-proxy-hostip
 ```
-3. Tell router to use it:
+3 - Tell router to use it:
 ```
 echo "no-resolv" > /jffs/configs/dnsmasq.conf.add
 echo "server=127.0.0.1#65053" >> /jffs/configs/dnsmasq.conf.add
 ```
-4. Paste this content to /jffs/scripts/wan-start:
+4 - Paste this content to /jffs/scripts/wan-start:
 ```
 #!/bin/sh
 
@@ -39,10 +39,10 @@ done
 killall ntp && sleep 1
 service restart_ntpc
 ```
-5. Make the script executable:
+5 - Make the script executable:
 ```
 chmod +x /jffs/scripts/wan-start
 ```
-6. Reboot router and make sure it works by visiting [this page](http://www.opendns.com/support/article/64)
+6 - Reboot router and make sure it works by visiting [this page](http://www.opendns.com/support/article/64)
 
 More info here http://forums.smallnetbuilder.com/showthread.php?t=11645
