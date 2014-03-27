@@ -2,7 +2,7 @@ This page describes how to enable Network Scanning using a USB scanner or multi-
 
 ### Requirements:
 * A router running Merlin duh...
-* USB Stick with optware configured [instructions] (https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
+* USB Stick with Entware configured [instructions] (https://github.com/RMerl/asuswrt-merlin/wiki/Entware)
 * A USB Scanner or Multi-Function Printer
 * Router accessible via ssh
 * Familiarity with ssh access and command line tools line vi
