@@ -105,7 +105,7 @@ cd /mnt/sda1
 If you have previously used Optware or Download Master you must remove the current installation:
 
 ```
-rm -rf asusware
+rm -rf asusware[.arm]
 reboot
 ```
 
