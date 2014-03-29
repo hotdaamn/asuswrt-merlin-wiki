@@ -112,8 +112,8 @@ reboot
 Now, let's initialize the Optware support inside Asuswrt:
 
 ```
-mkdir /mnt/sda1/asusware
-touch /mnt/sda1/asusware/.asusrouter
+mkdir /mnt/sda1/asusware.arm
+touch /mnt/sda1/asusware.arm/.asusrouter
 reboot
 ```
 
