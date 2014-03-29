@@ -27,6 +27,11 @@ with
 **`<user>admin</user>`**  
 * Reboot router and make sure that dbus and xinetd are running (this step might not be required if you know how to start the services manually from /opt/etc/init.d)
 
+NOTE: should you experience the service dbus not coming up after router reboot. Simply add the following lines to the file **/opt/etc/init.d/S20dbus** before the line **. /opt/etc/init.d/rc.func**:  
+**if test -f /opt/var/run/dbus.pid; then**  
+        **rm /opt/var/run/dbus.pid**  
+**fi**
+
 ### Special Hardware Instructions
 ### HP:
 * Ssh to router and type the command: **opkg --force-overwrite install hplip**
