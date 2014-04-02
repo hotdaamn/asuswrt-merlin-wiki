@@ -13,13 +13,15 @@ This page describes how to enable Network Scanning using a USB scanner or multi-
 * Create file **/opt/etc/xinetd.d/saned** and put the following content:  
 **service saned**  
 **{**  
-**socket_type = stream**  
-**server = /opt/sbin/saned**  
-**protocol = tcp**  
-**user = admin**  
-**group = root**  
-**wait = no**  
-**disable = no**  
+**  type = UNLISTED**  
+**  port = 6566**  
+**  socket_type = stream**  
+**  server = /opt/sbin/saned**  
+**  protocol = tcp**  
+**  user = admin**  
+**  group = root**  
+**  wait = no**  
+**  disable = no**  
 **}**  
 * Edit file **/opt/etc/dbus-1/system.conf** and replace the following line:  
 **`<user>root</user>`**  
