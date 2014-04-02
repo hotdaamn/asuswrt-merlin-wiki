@@ -25,6 +25,7 @@ This page describes how to enable Network Scanning using a USB scanner or multi-
 **`<user>root</user>`**  
 with  
 **`<user>admin</user>`**  
+* Edit file /opt/etc/sane.d/saned.conf and add your subnet to allow access, for example: 192.168.1.0/24
 * Reboot router and make sure that dbus and xinetd are running (this step might not be required if you know how to start the services manually from /opt/etc/init.d)
 
 NOTE: should you experience the service dbus not coming up after router reboot. Simply add the following lines to the file **/opt/etc/init.d/S20dbus** before the line **. /opt/etc/init.d/rc.func**:  
