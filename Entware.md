@@ -1,7 +1,7 @@
 ### About
 [Entware](http://code.google.com/p/wl500g-repo/) is a modern alternative to Optware.  Originally designed for OpenWRT, it is also usable by other firmware platforms such as DD-WRT or Tomato.  You can also set this up on your Asuswrt-Merlin based router.
 
-Note that Entware is only available on the MIPS-based routers.  This means the RT-AC56U is not supported.
+Note that Entware is only available on the MIPS-based routers.  This means the RT-AC56U and RT-AC68U are not supported.
 
 For those unfamiliar with Optware: it's a software repository that offers various software programs that can be installed on your router.  They allow you to add new functionality to your router (provided you have the know-how to properly configure them).  This allows you, for example, to install and run the Asterisk SIP server on your router.
 
