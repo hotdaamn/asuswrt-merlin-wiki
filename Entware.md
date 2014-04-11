@@ -1,5 +1,5 @@
 ### About
-[Entware](http://code.google.com/p/wl500g-repo/) is a modern alternative to Optware.  Originally designed for OpenWRT, it is also usable by other firmware platforms such as DD-WRT or Tomato.  You can also set this up on your Asuswrt-Merlin based router.
+[Entware](http://entware.wl500g.info) is a modern alternative to Optware.  Originally designed for OpenWRT, it is also usable by other firmware platforms such as DD-WRT or Tomato.  You can also set this up on your Asuswrt-Merlin based router.
 
 Note that Entware is only available on the MIPS-based routers.  This means the RT-AC56U and RT-AC68U are not supported.
 
@@ -46,34 +46,33 @@ tar: removing leading '/' from member names
  Info:  Modifying start scripts...
  Info:  Starting Entware deployment....
 
-Connecting to wl500g-repo.googlecode.com (173.194.69.82:80)
-entware_install.sh   100% |*******************************|  1101   0:00:00 ETA
+Connecting to entware.wl500g.info (81.4.122.163:80)
+-                    100% |*******************************|  1141   0:00:00 ETA
 Info: Checking for prerequisites and creating folders...
 Info: Opkg package manager deployment...
-Connecting to wl500g-repo.googlecode.com (173.194.69.82:80)
+Connecting to entware.wl500g.info (81.4.122.163:80)
 opkg                 100% |*******************************|   456k  0:00:00 ETA
-Connecting to wl500g-repo.googlecode.com (173.194.69.82:80)
-opkg.conf            100% |*******************************|   112   0:00:00 ETA
+Connecting to entware.wl500g.info (81.4.122.163:80)
+opkg.conf            100% |*******************************|   105   0:00:00 ETA
 Info: Basic packages installation...
-Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/Packages.gz.
-Inflating http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/Packages.gz.
+Downloading http://entware.wl500g.info/binaries/entware/Packages.gz.
 Updated list of available packages in /opt/var/opkg-lists/openwrt.
 Installing uclibc-opt (0.9.32-4) to root...
-Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/uclibc-opt_0.9.32-4_entware.ipk.
-Installing libc (0.9.32-4) to root...
-Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/libc_0.9.32-4_entware.ipk.
-Installing libgcc (4.6.3-4) to root...
-Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/libgcc_4.6.3-4_entware.ipk.
-Installing libstdcpp (4.6.3-4) to root...
-Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/libstdcpp_4.6.3-4_entware.ipk.
-Installing libpthread (0.9.32-4) to root...
-Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/libpthread_0.9.32-4_entware.ipk.
-Installing librt (0.9.32-4) to root...
-Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/librt_0.9.32-4_entware.ipk.
-Installing ldconfig (0.9.32-4) to root...
-Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/ldconfig_0.9.32-4_entware.ipk.
-Installing findutils (4.5.11-1) to root...
-Downloading http://wl500g-repo.googlecode.com/svn/ipkg/openwrt/findutils_4.5.11-1_entware.ipk.
+Downloading http://entware.wl500g.info/binaries/entware/uclibc-opt_0.9.32-4_entware.ipk.
+Installing libc (0.9.32-6) to root...
+Downloading http://entware.wl500g.info/binaries/entware/libc_0.9.32-6_entware.ipk.
+Installing libgcc (4.6.4-6) to root...
+Downloading http://entware.wl500g.info/binaries/entware/libgcc_4.6.4-6_entware.ipk.
+Installing libstdcpp (4.6.4-6) to root...
+Downloading http://entware.wl500g.info/binaries/entware/libstdcpp_4.6.4-6_entware.ipk.
+Installing libpthread (0.9.32-6) to root...
+Downloading http://entware.wl500g.info/binaries/entware/libpthread_0.9.32-6_entware.ipk.
+Installing librt (0.9.32-6) to root...
+Downloading http://entware.wl500g.info/binaries/entware/librt_0.9.32-6_entware.ipk.
+Installing ldconfig (0.9.32-6) to root...
+Downloading http://entware.wl500g.info/binaries/entware/ldconfig_0.9.32-6_entware.ipk.
+Installing findutils (4.5.12-1) to root...
+Downloading http://entware.wl500g.info/binaries/entware/findutils_4.5.12-1_entware.ipk.
 Configuring ldconfig.
 Configuring libgcc.
 Configuring libc.
@@ -86,7 +85,7 @@ Updating /opt/etc/ld.so.cache... done.
 Info: Cleanup...
 Info: Congratulations!
 Info: If there are no errors above then Entware successfully initialized.
-Info: Found a Bug? Please report at wl500g-repo.googlecode.com
+Info: Found a Bug? Please report at https://github.com/Entware/entware/issues
 ```
 The script will create a new directory named "entware" and not "asusware" like in the "old" way, but the result is the same:
 ```
@@ -122,8 +121,7 @@ This will ensure that Asuswrt will properly mount /opt at boot time.
 After the reboot, the optware directory should be initialized and automounted by Asuswrt.  It's now time to initialize Entware itself:
 
 ```shell
-cd /opt
-wget -O - http://wl500g-repo.googlecode.com/svn/ipkg/entware_install.sh | sh
+wget -O - http://entware.wl500g.info/binaries/entware/installer/entware_install.sh | sh
 ```
 
 Now we have to configure Asuswrt to automatically stop/start services:
