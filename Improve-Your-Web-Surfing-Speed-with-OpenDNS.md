@@ -28,11 +28,11 @@ do
 done
 
 # Now resolve DNS name for NTP server
+rm -f /jffs/configs/hosts.add
 ntp_name=$(nvram get ntp_server0)
-grep "$ntp_name" /etc/hosts > /dev/null 2>&1 || \
 for ip in $(/opt/sbin/dnscrypt-proxy-hostip $ntp_name)
 do
-    echo $ip $ntp_name >>  /etc/hosts
+    echo $ip $ntp_name >> /jffs/configs/hosts.add
 done
 
 # and restart NTP client to eliminate 4-5 mins delay
