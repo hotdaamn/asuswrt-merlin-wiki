@@ -1,7 +1,8 @@
 Here is another tutorial by [ryzhov_al](http://forums.smallnetbuilder.com/member.php?u=13498) about enabling OpenDNS on asuswrt routers
 
 1 - Install [Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Entware)
-2 - Download the latest packages:
+
+2 - Upgrade Entware to have it find the right repository:
 ```
 opkg update && opkg upgrade 
 ```
