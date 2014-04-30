@@ -29,6 +29,8 @@ The next step: you need to somehow tell Hurricane Electrics what your current IP
 
 For the second method, you will need to enable the [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS) partition.  Once that's done, create a [wan-start](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts) user script that will take care of updating HE with your current WAN IP.  Here is an example script:
 
+NOTE: If your tunnel was made before 19th Jan 2014, you need to uncomment the second wget line in the script, and comment the first. That's because old tunnels need your md5'd password, and newer ones need the tunnel update key.
+
 ```
 #!/bin/sh
 #v1.40-rm3 Mar 24, 2012
@@ -38,6 +40,8 @@ For the second method, you will need to enable the [JFFS](https://github.com/RMe
 
 #account info to auto update endpoint
 USERID="this_is_your_hexadecimal_userid_from_tunnelbroker"
+#if tunnel made after 2014/01/19, insert tunnel update key here
+#found under the advanced tab of tunnel options.
 PASSWD="your_tunnelbroker_password"
 TUNNELID="12345_from_tunnelbroker"
 
@@ -69,7 +73,12 @@ echo "configuring tunnel" >> $STARTUP_SCRIPT_LOG_FILE
 #iptables -I INPUT 2 -s $HE_VERIFY_SERVER_IP -p icmp -j ACCEPT
 etime=`date +%s`
 
-wget -q "http://ipv4.tunnelbroker.net/ipv4_end.php?ip=AUTO&pass=$MD5PASSWD&apikey=$USERID&tid=$TUNNELID" -O /tmp/wget.tmp.$etime
+#for new tunnels
+wget -q "http://ipv4.tunnelbroker.net/ipv4_end.php?ip=AUTO&pass=$PASSWD&apikey=$USERID&tid=$TUNNELID" -O /tmp/wget.tmp.$etime
+
+#for old tunnels
+#wget -q "http://ipv4.tunnelbroker.net/ipv4_end.php?ip=AUTO&pass=$MD5PASSWD&apikey=$USERID&tid=$TUNNELID" -O /tmp/wget.tmp.$etime
+
 
 cat /tmp/wget.tmp.$etime >> $STARTUP_SCRIPT_LOG_FILE
 echo "" >> $STARTUP_SCRIPT_LOG_FILE
