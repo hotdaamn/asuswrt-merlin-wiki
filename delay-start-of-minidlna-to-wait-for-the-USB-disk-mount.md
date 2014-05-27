@@ -34,7 +34,7 @@ fi
 rm $ps
 ```
 
-the minidlna I took from the original provided from Asus like in example this:
+the minidlna.conf I took from the original provided from Asus like in example this:
 
 ```
 `network_interface=br0
