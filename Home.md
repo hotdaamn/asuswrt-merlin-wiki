@@ -47,7 +47,6 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 5. [How to dedicate SSID for VPN and SSID for regular ISP using OpenVPN] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-OpenVPN.)
 6. [How to use ipset to block connections from Tor nodes or some countries] (https://github.com/RMerl/asuswrt-merlin/wiki/Using-ipset)
 7. [Link Aggregation Setup](https://github.com/RMerl/asuswrt-merlin/wiki/Link-Aggregation)
-8. [delay start of minidlna to wait for the USB disk mount](https://github.com/RMerl/asuswrt-merlin/wiki/delay-start-of-minidlna-to-wait-for-the-USB-disk-mount)
 
 ### Misc HowTo and Guides
 1. [Scheduled Reboot](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-Reboot)
@@ -58,6 +57,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 6. [How to update Dyndns to use VPN IP address] (https://github.com/RMerl/asuswrt-merlin/wiki/Update-DYNDNS-with-VPN-IP-Address)
 7. [Sort DHCP Reservations by IP] (https://github.com/RMerl/asuswrt-merlin/wiki/Sort-DHCP-Reservations-by-IP)
 8. [Network Scanning With Sane] (https://github.com/RMerl/asuswrt-merlin/wiki/Network-Scanning-With-Sane)
+9. [delay start of minidlna to wait for the USB disk mount](https://github.com/RMerl/asuswrt-merlin/wiki/delay-start-of-minidlna-to-wait-for-the-USB-disk-mount)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
