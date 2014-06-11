@@ -99,6 +99,8 @@ FROMNAME="Asus Router"
 torrent_name="$TR_TORRENT_NAME"
 torrent_version="$TR_APP_VERSION"
 
+logger -t "$0" "Mail sent, about "$TR_TORRENT_NAME""
+
 echo MIME-Version: 1.0 >/tmp/tmail.html
 echo Content-Type: text/html >>/tmp/tmail.html
 echo "Subject: Download notification" >>/tmp/tmail.html
