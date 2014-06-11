@@ -1,7 +1,7 @@
-   ARM Optware version http://forums.smallnetbuilder.com/showthread.php?t=16147
+   ARM Optware version http://goo.gl/5dr44c
 
 
-MIPSEL Optware version http://forums.smallnetbuilder.com/showthread.php?p=110071#post110071
+MIPSEL Optware version http://goo.gl/22hyAo
 
 
-MIPSEL Entware version http://forums.smallnetbuilder.com/showthread.php?t=14573
+MIPSEL Entware version http://goo.gl/GDdEP7
