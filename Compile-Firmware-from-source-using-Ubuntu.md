@@ -88,9 +88,10 @@ sudo apt-get install lib32z1-dev
 ```
 If you are ready installing all these packages take a coffee or a beer.
 
-We are going to download merlins hard work with again some terminal commands
+We are going to download merlins hard work with again some terminal commands.  It appears as if scripts published in support forums all assume the clone is done off of root, so first we change to the root directory.
 
 ```
+cd /root
 git clone https://github.com/RMerl/asuswrt-merlin.git
 ```
 
