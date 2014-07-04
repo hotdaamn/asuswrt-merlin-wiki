@@ -121,7 +121,7 @@ We are now ready to build a image
 * For RT-N66U
 
 ```
-cd ~/asuswrt-merlin/release/src-rt
+cd ~/asuswrt-merlin/release/src-rt-6.x
 ```
 
 ```
