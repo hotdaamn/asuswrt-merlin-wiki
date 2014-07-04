@@ -38,7 +38,7 @@ Now we are ready to build the firmware
 * For RT-N66U
 
 ```
-cd /home/router/asuswrt-merlin/release/src-rt
+cd /home/router/asuswrt-merlin/release/src-rt-6.x
 ```
 
 ```
