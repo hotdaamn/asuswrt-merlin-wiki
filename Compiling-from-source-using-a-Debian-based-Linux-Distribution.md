@@ -45,7 +45,7 @@ We are now ready to compile the firmware. Keep in mind that this process will ta
 
 Change into the build directory:
 
-    cd ~/asuswrt-merlin/release/src-rt/
+    cd ~/asuswrt-merlin/release/src-rt-6.x/
 
 Perform the build:
 
@@ -73,7 +73,7 @@ As code changes and becomes updated, you may wish to recompile your firmware ima
 
 Change into the build directory:
 
-    cd ~/asuswrt-merlin/release/src-rt/
+    cd ~/asuswrt-merlin/release/src-rt-6.x/
 
 Perform the build clean:
 
