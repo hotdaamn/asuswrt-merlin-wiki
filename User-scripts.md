@@ -3,6 +3,7 @@ While Asuswrt-Merlin only adds a limited number of new features over the origina
 
 Those scripts are stored in the internal non-volatile flash in the [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS) partition, so this partition must first be enabled before you can use custom scripts.
 
+A useful command for debugging user scripts is `logger`, which will log messages to the system log, visible in the Web UI.
 
 ## Available scripts:
 
@@ -17,6 +18,8 @@ Before all system services are stopped, usually on a reboot.
 
 ### wan-start
 When the WAN interface just came up.  Good place to put scripts that depend on the WAN interface (for example, to update an IPv6 tunnel, or a dynamic DNS).
+
+NOTE: Internet connection is unlikely to be active when this script is run. Add a `sleep` line to delay running until connection complete, or loop until your command succeeds.
 
 ### firewall-start
 The firewall just got started, and filtering rules have been applied.  This is where you will usually put your own custom rules in the filter table (but NOT the nat table).
