@@ -8,7 +8,7 @@ One big advantage of Asus going with a unified firmware is that they have one si
 
 ### About Asuswrt-merlin
 
-Asuswrt-merlin takes advantage of the fact that complete source code is available from Asus by building on top of it.  Asuswrt-merlin is my personal project, originally done for the RT-N66U, but eventually extended to the RT-AC66U (and on an experimental level, to the RT-N16).
+Asuswrt-merlin takes advantage of the fact that complete source code is available from Asus by building on top of it.  Asuswrt-merlin is my personal project, originally done for the RT-N66U, and eventually extended to support other flagship routers from Asus.
 
 The goal with this project is to provide an alternative to Asuswrt which will benefit from the same rapid development as Asus have for this firmware.  This means there are some very strict design goals with this project:
 
