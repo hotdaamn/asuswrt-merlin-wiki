@@ -46,7 +46,7 @@ freeradius2-mod-eap \
 freeradius2-mod-eap-tls \
 freeradius2-mod-eap-ttls \
 freeradius2-mod-files \
-freeradius-mod-pap
+freeradius2-mod-pap
 ```
 
 2) I have created a very stripped version of the needed config files & missing one after testing. For making things a bit easier we're gonna use that one.
