@@ -82,7 +82,7 @@ openssl x509 -outform DER -in CA/ec-cacert.pem -out export/ec-cacert.der
 ```
 
 Export ec-cacert.pem to p12 (So we can install the certificate on android phones)
-You will be asked for the private key password earlier and to create an export password. You will need the export password when installing the certificate on your phone.
+You will be asked for the private key password earlier and to create an export password. You will need the export password when installing the certificate on your phone. Change Name of Your Certicate below to a "friendly name you want to assign to the certificate".
 
 ```
 openssl pkcs12 -export -in CA/ec-cacert.pem -inkey CA/private/ec-cakey.pem \
@@ -122,10 +122,10 @@ Remove openssl.cnf
 rm openssl.cnf
 ```
 
-Generate Diffie Hellman
+Generate Diffie Hellman (takes some time on router)
 
 ```
-openssl dhparam -check -text -2 2048 -out dh (takes some time on router)
+openssl dhparam -check -text -2 2048 -out dh 
 chmod 0600 dh
 ```
 
@@ -179,9 +179,10 @@ radiusd -XX
 ```
 
 If the server is listening for requests you're good to otherwise check error(s)
-Start the server
+Create pid directory & start the server
 
 ```
+mkdir /opt/var/run/radius
 /opt/etc/init.d/S55radiusd start
 ```
 
