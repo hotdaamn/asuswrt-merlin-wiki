@@ -32,6 +32,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 8. [Lighttpd web server with PHP support through Entware] (https://github.com/RMerl/asuswrt-merlin/wiki/Lighttpd-web-server-with-PHP-support-through-Entware)
 9. [Media Server through debian] (https://github.com/RMerl/asuswrt-merlin/wiki/Media-Server-through-debian) (External links)
 
+
 ### Development
 1. [Download the latest source code from GitHub](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub)
 2. [Compile from source using Ubuntu](https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-Ubuntu)
@@ -59,6 +60,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 7. [Sort DHCP Reservations by IP] (https://github.com/RMerl/asuswrt-merlin/wiki/Sort-DHCP-Reservations-by-IP)
 8. [Network Image Scanning With Sane] (https://github.com/RMerl/asuswrt-merlin/wiki/Network-Scanning-With-Sane)
 9. [delay start of minidlna to wait for the USB disk mount](https://github.com/RMerl/asuswrt-merlin/wiki/delay-start-of-minidlna-to-wait-for-the-USB-disk-mount)
+10. [Setting-up-FreeRadius2-through-Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Setting-up-FreeRadius2-through-Entware)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
