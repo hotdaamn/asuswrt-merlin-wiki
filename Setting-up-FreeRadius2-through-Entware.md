@@ -86,7 +86,7 @@ You will be asked for the private key password earlier and to create an export p
 
 ```
 openssl pkcs12 -export -in CA/ec-cacert.pem -inkey CA/private/ec-cakey.pem \
- -out export/ec-cacert.p12 -name "**Name of Your Certificate**" -cacerts
+ -out export/ec-cacert.p12 -name "Name of Your Certificate" -cacerts
 ```
 
 Server
