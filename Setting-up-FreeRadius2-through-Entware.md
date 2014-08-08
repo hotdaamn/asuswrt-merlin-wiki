@@ -82,11 +82,11 @@ openssl x509 -outform DER -in CA/ec-cacert.pem -out export/ec-cacert.der
 ```
 
 Export ec-cacert.pem to p12 (So we can install the certificate on android phones)
-You will be asked for the private key password earlier and to create an export password. You will need the export password when installing the certificate on your phone. Change "Name of Your Certicate" below to a "friendly name you want to assign to the certificate".
+You will be asked for the private key password earlier and to create an export password. You will need the export password when installing the certificate on your phone. **Change "Name of Your Certicate" below** to a "friendly name you want to assign to the certificate".
 
 ```
 openssl pkcs12 -export -in CA/ec-cacert.pem -inkey CA/private/ec-cakey.pem \
- -out export/ec-cacert.p12 -name "Name of Your Certificate" -cacerts
+ -out export/ec-cacert.p12 -name "**Name of Your Certificate**" -cacerts
 ```
 
 Server
