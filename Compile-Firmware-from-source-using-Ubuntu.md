@@ -118,6 +118,20 @@ sudo ln -s ~/asuswrt-merlin /media/ASUSWRT/asuswrt-merlin
 
 We are now ready to build a image
 
+* For RT-N16
+
+```
+cd ~/asuswrt-merlin/release/src-rt
+```
+
+```
+make clean
+```
+
+```
+make rt-n16
+```
+
 * For RT-N66U
 
 ```
@@ -131,6 +145,7 @@ make clean
 ```
 make rt-n66u
 ```
+
 
 * For RT-AC66U
 
