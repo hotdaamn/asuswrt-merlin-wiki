@@ -82,7 +82,7 @@ libxml2-dev g++-4.4 g++-multilib gitk libncurses5 mtd-utils libncurses5-dev \
 libstdc++6-4.4-dev libvorbis-dev g++-4.4-multilib git autopoint autogen sed \
 build-essential intltool libelf1:i386 libglib2.0-dev
 ```
-If you have Ubuntu x64 edition then you need lib32z1-dev
+If you have Ubuntu x64 edition then you need `lib32z1-dev` and `lib32stdc++6`
 ```
 sudo apt-get install lib32z1-dev
 ```
