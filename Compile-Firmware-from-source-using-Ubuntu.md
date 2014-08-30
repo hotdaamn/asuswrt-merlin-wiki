@@ -84,7 +84,7 @@ build-essential intltool libelf1:i386 libglib2.0-dev
 ```
 If you have Ubuntu x64 edition then you need `lib32z1-dev` and `lib32stdc++6`
 ```
-sudo apt-get install lib32z1-dev
+sudo apt-get install lib32z1-dev lib32stdc++6
 ```
 If you are ready installing all these packages take a coffee or a beer.
 
