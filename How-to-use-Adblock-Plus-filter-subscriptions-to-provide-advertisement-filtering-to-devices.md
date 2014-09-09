@@ -40,9 +40,10 @@ Next, download the subscription's filters and create the privoxy blacklist by ru
 
 Determine the device you would like to apply advertisement filtering to. You will need to apply a static IP for this device - you can do so by accessing your router's web interface (the default address is 192.168.1.1) in a web browser, then clicking *LAN* in the navigation sidebar (under *Advanced Settings*), then clicking the *DHCP Server* tab. Enable the *Enable Manual Assignment* radio option, and select or input the MAC address of the device in the *Manually Assigned IP around the DHCP list* dropdown box. If the device you wish to filter does not appear in the dropdown box, make sure that it is connected to the router via a wired or wireless connection and refresh the page. Assign the MAC address a static IP address within the router's IP address range (for example, 192.168.1.25). Be sure to click the *Apply* button to apply your changes.
 
-If have already set up manually assigned IP addresses via DHCP you can find them in one of the follwing giles:
-    /etc/hosts.dnsmasq
-    /var/lib/misc/dnsmasq.leases
+If you have already set up manually assigned IP addresses via DHCP you can find them in one of the following files:
+
+    cat /etc/hosts.dnsmasq
+    cat /var/lib/misc/dnsmasq.leases
 
 Next, add a rule to iptables to intercept traffic from the device and pass it through privoxy for advertisement filtering:
 
