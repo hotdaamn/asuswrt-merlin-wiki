@@ -4,4 +4,4 @@
 MIPSEL Optware version http://goo.gl/22hyAo
 
 
-MIPSEL Entware version http://goo.gl/GDdEP7
+MIPSEL Entware version http://goo.gl/7SK4Wx
