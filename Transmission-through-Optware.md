@@ -129,4 +129,4 @@ Example of received email:
 ![email](http://i40.tinypic.com/2mi2is4.png)
 See youtube video [here](http://www.youtube.com/watch?v=hHBEMYJfLi8)
 
-Post issues or feedback [here](http://forums.smallnetbuilder.com/showthread.php?t=8696)
+Post issues or feedback [here](http://goo.gl/S2QQ6W)
