@@ -47,4 +47,4 @@ Go to [192.168.1.1/Advanced_VirtualServer_Content.asp](Port forwarding page) and
 
 Youtube video [here](http://youtu.be/KHABSd7qB2M)
 
-Post issues [here](http://forums.smallnetbuilder.com/showthread.php?t=9310)
+Post issues [here](http://goo.gl/2jisLq)
