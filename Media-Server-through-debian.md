@@ -1,7 +1,7 @@
-   ARM Optware version http://goo.gl/5dr44c
+   ARM Optware version http://goo.gl/2acHgV
 
 
-MIPSEL Optware version http://goo.gl/22hyAo
+MIPSEL Optware version http://goo.gl/jnnS60
 
 
-MIPSEL Entware version http://goo.gl/7SK4Wx
+MIPSEL Entware version http://goo.gl/KaWZSK
