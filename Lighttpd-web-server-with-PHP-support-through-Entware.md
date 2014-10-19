@@ -9,9 +9,9 @@ opkg install php5-cgi
 opkg install lighttpd-mod-fastcgi
 /opt/etc/init.d/S80lighttpd stop
 rm /opt/etc/lighttpd/lighttpd.conf
-wget -c -O /opt/etc/lighttpd/lighttpd.conf http://tinyurl.com/amvkxt3
-wget -c -O /opt/share/www/index.html http://tinyurl.com/bxfxpq6
-wget -c -O /opt/share/www/test.php http://tinyurl.com/b9b34kp
+wget -c -O /opt/etc/lighttpd/lighttpd.conf http://tinyurl.com/amvkxt3 --no-check-certificate
+wget -c -O /opt/share/www/index.html http://tinyurl.com/bxfxpq6 --no-check-certificate
+wget -c -O /opt/share/www/test.php http://tinyurl.com/b9b34kp --no-check-certificate
 /opt/etc/init.d/S80lighttpd start
 ```
 Go to [192.168.1.1:81](http://192.168.1.1:81) and if you see this page, the lighttpd web server is configured correctly
