@@ -168,3 +168,4 @@ rm /tmp/tmail.html
 ```
 Example of received email:
 ![email](http://i40.tinypic.com/2mi2is4.png)
+Post issues [here](https://www.asuswrt.eu/transmission-on-asuswrt-routers-through-entware/)
