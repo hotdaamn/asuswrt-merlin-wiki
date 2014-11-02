@@ -10,7 +10,6 @@ Starting with firmware version Asuswrt-Merlin 3.0.0.4.374.33 bonding.ko Driver i
 6. balance-tlb or 5
 7. balance-alb or 6 
 
-
 **The only mode that has been tested is 802.3ad**
 
 NIC bonding in mode 802.3ad achieves 2 goals.
@@ -20,7 +19,11 @@ NIC bonding in mode 802.3ad achieves 2 goals.
 
 But requires either a Switch/PC/NAS which also supports Link Aggregation.
 
-**To Simplify setup and management a small shell script has been created.**
+***
+
+**METHOD 1 - LINKAGG (Custom Script)**
+
+To Simplify setup and management a small shell script has been created.
 
 Which can be downloaded
 
@@ -59,3 +62,76 @@ Optionally users can choose to install entware - ifenslave package.
 *** entware is for MIPS based routers only ***
 
 More Info Here http://forums.smallnetbuilder.com/showthread.php?t=12735
+
+***
+
+**METHOD 2 - For AC68U/R/P Routers**
+
+**Step 1 - NVRAM Edits** | Note: You will need to repeat this step if you clear the nvram ie. Beta to Final versions, resetting to Factory default
+
+Apply the following changes to the router's nvram:
+
+    nvram set vlan4ports="3 5t"
+    nvram set vlan5ports="4 5t"
+    nvram set vlan4hwname=et0
+    nvram set vlan5hwname=et0
+    nvram commit
+
+**Step 2 - Create/Edit services-start script**
+
+Include the following code in services-start script located in /jffs/scripts/ (you will need to create this file from scratch, if you haven't done so already, with the right permissions)
+
+    #!/bin/sh
+
+    # Logger Services
+    logger -t "($(basename ))" $$ SERVICES-START being started....
+
+    logger -t "($(basename ))" $$ Bonding ports 3 and 4 commencing....
+    # Pre-Bonding
+    robocfg vlan 1 ports "1 2 5*"
+
+    # Bonding
+    sleep 2s
+    modprobe bonding
+    # Setting mode to 802.3ad
+    echo 802.3ad > /sys/class/net/bond0/bonding/mode
+    # Setting LACP rate to fast
+    echo fast > /sys/class/net/bond0/bonding/lacp_rate
+    # Setting MII monitoring interval to 50
+    echo 50 > /sys/class/net/bond0/bonding/miimon
+    # Setting xmit hash policy to layer3+4
+    echo 1 > /sys/class/net/bond0/bonding/xmit_hash_policy
+    ip link set bond0 up
+    echo +vlan4 > /sys/class/net/bond0/bonding/slaves
+    echo +vlan5 > /sys/class/net/bond0/bonding/slaves
+    brctl addif br0 bond0
+
+    # Post-Bonding
+    sleep 2s
+    logger -t "($(basename ))" $$ Bonding Status....
+    echo "$(cat /proc/net/bonding/bond0)"
+
+**Step 3 - Create/Edit firewall-start script**
+
+Include the following code in firewall-start script located in /jffs/scripts/ (you will need to create this file from scratch, if you haven't done so already, with the right permissions)
+
+    #!/bin/sh
+
+    # Bonding
+    iptables -I INPUT 1 -i bond0 -j ACCEPT
+    iptables -I INPUT 1 -i vlan4 -j ACCEPT
+    iptables -I INPUT 1 -i vlan5 -j ACCEPT
+
+**Step 4 - Set the switch's LAG hashing mode**
+
+This is the LAG config profile you created for the 2 switch ports you have assigned to the router's port 3 and 4.
+
+Set the hashing mode to "Source/Destination MAC, VLAN, EtherType, source MODID/port" or the equivalent mode in your switch.
+
+**Step 5 - Reboot**
+
+**Additional Notes.**
+
+This method may be adapted to work with other Asus routers. Hint: Internal switch port mappings.
+
+More info Here http://forums.smallnetbuilder.com/showthread.php?t=20441
