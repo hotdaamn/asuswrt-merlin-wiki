@@ -108,8 +108,8 @@ Include the following code in services-start script located in /jffs/scripts/ (y
 
     # Post-Bonding
     sleep 2s
-    logger -t "($(basename ))" $$ Bonding Status....
-    echo "$(cat /proc/net/bonding/bond0)"
+    logger -t "($(basename $0))" $$ Bonding Status....
+    cat /proc/net/bonding/bond0 | sed 's/^/+++ /' | logger
 
 **Step 3 - Create/Edit firewall-start script**
 
