@@ -32,6 +32,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 8. [PyLoad Download Manager through Optware] (https://www.asuswrt.eu/pyload-download-manager-through-optware) (External link)
 9. [Lighttpd web server with PHP support through Entware] (https://github.com/RMerl/asuswrt-merlin/wiki/Lighttpd-web-server-with-PHP-support-through-Entware)
 10. [Minidlna Upnp Media Server through debian] (https://github.com/RMerl/asuswrt-merlin/wiki/Media-Server-through-debian) (External links)
+11. [Installing RuTorrent through Entware](https://www.asuswrt.eu/rutorrent-on-asuswrt-router-through-entware) (External link)
 
 
 ### Development
