@@ -8,7 +8,7 @@ opkg update && opkg upgrade
 ```
 3 - Install dnscrypt:
 ```
-opkg install dnscrypt-proxy dnscrypt-proxy-hostip
+opkg install dnscrypt-proxy hostip
 ```
 4 - Tell router to use it:
 ```
@@ -34,7 +34,7 @@ done
 # Now resolve DNS name for NTP server
 rm -f /jffs/configs/hosts.add
 ntp_name=$(nvram get ntp_server0)
-for ip in $(/opt/sbin/dnscrypt-proxy-hostip $ntp_name)
+for ip in $(/opt/bin/hostip $ntp_name)
 do
     echo $ip $ntp_name >> /jffs/configs/hosts.add
 done
