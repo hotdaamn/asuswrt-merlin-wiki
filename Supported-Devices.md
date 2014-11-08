@@ -7,6 +7,7 @@ The following devices are fully supported:
 * RT-AC66U
 * RT-AC56U
 * RT-AC68U
+* RT-AC68P
 * RT-AC87U
 
 Note that the R (retail SKU) and W (white casing SKU) are also all supported, as they are the same exact hardware and firmware.
