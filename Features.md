@@ -9,6 +9,7 @@ This is a partial list of features and changes that Asuswrt-merlin offers over t
 * Ability to customize the config files used by the router services
 * LED control - put your Dark Knight in Stealth Mode by turning off all LEDs
 * Entware easy setup script (alternative to Optware - the two are mutually exclusive)
+* SNMP support
 
 **Disk sharing:**
 * Optionally use shorter share names (folder name only)
