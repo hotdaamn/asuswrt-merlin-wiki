@@ -27,6 +27,12 @@ Before we can build Asuswrt-Merlin, we need to install packages required that wi
 
 When prompted, enter your password for `sudo` to gain root access to install the packages. Enter 'Y' when prompted to install the packages. When the packages have finished installing, you will be returned back to your command line.
 
+If you have Debian x64 (amd64) edition then you need `lib32z1-dev` and `lib32stdc++6`
+```
+sudo apt-get install lib32z1-dev lib32stdc++6
+```
+
+
 **Note: the following commands assume that you have downloaded the source code into `~/asuswrt-merlin/` as specified in the [Download the latest source code from GitHub](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub) guide on this wiki. If this is not where you have downloaded the source code to, adjust the commands as necessary for your own environment.**
 
 Now we must append to our system's PATH environment variable so the build system can find the toolchain required for cross-compilation. First start by creating a symbolic link to make appending easier:
