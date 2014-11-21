@@ -16,7 +16,7 @@ To setup advertisement filtering on your router, you will need the following:
 
 First, install the necessary packages through Entware:
 
-    opkg install bash wget sed privoxy
+    opkg install bash wget-ssl sed privoxy
 
 Next, download and install the already prepared privoxy configuration file:
 
