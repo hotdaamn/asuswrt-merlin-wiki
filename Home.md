@@ -63,6 +63,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 8. [Network Image Scanning With Sane] (https://github.com/RMerl/asuswrt-merlin/wiki/Network-Scanning-With-Sane)
 9. [delay start of minidlna to wait for the USB disk mount](https://github.com/RMerl/asuswrt-merlin/wiki/delay-start-of-minidlna-to-wait-for-the-USB-disk-mount)
 10. [Setting-up-FreeRadius2-through-Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Setting-up-FreeRadius2-through-Entware)
+11.[User NVRAM Save/Restore](https://github.com/RMerl/asuswrt-merlin/wiki/Can-I-restore-my-settings-after-a-factory-reset%3F--Can-I-restore-my-settings-to-a-different-router%3F)
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
