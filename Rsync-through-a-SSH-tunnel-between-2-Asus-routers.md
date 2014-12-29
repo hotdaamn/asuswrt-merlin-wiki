@@ -1,11 +1,11 @@
-In this tutorial, we will setup a remote backup channel between 2 ASUS routers using Rsync as transporter.
-Rsync is a "classic" linux program used to synchronize efficiently data between two locations.
+In this tutorial, we will learn how to setup a remote backup channel between 2 ASUS routers using Rsync as transporter.
+Rsync is a "classic" linux program used to synchronize efficiently data between two locations. The 2 locations could be "local", even on the same server/router, but our goal being to secure a backup, we will do it to a remote location. We will also secure the transfer itself by using SSH. Secure Shell (SSH) is a cryptographic network protocol for secure data communication, remote command-line login, remote command execution, etc. To make it even more secure, we will use a private/public key schema (instead of id/password).
 
 The routers will be named:
 * RT-1080
 * RT-8075
 
-Both need Rsync installed but RT-1080 will be the "master", i.e. the one responsible for all actions going on between the 2 routers. RT-8075 will be the "slave", just reacting to RT-1080 requests. Each router has a 4TB USB3 disk (on the USB3 port, indeed). Each disk has 2 partitions: 
+Both need Rsync installed. RT-1080 will be the "master", i.e. the one responsible for all actions going on between the 2 routers and RT-8075 will be the "slave", just reacting to RT-1080 requests. Each router has a 4TB USB3 disk (on the USB3 port, indeed). Each disk has 2 partitions: 
 * the data partition and 
 * the "router partition" (~5GB)
 
@@ -25,6 +25,7 @@ Fstab is a special configuration file used to mount the disks. The scripts are e
 * init-start
 * post-mount
 
+Let's start the procedure:
 * Enable ssh on both routers
 * Create an Asus ddns on both routers (xxx.asuscomm.com)
 * Install a terminal to access the router through ssh (Putty or Xshell)
