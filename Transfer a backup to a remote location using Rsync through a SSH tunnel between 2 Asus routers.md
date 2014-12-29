@@ -1,4 +1,5 @@
 In this tutorial, we will learn how to setup a remote backup channel between 2 ASUS routers using Rsync as transporter.
+
 Rsync is a "classic" linux program used to synchronize efficiently data between two locations. The 2 locations could be "local", even on the same server/router, but our goal being to secure a backup, we will do it to a remote location. We will also secure the transfer itself by using SSH. Secure Shell (SSH) is a cryptographic network protocol for secure data communication, remote command-line login, remote command execution, etc. To make it even more secure, we will use a private/public key schema (instead of id/password).
 
 The routers will be named:
@@ -6,7 +7,7 @@ The routers will be named:
 * RT-8075
 
 Both need Rsync installed. RT-1080 will be the "master", i.e. the one responsible for all actions going on between the 2 routers and RT-8075 will be the "slave", just reacting to RT-1080 requests. Each router has a 4TB USB3 disk (on the USB3 port, indeed). Each disk has 2 partitions: 
-* the data partition and 
+* the "data partition" (~4TB)
 * the "router partition" (~5GB)
 
 In order to run Rsync, we will need a swap space because the router memory could be too limited for the process, depending on the size of the backup. The swap space will be set on a file located on the router partition, and optware/rsync will also be installed on that partition. Simply said, Optware is a mechanism that simplifies the installation of some programs on the router.
