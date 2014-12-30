@@ -1,9 +1,9 @@
 ### Introduction
 
-Asuswrt comes with built-in support for numerous tunnelling methods that allows you to get IPv6 support through your IPv4-only ISP.   You can use a 6in4 tunnel provided by Hurricane Electrics.
+Asuswrt comes with built-in support for numerous tunnelling methods that allows you to get IPv6 support through your IPv4-only ISP.   You can use a 6in4 tunnel provided by Hurricane Electric.
 
 
-### Hurricane Electrics (AKA TunnelBroker) service
+### Hurricane Electric (AKA TunnelBroker) service
 
 Signing up for a tunnel with them is free, and simple.  They will provide you with a routed /64 block (meaning you get your own static, fully routed, block of 2^64 IPs).  You can also request a larger block if needed (for example if you want to do some additional subnetting).
 
@@ -18,7 +18,7 @@ Setting up the router is fairly simple.  On the IPv6 section simply select the 6
 
 Also make sure to enable Router Advertisement.  This is what will automatically assign IPv6 addresses to your devices on your LAN, and provide them with routing information (a bit similar to what DHCP does for IPv4, but more advanced).
 
-The next step: you need to somehow tell Hurricane Electrics what your current IPv4 is.  There are two methods.
+The next step: you need to somehow tell Hurricane Electric what your current IPv4 is.  There are two methods.
 
 1) You can use the TunnelBroker option on the DDNS tab.  Just like a regular Dynamic DNS service, this will take care of letting HE know about any IP change.
 
