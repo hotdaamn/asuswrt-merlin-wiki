@@ -13,7 +13,7 @@ Setting up the router is fairly simple.  On the IPv6 section simply select the 6
 * IPv6 client IP = Client IPv6 Address (without the /64 at the end - that is entered below)
 * IPv6 Prefix Lenght will be 64
 * IPv6 Prefix = Routed /64: (without the /64 at the end)
-* Prefix Lenght will be 64
+* Prefix Length will be 64
 * IPv6 DNS Server 1 is optional (if your ISP's DNS support IPv6 resolution), otherwise enter the Anycasted IPv6 Caching Nameserver
 
 Also make sure to enable Router Advertisement.  This is what will automatically assign IPv6 addresses to your devices on your LAN, and provide them with routing information (a bit similar to what DHCP does for IPv4, but more advanced).
