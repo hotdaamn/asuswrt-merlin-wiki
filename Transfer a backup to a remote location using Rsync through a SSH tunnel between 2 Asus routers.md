@@ -1,7 +1,7 @@
 Before going further, please note that you may prefer (if it works) use the builtin feature:
 ![Builtin](https://cloud.githubusercontent.com/assets/3483165/5582361/bf776b74-9036-11e4-9844-85912b2993a0.png)
 
-In this tutorial, we will learn how to setup a remote backup channel between 2 ASUS routers using Rsync as transporter.
+That said, in the following tutorial, we will learn how to setup the transfer of a backup to a remote site using a ssh channel between 2 ASUS routers using Rsync as transporter.
 
 [Rsync](http://en.wikipedia.org/wiki/Rsync) is a "classic" linux program used to synchronize/copy efficiently data between two locations. The 2 locations could be "local", even on the same server/router, but our goal being to secure a backup, we will do it to a remote location. We will also secure the transfer itself by using [SSH ](http://en.wikipedia.org/wiki/Secure_Shell). Secure Shell (SSH) is a cryptographic network protocol for secure data communication, remote command-line login, remote command execution, etc. To make it even more secure, we will use a private/public key schema (instead of id/password).
 
@@ -85,7 +85,7 @@ On the RT-8075 (remote)
  * Apply the changes
  * Reboot the router (to apply the jffs re-formating)
 * Create an Asus ddns (xxx.asuscomm.com)
- * https://cloud.githubusercontent.com/assets/3483165/5582292/5fa50a4a-9035-11e4-810b-802bd24aa0c7.png
+ * ![a](https://cloud.githubusercontent.com/assets/3483165/5582292/5fa50a4a-9035-11e4-810b-802bd24aa0c7.png)
 * Install Optware (by installing, and then removing, Download Master)
 * Install a terminal to access the router through ssh (Putty or Xshell)
 * Connect to the router
