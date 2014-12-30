@@ -35,14 +35,19 @@ We will go first with the most simple approach:
 
 Let's start the procedure: (draft)
 
+***
 On RT-1080 (local):
 * Connect a USB disk (ideally usb 3) on one of the usb port (ideally the usb 3 port if you use a usb3 disk...)
 * Create a share/folder "Backup" for the local backup
 * Create a share/folder "Backup-8075" for storing the remote backup
 * Create a share/folder "Router" for the route/system needs
-* Enable ssh
-* Enable JFFS
-* Format JFFS
+* Enable ssh and jffs and format jffs
+ 1. Select Administration on the left menu
+ 2. Select System tab
+ 3. Enable JFFS partition
+ 4. Ask to format the JFFS partition at the next boot
+ 5. Enable SSH
+* ![ssh](https://cloud.githubusercontent.com/assets/3483165/5581944/b00b9806-902f-11e4-90c9-c783b87807d3.png)
 * Create an Asus ddns (xxx.asuscomm.com)
 * Install Optware (by installing, and then removing, Download Master)
 * Install a terminal to access the router through ssh (Putty or Xshell)
@@ -55,14 +60,21 @@ On RT-1080 (local):
 * Create the Rsync script
 * Schedule backup
 
+***
 On the RT-8075 (remote)
-* * Connect a USB disk (ideally usb 3) on one of the usb port (ideally the usb 3 port if you use a usb3 disk...)
+* Connect a USB disk (ideally usb 3) on one of the usb port (ideally the usb 3 port if you use a usb3 disk...)
 * Create a share/folder "Backup" for the local backup
 * Create a share/folder "Backup-8075" for storing the remote backup
 * Create a share/folder "Router" for the route/system needs
-* Enable ssh
-* Enable JFFS
-* Format JFFS
+* Enable ssh and jffs and format jffs
+ 1. Select Administration on the left menu
+ 2. Select System tab
+ 3. Enable JFFS partition
+ 4. Ask to format the JFFS partition at the next boot
+ 5. Enable SSH
+ 6. Allow SSH from WAN
+ 7. Disallow SSH login (will use private&public keys instead of logging)
+* ![JFFS&SSH](https://cloud.githubusercontent.com/assets/3483165/5581975/34677f0c-9030-11e4-922f-809fa46b5a9c.png)
 * Create an Asus ddns (xxx.asuscomm.com)
 * Install Optware (by installing, and then removing, Download Master)
 * Install a terminal to access the router through ssh (Putty or Xshell)
@@ -78,5 +90,18 @@ Then:
 * Create and install the private and public rsa keys for both routers (using Easy-RSA)
 * Test the keys to make sure it's possible to login without a password
 
+Please execute first your rsync commands manually:
+1. to make sure that there is no syntax error in the command
+2. to confirm if you need a swap space or not
+
+If you get an error about a problem with the memory space (either from then sender or the receiver), then you will need to create a swap space on both ends.
+Because it is easier, and there is no penalty to do it that way, we will create a swap file, instead of a swap partition.
+
+To create a swap file on RT-1080 (local):
+* ...
+* ...
+* ...
+
+Repeat the procedure on RT-8075 (remote)
 chmod a+rx /jffs/scripts/services-start
 /jffs/scripts/services-start
