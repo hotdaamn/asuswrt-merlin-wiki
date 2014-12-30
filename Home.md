@@ -47,7 +47,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 2. [How to use Adblock Plus filter subscriptions to provide advertisement filtering to devices] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-use-Adblock-Plus-filter-subscriptions-to-provide-advertisement-filtering-to-devices)
 3. [Secure DNS queries using DNSCrypt]
 (https://github.com/RMerl/asuswrt-merlin/wiki/Secure-DNS-queries-using-DNSCrypt)
-4. [Setting up an IPv6 tunnel through Hurricane Electrics] (https://github.com/RMerl/asuswrt-merlin/wiki/IPv6-tunnelling)
+4. [Setting up an IPv6 tunnel through Hurricane Electric] (https://github.com/RMerl/asuswrt-merlin/wiki/IPv6-tunnelling)
 5. [How to dedicate SSID for VPN and SSID for regular ISP using OpenVPN] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-OpenVPN.)
 6. [How to use ipset to block connections from Tor nodes or some countries] (https://github.com/RMerl/asuswrt-merlin/wiki/Using-ipset)
 7. [Link Aggregation Setup](https://github.com/RMerl/asuswrt-merlin/wiki/Link-Aggregation)
