@@ -1,7 +1,7 @@
 Before going further, please note that you may prefer (if it works) use the builtin feature:
 ![Builtin](https://cloud.githubusercontent.com/assets/3483165/5582361/bf776b74-9036-11e4-9844-85912b2993a0.png)
 
-That said, in the following tutorial, we will learn how to setup the transfer of a backup to a remote site using a ssh channel between 2 ASUS routers using Rsync as transporter.
+That said, in the following tutorial, we will learn how to setup the transfer of a backup to a remote site using a ssh channel between 2 ASUS routers and Rsync as transporter.
 
 [Rsync](http://en.wikipedia.org/wiki/Rsync) is a "classic" linux program used to synchronize/copy efficiently data between two locations. The 2 locations could be "local", even on the same server/router, but our goal being to secure a backup, we will do it to a remote location. We will also secure the transfer itself by using [SSH ](http://en.wikipedia.org/wiki/Secure_Shell). Secure Shell (SSH) is a cryptographic network protocol for secure data communication, remote command-line login, remote command execution, etc. To make it even more secure, we will use a private/public key schema (instead of id/password).
 
@@ -12,6 +12,8 @@ The routers will be named:
 Both need Rsync installed. RT-1080 will be the "master", i.e. the one responsible for all actions going on between the 2 routers and RT-8075 will be the "slave", just reacting to RT-1080 requests. Each router has a 4TB USB3 disk (on the USB3 port, indeed). Each disk has 2 partitions: 
 * the "data partition" (~4TB)
 * the "router partition" (~5GB)
+
+> **Please note that you don't really need the "router partition".**
 
 In order to run Rsync, we will possibly need a [swap space](http://en.wikipedia.org/w/index.php?title=Paging) because the router memory could be too limited for the process, depending on the size of the backup. If required, the swap space will be set on a file located on the router partition, and optware/rsync will also be installed on that partition. Simply said, Optware is a mechanism that simplifies the installation of some programs on the router.
 
@@ -43,7 +45,7 @@ On RT-1080 (local):
 * Connect a USB disk (ideally usb 3) on one of the usb port (ideally the usb 3 port if you use a usb3 disk...)
 * Create a share/folder "Backup" for the local backup
 * Create a share/folder "Backup-8075" for storing the remote backup
-* Create a share/folder "Router" for the route/system needs
+* Create a share/folder "Router" for the route/system needs **(not absolutely needed)**
  * ![CreateShares1](https://cloud.githubusercontent.com/assets/3483165/5582437/aa41c190-9037-11e4-97c4-415e61fc668d.png)
  * ![shares](https://cloud.githubusercontent.com/assets/3483165/5582530/12526d38-9039-11e4-9113-d1f8a4f862fc.png)
 * Enable ssh and jffs and format jffs
@@ -56,17 +58,29 @@ On RT-1080 (local):
  * Apply the changes
  * Reboot the router (to apply the jffs formating)
   * ![boot](https://cloud.githubusercontent.com/assets/3483165/5582239/46bcdd56-9034-11e4-8e32-d40e7083f410.png)
-* Install Optware (by installing, and then removing, Download Master)
+* Install Optware (by installing, and then removing, Download Master if not required)
  * ![a](https://cloud.githubusercontent.com/assets/3483165/5582683/3c80bafe-903b-11e4-9187-3676d024ee02.png)
  * ![a](https://cloud.githubusercontent.com/assets/3483165/5582702/78c8d78a-903b-11e4-87db-e9b8f426a3fb.png)
+   * The router will propose one or two usb devices to make the installation. Select one and proceed.
  * ![a](https://cloud.githubusercontent.com/assets/3483165/5582769/949a3eb2-903c-11e4-96cf-0886efa99e43.png)
+   * Depending if you really need Dowmnload master (a tool mainly used to download torrents ?), you can install it right away. This installation was just was the easiest way to install Optware.
  * ![a](https://cloud.githubusercontent.com/assets/3483165/5582803/0605f3de-903d-11e4-8af4-4da2337d4966.png)
+ * Here is an alternate way for the Optware installation: [https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE](https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
 * Install a terminal to access the router through ssh (Putty or Xshell)
 * Connect to the router
 * Create two sub-folders to the jffs folder:
  * config
+  * fstab
+   * ...
  * scripts
+  * post-mount
+`   * ...`
+   `* ...`
+   `* ...`
+   `* ...`
 * Install Rsync
+> 
+
 * Create a script to run at boot time to schedule the backup
 * Create the Rsync script
 * Schedule backup
