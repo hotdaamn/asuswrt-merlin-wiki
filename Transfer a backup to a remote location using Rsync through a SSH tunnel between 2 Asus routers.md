@@ -29,16 +29,29 @@ We will also use
 
 [Fstab](http://en.wikipedia.org/wiki/Fstab) is a linux configuration file used to mount the disks. This file will be stored in the folder **Config** located under **JFFS**. The scripts are event-triggered and will be used to initiate some actions on the router reboot, and on the post-mount of the disk/partitions. The scripts are located under the folder "**scripts**" also under **JFFS**. Therefore, when backing up the JFFS space, we will at the same time backup **fstab** and the **scripts**.
 
+We will go first with the most simple approach:
+* using the backup disk as "system disk", meaning that we will use the usb backup disk to install all the required elements.
+* not creating the swap space (which could be not required if the backup is not "that big".
+
 Let's start the procedure: (to be completed)
-* Enable ssh on both routers
-* Create an Asus ddns on both routers (xxx.asuscomm.com)
-* Install a terminal to access the router through ssh (Putty or Xshell)
-* Connect to the router
+
+On RT-1080:
+* Connect a USB disk (ideally usb 3) on one of the usb port (ideally the usb 3 port if you use a usb3 disk...)
+* Create a share/folder "Backup" for the local backup
+* Create a share/folder "Backup-8075" for storing the remote backup
+* Create a share/folder "Router" for the route/system needs
+* Enable ssh
 * Enable JFFS
 * Format JFFS
+* Create an Asus ddns (xxx.asuscomm.com)
 * Install Optware (by installing, and then removing, Download Master)
+* Install a terminal to access the router through ssh (Putty or Xshell)
+* Connect to the router
+* Create two sub-folders to the jffs folder:
+ *config
+ *scripts
 * Install Rsync
-* Create and install private and public rsa keys for both routers (using Easy-RSA)
+* Create and install the private and public rsa keys for both routers (using Easy-RSA)
 * Test the keys to make sure it's possible to login without a password
 * Create a script to run at boot time to schedule the backup
 * Create the Rsync script
