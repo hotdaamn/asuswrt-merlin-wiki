@@ -1,3 +1,6 @@
+Before going further, please note that you may prefer (if it works) use the builtin feature:
+![Builtin](https://cloud.githubusercontent.com/assets/3483165/5582361/bf776b74-9036-11e4-9844-85912b2993a0.png)
+
 In this tutorial, we will learn how to setup a remote backup channel between 2 ASUS routers using Rsync as transporter.
 
 [Rsync](http://en.wikipedia.org/wiki/Rsync) is a "classic" linux program used to synchronize/copy efficiently data between two locations. The 2 locations could be "local", even on the same server/router, but our goal being to secure a backup, we will do it to a remote location. We will also secure the transfer itself by using [SSH ](http://en.wikipedia.org/wiki/Secure_Shell). Secure Shell (SSH) is a cryptographic network protocol for secure data communication, remote command-line login, remote command execution, etc. To make it even more secure, we will use a private/public key schema (instead of id/password).
@@ -31,7 +34,7 @@ We will also use
 
 We will go first with the most simple approach:
 * using the backup disk as "system disk", meaning that we will use the usb backup disk to install all the required elements.
-* not creating the swap space (which could be not required if the backup is not "that big".
+* not creating the swap space (which could be not required if the backup is not "that big").
 
 Let's start the procedure: (draft)
 
@@ -41,14 +44,18 @@ On RT-1080 (local):
 * Create a share/folder "Backup" for the local backup
 * Create a share/folder "Backup-8075" for storing the remote backup
 * Create a share/folder "Router" for the route/system needs
+ * ![CreateShares1](https://cloud.githubusercontent.com/assets/3483165/5582437/aa41c190-9037-11e4-97c4-415e61fc668d.png)
+ * ![shares](https://cloud.githubusercontent.com/assets/3483165/5582530/12526d38-9039-11e4-9113-d1f8a4f862fc.png)
 * Enable ssh and jffs and format jffs
  1. Select Administration on the left menu
  2. Select System tab
  3. Enable JFFS partition
  4. Ask to format the JFFS partition at the next boot
  5. Enable SSH
-* ![ssh](https://cloud.githubusercontent.com/assets/3483165/5581944/b00b9806-902f-11e4-90c9-c783b87807d3.png)
-* Create an Asus ddns (xxx.asuscomm.com)
+ * ![ssh](https://cloud.githubusercontent.com/assets/3483165/5581944/b00b9806-902f-11e4-90c9-c783b87807d3.png)
+ * Apply the changes
+ * Reboot the router (to apply the jffs formating)
+  * ![boot](https://cloud.githubusercontent.com/assets/3483165/5582239/46bcdd56-9034-11e4-8e32-d40e7083f410.png)
 * Install Optware (by installing, and then removing, Download Master)
 * Install a terminal to access the router through ssh (Putty or Xshell)
 * Connect to the router
@@ -75,7 +82,10 @@ On the RT-8075 (remote)
  6. Allow SSH from WAN
  7. Disallow SSH login (will use private&public keys instead of logging)
 * ![JFFS&SSH](https://cloud.githubusercontent.com/assets/3483165/5581975/34677f0c-9030-11e4-922f-809fa46b5a9c.png)
+ * Apply the changes
+ * Reboot the router (to apply the jffs re-formating)
 * Create an Asus ddns (xxx.asuscomm.com)
+ * https://cloud.githubusercontent.com/assets/3483165/5582292/5fa50a4a-9035-11e4-810b-802bd24aa0c7.png
 * Install Optware (by installing, and then removing, Download Master)
 * Install a terminal to access the router through ssh (Putty or Xshell)
 * Connect to the router
