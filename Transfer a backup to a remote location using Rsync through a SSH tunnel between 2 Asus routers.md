@@ -57,6 +57,10 @@ On RT-1080 (local):
  * Reboot the router (to apply the jffs formating)
   * ![boot](https://cloud.githubusercontent.com/assets/3483165/5582239/46bcdd56-9034-11e4-8e32-d40e7083f410.png)
 * Install Optware (by installing, and then removing, Download Master)
+ * ![a](https://cloud.githubusercontent.com/assets/3483165/5582683/3c80bafe-903b-11e4-9187-3676d024ee02.png)
+ * ![a](https://cloud.githubusercontent.com/assets/3483165/5582702/78c8d78a-903b-11e4-87db-e9b8f426a3fb.png)
+ * ![a](https://cloud.githubusercontent.com/assets/3483165/5582769/949a3eb2-903c-11e4-96cf-0886efa99e43.png)
+ * ![a](https://cloud.githubusercontent.com/assets/3483165/5582803/0605f3de-903d-11e4-8af4-4da2337d4966.png)
 * Install a terminal to access the router through ssh (Putty or Xshell)
 * Connect to the router
 * Create two sub-folders to the jffs folder:
