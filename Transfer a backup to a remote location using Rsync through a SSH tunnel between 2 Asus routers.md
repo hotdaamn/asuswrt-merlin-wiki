@@ -212,7 +212,8 @@ On the RT-8075 (remote)
 
 Then:
 * Create and install the private and public rsa keys for both routers (using Easy-RSA)
-* Test the keys to make sure it's possible to login without a password
+* Test the keys to make sure it's possible to login on the remote (RT-8075) without a password
+> *ssh 
 
 At the RT-1080 ssh terminal, please execute each rsync commands manually, the ones on the post-mount script:
 
@@ -222,7 +223,7 @@ At the RT-1080 ssh terminal, please execute each rsync commands manually, the on
 If you get an error about the memory space (either from then sender or the receiver), then you will need to create a swap space on both ends. Because it is easier, and there is no penalty to do it that way, we will create a swap file, instead of a swap partition.
 
 To create a swap file of 1GB on RT-1080 (local, directly on the main partition) (for 512MB, replace the 1024 with 512), enter the following commands at the ssh terminal connected to the router (wait for each command to complete; the first one could take a few minutes):
-* dd if=/dev/zero of=/mnt/My_Book/myswapfile bs=1M count=1024
+* dd if=/dev/zero of=/mnt/RT-1080/myswapfile bs=1M count=1024
 * chmod 600 /mnt/RT-1080/myswapfile
 * mkswap /mnt/RT-1080/myswapfile
 * swapon /mnt/RT-1080/myswapfile
