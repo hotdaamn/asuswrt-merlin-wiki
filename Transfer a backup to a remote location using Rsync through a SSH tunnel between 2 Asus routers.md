@@ -96,10 +96,11 @@ We will go first with the most simple approach:
 > Optionally you can also install WinSCP on your PC to create folders and edit the files on the router (instead of using a line editor like Vi or Nano on the ssh terminal)
 
 * Connect the terminal to the router (usually 192.168.1.1, or router.asus.com)
-* Using the terminal (or WINscp), create two sub-folders to the jffs folder:
+* Using the terminal (or WINscp), create 3 sub-folders to the jffs folder:
 
  * **config**
  * **scripts**
+ * **dropbear**
 
 * In the **scripts** folder, create the file **post-mount** . Here is my own script. If you use it, please replace aaaa with the router **admin id**, XXXX with the remote router port number, and ZZZZ with the remote router ddns name):
 
