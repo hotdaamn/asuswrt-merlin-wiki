@@ -83,9 +83,14 @@ On RT-1080 (local):
   * Depending if you really need Dowmnload Master (a tool mainly used to download torrents ?), you can uninstall it right away. This procedure was just the easiest way to install Optware (by installing Download Master, you automatically install Optware).
  * ![a](https://cloud.githubusercontent.com/assets/3483165/5582803/0605f3de-903d-11e4-8af4-4da2337d4966.png)
 
+
+***
 > * Here is an alternate way for the Optware installation: 
 > [https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE]
 > (https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
+
+***
+
 
 * Install a terminal to access the router through ssh (Putty or Xshell) on your PC
 > Optionally you can also install WinSCP on your PC to create folders and edit the files on the router (instead of using a line editor like Vi or Nano on the ssh terminal)
@@ -96,7 +101,7 @@ On RT-1080 (local):
  * **config**
  * **scripts**
 
-* In the **scripts** folder, create the file **post-mount** . Here is my own script. If yoy use it, please replace aaaa with the router admin id, XXXX with the remote router port number, and ZZZZ with the remote router ddns name):
+* In the **scripts** folder, create the file **post-mount** . Here is my own script. If you use it, please replace aaaa with the router **admin id**, XXXX with the remote router port number, and ZZZZ with the remote router ddns name):
 
 > `#!/bin/sh`
 
@@ -108,7 +113,7 @@ On RT-1080 (local):
 
 >  `swapon /tmp/mnt/RT-1080/myswapfile`
 
-> `#Set the _swappiness _. This is the parameter that decice how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60`
+> `#Set the _swappiness _ . This is the parameter that decice how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60`
 
 >  `echo 20 > /proc/sys/vm/swappiness`
 
@@ -130,15 +135,15 @@ On RT-1080 (local):
 
 >  `cru a backup8075to1080 "0 4 * * * rsync -avz -e 'ssh -p XXXX -i /jffs/dropbear/dropbear_rsa_host_key' --log-file=/mnt/My_Book/Backup-logs/backup8075to1080.log  aaaaa@ZZZZZ.asuscomm.com:/mnt/My_Book/Backup/ /mnt/My_Book/Backup-8075"`
 
-> `#make a backup of RT-1080 **jffs** 4 times a day`
+> `#make a backup of RT-1080 **jffs** a few times a day`
 
 >   `cru a backupjffs1080 "0 8,12,18,23 * * * rsync -av --log-file=/mnt/My_Book/Backup-logs/rsync-jffs-1080.log  /jffs /mnt/My_Book/Backup/RT-1080"`
 
-> `#make a backup of RT-8075 **jffs** 4 times a day`
+> `#make a backup of RT-8075 **jffs** a few times a day`
 
 >   `cru a backupjffs8075 "30 8,12,18,23 * * * rsync -avz -e 'ssh -p XXXX-i /jffs/dropbear/dropbear_rsa_host_key' --log-file=/mnt/My_Book/Backup-logs/rsync-jffs-8075.log  aaaaa@YYYYYY.asuscomm.com:/jffs /mnt/My_Book/Backup/bckp-8075"`
 
-> `#make a backup of "known_hosts" 4 times a day`
+> `#make a backup of "known_hosts" a few times a day`
 
 >  `cru a backupknown_hosts "45 8,12,18,23 * * * rsync -avz --log-file=/mnt/My_Book/Backup-logs/backup-known_hosts.log  /root/.ssh/ /mnt/My_Book/Backup/RT-1080/ssh"`
 
@@ -155,6 +160,10 @@ On RT-1080 (local):
 > `mkdir -p /tmp/mnt/My_Book`
 >
 > `mkdir -p /tmp/mnt/RT-1080`
+
+
+* When the scripts are done, to make them executable, on the ssh terminal enter:
+> `chmod a+rx /jffs/scripts/*`
 
 * In the **config** folder, create the file **fstab**. Here is my own content:
 
@@ -191,8 +200,7 @@ On the RT-8075 (remote)
 * Create an Asus ddns (xxx.asuscomm.com)
 * ![a](https://cloud.githubusercontent.com/assets/3483165/5582292/5fa50a4a-9035-11e4-810b-802bd24aa0c7.png)
 * Install Optware (by installing, and then removing, Download Master)
-* Install a terminal to access the router through ssh (Putty or Xshell)
-* Connect to the router
+* Connect the ssh terminal to the router.
 * Create two sub-folders to the jffs folder:
  * config
  * scripts
@@ -200,25 +208,32 @@ On the RT-8075 (remote)
 * Install Rsync
 
 
+***
+
 Then:
 * Create and install the private and public rsa keys for both routers (using Easy-RSA)
 * Test the keys to make sure it's possible to login without a password
 
-Please execute first your rsync commands manually:
+At the RT-1080 ssh terminal, please execute each rsync commands manually, the ones on the post-mount script:
 
 1. to make sure that there is no syntax error in the command
 2. to confirm if you need a swap space or not
 
-If you get an error about the memory space (either from then sender or the receiver), then you will need to create a swap space on both ends.
-Because it is easier, and there is no penalty to do it that way, we will create a swap file, instead of a swap partition.
+If you get an error about the memory space (either from then sender or the receiver), then you will need to create a swap space on both ends. Because it is easier, and there is no penalty to do it that way, we will create a swap file, instead of a swap partition.
 
-To create a swap file on RT-1080 (local):
-* ...
-* ...
-* ...
+To create a swap file of 1GB on RT-1080 (local, directly on the main partition) (for 512MB, replace the 1024 with 512), enter the following commands at the ssh terminal connected to the router (wait for each command to complete; the first one could take a few minutes):
+* dd if=/dev/zero of=/mnt/My_Book/myswapfile bs=1M count=1024
+* chmod 600 /mnt/RT-1080/myswapfile
+* mkswap /mnt/RT-1080/myswapfile
+* swapon /mnt/RT-1080/myswapfile
+* free
+**              total         used         free       shared      buffers
+** Mem:        255776        85644       170132            0          768
+** -/+ buffers:              84876       170900
+** Swap:      1048572            0      1048572
 
-Repeat the procedure on RT-8075 (remote)
-chmod a+rx /jffs/scripts/services-start
-/jffs/scripts/services-start
+Repeat the procedure on RT-8075 (the remote), and then test again the rsync commands.
+
+
 
 Gaston Huot
