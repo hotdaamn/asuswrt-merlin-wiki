@@ -67,19 +67,78 @@ On RT-1080 (local):
  * ![a](https://cloud.githubusercontent.com/assets/3483165/5582803/0605f3de-903d-11e4-8af4-4da2337d4966.png)
  * Here is an alternate way for the Optware installation: [https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE](https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
 * Install a terminal to access the router through ssh (Putty or Xshell)
-* Connect to the router
+* Connect to the router (usually 192.168.1.1, or https://router.asus.com)
 * Create two sub-folders to the jffs folder:
  * config
   * fstab
    * ...
  * scripts
   * post-mount
-`   * ...`
-   `* ...`
-   `* ...`
-   `* ...`
+#!/bin/sh
+#based on http://forums.smallnetbuilder.com/showthread.php?p=62259 from @joegreat
+#
+if [ $1 = "/tmp/mnt/Routeur" ]    # check si c'est le post-mount de la partition réservée au routeur
+then
+ #Active le swap space
+ # touch /tmp/activeswap.txt 
+  swapon /tmp/mnt/Routeur/myswapfile
+ #Fixe le swappiness qui est le paramètre qui détermine le degré d'agressivité du processus de swap. Peut varier de 0 à 100. À 0 le routeur ne va swapper que si manque total de mémoire. Par défaut: 60
+  echo 20 > /proc/sys/vm/swappiness
+fi
+#
+if [ $1 = "/tmp/mnt/My_Book" ]    # check si c'est le post-mount de My_Book USB drive
+then
+ #récupère les "known_hosts"
+  rsync -avz --log-file=/mnt/My_Book/Backup-logs/backup-known_hosts.log /mnt/My_Book/Backup/1080-AsusRouter/ssh/ /root/.ssh
+ #cédule le backup externe du 1080 vers le 8075
+  cru a backup1080to8075 "0 0 * * * rsync -avz -e 'ssh -p 1220 -i /jffs/dropbear/dropbear_rsa_host_key' --log-file=/mnt/My_Book/Backup-logs/backup1080to8075.log  /mnt/My_Book/Backup/ admin@boudor.asuscomm.com:/mnt/My_Book/Backup-1080"
+ #cédule le backup externe du 8075 vers le 1080
+  cru a backup8075to1080 "0 4 * * * rsync -avz -e 'ssh -p 1220 -i /jffs/dropbear/dropbear_rsa_host_key' --log-file=/mnt/My_Book/Backup-logs/backup8075to1080.log  admin@boudor.asuscomm.com:/mnt/My_Book/Backup/ /mnt/My_Book/Backup-8075"
+ #kill rsync tôt le matin pour ne pas nuire aux performances
+  cru a killbackup "0 7 * * * killall rsync"  
+ #fait un backup de la partition permanente jffs du 1080 4 fois par jour
+   cru a backupjffs1080 "0 8,12,18,23 * * * rsync -av --log-file=/mnt/My_Book/Backup-logs/rsync-jffs-1080.log  /jffs /mnt/My_Book/Backup/1080-AsusRouter"
+ #fait un backup de la partition permanente jffs du 8075 4 fois par jour
+   cru a backupjffs8075 "30 8,12,18,23 * * * rsync -avz -e 'ssh -p 1220 -i /jffs/dropbear/dropbear_rsa_host_key' --log-file=/mnt/My_Book/Backup-logs/rsync-jffs-8075.log  admin@boudor.asuscomm.com:/jffs /mnt/My_Book/Backup/8075-AsusRouter"
+ #fait un backup des "known_hosts" 4 fois par jour
+  cru a backupknown_hosts "45 8,12,18,23 * * * rsync -avz --log-file=/mnt/My_Book/Backup-logs/backup-known_hosts.log  /root/.ssh/ /mnt/My_Book/Backup/1080-AsusRouter/ssh"
+fi
+exit $?
+    `#!/bin/sh
+#based on http://forums.smallnetbuilder.com/showthread.php?p=62259 from @joegreat
+#
+if [ $1 = "/tmp/mnt/Routeur" ]    # check si c'est le post-mount de la partition réservée au routeur
+then
+ #Active le swap space
+ # touch /tmp/activeswap.txt 
+  swapon /tmp/mnt/Routeur/myswapfile
+ #Fixe le swappiness qui est le paramètre qui détermine le degré d'agressivité du processus de swap. Peut varier de 0 à 100. À 0 le routeur ne va swapper que si manque total de mémoire. Par défaut: 60
+  echo 20 > /proc/sys/vm/swappiness
+fi
+#
+if [ $1 = "/tmp/mnt/My_Book" ]    # check si c'est le post-mount de My_Book USB drive
+then
+ #récupère les "known_hosts"
+  rsync -avz --log-file=/mnt/My_Book/Backup-logs/backup-known_hosts.log /mnt/My_Book/Backup/1080-AsusRouter/ssh/ /root/.ssh
+ #cédule le backup externe du 1080 vers le 8075
+  cru a backup1080to8075 "0 0 * * * rsync -avz -e 'ssh -p 1220 -i /jffs/dropbear/dropbear_rsa_host_key' --log-file=/mnt/My_Book/Backup-logs/backup1080to8075.log  /mnt/My_Book/Backup/ admin@boudor.asuscomm.com:/mnt/My_Book/Backup-1080"
+ #cédule le backup externe du 8075 vers le 1080
+  cru a backup8075to1080 "0 4 * * * rsync -avz -e 'ssh -p 1220 -i /jffs/dropbear/dropbear_rsa_host_key' --log-file=/mnt/My_Book/Backup-logs/backup8075to1080.log  admin@boudor.asuscomm.com:/mnt/My_Book/Backup/ /mnt/My_Book/Backup-8075"
+ #kill rsync tôt le matin pour ne pas nuire aux performances
+  cru a killbackup "0 7 * * * killall rsync"  
+ #fait un backup de la partition permanente jffs du 1080 4 fois par jour
+   cru a backupjffs1080 "0 8,12,18,23 * * * rsync -av --log-file=/mnt/My_Book/Backup-logs/rsync-jffs-1080.log  /jffs /mnt/My_Book/Backup/1080-AsusRouter"
+ #fait un backup de la partition permanente jffs du 8075 4 fois par jour
+   cru a backupjffs8075 "30 8,12,18,23 * * * rsync -avz -e 'ssh -p 1220 -i /jffs/dropbear/dropbear_rsa_host_key' --log-file=/mnt/My_Book/Backup-logs/rsync-jffs-8075.log  admin@boudor.asuscomm.com:/jffs /mnt/My_Book/Backup/8075-AsusRouter"
+ #fait un backup des "known_hosts" 4 fois par jour
+  cru a backupknown_hosts "45 8,12,18,23 * * * rsync -avz --log-file=/mnt/My_Book/Backup-logs/backup-known_hosts.log  /root/.ssh/ /mnt/My_Book/Backup/1080-AsusRouter/ssh"
+fi
+exit $?
+`
+
+
 * Install Rsync
-> 
+> ipkg install rsync
 
 * Create a script to run at boot time to schedule the backup
 * Create the Rsync script
