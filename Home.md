@@ -5,9 +5,9 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 ### About
 1. [About Asuswrt and Asuswrt-merlin](https://github.com/RMerl/asuswrt-merlin/wiki/About-Asuswrt/)
 2. [Features](https://github.com/RMerl/asuswrt-merlin/wiki/Features)
-3. [Screenshots](http://www.lostrealm.ca/tower/node/134) (External link)
+3. [Screenshots](http://asuswrt.lostrealm.ca/screenshots) (External link)
 4. [Supported devices](https://github.com/RMerl/asuswrt-merlin/wiki/Supported-Devices)
-5. [Changelog](http://www.lostrealm.ca/asuswrt-merlin/changelog.txt) (External link)
+5. [Changelog](http://asuswrt.lostrealm.ca/changelog) (External link)
 6. [Installation](https://github.com/RMerl/asuswrt-merlin/wiki/Installation)
 7. [Reverting](https://github.com/RMerl/asuswrt-merlin/wiki/Reverting/)
 
