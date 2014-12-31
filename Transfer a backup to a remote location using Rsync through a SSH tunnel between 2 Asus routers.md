@@ -232,19 +232,21 @@ At the RT-1080 ssh terminal, please execute each rsync commands manually, the on
 If you get an error about the memory space (either from then sender or the receiver), then you will need to create a swap space on both ends. Because it is easier, and there is no penalty to do it that way, we will create a swap file, instead of a swap partition.
 
 > To create a swap file of 1GB on RT-1080 (local, directly on the main partition) (for 512MB, replace the 1024 with 512), enter the following commands at the ssh terminal connected to the router (wait for each command to complete; the first one could take a few minutes):
-> * dd if=/dev/zero of=/mnt/RT-1080/myswapfile bs=1M count=1024
-> * chmod 600 /mnt/RT-1080/myswapfile
-> * mkswap /mnt/RT-1080/myswapfile
-> * swapon /mnt/RT-1080/myswapfile
-> * free
-> Output of the free command:
-> **                 total         used         free       shared      buffers
+> * `dd if=/dev/zero of=/mnt/RT-1080/myswapfile bs=1M count=1024`
+> * `chmod 600 /mnt/RT-1080/myswapfile`
+> * `mkswap /mnt/RT-1080/myswapfile`
+> * `swapon /mnt/RT-1080/myswapfile`
+> * `free`
+>
+> Output of the **free **command:
+>
+> `**                 total         used         free       shared      buffers`
+>
+> `**    Mem:        255776          85644         170132            0          768`
+>
+> `**    -/+ buffers:                84876         170900`
 
-> **    Mem:        255776          85644         170132            0          768
-
-> **    -/+ buffers:                84876         170900
-
-> **     Swap:      1048572              0        1048572
+> `**     Swap:      1048572              0        1048572`
 
 If the swap line shows anything except "0" under Total, then the swap is ok.
 
