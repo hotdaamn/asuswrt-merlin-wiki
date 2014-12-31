@@ -28,11 +28,11 @@ Both need Rsync installed. RT-1080 is the "master", i.e. the one responsible for
 
 To **Rsync**, you will possibly need a [swap space](http://en.wikipedia.org/w/index.php?title=Paging) because the router memory could be too limited for the process, depending on the size of the backup. If required, the swap space could be set on a file located on the router partition. Optware/rsync is also installed on that partition. Simply said, [Optware](http://en.wikipedia.org/wiki/Optware) is a mechanism that simplifies the installation of some programs on the router.
 
-The data partition is used to receive:
+The data partition contains:
 * the local backup: bckp-1080
 * the remote backup: bckp-8075
 
-In my specific case, [Windows File History](http://www.pcmag.com/article2/0,2817,2418904,00.asp) is the tool used to backup two local PC on RT-1080, and same thing on the remote side, on RT-8075.  The goal is therefore to send bckp-1080 to RT-18075, and bckp-8075 to RT-1080. The backups will be scheduled to run daily at night using CRON. [CRON](http://en.wikipedia.org/wiki/Cron) is the standard Linux tool used to schedule processes on a periodic way.
+In my specific case, [Windows File History](http://www.pcmag.com/article2/0,2817,2418904,00.asp) is the tool used to backup two local PC on RT-1080, and same thing on the remote side, on RT-8075.  The goal is therefore to send bckp-1080 to RT-8075, and bckp-8075 to RT-1080. The backups will be scheduled to run daily at night using CRON. [CRON](http://en.wikipedia.org/wiki/Cron) is the standard Linux tool used to schedule processes on a periodic way.
 The CRU command will be used to setup the CRON job.
 
 I also use 
@@ -106,13 +106,13 @@ We will go first with the most simple approach:
 
 > `#!/bin/sh`
 
-> `if [  = "/tmp/mnt/RT-1080" ]    # check if it is the post-mount of the partition reserved for the router`
+> `if [  = "/tmp/mnt/RT-1080_rt" ]    # check if it is the post-mount of the partition reserved for the router`
 
 > `then`
 
 > `#Turn on the swap space`
 
->  `swapon /tmp/mnt/RT-1080/myswapfile`
+>  `swapon /tmp/mnt/RT-1080_rt/myswapfile`
 
 > `#Set the _swappiness _ . This is the parameter that decice how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60`
 
@@ -120,13 +120,13 @@ We will go first with the most simple approach:
 
 > `fi`
 
-> `if [  = "/tmp/mnt/My_Book" ]    # check if it is the post mount of the main disk`
+> `if [  = "/tmp/mnt/RT-1080" ]    # check if it is the post mount of the main disk`
 
 > `then`
 
 > `#first, bring back the "known_hosts"`
 
->  `rsync -avz --log-file=/mnt/My_Book/Backup-logs/backup-known_hosts.log /mnt/My_Book/Backup/RT-1080/ssh/ /root/.ssh`
+>  `rsync -avz --log-file=/mnt/RT-1080/Backup-logs/backup-known_hosts.log /mnt/My_Book/Backup/RT-1080/ssh/ /root/.ssh`
 
 > `#schedule the transfer of bckp-1080 to RT-8075`
 
