@@ -1,5 +1,5 @@
-* **Homepage:** http://www.lostrealm.ca/asuswrt-merlin/
-* **Download:** http://www.lostrealm.ca/asuswrt-merlin/download
+* **Homepage:** http://asuswrt.lostrealm.ca
+* **Download:** http://asuswrt.lostrealm.ca/download
 * **SmallNetBuilder forum (official forum support):** http://forums.smallnetbuilder.com/forumdisplay.php?f=37
 * **Twitter:** https://twitter.com/RMerlinDev
 * **Email:** rmerl (at) lostrealm (dot) ca
