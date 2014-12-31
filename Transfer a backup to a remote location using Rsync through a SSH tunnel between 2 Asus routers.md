@@ -1,5 +1,5 @@
 ***
-> ### Before going further, please note that you may prefer (if it works) use a similar builtin feature:
+> ### Before going further, please note that you may prefer (if it works) use a similar built-in feature:
 > ![Builtin](https://cloud.githubusercontent.com/assets/3483165/5582361/bf776b74-9036-11e4-9844-85912b2993a0.png)
 ***
 
