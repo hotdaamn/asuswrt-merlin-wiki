@@ -205,15 +205,19 @@ On the RT-8075 (remote)
  * config
  * scripts
 
-* Install Rsync
-
+* Install Rsync on the remote
 
 ***
 
 Then:
-* Create and install the private and public rsa keys for both routers (using Easy-RSA)
-* Test the keys to make sure it's possible to login on the remote (RT-8075) without a password
-> *ssh 
+* Create and install the private and public rsa keys ([Using PuTTY Key Generator](http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe))
+![a](https://cloud.githubusercontent.com/assets/3483165/5589993/935707ee-90f8-11e4-9c8b-8ecd213694cc.png)
+* Copy the public key to the Authorized keys on the remote (RT-8075) using the GUI (Administration/System)
+* Save the private key and copy it to **/jffs/dropbear** under the name of: **rsa_id**
+![a](https://cloud.githubusercontent.com/assets/3483165/5590022/25627790-90f9-11e4-9900-40be8bc9ee17.png)
+* Test the keys to make sure it's possible to login on the remote (RT-8075) without a password. ENter this command line on the RT-1080 ssh terminal:
+> *ssh -p XXXX -i /jffs/dropbear/rsa_id aaaaa@ZZZZZ.asuscomm.com
+If everything is ok, you will be logged on the remote server. To logoff, simply type: exit ans Return.
 
 At the RT-1080 ssh terminal, please execute each rsync commands manually, the ones on the post-mount script:
 
