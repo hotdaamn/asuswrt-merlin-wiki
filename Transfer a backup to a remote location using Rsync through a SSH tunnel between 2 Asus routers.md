@@ -51,9 +51,9 @@ We will go first with the most simple approach:
 * not creating the swap space (because it could be not required if your backup is not "that big").
 
 ***
-Let's start the procedure: (draft)
+**Let's start the procedure:**
 ***
-On RT-1080 (local):
+**On RT-1080 (local):**
 * Connect a USB disk (ideally usb 3) on one of the usb port (ideally the usb 3 port if you use a usb3 disk...)
 * Create a share/folder "Backup" for the local backup
 * Create a share/folder "Bckp-8075" for storing the remote backup
@@ -181,7 +181,7 @@ On RT-1080 (local):
 > ipkg install rsync
 
 ***
-On the RT-8075 (remote)
+**On the RT-8075 (remote):** (uncompleted)
 * Connect a USB disk (ideally usb 3) on one of the usb port (ideally the usb 3 port if you use a usb3 disk...)
 * Create a share/folder "Backup" for the local backup
 * Create a share/folder "bckp-1080" for storing the remote backup
@@ -212,11 +212,16 @@ On the RT-8075 (remote)
 Then:
 * Create and install the private and public rsa keys ([Using PuTTY Key Generator](http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe))
 ![a](https://cloud.githubusercontent.com/assets/3483165/5589993/935707ee-90f8-11e4-9c8b-8ecd213694cc.png)
-* Copy the public key to the Authorized keys on the remote (RT-8075) using the GUI (Administration/System)
+
+* Copy the public key to the Authorized keys field on the remote router(RT-8075) using the GUI (Administration/System)
+
 * Save the private key and copy it to **/jffs/dropbear** under the name of: **rsa_id**
 ![a](https://cloud.githubusercontent.com/assets/3483165/5590022/25627790-90f9-11e4-9900-40be8bc9ee17.png)
-* Test the keys to make sure it's possible to login on the remote (RT-8075) without a password. ENter this command line on the RT-1080 ssh terminal:
+
+* Test the keys to make sure it's possible to login on the remote (RT-8075) without a password. Enter this command line on the RT-1080 ssh terminal:
+
 > *ssh -p XXXX -i /jffs/dropbear/rsa_id aaaaa@ZZZZZ.asuscomm.com
+
 If everything is ok, you will be logged on the remote server. To logoff, simply type: exit ans Return.
 
 At the RT-1080 ssh terminal, please execute each rsync commands manually, the ones on the post-mount script:
@@ -226,18 +231,24 @@ At the RT-1080 ssh terminal, please execute each rsync commands manually, the on
 
 If you get an error about the memory space (either from then sender or the receiver), then you will need to create a swap space on both ends. Because it is easier, and there is no penalty to do it that way, we will create a swap file, instead of a swap partition.
 
-To create a swap file of 1GB on RT-1080 (local, directly on the main partition) (for 512MB, replace the 1024 with 512), enter the following commands at the ssh terminal connected to the router (wait for each command to complete; the first one could take a few minutes):
-* dd if=/dev/zero of=/mnt/RT-1080/myswapfile bs=1M count=1024
-* chmod 600 /mnt/RT-1080/myswapfile
-* mkswap /mnt/RT-1080/myswapfile
-* swapon /mnt/RT-1080/myswapfile
-* free
-**              total         used         free       shared      buffers
-** Mem:        255776        85644       170132            0          768
-** -/+ buffers:              84876       170900
-** Swap:      1048572            0      1048572
+> To create a swap file of 1GB on RT-1080 (local, directly on the main partition) (for 512MB, replace the 1024 with 512), enter the following commands at the ssh terminal connected to the router (wait for each command to complete; the first one could take a few minutes):
+> * dd if=/dev/zero of=/mnt/RT-1080/myswapfile bs=1M count=1024
+> * chmod 600 /mnt/RT-1080/myswapfile
+> * mkswap /mnt/RT-1080/myswapfile
+> * swapon /mnt/RT-1080/myswapfile
+> * free
+> Output of the free command:
+> **                 total         used         free       shared      buffers
 
-Repeat the procedure on RT-8075 (the remote), and then test again the rsync commands.
+> **    Mem:        255776          85644         170132            0          768
+
+> **    -/+ buffers:                84876         170900
+
+> **     Swap:      1048572              0        1048572
+
+If the swap line shows anything except "0" under Total, then the swap is ok.
+
+If everything is ok, then Repeat the procedure on RT-8075 (the remote), and then test again the rsync commands.
 
 
 
