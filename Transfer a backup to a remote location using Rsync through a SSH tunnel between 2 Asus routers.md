@@ -54,7 +54,7 @@ I also use:
 
 [JFFS](http://en.wikipedia.org/wiki/JFFS) is a [writable section of the flash memory](https://github.com/RMerl/asuswrt-merlin/wiki/Jffs) used to store some user's data/program/scripts. Intrinsically, the router is a device with no permanent memory, memory being erased on each shutdown, with the exception of the JFFS space. Please note that the JFFS space has to be also backup because **it could be** overwritten by a new firmware version.
 
-[Fstab](http://en.wikipedia.org/wiki/Fstab) is a linux configuration file used to mount the disks. This file will be stored in the folder **Config** located under **JFFS**. The scripts are event-triggered and will be used to initiate some actions on the router reboot, and on the post-mount of the disk/partitions. The **User's scripts** are located under the folder "**scripts**" also under **JFFS**. Therefore, when backing up the JFFS space, at the same time I backup **fstab** and the **scripts**.
+[Fstab](http://en.wikipedia.org/wiki/Fstab) is a linux configuration file used to mount the disks. This file will be stored in the folder **Config** located under **JFFS**. The User's Scripts are event-triggered and will be used to initiate some actions on the router reboot, and on the post-mount of the disk/partitions. The **User's scripts** are located under the folder "**scripts**" also under **JFFS**. Therefore, when backing up the JFFS space, at the same time I backup **fstab** and the **scripts**.
 
 I will go first with the most simple approach:
 * using the backup disk as "system disk", meaning that we will use the usb backup disk to install all the required elements.
@@ -242,7 +242,7 @@ When all that is done, then:
 
 If everything is ok, you will be logged on the remote server. To logoff, simply type: exit and Return.
 
-At the RT-1080 ssh terminal, please execute manually each rsync commands listed on the post-mount script:
+At the RT-1080 ssh terminal, **please execute manually each rsync commands** listed on the post-mount script:
 
 1. to make sure that there is no syntax error in the command
 2. to confirm if you need a swap space, or not...
