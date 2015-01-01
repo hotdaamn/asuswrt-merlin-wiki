@@ -7,8 +7,8 @@
 
 > Context: 
 
-> * on a site (1080), someone makes on the local router usb disk a daily backup of all his PCs important files.
-> * on another site (8075), someone else makes on the local router usb disk a daily backup of all his PCs important files.
+> * on a site (1080), someone makes a daily backup of all his PCs important files on the local router usb disk .
+> * on another site (8075), someone else makes a daily backup of all his PCs important fileson the local router usb disk.
 > * each of them wants to place a copy of its local backup to a remote site, meaning that each of them wants to daily transfer its backup to the other router usb disk.
 > * when possible, all commands come from 1080.
 
@@ -37,9 +37,12 @@ The data partition contains:
 
 In my specific case, [Windows File History](http://www.pcmag.com/article2/0,2817,2418904,00.asp) is the tool used to backup two local PC on RT-1080, and same thing on the remote side, on RT-8075.  The goal was therefore to send bckp-1080 to RT-8075, and bckp-8075 to RT-1080. The backups are scheduled to run daily at night using CRON. [CRON](http://en.wikipedia.org/wiki/Cron) is the standard Linux tool used to schedule processes on a periodic way.
 The CRU command will be used to setup the CRON job:
-> Cron Utility
+> CRU= Cron Utility
+
 > add:    cru a <unique id> <"min hour day month week command">
+
 > delete: cru d <unique id>
+
 > list:   cru l
 
 I also use:
@@ -97,7 +100,6 @@ I will go first with the most simple approach:
 > (https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
 
 ***
-
 
 * Install a terminal to access the router through ssh (Putty or Xshell) on your PC
 > Optionally you can also install WinSCP on your PC to create folders and edit the files on the router (instead of using a line editor like **vi** or **nano** on the ssh terminal)
