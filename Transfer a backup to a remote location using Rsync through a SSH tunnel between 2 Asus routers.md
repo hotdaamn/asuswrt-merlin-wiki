@@ -114,6 +114,9 @@ Enable ssh and jffs and format jffs
 > * You can also install Optware on a flash drive with this tutorial: 
 > [https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE]
 > (https://github.com/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
+> * Another tutorial: 
+> [https://www.asuswrt.eu/how-to-install-optware/]
+> (https://www.asuswrt.eu/how-to-install-optware/)
 
 ***
 
