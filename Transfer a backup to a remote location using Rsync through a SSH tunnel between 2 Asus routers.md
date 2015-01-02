@@ -290,7 +290,7 @@ On the RT-1080 terminal emulator, **please execute manually each rsync commands*
 * Let's take one of the Rsync commands and use it to explain how it is built:
 
  * `rsync -avz -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id' --log-file=/mnt/RT-1080/Backup-logs/backup1080to8075.log  /mnt/RT-1080/bckp-1080/ aaaaa@ZZZZZ.asuscomm.com:/mnt/RT-8075/bckp-1080`
- * -avz _[This will recursively transfer all files from the directory src/bar on the local machine into the /data/tmp/bar directory on the remote /mnt/RT-8075/bckp-1080 machine using the id aaaaa. The files are transferred in "archive" mode, which ensures that symbolic links, devices, attributes, permissions, ownerships, etc. are preserved in the transfer. Additionally, compression will be used to reduce the size of data portions of the transfer. The "v" is there to instruct Rsync to leave of trace of what it did.]_
+ * -avz _[This will recursively transfer all files from the directory /mnt/RT-1080/bckp-1080/ on the local machine into the /mnt/RT-8075/bckp-1080 directory on the remote machine ZZZZZ.asuscomm.com: using the id aaaaa. The files are transferred in "archive" mode, which ensures that symbolic links, devices, attributes, permissions, ownerships, etc. are preserved in the transfer. Additionally, compression will be used to reduce the size of data portions of the transfer. The "v" is there to instruct Rsync to leave of trace of what it did.]_
  * -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id'  _[XXXX is the remote ssh port and the remaining is the location of the private key]_
  * --log-file=/mnt/RT-1080/Backup-logs/backup1080to8075.log _[Where to log the things done]_
  * /mnt/RT-1080/bckp-1080/   _[Source]_
