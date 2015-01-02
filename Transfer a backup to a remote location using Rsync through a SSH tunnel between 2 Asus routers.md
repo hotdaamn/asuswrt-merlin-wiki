@@ -32,7 +32,7 @@ Both need Rsync installed. RT-1080 is the "master", i.e. the one responsible for
 
 > **Please note that you don't absolutely need the "router partition", and for the purpose of this tutorial, we will consider that there is just one disk with one partition**
 
-To **Rsync**, you will possibly need a [swap space](http://en.wikipedia.org/w/index.php?title=Paging) because the router memory could be too limited for the process, depending on the size of the backup. If required, the swap space could be set on a file located on the router partition, and Optware/rsync could also be installed on that partition. As mentioned, for the tutorial everything will be installed on the main partition. 
+To **Rsync**, you will possibly need a [swap space](http://en.wikipedia.org/w/index.php?title=Paging) because the router memory could be too limited for the process, depending on the size of the backup. If required, the swap space could be set on a file located on the router partition, or more simply on the main disk, and Optware/rsync could also be installed on that partition. As mentioned, for this tutorial everything will be installed on the main partition. 
 
 Simply said, [Optware](http://en.wikipedia.org/wiki/Optware) is a mechanism that simplifies the installation of some programs on the router.
 
