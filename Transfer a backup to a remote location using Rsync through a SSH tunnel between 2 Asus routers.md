@@ -120,7 +120,7 @@ Enable ssh and jffs and format jffs
 
 ***
 
-* Install a terminal emulator to access the routers through a terminal emulator ([Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) or [Xshell](http://www.netsarang.com/download/down_form.html?code=522)) on your PC
+* Install a terminal emulator to access the routers ([Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) or [Xshell](http://www.netsarang.com/download/down_form.html?code=522)) on your PC
 > Optionally you can also install WinSCP on your PC to create folders and edit the files on the router (instead of using a line editor like **vi** or **nano** on the terminal emulator)
 
 * "Connect" the terminal emulator to the router (usually 192.168.1.1, or router.asus.com)
