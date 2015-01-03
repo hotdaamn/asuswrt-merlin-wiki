@@ -264,6 +264,76 @@ That done, on the same page, on the bottom part:
 * Create an Asus ddns (xxx.asuscomm.com). This is to get a "permanent" URL pointing at the remote router.
 * ![a](https://cloud.githubusercontent.com/assets/3483165/5597750/f6122ebc-9275-11e4-81b5-950b22bf9497.png)
 
+* "Connect" the terminal emulator to the router (usually 192.168.1.1, or router.asus.com)
+* Using the terminal emulator (or WINscp), create 3 sub-folders to the jffs folder:
+
+ * **config**
+ * **scripts**
+ * **dropbear**
+
+* In the **scripts** folder, create the file **post-mount** . This script is called after a disk is mounted. You may have to check which disk just get mounted, That's why there is a "IF" section. Here is my own script. If you adapt it, please replace aaaa with the router **admin id**, XXXX with the remote router port number, and ZZZZ with the remote router ddns name). You can also remove completely the first "IF" section if there is no other partition on the main USB connected disk. 
+
+> `#!/bin/sh`
+
+> `#Start of the optional section (used if you have a second partition on the disk)`
+
+> `if [  = "/tmp/mnt/RT-8075_rt" ]    # check if it is the post-mount of the partition reserved for the router. If you don't have it, this doesn't cause any problem. If you have it, and if a swap space is required, we will create that space here, in that partition [NOT USED FOR THE TUTORIAL]`
+
+> `then`
+
+> `#Turn on the swap space`
+
+>  `swapon /tmp/mnt/RT-8075_rt/myswapfile`
+
+> `#Set the _swappiness _ . This is the parameter that decice how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60`
+
+>  `echo 20 > /proc/sys/vm/swappiness`
+
+> `fi`
+
+> `#End of the optional section (used if you have a second partition on the disk). If you don't need it, just delete the lines starting at "Start of the optional section..."`
+
+> `if [  = "/tmp/mnt/RT-8075" ]    # check if it is the post-mount of the main disk`
+
+> `then`
+
+> `#Turn on the swap space` for the case where the swap space have been created directly on the main disk
+
+>  `swapon /tmp/mnt/RT-8075/myswapfile`
+
+> `#Set the _swappiness _ . This is the parameter that decide how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60`
+
+>  `echo 20 > /proc/sys/vm/swappiness`
+
+> `fi`
+
+> `exit $?`
+
+* In the **scripts** folder, create the file **init-start** . Here is my ~own script. 
+>
+> `#!/bin/sh`
+>
+> `This script will create the 2 mounting points: one for the main partition, and one for the router partition. For the case you keeps the things simple and have just one disk and one poartition, just add a "#" in front of the second command, or just delete the line.`
+>
+> `mkdir -p /tmp/mnt/RT-8075`
+>
+> `mkdir -p /tmp/mnt/RT-8075_rt`
+
+
+* When the scripts part is done, to make them executable, at the ssh terminal emulator enter:
+> `chmod a+rx /jffs/scripts/*`
+
+* In the **config** folder, create the file **fstab**. Here is my own content:
+
+> `#Ntfs Backup disk (RT-8075); To get the UUID, you have to execute the command blkid on the ssh terminal. The UUID is use instead of the device path because the device path could change). For the understanding, UUID=01D01AD6E35757A0 could be replaced by /dev/sda1, as an example, but it is always more secure to work with the UUID. You can get the UUID by entering the "blkid" command at the terminal prompt.) `
+>
+>	`UUID=01D01AD6E35757A0 /tmp/mnt/RT-8075 tntfs rw,nodev,relatime,uid=0,gid=0,umask=00,nls=utf8,min_prealloc_size=64k,max_prealloc_size=3905928188,readahead=1M,user_xattr,case_sensitive,nocache,fail_safe,hidden=show,dotfile=show,errors=continue,mft_zone_multiplier=1 0 0`
+>
+> `#Ntfs Router partition (on the same disk) (optional)`
+>
+>	`UUID=f66b6687-d71a-d001-f04a-6087d71ad001 /tmp/mnt/RT-1080_rt tntfs rw,nodev,relatime,uid=0,gid=0,umask=00,nls=utf8, 0 0`
+
+
 * Install Optware (please see instructions on the RT-1080 section)
 * Install Rsync on the remote (please see instructions on the RT-1080 section)
 
