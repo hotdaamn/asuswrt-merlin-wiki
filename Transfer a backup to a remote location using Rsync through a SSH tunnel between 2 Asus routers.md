@@ -120,7 +120,7 @@ Enable ssh and jffs and format jffs
 
 ***
 
-* Install a terminal emulator to access the router through a terminal emulator ([Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) or [Xshell](http://www.netsarang.com/download/down_form.html?code=522)) on your PC
+* Install a terminal emulator to access the routers through a terminal emulator ([Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) or [Xshell](http://www.netsarang.com/download/down_form.html?code=522)) on your PC
 > Optionally you can also install WinSCP on your PC to create folders and edit the files on the router (instead of using a line editor like **vi** or **nano** on the terminal emulator)
 
 * "Connect" the terminal emulator to the router (usually 192.168.1.1, or router.asus.com)
@@ -265,11 +265,10 @@ That done, on the same page, on the bottom part:
 * ![a](https://cloud.githubusercontent.com/assets/3483165/5597750/f6122ebc-9275-11e4-81b5-950b22bf9497.png)
 
 * "Connect" the terminal emulator to the router (usually 192.168.1.1, or router.asus.com)
-* Using the terminal emulator (or WINscp), create 3 sub-folders to the jffs folder:
+* Using the terminal emulator (or WINscp), create 2 sub-folders to the jffs folder:
 
  * **config**
  * **scripts**
- * **dropbear**
 
 * In the **scripts** folder, create the file **post-mount** . This script is called after a disk is mounted. You may have to check which disk just get mounted, That's why there is a "IF" section. Here is my own script. If you adapt it, please replace aaaa with the router **admin id**, XXXX with the remote router port number, and ZZZZ with the remote router ddns name). You can also remove completely the first "IF" section if there is no other partition on the main USB connected disk. 
 
@@ -325,7 +324,8 @@ That done, on the same page, on the bottom part:
 
 * In the **config** folder, create the file **fstab**. Here is my own content:
 
-> `#Ntfs Backup disk (RT-8075); To get the UUID, you have to execute the command blkid on the ssh terminal. The UUID is use instead of the device path because the device path could change). For the understanding, UUID=01D01AD6E35757A0 could be replaced by /dev/sda1, as an example, but it is always more secure to work with the UUID. You can get the UUID by entering the "blkid" command at the terminal prompt.) `
+> `#Ntfs Backup disk (RT-8075); `
+> `To get the UUID, you have to execute the command blkid on the ssh terminal. The UUID is use instead of the device path because the device path could change). For the understanding, UUID=01D01AD6E35757A0 could be replaced by /dev/sda1, as an example, but it is always more secure to work with the UUID. You can get the UUID by entering the "blkid" command at the terminal prompt.) `
 >
 >	`UUID=01D01AD6E35757A0 /tmp/mnt/RT-8075 tntfs rw,nodev,relatime,uid=0,gid=0,umask=00,nls=utf8,min_prealloc_size=64k,max_prealloc_size=3905928188,readahead=1M,user_xattr,case_sensitive,nocache,fail_safe,hidden=show,dotfile=show,errors=continue,mft_zone_multiplier=1 0 0`
 >
@@ -343,9 +343,9 @@ When all that is done, then:
 * Create and install the private and public rsa keys ([Using PuTTY Key Generator](http://the.earth.li/~sgtatham/putty/latest/x86/puttygen.exe))
 ![a](https://cloud.githubusercontent.com/assets/3483165/5589993/935707ee-90f8-11e4-9c8b-8ecd213694cc.png)
 
-* Copy the public key to the **Authorized keys field** on the remote router(RT-8075) using the GUI (Administration/System)
+* Copy the public key to the **SSH Authentication key** field on the remote router(RT-8075) using the GUI (Administration/System)
 
-* Save the private key and copy it to **/jffs/dropbear** under the name of: **rsa_id**
+* Save the private key and copy it to **/jffs/dropbear** under the name of: **rsa_id** on RT-1080
 ![a](https://cloud.githubusercontent.com/assets/3483165/5590022/25627790-90f9-11e4-9900-40be8bc9ee17.png)
 
 * Test the keys to make sure it's possible to login on the remote (RT-8075) without a password. Enter this command line on the RT-1080 ssh terminal:
@@ -363,7 +363,7 @@ On the RT-1080 terminal emulator, **please execute manually each rsync commands*
 * Let's take one of the Rsync commands and use it to explain how it is built:
 
  * `rsync -avz -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id' --log-file=/mnt/RT-1080/Backup-logs/backup1080to8075.log  /mnt/RT-1080/bckp-1080/ aaaaa@ZZZZZ.asuscomm.com:/mnt/RT-8075/bckp-1080`
- * -avz _[This will recursively transfer all files from the directory /mnt/RT-1080/bckp-1080/ on the local machine into the /mnt/RT-8075/bckp-1080 directory on the remote machine ZZZZZ.asuscomm.com: using the id aaaaa. The files are transferred in "archive" mode, which ensures that symbolic links, devices, attributes, permissions, ownerships, etc. are preserved in the transfer. Additionally, compression will be used to reduce the size of data portions of the transfer. The "v" is there to instruct Rsync to leave of trace of what it did.]_
+ * -avz _[This will recursively transfer all files from the directory /mnt/RT-1080/bckp-1080/ on the local machine into the /mnt/RT-8075/bckp-1080 directory on the remote machine ZZZZZ.asuscomm.com: using the id aaaaa. The files are transferred in "archive" mode (-a), which ensures that symbolic links, devices, attributes, permissions, ownerships, etc. are preserved in the transfer. Additionally, compression (-z) will be used to reduce the size of data portions of the transfer. The "v" is there to instruct Rsync to leave of trace of what it did.]_
  * -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id'  _[XXXX is the remote ssh port and the remaining is the location of the private key]_
  * --log-file=/mnt/RT-1080/Backup-logs/backup1080to8075.log _[Where to log the things done]_
  * /mnt/RT-1080/bckp-1080/   _[Source]_
