@@ -4,8 +4,8 @@ The following devices are fully supported:
 
 * RT-N16
 * RT-N66U
-* RT-AC66U
 * RT-AC56U
+* RT-AC66U
 * RT-AC68U
 * RT-AC68P
 * RT-AC87U
