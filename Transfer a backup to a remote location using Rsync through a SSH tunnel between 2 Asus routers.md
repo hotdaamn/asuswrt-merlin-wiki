@@ -44,11 +44,8 @@ The data partition will contain:
 In my specific case, [Windows File History](http://www.pcmag.com/article2/0,2817,2418904,00.asp) is the tool used to backup two local PC on RT-1080, and same thing on the remote side, on RT-8075.  The goal was therefore to send bckp-1080 to RT-8075, and bckp-8075 to RT-1080. The backups are scheduled to run daily at night using CRON. [CRON](http://en.wikipedia.org/wiki/Cron) is the standard Linux tool used to schedule processes on a periodic way.
 The CRU command will be used to setup the CRON job:
 > CRU= Cron Utility
-
 > add:    cru a <unique id> <"min hour day month week command">
-
 > delete: cru d <unique id>
-
 > list:   cru l
 
 I also use:
@@ -131,97 +128,75 @@ Enable ssh and jffs and format jffs
  * **dropbear**
 
 * In the **scripts** folder, create the file **post-mount** . This script is called after a disk is mounted. You may have to check which disk just get mounted, That's why there is a "IF" section. Here is my own script. If you adapt it, please replace aaaa with the router **admin id**, XXXX with the remote router port number, and ZZZZ with the remote router ddns name). You can also remove completely the first "IF" section if there is no other partition on the main USB connected disk. 
+```
+#!/bin/sh
 
-> `#!/bin/sh`
+#Start of the optional section (used if you have a second partition on the disk)`
+if [  = "/tmp/mnt/RT-1080_rt" ]    # check if it is the post-mount of the partition reserved for the router. If you don't have it, this doesn't cause any problem. If you have it, and if a swap space is required, we will create that space here, in that partition [NOT USED FOR THE TUTORIAL]
+then
+#Turn on the swap space
+swapon /tmp/mnt/RT-1080_rt/myswapfile
+#Set the _swappiness _ . This is the parameter that decice how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60
+echo 20 > /proc/sys/vm/swappiness
+fi
+#End of the optional section (used if you have a second partition on the disk). If you don't need it, just delete the lines starting at "Start of the optional section..."
 
-> `#Start of the optional section (used if you have a second partition on the disk)`
+if [  = "/tmp/mnt/RT-1080" ]    # check if it is the post-mount of the main disk
+then
+#Turn on the swap space for the case where the swap space have been created directly on the main disk
+swapon /tmp/mnt/RT-1080/myswapfile
 
-> `if [  = "/tmp/mnt/RT-1080_rt" ]    # check if it is the post-mount of the partition reserved for the router. If you don't have it, this doesn't cause any problem. If you have it, and if a swap space is required, we will create that space here, in that partition [NOT USED FOR THE TUTORIAL]`
+#Set the _swappiness _ . This is the parameter that decide how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60
+echo 20 > /proc/sys/vm/swappiness
 
-> `then`
+#first, bring back the "known_hosts"
+rsync -avz --log-file=/mnt/RT-1080/Backup-logs/backup-known_hosts.log /mnt/RT-1080/bckp-1080/Router/ssh/ /root/.ssh
 
-> `#Turn on the swap space`
+#schedule the transfer of bckp-1080 to RT-8075. Here will be done daily at midnight
+cru a backup1080to8075 "0 0 * * * rsync -avz -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id' --log-file=/mnt/RT-1080/Backup-logs/backup1080to8075.log  /mnt/RT-1080/bckp-1080/ aaaaa@ZZZZZ.asuscomm.com:/mnt/RT-8075/bckp-1080"
 
->  `swapon /tmp/mnt/RT-1080_rt/myswapfile`
+#schedule the transfer of bckp-8075 to RT-1080. Here will be done daily at 04h00
+cru a backup8075to1080 "0 4 * * * rsync -avz -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id' --log-file=/mnt/RT-1080/Backup-logs/backup8075to1080.log  aaaaa@ZZZZZ.asuscomm.com:/mnt/RT-8075/bckp-8075/ /mnt/RT-1080/bckp-8075"
 
-> `#Set the _swappiness _ . This is the parameter that decice how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60`
+#make a backup of RT-1080 **jffs** a few times a day
+cru a backupjffs1080 "0 8,12,18,23 * * * rsync -av --log-file=/mnt/RT-1080/Backup-logs/rsync-jffs-1080.log  /jffs /mnt/RT-1080/bckp-1080/Router"
 
->  `echo 20 > /proc/sys/vm/swappiness`
+#make a backup of RT-8075 **jffs** a few times a day
+cru a backupjffs8075 "30 8,12,18,23 * * * rsync -avz -e 'ssh -p XXXX-i /jffs/dropbear/rsa_id' --log-file=/mnt/RT-1080/Backup-logs/rsync-jffs-8075.log  aaaaa@YYYYYY.asuscomm.com:/jffs /mnt/RT-1080/bckp-8075/Router"
 
-> `fi`
-
-> `#End of the optional section (used if you have a second partition on the disk). If you don't need it, just delete the lines starting at "Start of the optional section..."`
-
-> `if [  = "/tmp/mnt/RT-1080" ]    # check if it is the post-mount of the main disk`
-
-> `then`
-
-> `#Turn on the swap space` for the case where the swap space have been created directly on the main disk
-
->  `swapon /tmp/mnt/RT-1080/myswapfile`
-
-> `#Set the _swappiness _ . This is the parameter that decide how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60`
-
->  `echo 20 > /proc/sys/vm/swappiness`
-
-> `#first, bring back the "known_hosts"`
-
->  `rsync -avz --log-file=/mnt/RT-1080/Backup-logs/backup-known_hosts.log /mnt/RT-1080/bckp-1080/Router/ssh/ /root/.ssh`
-
-> `#schedule the transfer of bckp-1080 to RT-8075. Here will be done daily at midnight`
-
->  `cru a backup1080to8075 "0 0 * * * rsync -avz -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id' --log-file=/mnt/RT-1080/Backup-logs/backup1080to8075.log  /mnt/RT-1080/bckp-1080/ aaaaa@ZZZZZ.asuscomm.com:/mnt/RT-8075/bckp-1080"`
-
-> `#schedule the transfer of bckp-8075 to RT-1080. Here will be done daily at 04h00`
-
->  `cru a backup8075to1080 "0 4 * * * rsync -avz -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id' --log-file=/mnt/RT-1080/Backup-logs/backup8075to1080.log  aaaaa@ZZZZZ.asuscomm.com:/mnt/RT-8075/bckp-8075/ /mnt/RT-1080/bckp-8075"`
-
-> `#make a backup of RT-1080 **jffs** a few times a day`
-
->   `cru a backupjffs1080 "0 8,12,18,23 * * * rsync -av --log-file=/mnt/RT-1080/Backup-logs/rsync-jffs-1080.log  /jffs /mnt/RT-1080/bckp-1080/Router"`
-
-> `#make a backup of RT-8075 **jffs** a few times a day`
-
->   `cru a backupjffs8075 "30 8,12,18,23 * * * rsync -avz -e 'ssh -p XXXX-i /jffs/dropbear/rsa_id' --log-file=/mnt/RT-1080/Backup-logs/rsync-jffs-8075.log  aaaaa@YYYYYY.asuscomm.com:/jffs /mnt/RT-1080/bckp-8075/Router"`
-
-> `#make a backup of RT-1080 "known_hosts" a few times a day`
-
->  `cru a backupknown_hosts "45 8,12,18,23 * * * rsync -avz --log-file=/mnt/RT-1080/Backup-logs/backup-known_hosts.log  /root/.ssh/ /mnt/RT-1080/bckp-1080/Router/ssh"`
-
-> `fi`
-
-> `exit $?`
-
+#make a backup of RT-1080 "known_hosts" a few times a day
+cru a backupknown_hosts "45 8,12,18,23 * * * rsync -avz --log-file=/mnt/RT-1080/Backup-logs/backup-known_hosts.log  /root/.ssh/ /mnt/RT-1080/bckp-1080/Router/ssh"
+fi
+exit $?
+```
 * In the **scripts** folder, create the file **init-start** . Here is my ~own script. 
->
-> `#!/bin/sh`
->
-> `This script will create the 2 mounting points: one for the main partition, and one for the router partition. For the case you keeps the things simple and have just one disk and one poartition, just add a "#" in front of the second command, or just delete the line.`
->
-> `mkdir -p /tmp/mnt/RT-1080`
->
-> `mkdir -p /tmp/mnt/RT-1080_rt`
-
-
-* When the scripts part is done, to make them executable, at the ssh terminal emulator enter:
-> `chmod a+rx /jffs/scripts/*`
+```
+#!/bin/sh
+#This script will create the 2 mounting points: one for the main partition, and one for the router partition. For the case you keeps the things simple and have just one disk and one poartition, just add a "#" in front of the second command, or just delete the line.
+mkdir -p /tmp/mnt/RT-1080
+mkdir -p /tmp/mnt/RT-1080_rt
+```
+When the scripts part is done, to make them executable, at the ssh terminal emulator enter:
+```
+chmod a+rx /jffs/scripts/*
+```
 
 * In the **config** folder, create the file **fstab**. Here is my own content:
+```
+#To get the UUID, you have to execute the command blkid on the ssh terminal. The UUID is use instead of the device path because the device path could change). For the understanding, UUID=01D01AD6E35757A0 could be replaced by /dev/sda1, as an example, but it is always more secure to work with the UUID. You can get the UUID by entering the "blkid" command at the terminal prompt.) 
 
-> `#Ntfs Backup disk (RT-1080); To get the UUID, you have to execute the command blkid on the ssh terminal. The UUID is use instead of the device path because the device path could change). For the understanding, UUID=01D01AD6E35757A0 could be replaced by /dev/sda1, as an example, but it is always more secure to work with the UUID. You can get the UUID by entering the "blkid" command at the terminal prompt.) `
->
->	`UUID=01D01AD6E35757A0 /tmp/mnt/RT-1080 tntfs rw,nodev,relatime,uid=0,gid=0,umask=00,nls=utf8,min_prealloc_size=64k,max_prealloc_size=3905928188,readahead=1M,user_xattr,case_sensitive,nocache,fail_safe,hidden=show,dotfile=show,errors=continue,mft_zone_multiplier=1 0 0`
->
-> `#Ntfs Router partition (on the same disk) (optional)`
->
->	`UUID=f66b6687-d71a-d001-f04a-6087d71ad001 /tmp/mnt/RT-1080_rt tntfs rw,nodev,relatime,uid=0,gid=0,umask=00,nls=utf8, 0 0`
+#Ntfs Backup disk (RT-1080); 
+UUID=01D01AD6E35757A0 /tmp/mnt/RT-1080 tntfs rw,nodev,relatime,uid=0,gid=0,umask=00,nls=utf8,min_prealloc_size=64k,max_prealloc_size=3905928188,readahead=1M,user_xattr,case_sensitive,nocache,fail_safe,hidden=show,dotfile=show,errors=continue,mft_zone_multiplier=1 0 0
 
+#Ntfs Router partition (on the same disk) (optional)
+UUID=f66b6687-d71a-d001-f04a-6087d71ad001 /tmp/mnt/RT-1080_rt tntfs rw,nodev,relatime,uid=0,gid=0,umask=00,nls=utf8, 0 0
+```
 
 * Install Rsync. At the command line of the ssh terminal emulator, type:
-
-> `ipkg upgrade`
-
-> `ipkg install rsync`
+```
+ipkg upgrade
+ipkg install rsync
+```
 
 ***
 **On the RT-8075 (remote router):** (uncompleted)
@@ -272,67 +247,50 @@ That done, on the same page, on the bottom part:
 
 * In the **scripts** folder, create the file **post-mount** . This script is called after a disk is mounted. You may have to check which disk just get mounted, That's why there is a "IF" section. Here is my own script. If you adapt it, please replace aaaa with the router **admin id**, XXXX with the remote router port number, and ZZZZ with the remote router ddns name). You can also remove completely the first "IF" section if there is no other partition on the main USB connected disk. 
 
-> `#!/bin/sh`
+ ```
+#!/bin/sh
 
-> `#Start of the optional section (used if you have a second partition on the disk)`
+#Start of the optional section (used if you have a second partition on the disk)
+if [  = "/tmp/mnt/RT-8075_rt" ]    # check if it is the post-mount of the partition reserved for the router. If you don't have it, this doesn't cause any problem. If you have it, and if a swap space is required, we will create that space here, in that partition [NOT USED FOR THE TUTORIAL]
+then
+#Turn on the swap space`
+swapon /tmp/mnt/RT-8075_rt/myswapfile
 
-> `if [  = "/tmp/mnt/RT-8075_rt" ]    # check if it is the post-mount of the partition reserved for the router. If you don't have it, this doesn't cause any problem. If you have it, and if a swap space is required, we will create that space here, in that partition [NOT USED FOR THE TUTORIAL]`
+#Set the _swappiness _ . This is the parameter that decice how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60
+echo 20 > /proc/sys/vm/swappiness
+fi
+#End of the optional section (used if you have a second partition on the disk). If you don't need it, just delete the lines starting at "Start of the optional section..."
 
-> `then`
-
-> `#Turn on the swap space`
-
->  `swapon /tmp/mnt/RT-8075_rt/myswapfile`
-
-> `#Set the _swappiness _ . This is the parameter that decice how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60`
-
->  `echo 20 > /proc/sys/vm/swappiness`
-
-> `fi`
-
-> `#End of the optional section (used if you have a second partition on the disk). If you don't need it, just delete the lines starting at "Start of the optional section..."`
-
-> `if [  = "/tmp/mnt/RT-8075" ]    # check if it is the post-mount of the main disk`
-
-> `then`
-
-> `#Turn on the swap space` for the case where the swap space have been created directly on the main disk
-
->  `swapon /tmp/mnt/RT-8075/myswapfile`
-
-> `#Set the _swappiness _ . This is the parameter that decide how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60`
-
->  `echo 20 > /proc/sys/vm/swappiness`
-
-> `fi`
-
-> `exit $?`
-
+if [  = "/tmp/mnt/RT-8075" ]    # check if it is the post-mount of the main disk
+then
+#Turn on the swap space` for the case where the swap space have been created directly on the main disk
+swapon /tmp/mnt/RT-8075/myswapfile
+#Set the _swappiness _ . This is the parameter that decide how aggressive is the swapping process. Could be set from 0 to 100. At 0 the router won't swap unless it hits the "no more available memory" state. By default: 60`
+echo 20 > /proc/sys/vm/swappiness
+fi
+exit $?
+```
 * In the **scripts** folder, create the file **init-start** . Here is my ~own script. 
->
-> `#!/bin/sh`
->
-> `This script will create the 2 mounting points: one for the main partition, and one for the router partition. For the case you keeps the things simple and have just one disk and one poartition, just add a "#" in front of the second command, or just delete the line.`
->
-> `mkdir -p /tmp/mnt/RT-8075`
->
-> `mkdir -p /tmp/mnt/RT-8075_rt`
-
-
+```
+#!/bin/sh
+This script will create the 2 mounting points: one for the main partition, and one for the router partition. For the case you keeps the things simple and have just one disk and one poartition, just add a "#" in front of the second command, or just delete the line.
+mkdir -p /tmp/mnt/RT-8075
+mkdir -p /tmp/mnt/RT-8075_rt
+```
 * When the scripts part is done, to make them executable, at the ssh terminal emulator enter:
-> `chmod a+rx /jffs/scripts/*`
-
+```
+chmod a+rx /jffs/scripts/*
+```
 * In the **config** folder, create the file **fstab**. Here is my own content:
+```
+#To get the UUID, you have to execute the command blkid on the ssh terminal. The UUID is use instead of the device path because the device path could change). For the understanding, UUID=01D01AD6E35757A0 could be replaced by /dev/sda1, as an example, but it is always more secure to work with the UUID. You can get the UUID by entering the "blkid" command at the terminal prompt.) 
 
-> `#Ntfs Backup disk (RT-8075); `
-> `To get the UUID, you have to execute the command blkid on the ssh terminal. The UUID is use instead of the device path because the device path could change). For the understanding, UUID=01D01AD6E35757A0 could be replaced by /dev/sda1, as an example, but it is always more secure to work with the UUID. You can get the UUID by entering the "blkid" command at the terminal prompt.) `
->
->	`UUID=01D01AD6E35757A0 /tmp/mnt/RT-8075 tntfs rw,nodev,relatime,uid=0,gid=0,umask=00,nls=utf8,min_prealloc_size=64k,max_prealloc_size=3905928188,readahead=1M,user_xattr,case_sensitive,nocache,fail_safe,hidden=show,dotfile=show,errors=continue,mft_zone_multiplier=1 0 0`
->
-> `#Ntfs Router partition (on the same disk) (optional)`
->
->	`UUID=f66b6687-d71a-d001-f04a-6087d71ad001 /tmp/mnt/RT-1080_rt tntfs rw,nodev,relatime,uid=0,gid=0,umask=00,nls=utf8, 0 0`
+#Ntfs Backup disk (RT-8075); 
+UUID=01D01AD6E35757A0 /tmp/mnt/RT-8075 tntfs rw,nodev,relatime,uid=0,gid=0,umask=00,nls=utf8,min_prealloc_size=64k,max_prealloc_size=3905928188,readahead=1M,user_xattr,case_sensitive,nocache,fail_safe,hidden=show,dotfile=show,errors=continue,mft_zone_multiplier=1 0 0
 
+#Ntfs Router partition (on the same disk) (optional)
+UUID=f66b6687-d71a-d001-f04a-6087d71ad001 /tmp/mnt/RT-1080_rt tntfs rw,nodev,relatime,uid=0,gid=0,umask=00,nls=utf8, 0 0
+```
 
 * Install Optware (please see instructions on the RT-1080 section)
 * Install Rsync on the remote (please see instructions on the RT-1080 section)
@@ -350,7 +308,7 @@ When all that is done, then:
 
 * Test the keys to make sure it's possible to login on the remote (RT-8075) without a password. Enter this command line on the RT-1080 ssh terminal:
 
-> *ssh -p XXXX -i /jffs/dropbear/rsa_id aaaaa@ZZZZZ.asuscomm.com
+```ssh -p XXXX -i /jffs/dropbear/rsa_id aaaaa@ZZZZZ.asuscomm.com```
 
 If everything is ok, you will be logged on the remote server. To logoff, simply type: exit and Return.
 If it doesn't work, well...
@@ -362,7 +320,9 @@ On the RT-1080 terminal emulator, **please execute manually each rsync commands*
 
 * Let's take one of the Rsync commands and use it to explain how it is built:
 
- * `rsync -avz -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id' --log-file=/mnt/RT-1080/Backup-logs/backup1080to8075.log  /mnt/RT-1080/bckp-1080/ aaaaa@ZZZZZ.asuscomm.com:/mnt/RT-8075/bckp-1080`
+```
+rsync -avz -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id' --log-file=/mnt/RT-1080/Backup-logs/backup1080to8075.log  /mnt/RT-1080/bckp-1080/ aaaaa@ZZZZZ.asuscomm.com:/mnt/RT-8075/bckp-1080
+```
  * -avz _[This will recursively transfer all files from the directory /mnt/RT-1080/bckp-1080/ on the local machine into the /mnt/RT-8075/bckp-1080 directory on the remote machine ZZZZZ.asuscomm.com: using the id aaaaa. The files are transferred in "archive" mode (-a), which ensures that symbolic links, devices, attributes, permissions, ownerships, etc. are preserved in the transfer. Additionally, compression (-z) will be used to reduce the size of data portions of the transfer. The "v" is there to instruct Rsync to leave of trace of what it did.]_
  * -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id'  _[XXXX is the remote ssh port and the remaining is the location of the private key]_
  * --log-file=/mnt/RT-1080/Backup-logs/backup1080to8075.log _[Where to log the things done]_
@@ -373,24 +333,24 @@ If you get an error about the memory space (either from then sender or the recei
 
 ***
 > To create a swap file of 1GB on RT-1080 (the local and master router, directly on the main partition) (for 512MB, replace the 1024 with 512), enter the following commands on the terminal emulator connected to the router (wait for each command to complete; the first one could take a few minutes):
-> * `dd if=/dev/zero of=/mnt/RT-1080/myswapfile bs=1M count=1024`
-> * `chmod 600 /mnt/RT-1080/myswapfile`
-> * `mkswap /mnt/RT-1080/myswapfile`
-> * `swapon /mnt/RT-1080/myswapfile`
-> * `free`
+```
+dd if=/dev/zero of=/mnt/RT-1080/myswapfile bs=1M count=1024
+chmod 600 /mnt/RT-1080/myswapfile
+mkswap /mnt/RT-1080/myswapfile
+swapon /mnt/RT-1080/myswapfile
+free
+```
 >
 > Look at the output of the **free** command:
+>```
+>                  total         used         free       shared      buffers
+>     Mem:        255776          85644         170132            0          768
+>     -/+ buffers:                84876         170900
+>      Swap:      1048572              0        1048572
+>```
 >
-> `**                 total         used         free       shared      buffers`
->
-> `**    Mem:        255776          85644         170132            0          768`
->
-> `**    -/+ buffers:                84876         170900`
-
-> `**     Swap:      1048572              0        1048572`
-
-If the first number on the line starting with "swap" shows anything other than "0", then the swap is ok.
-If everything is ok, then repeat the procedure on RT-8075 (the remote), and then test again the rsync commands.
+>If the first number on the line starting with "swap" shows anything other than "0", then the swap is ok.
+>If everything is ok, then repeat the procedure on RT-8075 (the remote), and then test again the rsync commands.
 ***
 
 
