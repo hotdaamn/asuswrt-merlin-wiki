@@ -3,7 +3,7 @@
 > ![Builtin](https://cloud.githubusercontent.com/assets/3483165/5582361/bf776b74-9036-11e4-9844-85912b2993a0.png)
 ***
 
-###  That said, in the following tutorial, we will learn how to setup the transfer of a backup to a remote site using a ssh channel between 2 ASUS routers with Rsync as transporter.
+###  That said, in the following tutorial, we will learn how to setup the transfer of a backup to a remote site using a ssh tunnel between 2 ASUS routers with Rsync as transporter.
 
 > Context: 
 
