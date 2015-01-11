@@ -51,9 +51,14 @@ The CRU command will be used to setup the CRON job:
 I also use:
 * **JFFS**, 
 * **fstab**, one of the [Custom config files](https://github.com/RMerl/asuswrt-merlin/wiki/Custom-config-files) and 
-* the ["User scripts"](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts) of RMerlin firmware version. Two scripts will be setup:
+* the ["User scripts"](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts) of RMerlin firmware version. Two user scripts will be setup:
  * **init-start**
  * **post-mount**
+
+* plus 3 other scripts:
+ * **transfert-bckp-1080.sh** to handle the 1080 backup transfer to RT-8075
+ * **transfert-bckp-8075.sh** to handle the 8075 backup transfer to RT-1080
+ * **mail.sh** to notyfy by email users of the result of the transfers.
 
 [JFFS](http://en.wikipedia.org/wiki/JFFS) is a [writable section of the flash memory](https://github.com/RMerl/asuswrt-merlin/wiki/Jffs) used to store some user's data/program/scripts. Intrinsically, the router is a device with no permanent memory, memory being erased on each shutdown, with the exception of the JFFS space. Please note that the JFFS space has to be also backup because **it could be** overwritten by a new firmware version.
 
@@ -152,11 +157,11 @@ echo 20 > /proc/sys/vm/swappiness
 #first, bring back the "known_hosts"
 rsync -avz --log-file=/mnt/RT-1080/Backup-logs/backup-known_hosts.log /mnt/RT-1080/bckp-1080/Router/ssh/ /root/.ssh
 
-#schedule the transfer of bckp-1080 to RT-8075. Here will be done daily at midnight
-cru a backup1080to8075 "0 0 * * * rsync -avz -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id' --log-file=/mnt/RT-1080/Backup-logs/backup1080to8075.log  /mnt/RT-1080/bckp-1080/ aaaaa@ZZZZZ.asuscomm.com:/mnt/RT-8075/bckp-1080"
+#schedule the transfer of bckp-1080 to RT-8075. Here will be done daily at midnight:
+cru a backup1080to8075 "0 0 * * * /jffs/scripts/transfert-bckp-1080.sh"
 
-#schedule the transfer of bckp-8075 to RT-1080. Here will be done daily at 04h00
-cru a backup8075to1080 "0 4 * * * rsync -avz -e 'ssh -p XXXX -i /jffs/dropbear/rsa_id' --log-file=/mnt/RT-1080/Backup-logs/backup8075to1080.log  aaaaa@ZZZZZ.asuscomm.com:/mnt/RT-8075/bckp-8075/ /mnt/RT-1080/bckp-8075"
+#schedule the transfer of bckp-8075 to RT-1080. Here will be done daily at 04h00:
+cru a backup8075to1080 "0 4 * * * /jffs/scripts/transfert-bckp-8075.sh"
 
 #make a backup of RT-1080 **jffs** a few times a day
 cru a backupjffs1080 "0 8,12,18,23 * * * rsync -av --log-file=/mnt/RT-1080/Backup-logs/rsync-jffs-1080.log  /jffs /mnt/RT-1080/bckp-1080/Router"
@@ -175,6 +180,56 @@ exit $?
 #This script will create the 2 mounting points: one for the main partition, and one for the router partition. For the case you keeps the things simple and have just one disk and one poartition, just add a "#" in front of the second command, or just delete the line.
 mkdir -p /tmp/mnt/RT-1080
 mkdir -p /tmp/mnt/RT-1080_rt
+```
+* In the **scripts** folder, create the file **transfert-bckp-1080** . Here is my ~own script. 
+```
+#!/bin/sh
+LOGFILE="/mnt/RT-1080/bckp-logs/backup1080to8075_`date +\%d-\%m-\%Y`"-"`date +\%T`.log"
+rsync -avz -e 'ssh -p ???? -i /jffs/dropbear/dropbear_rsa_host_key' --log-file=$LOGFILE  /mnt/RT-1080/bckp-1080 admin@??????.asuscomm.com:/mnt/RT-8075/bckp-1080/ 
+/jffs/scripts/mail.sh "receiver@yyyyy.xx" "sender@yyyyy.xx" bckp-1080 "Transfert complet" rsync $LOGFILE
+exit $?
+```
+* In the **scripts** folder, create the file **transfert-bckp-8075** . Here is my ~own script. 
+```
+#!/bin/sh
+LOGFILE="/mnt/RT-1080/bckp-logs/backup8075to1080_`date +\%d-\%m-\%Y`"-"`date +\%T`.log"
+rsync -avz -e 'ssh -p ???? -i /jffs/dropbear/dropbear_rsa_host_key' --log-file=$LOGFILE  admin@?????.asuscomm.com:/mnt/RT-8075/bckp-8075/ /mnt/RT-1080/bckp-8075
+/jffs/scripts/mail.sh "receiver1@yyyyy.xx, receiver2@yyyyy2.xx2" "sender@yyyyy.xx" bckp-8075 "Transfert complet" rsync $LOGFILE
+exit $?
+```
+* In the **scripts** folder, create the file **mail.sh** . This script is called from the previous transfert-bckp-xxxx.sh script to notyfy the users by email of the result. Here is my ~own script. 
+```
+#!/bin/sh
+#Argument #1: Receiver
+#Argument #2: Sender
+#Argument #3: Object
+#Argument #4: Message
+#Argument #5: Program
+#Argument #6: Log file
+
+SMTP="relais.??????.com:587"
+FROM="$2"
+TO="$1"
+USER="???????"
+PASS="???????"
+
+echo "Subject: Notification du routeur: $3 $4" >/tmp/tmail.txt
+echo "From: \\""<$FROM>" >>/tmp/tmail.txt
+echo "Date: `date -R`" >>/tmp/tmail.txt
+echo "" >>/tmp/tmail.txt
+echo "$5 ended" on `date +\%d/\%m/\%Y` at `date +\%T` >>/tmp/tmail.txt
+echo "" >>/tmp/tmail.txt
+echo "Log file: $6"
+echo "" >>/tmp/tmail.txt
+echo "Your router." >>/tmp/tmail.txt
+echo "" >>/tmp/tmail.txt
+echo "Here is the log file:"
+echo "" >>/tmp/tmail.txt
+#verbative version (for testing purpose)
+#cat /tmp/tmail.txt $6 | /usr/sbin/sendmail -v -S"$SMTP" -f"$FROM" $TO -au"$USER" -ap"$PASS"
+#silent version
+cat /tmp/tmail.txt $6 | /usr/sbin/sendmail -S"$SMTP" -f"$FROM" $TO -au"$USER" -ap"$PASS"
+rm /tmp/tmail.txt
 ```
 When the scripts part is done, to make them executable, at the ssh terminal emulator enter:
 ```
@@ -199,7 +254,7 @@ ipkg install rsync
 ```
 
 ***
-**On the RT-8075 (remote router):** (uncompleted)
+**On the RT-8075 (remote router):** 
 
 Enable ssh and jffs, and format jffs
 
