@@ -58,7 +58,7 @@ I also use:
 * plus 3 other scripts:
  * **transfert-bckp-1080.sh** to handle the 1080 backup transfer to RT-8075
  * **transfert-bckp-8075.sh** to handle the 8075 backup transfer to RT-1080
- * **mail.sh** to notyfy by email users of the result of the transfers.
+ * **mail.sh** to notify by email users of the result of the transfers.
 
 [JFFS](http://en.wikipedia.org/wiki/JFFS) is a [writable section of the flash memory](https://github.com/RMerl/asuswrt-merlin/wiki/Jffs) used to store some user's data/program/scripts. Intrinsically, the router is a device with no permanent memory, memory being erased on each shutdown, with the exception of the JFFS space. Please note that the JFFS space has to be also backup because **it could be** overwritten by a new firmware version.
 
