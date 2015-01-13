@@ -1,6 +1,9 @@
+
 ***
-> ### Before going further, please note that you may prefer (if it works) use a similar built-in feature:
+
+> **Before going further, please note that you may prefer (if it works) use a similar built-in feature:**
 > ![Builtin](https://cloud.githubusercontent.com/assets/3483165/5582361/bf776b74-9036-11e4-9844-85912b2993a0.png)
+
 ***
 
 ###  That said, in the following tutorial, we will learn how to setup the transfer of a backup to a remote site using a ssh tunnel between 2 ASUS routers with Rsync as transporter.
@@ -8,8 +11,8 @@
 > Context: 
 
 > * on a site (1080), someone makes a daily backup of all his PCs important files on the local router usb disk .
-> * on another site (8075), someone else makes a daily backup of all his PCs important fileson the local router usb disk.
-> * each of them wants to place a copy of its local backup to a remote site, meaning that each of them wants to daily transfer its backup to the other router usb disk.
+> * on another site (8075), someone else makes a daily backup of all his PCs important files on the local router usb disk.
+> * each of them wants to place a copy of his local backups to a remote site, meaning that each of them wants to daily transfer his backups to the other router usb disk.
 > * when possible, all commands come from 1080.
 
 > If you want something different, please adapt the rsync commands and the scripts to your needs.
@@ -20,7 +23,7 @@
 
 > Rsync finds files that need to be transferred using a "quick check" algorithm (by default) that looks for files that have changed in size or in last-modified time. Any changes in the other preserved attributes (as requested by options) are made on the destination file directly when the quick check indicates that the file's data does not need to be updated."
 
-The source and the destination could be "local", even on the same server/router, but our goal being to secure a backup, we will do it to a remote location. We will also secure the transfer itself by using [SSH ](http://en.wikipedia.org/wiki/Secure_Shell). Secure Shell (SSH) is a cryptographic network protocol for secure data communication, remote command-line login, remote command execution, etc. To make it even more secure, we will use a private/public key schema (instead of id/password).
+The source and the destination could be "local", on the same server/router, but our goal being to secure a backup, we will do it to a remote location. We will also secure the transfer itself by using [SSH ](http://en.wikipedia.org/wiki/Secure_Shell). Secure Shell (SSH) is a cryptographic network protocol for secure data communication, remote command-line login, remote command execution, etc. To make it even more secure, we will use a private/public key schema (instead of id/password).
 
 In my specific case, the routers are named:
 * RT-1080 (the local)
@@ -368,7 +371,9 @@ When all that is done, then:
 If everything is ok, you will be logged on the remote server. To logoff, simply type: exit and Return.
 If it doesn't work, well...
 
-On the RT-1080 terminal emulator, **please execute manually each rsync commands** listed on the post-mount script:
+On the RT-1080 terminal emulator, **please execute manually each rsync commands** used in one of the scripts.
+
+Why?
 
 1. to make sure that there is no syntax error in the command
 2. to confirm if you need a swap space, or not...
