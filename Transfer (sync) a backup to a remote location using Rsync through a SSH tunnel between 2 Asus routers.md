@@ -6,7 +6,7 @@
 
 ***
 
-###  In the following tutorial/guide, we will learn how to setup the transfer of a backup to a remote site using a ssh tunnel between 2 ASUS routers with Rsync as transporter.
+###  In the following tutorial/guide, we will learn how to setup the transfer (sync) of a backup to a remote site using a ssh tunnel between 2 ASUS routers with Rsync as transporter.
 
 > Context: 
 
