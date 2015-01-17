@@ -64,7 +64,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 9. [delay start of minidlna to wait for the USB disk mount](https://github.com/RMerl/asuswrt-merlin/wiki/delay-start-of-minidlna-to-wait-for-the-USB-disk-mount)
 10. [Setting-up-FreeRadius2-through-Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Setting-up-FreeRadius2-through-Entware)
 11. [User NVRAM Save/Restore](https://github.com/RMerl/asuswrt-merlin/wiki/Can-I-restore-my-settings-after-a-factory-reset%3F--Can-I-restore-my-settings-to-a-different-router%3F)
-12. [Transfer a backup to a remote location using Rsyng through a SSH tunnel](https://github.com/RMerl/asuswrt-merlin/wiki/Transfer-a-backup-to-a-remote-location-using-Rsync-through-a-SSH-tunnel-between-2-Asus-routers)
+12. [Transfer-(sync)-a-backup-to-a-remote-location-using-Rsync-through-a-SSH-tunnel-between-2-Asus-routers]
 
 ### Reference:
 1. [FAQ](https://github.com/RMerl/asuswrt-merlin/wiki/FAQ)
