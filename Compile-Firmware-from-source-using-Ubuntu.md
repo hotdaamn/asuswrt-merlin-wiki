@@ -209,8 +209,6 @@ aclocal
 
 ## All in one script
 
-<span style="color:red">**WARNING:**</span> currently this is hardcoded to use the path `release/src-rt-6.x`. I will take care of this shortly.
-
 Last tested on `master` as of 2015-01-25. The script takes care of the steps mentioned above for Ubuntu 13.10 and newer. In addition it does fixups to the source tree which ensure that it can run without superuser rights as long as the user makes has all the packages installed. It will also check for the packages being installed and bail out with a meaningful error message if not.
 
 It can be run in two modes: with or without `sudo` involved. With `sudo` it will use the symbolic link method inside `/opt`, whereas without it will modify the files in the source tree to adjust hardcoded paths.
@@ -227,6 +225,8 @@ You can leave out the `path-to-asuswrt-merlin` argument and the script will chec
 Any non-empty value for `USE_SUDO` can be used and you can of course also export it up front, instead of prepending it to the command line.
 
 ### The script
+
+The latest version can always be found at [assarbad/build-asuswrt-merlin](https://github.com/assarbad/build-asuswrt-merlin). Please report issues there as well.
 
 ```bash
 #!/usr/bin/env bash
@@ -263,15 +263,55 @@ fatal()
 cleanup()
 {
 	if [[ -n "$TMUX_PANE" ]]; then
-		echo -e "${Y}CLEANUP${Z}: turning off tmux logging ($_TMUX_LOG)"
+		echo -e "\n${Y}CLEANUP${Z}: turning off tmux logging ($_TMUX_LOG)"
 		tmux pipe-pane -t $TMUX_PANE
 	fi
+}
+cleanup_and_revert()
+{
+	echo -e "\n${Y}CLEANUP${Z}: extended cleanup of source tree changes"
+	# Changed files will be reverted
+	find "$BASEDIR" -type f -name '*.BAK-build-image'|while read fname; do
+		( set -x && mv "$fname" "${fname%%.BAK-build-image}" )
+	done
+	# Simply remove proxy.h if we moved it there
+	rm -f "$BASEDIR/release/src/router/neon/proxy.h"
+	# Unlink the toolchain symlink, in case we were asked to put one
+	[[ -n "$USE_SUDO" ]] && sudo unlink /opt/brcm
+	cleanup
+}
+install_prerequisites()
+{
+	echo -e "Will now attempt to install all prerequisite packages. This requires ${W}sudo${Z}."
+	echo -e "The command to be run is:\n ${W}sudo apt-get --no-install-recommends install ${Z}$PREREQ_PKGS"
+	read -p "Do you want to continue? (if not, hit Ctrl+C to abort)" ans
+	if [[ "${ans:0:1}" || "${ans:0:1}" ]]; then
+		sudo apt-get --no-install-recommends install $PREREQ_PKGS
+	fi
+	exit 0
 }
 if [[ -n "$TMUX_PANE" ]]; then
 	echo -e "${Y}NOTE:${Z} turning on tmux logging ($_TMUX_LOG)"
 	tmux pipe-pane -t $TMUX_PANE "cat >> $_TMUX_LOG" && trap cleanup EXIT
 fi
 [[ -n "$ROUTERMDL" ]] || fatal help "you have to ${W}give the router model${Z} to build for."
+# Match the router model to find the correct base directory for make
+case ${ROUTERMDL^^} in
+	-P|--prereq*)
+		INSTALL_PREREQ=1
+		;;
+	RT-N16)
+		MKBASE="src-rt"
+		;;
+	RT-N66|RT-N66[URW]|RT-AC66|RT-AC66[URW])
+		MKBASE="src-rt-6.x"
+		;;
+	RT-AC56|RT-AC56[URW]|RT-AC68|RT-AC68[URW]) # RT-AC87[URW] ???
+		MKBASE="src-rt-6.x.4708"
+		;;
+	*) fatal "unrecognized router model ${W}$ROUTERMDL${Z}. Either the command line or this script needs fixing."
+		;;
+esac
 [[ -f "$BASEDIR/README-merlin.txt" ]] || fatal help "$BASEDIR is expected to contain a file ${W}README-merlin.txt${Z}."
 [[ -e "/etc/debian_version" ]] || fatal "this script expects the Debian flavor called ${W}Ubuntu${Z}."
 type lsb_release > /dev/null 2>&1 || fatal "${W}lsb_release{$Z} is expected to be installed. That is normally the case on Ubuntu anyway."
@@ -283,8 +323,10 @@ let UBUREL=0x$(lsb_release -sr|tr -d '.')
 PREREQ_PKGS="autoconf automake bash bison bzip2 diffutils file flex g++ gawk gcc-multilib gettext gperf groff-base libncurses-dev libexpat1-dev libslang2 libssl-dev libtool libxml-parser-perl make patch perl pkg-config python sed shtool tar texinfo unzip zlib1g zlib1g-dev lib32z1-dev lib32stdc++6"
 # On Ubuntu 13.10 and later we check for two additional packages
 ((UBUREL >= 0x1310)) && PREREQ_PKGS="$PREREQ_PKGS automake1.11 libproxy-dev"
+# Did the user ask to install prerequisites instead?
+[[ -n "$INSTALL_PREREQ" ]] && install_prerequisites
 echo -en "${R}"
-dpkg-query --load-avail -l $PREREQ_PKGS > /dev/null || fatal "it appears you have packages missing (see above) that are required to build a firmware image.\nUse\n\tapt-get --no-install-recommends install ...\nto install the missing packages, then retry."
+dpkg-query --load-avail -l $PREREQ_PKGS > /dev/null || fatal "it appears you have packages missing (see above) that are required to build a firmware image.\nUse:\n\t${W}$0 --prereq${Z}\n\t${W}apt-get --no-install-recommends install${Z} ...\nto install the missing packages, then retry."
 echo -en "${Z}"
 # Special steps required on Ubuntu newer than or equal to 13.10
 if ((UBUREL >= 0x1310)); then
@@ -295,7 +337,7 @@ if ((UBUREL >= 0x1310)); then
 	# fix broken configure script for libdaemon
 	( cd "$BASEDIR/release/src/router/libdaemon" && aclocal ) || fatal "failed to fix broken configure script for libdaemon"
 	# fix broken configure script for libxml2
-	( cd "$BASEDIR/release/src/router/libxml2" && sed -i s/^AM_C_PROTOTYPES/#AM_C_PROTOTYPES/g configure.in && aclocal ) || fatal "failed to fix broken configure script for libxml2"
+	( cd "$BASEDIR/release/src/router/libxml2" && sed -i.BAK-build-image s/^AM_C_PROTOTYPES/#AM_C_PROTOTYPES/g configure.in && aclocal ) || fatal "failed to fix broken configure script for libxml2"
 fi
 # Clean up leftovers
 echo -e "${Y}NOTE:${Z} removing excess files"
@@ -315,6 +357,8 @@ else
 	done
 	# Instead of installing, we override some of the paths used in the build process
 	export TOOLCHAIN="$BASEDIR/tools/brcm/hndtools-mipsel-uclibc" # used in preconfigure scripts
+	# Set the trap to also revert the changes we made
+	trap cleanup_and_revert EXIT
 fi
 # Add the toolchain into the PATH
 export PATH="$PATH:$TOOLCHAIN/bin"
@@ -322,6 +366,9 @@ export PATH="$PATH:$TOOLCHAIN/bin"
 for i in mipsel-linux-addr2line mipsel-linux-ar mipsel-linux-as mipsel-linux-c++ mipsel-linux-cc mipsel-linux-c++filt mipsel-linux-cpp mipsel-linux-g++ mipsel-linux-gcc mipsel-linux-gcc-4.2.4 mipsel-linux-gccbug mipsel-linux-gcov mipsel-linux-gprof mipsel-linux-ld mipsel-linux-nm mipsel-linux-objcopy mipsel-linux-objdump mipsel-linux-ranlib mipsel-linux-readelf mipsel-linux-size mipsel-linux-strings mipsel-linux-strip; do
 	$i --version > /dev/null 2>&1 || fatal "failed to execute $i"
 done
-make -C "$BASEDIR/release/src-rt-6.x" "TOOLCHAIN=$TOOLCHAIN" clean > /dev/null 2>&1
-[[ "clean" == "$ROUTERMDL" ]] || make -C "$BASEDIR/release/src-rt-6.x" "TOOLCHAIN=$TOOLCHAIN" $ROUTERMDL
+# Do the make
+echo -e "${Y}NOTE:${Z} running ${W}make -C release/$MKBASE clean${Z}"
+make -C "$BASEDIR/release/$MKBASE" "TOOLCHAIN=$TOOLCHAIN" clean > /dev/null 2>&1
+echo -e "${Y}NOTE:${Z} running ${W}make -C release/$MKBASE ${ROUTERMDL,,}${Z}"
+make -C "$BASEDIR/release/$MKBASE" "TOOLCHAIN=$TOOLCHAIN" ${ROUTERMDL,,}
 ```
