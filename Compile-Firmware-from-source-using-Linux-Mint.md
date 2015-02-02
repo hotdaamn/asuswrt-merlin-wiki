@@ -63,6 +63,8 @@ libmpc2:i386
 
 * Download Merlins hard work
 
+**Note:** a very detailed guide on how to download the source code can be found [on this Wiki page](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub).
+
 ```bash
 git clone https://github.com/RMerl/asuswrt-merlin.git
 ```
