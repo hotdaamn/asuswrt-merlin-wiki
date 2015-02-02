@@ -52,7 +52,7 @@ From here on it is just copy and paste work !
 * Just paste in the commands because some commands require ROOT privilege we use `sudo`.
 * It will ask you for a password type the password you provided during install.  
 
-> **Note:** the `root` account is actually only required for certain parts of the whole procedure, specifically for the symlinking of the toolchain into `/opt`. If you fix up the hardcoded paths in some of the source files, you will be able to run the whole build procedure without superuser privileges. If you prefer to automate the following steps, scroll down to the section named *Automated all-in-one script*.
+> **Note:** the `root` account is actually only required for certain parts of the whole procedure, specifically for the symlinking of the toolchain into `/opt` and installation of packages. If you fix up the hardcoded paths in some of the source files, you will be able to run the whole build procedure without superuser privileges. If you prefer to automate the following steps, scroll down to the section named *Automated all-in-one script*.
 
 * Install the base packages you need to compile
 
