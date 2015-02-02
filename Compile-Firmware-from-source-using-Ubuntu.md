@@ -54,7 +54,7 @@ When the Ubuntu installer has finished you can fire up terminal
 
 We are going to make the root account active because if we don't do that it will give us a lot of errors during compilation.
 
-> **Note:** the `root` account is actually only required for certain parts of the whole procedure, specifically for the symlinking of the toolchain into `/opt`. If you fix up the hardcoded paths in some of the source files, you will be able to run the whole build procedure without superuser privileges. If you prefer to automate the following steps, scroll down to the section named *Automated all-in-one script*.
+> **Note:** the `root` account is actually only required for certain parts of the whole procedure, specifically for the symlinking of the toolchain into `/opt` and installation of packages. If you fix up the hardcoded paths in some of the source files, you will be able to run the whole build procedure without superuser privileges. If you prefer to automate the following steps, scroll down to the section named *Automated all-in-one script*.
 
 Paste in the following lines in terminal
 
