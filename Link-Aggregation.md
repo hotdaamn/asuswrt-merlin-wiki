@@ -122,7 +122,8 @@ Include the following code in firewall-start script located in /jffs/scripts/ (y
     iptables -I INPUT -i vlan5 -j ACCEPT
     iptables -I INPUT -i bond0 -j ACCEPT
 
-   # Firewall/IPtables Performance Tweak for Bond0 to be placed right after the above bonding rules and before your custom rules - if any.
+   # Firewall/IPtables Performance Tweak for Bond0 to be placed right after the above bonding rules and 
+   # before your custom rules - if any.
    iptables -D INPUT `iptables --line-numbers -nL INPUT | grep ESTABLISHED | tail -n1 | awk '{print $1}'`
    iptables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 
