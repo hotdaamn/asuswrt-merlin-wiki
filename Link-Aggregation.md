@@ -117,10 +117,14 @@ Include the following code in firewall-start script located in /jffs/scripts/ (y
 
     #!/bin/sh
 
-    # Bonding
-    iptables -I INPUT 1 -i bond0 -j ACCEPT
-    iptables -I INPUT 1 -i vlan4 -j ACCEPT
-    iptables -I INPUT 1 -i vlan5 -j ACCEPT
+    # Bonding IPtables rules
+    iptables -I INPUT -i vlan4 -j ACCEPT
+    iptables -I INPUT -i vlan5 -j ACCEPT
+    iptables -I INPUT -i bond0 -j ACCEPT
+
+   # Firewall/IPtables Performance Tweak for Bond0 to be placed right after the above bonding rules and before your custom rules - if any.
+   iptables -D INPUT `iptables --line-numbers -nL INPUT | grep ESTABLISHED | tail -n1 | awk '{print $1}'`
+   iptables -I INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
 
 **Step 4 - Set the switch's LAG hashing mode**
 
