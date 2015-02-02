@@ -50,7 +50,11 @@ When the Ubuntu installer has finished you can fire up terminal
 
 * Fire up a terminal CTRL+ALT+T
 
+## Manually preparing the build environment
+
 We are going to make the root account active because if we don't do that it will give us a lot of errors during compilation.
+
+> **Note:** the `root` account is actually only required for certain parts of the whole procedure, specifically for the symlinking of the toolchain into `/opt`. If you fix up the hardcoded paths in some of the source files, you will be able to run the whole build procedure without superuser privileges. If you prefer to automate the following steps, scroll down to the section named *Automated all-in-one script*.
 
 Paste in the following lines in terminal
 
@@ -124,7 +128,7 @@ sudo mkdir -p /media/ASUSWRT/
 sudo ln -s ~/asuswrt-merlin /media/ASUSWRT/asuswrt-merlin
 ```
 
-We are now ready to build a image
+## Ready to build: manual approach
 
 ### RT-N16
 
@@ -190,10 +194,10 @@ sed -i s/AM_C_PROTOTYPES/#AM_C_PROTOTYPES/g ~/asuswrt-merlin/release/src/router/
 aclocal
 ```
 
-## All in one script
+## Automated all-in-one script
+
+**Status:** This has been tested on Ubuntu 12.04 and 14.04 and is known to work as of 2015-02-02.
 
 The latest version can always be found at [assarbad/build-asuswrt-merlin](https://github.com/assarbad/build-asuswrt-merlin). Please report issues there as well.
 
 On the landing page (above link) you will find a brief introduction on how to use the script as well as its status.
-
-This has been tested on Ubuntu 12.04 and 14.04 and is known to work as of 2015-02-02.
