@@ -98,6 +98,8 @@ If you are ready installing all these packages take a coffee or a beer.
 
 We are going to download Merlins hard work with again some terminal commands.  It appears as if scripts published in support forums all assume the clone is done off of root, so first we change to the root directory.
 
+**Note:** a very detailed guide on how to download the source code can be found [on this Wiki page](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub).
+
 ```bash
 cd /root
 git clone https://github.com/RMerl/asuswrt-merlin.git
