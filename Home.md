@@ -38,7 +38,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 ### Development
 1. [Download the latest source code from GitHub](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub)
 2. [Compile from source using Ubuntu](https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-Ubuntu)
-3. [Compile from source using MINT13] (https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-MINT-13)
+3. [Compile from source using Linux Mint](https://github.com/RMerl/asuswrt-merlin/wiki/Compile-Firmware-from-source-using-Linux-Mint)
 4. [Compiling from source using a Debian-based Linux Distribution](https://github.com/RMerl/asuswrt-merlin/wiki/Compiling-from-source-using-a-Debian-based-Linux-Distribution)
 5. [Apply patches to source files](https://github.com/RMerl/asuswrt-merlin/wiki/Applying-patches-to-source-files)
 
