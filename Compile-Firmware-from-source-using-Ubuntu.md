@@ -12,6 +12,10 @@
 
 But on the other hand your router is VERY hard to brick!
 
+## Additional information
+
+Ubuntu is a derivative of Debian, so you may benefit from also looking at [the instructions for Debian-derived distributions in general](/RMerl/asuswrt-merlin/wiki/Compiling-from-source-using-a-Debian-based-Linux-Distribution).
+
 ## Example: building under Ubuntu 12.04
 
 For the reference we are going to use Ubuntu 12.04 in VMware Player.
@@ -98,7 +102,7 @@ If you are ready installing all these packages take a coffee or a beer.
 
 We are going to download Merlins hard work with again some terminal commands.  It appears as if scripts published in support forums all assume the clone is done off of root, so first we change to the root directory.
 
-**Note:** a very detailed guide on how to download the source code can be found [on this Wiki page](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub).
+**Note:** a very detailed guide on how to download the source code can be found [on this Wiki page](/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub).
 
 ```bash
 cd /root
