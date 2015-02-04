@@ -51,7 +51,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 5. [How to dedicate SSID for VPN and SSID for regular ISP using OpenVPN] (https://github.com/RMerl/asuswrt-merlin/wiki/How-to-setup-SSID-for-VPN-and-SSID-for-Regular-ISP-using-OpenVPN.)
 6. [How to use ipset to block connections from Tor nodes or some countries] (https://github.com/RMerl/asuswrt-merlin/wiki/Using-ipset)
 7. [Link Aggregation Setup](https://github.com/RMerl/asuswrt-merlin/wiki/Link-Aggregation)
-8. [Access modem Web UI on WAN port](https://github.com/RMerl/asuswrt-merlin/wiki/Access-modem-Web-UI-on-WAN-port)
+8. [Access modem Web UI on WAN port (no script)](https://github.com/RMerl/asuswrt-merlin/wiki/Access-modem-Web-UI-on-WAN-port-(no-script))
 
 ### Misc HowTo and Guides
 1. [Scheduled Reboot](https://github.com/RMerl/asuswrt-merlin/wiki/Scheduled-Reboot)
