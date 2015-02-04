@@ -16,7 +16,7 @@ This guide is targeted towards Debian-based distributions, such as:
 
 This guide can still be used as reference on non-Debian distributions, but you may need to substitute other commands (most notably the `apt-get` commands) with commands suitable for your system's package manager (e.g. `yum`). You may also require different packages to be installed on your system should you be running a 64-bit build environment. Refer to your distribution's documentation for more information.
 
-**Note:** this guide does not cover downloading the `asuswrt-merlin` source for compilation - refer to [this guide](https://github.com/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub) to acquire the source code.
+**Note:** this guide does not cover downloading the `asuswrt-merlin` source for compilation - refer to [this guide](/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub) to acquire the source code.
 
 ## Prerequisites
 
