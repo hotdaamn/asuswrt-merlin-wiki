@@ -16,7 +16,7 @@ This guide is specifically tailored for ASUS routers running Merlin Firmware.
 
 STEP A:
 
-1. Make sure [VPN](http://subscene.com/) is ON and Start with WAN option
+1. Make sure [VPN](https://torguard.net/knowledgebase.php?action=displayarticle&id=148) is ON and Start with WAN option
 2. Goto to Administration > System
 3. Enable JFFS partition - YES
 4. Format JFFS partition at next boot - YES
