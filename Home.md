@@ -52,6 +52,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 6. [How to use ipset to block connections from Tor nodes or some countries](/RMerl/asuswrt-merlin/wiki/Using-ipset)
 7. [Link Aggregation Setup](/RMerl/asuswrt-merlin/wiki/Link-Aggregation)
 8. [Access modem Web UI on WAN port (no script)](/RMerl/asuswrt-merlin/wiki/Access-modem-Web-UI-on-WAN-port-(no-script))
+9. [How to Direct Traffic Over VPN and Drop connections if VPN down](https://github.com/RMerl/asuswrt-merlin/wiki/How-to-Direct-Traffic-over-VPN-and-Drop-connections-if-VPN-goes-down)
 
 ### Misc HowTo and Guides
 1. [Scheduled Reboot](/RMerl/asuswrt-merlin/wiki/Scheduled-Reboot)
