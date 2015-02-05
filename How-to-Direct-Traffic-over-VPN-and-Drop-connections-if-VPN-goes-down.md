@@ -1,6 +1,6 @@
 ## Introduction ##
 
-This guide will help you program which devices go through the VPN and which devices go to your local ISP by creating 2 different scripts.
+This guide will help you program which devices go through the [VPN](http://en.wikipedia.org/wiki/Virtual_private_network) and which devices go to your local [ISP](http://en.wikipedia.org/wiki/Internet_service_provider) by creating 2 different scripts.
 Furthermore It will also show you how to Block VPN devices when VPN is down, but still allow non-VPN traffic.
 This guide is specifically tailored for ASUS routers running Merlin Firmware.
 
@@ -83,15 +83,13 @@ Now save the script as openvpn-event with no extension!
 
 STEP E:
 
-Now you are ready to add a firewall script which will determine which devices will stop traffic if the VPN drops connection, but will not affect traffic to devices on local ISP.
+Now you are ready to add a firewall script which will determine which devices will stop traffic if the VPN drops connection, This will not affect traffic to devices on local ISP.
 When the VPN is back up the devices will resume internet connectivity.
 
-In the script below you need to put the devices IP address which are on the VPN which are the same addresses as the ones you added in the previous script.
-For each device you need to create a new line.
-In the script below there are 2 devices which will not pass through the VPN if it drops.
-add as many lines as you need which correspond to the devices passing on the VPN
+Please copy and paste the script below to notepad ++ and edit the IP address XX.X with the values for each device on the VPN which should be the same as in the openvpn-event script you created earlier, and make sure the tunnel points to the proper VPN switch that you are using on your Router.
+For example; tun11 is VPN 1 and tun12 is VPN 2 on your router.
 
-Take note that tun11 is VPN 1 and tun12 is VPN 2
+Now save as firewall-start without any extensions.
 
     #!/bin/sh > /jffs/scripts/firewall-start
 
@@ -105,12 +103,6 @@ Take note that tun11 is VPN 1 and tun12 is VPN 2
     iptables -t nat -A POSTROUTING -o tun11 -j MASQUERADE
     
     chmod +x /jffs/scripts/firewall-start
-
-
-Please copy and paste the script above to notepad ++ and edit the IP address XX.X with the values for each device on the VPN which should be the same as in the openvpn-event script you created earlier, and make sure the tunnel points to the proper VPN switch that you are using on your Router.
-For example; tun11 is VPN 1 and tun12 is VPN 2 on your router.
-
-Now save as firewall-start without any extensions.
 
 STEP F:
 
