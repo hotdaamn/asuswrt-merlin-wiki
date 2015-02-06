@@ -57,6 +57,9 @@ Copy the script below to your notepad ++ and make sure you change xx with your d
 Now save the script as openvpn-event with no extension!
 
     #!/bin/sh
+    
+     Sleep 2
+     
     for i in /proc/sys/net/ipv4/conf/*/rp_filter ; do
       echo 0 > $i
     done
@@ -91,9 +94,9 @@ For example; tun11 is VPN 1 and tun12 is VPN 2 on your router.
 
 Now save as firewall-start without any extensions.
 
-    #!/bin/sh > /jffs/scripts/firewall-start
+    #!/bin/sh
 
-    sleep 2
+    sleep 3
         
     iptables -I FORWARD -i br0 -o tun11 -j ACCEPT
     iptables -I FORWARD -i tun11 -o br0 -j ACCEPT
@@ -102,7 +105,7 @@ Now save as firewall-start without any extensions.
     iptables -I INPUT -i tun11 -j REJECT
     iptables -t nat -A POSTROUTING -o tun11 -j MASQUERADE
     
-    chmod +x /jffs/scripts/firewall-start
+    chmod a+rx /jffs/scripts/firewall-start
 
 STEP F:
 
