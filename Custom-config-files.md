@@ -1,6 +1,11 @@
 The services executed by the router such as _minidlna_ or _dnsmasq_ relies on dynamically-generated config files.  There are various methods through which you can interact with these config scripts to customize 
 them.
 
+### Enabling support for custom configs ###
+Starting with 378.50, this functionality is disabled by default.  To enable it, go to Administration -> System, then enable it under the JFFS section.
+
+If you accidentally lock yourself out of your router due to a bugged custom config, a factory default reset will let you regain access to your router
+
 ### Replacing or appending content to config files ###
 You can append content to various configuration files that are created by the firmware, or even completely replace them with custom config files you have created.  Those config override files must be stored in _/jffs/configs/_.  To have a config file appended to the one created by the firmware, simply add _".add"_ at the end of the filename taken from the list below.  For example:
 ```
@@ -16,6 +21,9 @@ Note that replacing a config file with your own implies that you properly fill i
 
 The list of available config overrides:
 
+ * adisk.service
+ * afpd.service
+ * avahi-daemon.conf
  * dhcp6s.conf
  * dnsmasq.conf
  * exports (only exports.add supported)
@@ -23,10 +31,12 @@ The list of available config overrides:
  * group, gshadow, passwd, shadow (only .add versions supported)
  * hosts (for /etc/hosts)
  * minidlna.conf
+ * mt-daap.service
  * pptpd.conf
  * profile (shell profile, only profile.add suypported)
  * radvd.conf
  * smb.conf
+ * snmpd.conf
  * vsftpd.conf
  * upnp (for miniupnpd)
 
@@ -49,6 +59,9 @@ Postconf scripts must be stored in _/jffs/scripts/_ .The path/filename of the ta
 
 The list of available postconf scripts is:
 
+ * adisk.postconf (Time Machine)
+ * afpd.postconf (Time Machine)
+ * avahi-daemon.postconf (Time Machine)
  * dhcp6s.postconf
  * dnsmasq.postconf
  * exports.postconf
@@ -57,6 +70,7 @@ The list of available postconf scripts is:
  * gshadow.postconf
  * hosts.postconf
  * minidlna.postconf
+ * mt-daap.postconf
  * openvpnclient1.postconf (and openvpnclient2.postconf)
  * openvpnserver1.postconf (and openvpnserver2.postconf)
  * passwd.postconf
@@ -64,6 +78,7 @@ The list of available postconf scripts is:
  * radvd.postconf
  * shadow.postconf
  * smb.postconf
+ * snmpd.postconf
  * upnp.postconf
  * vsftpd.postconf
 
