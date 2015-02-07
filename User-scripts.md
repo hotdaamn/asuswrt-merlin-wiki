@@ -45,6 +45,10 @@ Called whenever a DHCP event occurs on the WAN interface.  The type of event is 
 ### openvpn-event
 Called whenever an OpenVPN server gets started/stopped, or an OpenVPN client connects to a remote server.  Uses the same syntax/parameters as the "up" and "down" scripts in OpenVPN.
 
+### ddns-start
+Script called at the end of a DDNS update process.  This script is also called when setting the DDNS type to "Custom".  The script gets passed the WAN IP as an argument.  When handling a "Custom" DDNS, this script is 
+also responsible for reporting the success or failure of the update process.  See the Custom DDNS section for more information.
+
 
 ## Creating scripts
 Don't forget to set any script you create as being executable:
