@@ -15,6 +15,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 1. [User scripts](/RMerl/asuswrt-merlin/wiki/User-scripts)
 2. [JFFS](/RMerl/asuswrt-merlin/wiki/JFFS)
 3. [Customizing configuration files](/RMerl/asuswrt-merlin/wiki/Custom-config-files)
+4. [Custom DDNS support](RMerl/asuswrt-merlin/wiki/Custom DDNS)
 
 ### OpenVPN
 1. [About OpenVPN](/RMerl/asuswrt-merlin/wiki/About-OpenVPN)
