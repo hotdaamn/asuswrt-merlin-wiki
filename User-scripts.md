@@ -22,22 +22,22 @@ When the WAN interface just came up.  Good place to put scripts that depend on t
 NOTE: Internet connection is unlikely to be active when this script is run. Add a `sleep` line to delay running until connection complete, or loop until your command succeeds.
 
 ### firewall-start
-The firewall just got started, and filtering rules have been applied.  This is where you will usually put your own custom rules in the filter table (but NOT the nat table).
+The firewall just got started, and filtering rules have been applied.  This is where you will usually put your own custom rules in the filter table (but NOT the nat table).  Script receives wan interface name (e.g. ppp0) as first parameter.
 
 ### nat-start
 NAT rules (i.e. port forwards and such) have been applied to the NAT table.  This is where you will want to put your own NAT table custom rules.  For example, a port forward that only allows connections coming from a specific IP.
 
 ### init-start
-Right after JFFS just got mounted, and before any of the services get start.  This is the earliest part of the boot process where you can insert something.
+Right after JFFS just got mounted, and before any of the services get start. This is the earliest part of the boot process where you can insert something.
 
 ### pre-mount
-Just before a partition gets mounted.  This is run in a blocking call and will block the mounting of the  partition  for which it is invoked till its execution is complete. This is done so that it can be used for things like running e2fsck on the partition before mounting. This script is also passed the device path being mounted as an argument which can be used in the script using $1.
+Just before a partition gets mounted.  This is run in a blocking call and will block the mounting of the  partition for which it is invoked till its execution is complete. This is done so that it can be used for things like running e2fsck on the partition before mounting. This script is also passed the device path (e.g. /dev/sda1) being mounted as an argument which can be used in the script using $1.
 
 ### post-mount
-Just after a partition got mounted.
+Just after a partition got mounted.  $1 is a path where partition has been mounted (e.g. /tmp/mnt/OPT).
 
 ### unmount
-Just before unmounting a partition.  This is a blocking script, so be careful with it.  The mount point is passed as an argument to the script
+Just before unmounting a partition.  This is a blocking script, so be careful with it.  The mount point is passed as an argument to the script.
 
 ### dhcpc-event
 Called whenever a DHCP event occurs on the WAN interface.  The type of event is passed as an argument; possible event types in the version of `udhcpc` in ASUSWRT are `deconfig` (when udhcpc starts and when a lease is lost), `bound` (when a lease and new IP address is acquired), and `renew` (when a lease is renewed, but the IP did not change).
