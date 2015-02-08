@@ -32,3 +32,16 @@ else
 fi
 ```
 
+### DNSexit.com
+
+Free DNS server that also offers DDNS services.
+
+```
+#!/bin/sh
+/usr/bin/wget -qO - http://update.dnsexit.com/RemoteUpdate.sv?login=cavcomcomau&password=Beth1153&host=cavanaghs.id.au&myip=
+if [ $? -eq 0 ]; then
+  /sbin/ddns_custom_updated 1
+else
+  /sbin/ddns_custom_updated 0
+fi
+```
