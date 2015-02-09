@@ -2,7 +2,7 @@ Starting with 3.0.0.4.246.20, the router LEDs can now be controlled by the user.
 
 The following example will let you configure your router so that LEDs will turn themselves off at 18:00, and turn back on at 6:00.
 
-First, make sure you have enabled the [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS) partition.  Next, either create the following services-start script (or add to any existing script):
+First, make sure you have enabled the [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS) partition and support for custom user scripts.  Next, either create the following services-start script (or add to any existing script):
 
 services-start:
 ```
