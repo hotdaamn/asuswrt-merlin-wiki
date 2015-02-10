@@ -121,3 +121,7 @@ Finally, to get this to run on each boot (rather than having to wait until 4am t
     sh /jffs/scripts/rpg-passgen.sh
 
 Reboot your router, and you're done!
+
+If you wish to comment on this, add improvements, discuss errant teenagers, then I have created a thread here : 
+
+[http://forums.smallnetbuilder.com/showthread.php?t=22700](http://forums.smallnetbuilder.com/showthread.php?t=22700)
