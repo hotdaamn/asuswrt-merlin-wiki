@@ -25,7 +25,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 ### External software repositories
 1. [Setting up Optware](/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
 2. [Setting up Entware](/RMerl/asuswrt-merlin/wiki/Entware) (Optware alternative)
-3. [Webcam video surveillance Optware](https://www.asuswrt.eu/webcam-video-surveillance-via-mjpg-streamer/) (External link)
+3. [Setting up Entware-Arm](https://www.asuswrt.eu/how-to-install-entware-arm) (External link)
 4. [Webcam video surveillance Entware](https://www.asuswrt.eu/webcam-video-surveillance-via-mjpg-streamer-entware/) (External link)
 5. [Installing Transmission through Optware](/RMerl/asuswrt-merlin/wiki/Transmission-through-Optware)
 6. [Installing Transmission through Entware](/RMerl/asuswrt-merlin/wiki/Installing-Transmission-through-Entware)
@@ -34,6 +34,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 9. [Lighttpd web server with PHP support through Entware](/RMerl/asuswrt-merlin/wiki/Lighttpd-web-server-with-PHP-support-through-Entware)
 10. [Minidlna Upnp Media Server through debian](/RMerl/asuswrt-merlin/wiki/Media-Server-through-debian) (link list)
 11. [Installing RuTorrent through Entware](https://www.asuswrt.eu/rutorrent-on-asuswrt-router-through-entware) (External link)
+12. [Webcam video surveillance Optware](https://www.asuswrt.eu/webcam-video-surveillance-via-mjpg-streamer/) (External link)
 
 
 ### Development
