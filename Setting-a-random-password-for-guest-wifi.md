@@ -22,15 +22,15 @@ First of all, create the following as /jffs/scripts/rpg-passgen.sh and ensure yo
     
     # define our function 
     getrandomphrase () {
-        if [ -f rpg-phrases.txt ]; then
-            phrasecount=`wc -l rpg-phrases.txt | cut -d " " -f 1`
+        if [ -f /jffs/scripts/rpg-phrases.txt ]; then
+            phrasecount=`wc -l /jffs/scripts/rpg-phrases.txt | cut -d " " -f 1`
             if [ $phrasecount == 0 ]; then
                 # file is empty
                 phrasepasswd=$datepasswd
             else
                 # using time in seconds as random number generator, don't think usual random functions work on busybox
                 timeinseconds=`date +"%s"`
-                phrasetext=`sed -n $(( ( $timeinseconds / 5 ) % $phrasecount + 1 ))p rpg-phrases.txt`
+                phrasetext=`sed -n $(( ( $timeinseconds / 5 ) % $phrasecount + 1 ))p /jffs/scripts/rpg-phrases.txt`
                 if [ $phrasetext == "" ]; then
                     # we hit a blank line in file, bailing  
                     phrasepasswd=$datepasswd 
