@@ -1,5 +1,10 @@
 By using dnsmasq, you can force all your LAN clients to use Google's Safesearch when doing any searches on their engines.
 
+There are two different methods through which this can be done.
+
+### Defining a different IP to www.google.com ###
+
+
 First, we need to configure dnsmasq to alias www.google.com to forcesafesearch.google.com.  To do so, make sure JFFS + custom config/script options are enabled.  Then, create the following dnsmasq.conf.add script:
 
 ```
