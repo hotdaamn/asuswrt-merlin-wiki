@@ -45,3 +45,24 @@ else
   /sbin/ddns_custom_updated 0
 fi
 ```
+
+### Google Domains
+
+Transfer your domain to Google and enjoy free DDNS and other features.
+
+```
+#!/bin/sh
+
+set -u
+
+# args: username password hostname
+google_dns_update() {             
+  case $(curl -s https://$1:$2@domains.google.com/nic/update?hostname=$3) in
+    good|nochg*) /sbin/ddns_custom_updated 1 ;;                             
+    *) /sbin/ddns_custom_updated 0 ;;                                       
+  esac                                                                      
+}                                                                           
+                                               
+google_dns_update <username> <password> <subdomain>
+
+```
