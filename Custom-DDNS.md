@@ -66,3 +66,35 @@ google_dns_update() {
 google_dns_update <username> <password> <subdomain>
 
 ```
+
+### [DyNS](http://dyns.cx)
+
+provide a number of free and premium DNS related services for home or office use.
+
+```
+#!/bin/sh
+#
+# http://dyns.cx/documentation/technical/protocol/v1.1.php
+                
+USERNAME=   
+PASSWORD=   
+HOSTNAME=
+DOMAIN=  # optional                       
+IP=${1}                                                                                                        
+DEBUG= # set to true while testing                                                                                          
+                                                                                                               
+URL="http://www.dyns.net/postscript011.php?username=${USERNAME}&password=${PASSWORD}&host=${HOSTNAME}&ip=${IP}"
+if [ -n "${DOMAIN}" ] ; then   
+  URL="${URL}&domain=${DOMAIN}"
+fi                         
+if [ -n "${DEBUG}" ] ; then
+  URL="${URL}&devel=1"     
+fi                           
+                             
+wget -q -O - "$URL"          
+if [ $? -eq 0 ]; then        
+  /sbin/ddns_custom_updated 1
+else                         
+  /sbin/ddns_custom_updated 0
+fi                           
+```
