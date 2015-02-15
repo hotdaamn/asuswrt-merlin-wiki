@@ -47,7 +47,7 @@ Called whenever an OpenVPN server gets started/stopped, or an OpenVPN client con
 
 ### ddns-start
 Script called at the end of a DDNS update process.  This script is also called when setting the DDNS type to "Custom".  The script gets passed the WAN IP as an argument.  When handling a "Custom" DDNS, this script is 
-also responsible for reporting the success or failure of the update process.  See the Custom DDNS section for more information.
+also responsible for reporting the success or failure of the update process.  See the [Custom DDNS](https://github.com/RMerl/asuswrt-merlin/wiki/Custom-DDNS) section for more information.
 
 
 ## Creating scripts
