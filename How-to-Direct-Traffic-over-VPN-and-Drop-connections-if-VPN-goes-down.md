@@ -58,7 +58,7 @@ Now save the script as openvpn-event with no extension!
 
     #!/bin/sh
     
-     Sleep 2
+     Sleep 3
      
     for i in /proc/sys/net/ipv4/conf/*/rp_filter ; do
       echo 0 > $i
@@ -96,7 +96,7 @@ Now save as firewall-start without any extensions.
 
     #!/bin/sh
 
-    sleep 3
+    sleep 5
         
     iptables -I FORWARD -i br0 -o tun11 -j ACCEPT
     iptables -I FORWARD -i tun11 -o br0 -j ACCEPT
@@ -133,7 +133,9 @@ To enable SSH on Merlin do this:
 
 STEP G:
 
-You are now ready to copy the scripts you created to the router:
+Please read Final Notes before copying scripts to the router.
+
+You are now ready to copy the scripts you created to the router: 
 
 1. Download [winSCP](http://winscp.net/eng/download.php#download2)
 2. Install WinSCP then start it up.
@@ -146,12 +148,20 @@ Port 22
 5. This will log you into your router. There will be two folder trees. On the right is your routers folder tree.
 6. In the router folder tree, you need to go up to the root folder, where you will see the jffs folder under the root.
 7. double click on the JFFS Folder then double click the Scripts Folder.
-8. Navigate on the left folder tree and find the 2 scripts you created. Drag the openvpn-event and the firewall-start files in this folder (/jffs/scripts).
-9. Once the files are copied, right click > Properties > Change Octal to 0777 (Do this for each file)
+8. Navigate on the left folder tree and find the scripts you created. Drag the openvpn-event to the this folder (/jffs/scripts). test script and then copy firewall-start file
+9. Once the file is copied, right click > Properties > Change Octal to 0777
 10. Close WinSCP.
 11. Reboot Router.
 
 ##Final Notes##
+
+I have tried these scripts on AC66,68 and 87 routers and the way work fine.
+
+First copy the openvpn-event script and make sure it works before you copy the next firewall-start script over to the router.
+If you experience any problems change the sleep time from +/- intervals of 1.
+Make sure you reboot each time you make a change and be sure to test if it works properly.
+Once the first script loads and works you are ready to copy the second script firewall-start to the router. As you did with the previous script increase or decrease the sleep time by intervals of 1 and reboot until both scripts work properly.
+From my experience I have noticed that with firmware updates you may have to tweak the sleep times to make these scripts work properly. Generally an addition of 1 second on each script will do the trick.
 
 If all worked well you should have all devices connecting to local ISP and the selected devices will pass through the VPN. 
 Use [ipchicken](http://www.ipchicken.com) to check the IP address of your devices making sure that the devices that are on the VPN show the VPN address and the Devices that are not on the VPN should show your ISP address.
@@ -159,6 +169,48 @@ Now Test the firewall script by stopping the VPN on the router and see if the tr
 At this point all traffic should stop working on the VPN but traffic will still work on the non VPN devices.
 If that worked then turn the VPN back on. The selected VPN devices should now be back up and running :)
 You should also notice that the traffic passing via your ISP never got affected.
+
+## VPN or Local ISP batch file for Windows ##
+
+I have created a batch file for windows that you can switch from VPN to Local ISP on the fly without rebooting your pc. This script works with win7 and win8
+
+Simply copy and paste the script below to notepad and save it as VPN.bat in your documents folder.
+right click on VPN.bat and create a shortcut. now right click on the shortcut and click on properties then advance and enable run as admin. Move the shortcut to your desktop.
+
+Note: change "Ethernet" to whatever name you have given to your network card. 
+You can find out the name in Control Panel\Network and Internet\Network Connections take a look at the adapter name that your computer is using. Also use IP address that corresponds to the IP range you created for your VPN Scripts.
+
+    @echo off
+    echo Choose: 
+    echo [A] VPN 
+    echo [B] Local ISP
+    echo. 
+
+    :choice 
+    SET /P C=[A,B]? 
+    for %%? in (A) do if /I "%C%"=="%%?" goto A 
+    for %%? in (B) do if /I "%C%"=="%%?" goto B 
+    goto choice
+
+    :A 
+    @echo off 
+    netsh interface ip set address name = "Ethernet" source = static addr = 192.168.1.99 mask = 255.255.255.0 gateway = 192.168.1.1
+    netsh interface ipv4 add dnsserver "Ethernet" address=192.168.1.1 index=1
+    goto end
+
+    :B 
+    @ECHO OFF
+    netsh int ip set address name = "Ethernet" source = dhcp
+    netsh int ip set dns name = "Ethernet" source = dhcp
+
+    ipconfig /renew Ethernet
+
+    goto end 
+    :end
+
+When you run the batch file you will be prompted A:VPN or B:Local ISP
+
+It all seems hard but its easier then you think :)
 
 Enjoy!
 
