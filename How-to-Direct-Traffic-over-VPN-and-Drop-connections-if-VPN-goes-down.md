@@ -84,6 +84,8 @@ Now save the script as openvpn-event with no extension!
         iptables -t mangle -A PREROUTING -i br0 -m iprange --src-range 192.168.x.xxx -j MARK --set-mark 0
         iptables -t mangle -A PREROUTING -i br0 -m iprange --src-range 192.168.x.xxx -j MARK --set-mark 0
 
+    exit 1
+
 STEP E:
 
 Now you are ready to add a firewall script which will determine which devices will stop traffic if the VPN drops connection, This will not affect traffic to devices on local ISP.
