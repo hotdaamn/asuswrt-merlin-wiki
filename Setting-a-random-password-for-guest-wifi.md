@@ -29,7 +29,7 @@ First of all, create the following as /jffs/scripts/rpg-passgen.sh and ensure yo
                 phrasepasswd=$datepasswd
             else
                 randomnumber=`tr -cd 0-9 </dev/urandom | head -c 7`
-                phrasetext=`sed -n $(( ( $randomnumber % $phrasecount + 1 ))p /jffs/scripts/rpg-phrases.txt`
+                phrasetext=`sed -n $(( $randomnumber % ( $phrasecount + 1 ) ))p /jffs/scripts/rpg-phrases.txt`
                 if [ $phrasetext == "" ]; then
                     # we hit a blank line in file, bailing  
                     phrasepasswd=$datepasswd 
