@@ -18,9 +18,22 @@ Below you will find a collection of scripts to handle additional DDNS services:
 
 ### afraid.org
 
-Here is a working example, for afraid.org's free DDNS (you must update the URL to use your private API key from afraid.org)
+Here is a working example, for afraid.org's free DDNS (you must update the URL to use your private API key from afraid.org). 
 
 ```
+----- HTTPS -----                                                                                                           
+#!/bin/sh    
+KEY=xxxxxxxxREPLACE WITH KEYxxxxxxxxx                                                                                                                                                  
+URL=/dynamic/update.php?$KEY                                                                                                                            
+(echo "GET $URL"; sleep 5) | openssl s_client -quiet -connect freedns.afraid.org:443
+if [ $? -eq 0 ]; then
+    /sbin/ddns_custom_updated 1
+else
+    /sbin/ddns_custom_updated 0
+fi
+
+--- OR non-HTTPS --- (not recommended as your password is in plain hash).
+
 #!/bin/sh
 
 wget -q http://freedns.afraid.org/dynamic/update.php?your-private-key-goes-here -O - >/dev/null
