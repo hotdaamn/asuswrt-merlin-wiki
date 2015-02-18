@@ -98,3 +98,25 @@ else
   /sbin/ddns_custom_updated 0
 fi                           
 ```
+
+### CloudFlare
+
+If you use CloudFlare for your domains, this script can update any A record on your account.
+
+```
+#!/bin/sh
+
+EMAIL= # Your CloudFlare E-mail address
+ZONE= # The zone where your desired A record resides
+RECORDID= # ID of the A record
+RECORDNAME= # Name of the A record
+API= # Your CloudFlare API Key
+IP=${1}
+
+curl -s --data "a=rec_edit&tkn=$API&email=$EMAIL&z=$ZONE&id=$RECORDID&type=A&name=$RECORDNAME&ttl=1&content=$IP" https://www.cloudflare.com/api_json.html
+if [ $? -eq 0 ]; then
+  /sbin/ddns_custom_updated 1
+else
+  /sbin/ddns_custom_updated 0
+fi
+```
