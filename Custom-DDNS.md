@@ -45,7 +45,7 @@ else
 fi
 ```
 
-### DNSexit.com
+### DNSexit.com  (notice the example below uses non-HTTPS which isn't recommended.  See example for afraid above)
 
 Free DNS server that also offers DDNS services.
 
@@ -80,7 +80,7 @@ google_dns_update <username> <password> <subdomain>
 
 ```
 
-### [DyNS](http://dyns.cx)
+### [DyNS](http://dyns.cx)  (notice the example below uses non-HTTPS which isn't recommended.  See example for afraid above)
 
 provide a number of free and premium DNS related services for home or office use.
 
