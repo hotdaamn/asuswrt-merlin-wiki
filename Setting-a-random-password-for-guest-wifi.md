@@ -28,8 +28,8 @@ First of all, create the following as /jffs/scripts/rpg-passgen.sh and ensure yo
                 # file is empty
                 phrasepasswd=$datepasswd
             else
-                randomnumber=`tr -cd 0-9 </dev/urandom | head -c 7`
-                phrasetext=`sed -n $(( $randomnumber % ( $phrasecount + 1 ) ))p /jffs/scripts/rpg-phrases.txt`
+                randomnumber=`tr -cd 0-9 </dev/urandom | head -1 | cut -c4-13`
+                phrasetext=`sed -n $(( $randomnumber % $phrasecount + 1 ))p /jffs/scripts/rpg-phrases.txt`
                 if [ $phrasetext == "" ]; then
                     # we hit a blank line in file, bailing  
                     phrasepasswd=$datepasswd 
@@ -39,7 +39,7 @@ First of all, create the following as /jffs/scripts/rpg-passgen.sh and ensure yo
                         phrasepasswd=$datepasswd
                     else
                         # we have a phrase now get the three digit number  
-                        randomnumber=`tr -cd 0-9 </dev/urandom | head -c 7`
+                        randomnumber=`tr -cd 0-9 </dev/urandom | head -1 | cut -c4-13`
                         phrasenum=`printf "%03d" $(( $randomnumber % 1000 ))`
                         phrasepasswd=$phrasetext$phrasenum
                     fi
