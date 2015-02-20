@@ -45,10 +45,10 @@ else
 fi
 ```
 
-### DNSexit.com  (notice the example below uses non-HTTPS which isn't recommended.  See example for afraid above)
+### [dnsExit.com](http://www.dnsexit.com/Direct.sv?cmd=dynDns)
+* **_NOTE: the example below uses non-HTTPS which isn't recommended.  dnsExit.com doesn't have HTTPS method available._**
 
 Free DNS server that also offers DDNS services.
-
 ```
 #!/bin/sh
 /usr/bin/wget -qO - http://update.dnsexit.com/RemoteUpdate.sv?login=<username>&password=<password>&host=<domain>&myip=
@@ -60,9 +60,7 @@ fi
 ```
 
 ### Google Domains
-
 Transfer your domain to Google and enjoy free DDNS and other features.
-
 ```
 #!/bin/sh
 
@@ -77,13 +75,12 @@ google_dns_update() {
 }                                                                           
                                                
 google_dns_update <username> <password> <subdomain>
-
 ```
 
-### [DyNS](http://dyns.cx)  (notice the example below uses non-HTTPS which isn't recommended.  See example for afraid above)
+### [DyNS](http://dyns.cx)
+* **_NOTE: the example below uses non-HTTPS which isn't recommended.  See example for afraid above._**
 
 provide a number of free and premium DNS related services for home or office use.
-
 ```
 #!/bin/sh
 #
@@ -113,9 +110,7 @@ fi
 ```
 
 ### CloudFlare
-
 If you use CloudFlare for your domains, this script can update any A record on your account.
-
 ```
 #!/bin/sh
 
