@@ -58,7 +58,7 @@ Now save the script as openvpn-event with no extension!
 
     #!/bin/sh
     
-     Sleep 3
+     Sleep 2
      
     for i in /proc/sys/net/ipv4/conf/*/rp_filter ; do
       echo 0 > $i
@@ -98,7 +98,7 @@ Now save as firewall-start without any extensions.
 
     #!/bin/sh
 
-    sleep 5
+    sleep 4
         
     iptables -I FORWARD -i br0 -o tun11 -j ACCEPT
     iptables -I FORWARD -i tun11 -o br0 -j ACCEPT
@@ -163,7 +163,6 @@ First copy the openvpn-event script and make sure it works before you copy the n
 If you experience any problems change the sleep time from +/- intervals of 1.
 Make sure you reboot each time you make a change and be sure to test if it works properly.
 Once the first script loads and works you are ready to copy the second script firewall-start to the router. As you did with the previous script increase or decrease the sleep time by intervals of 1 and reboot until both scripts work properly.
-From my experience I have noticed that with firmware updates you may have to tweak the sleep times to make these scripts work properly. Generally an addition of 1 second on each script will do the trick.
 
 If all worked well you should have all devices connecting to local ISP and the selected devices will pass through the VPN. 
 Use [ipchicken](http://www.ipchicken.com) to check the IP address of your devices making sure that the devices that are on the VPN show the VPN address and the Devices that are not on the VPN should show your ISP address.
