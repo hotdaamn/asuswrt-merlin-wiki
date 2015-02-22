@@ -6,21 +6,30 @@ While the below may not be perfect (it's a long time since I did scripting) I wa
 
 The password is made up of a phrase selected from a text file (I used various band names) followed by a random three digit number. I'm only using one guest network, but this could be easily modified to pick three different passwords for three different networks, or even six. You would just need to assign new variables to phrasepwd after running the getrandomphrase procedure.
 
+edit : following comments on the forums, I have added a couple of alternate functions that provide different ways of creating a random password. getrandopenssl uses the openssl rand option, and getpasswdme uses curl to access the https://passwd.me api. These may require additional software to be installed over & above the default busy box installation.
+
 First of all, create the following as /jffs/scripts/rpg-passgen.sh and ensure you make it executable :
 
     #!/bin/sh
-
-    # define variables for sending email - you will need to change these!
+    
     FROM="login@gmail.com"
     AUTH="login@gmail.com"
     PASS="password"
     FROMNAME="Asus Router"
     TO="your@email.com; other@email.com"
-
-    # default password based on date if we cannot create one based on phrase file 
+    
+    # default password based on date if we cannot create one elsewhere
     datepasswd=`date +"%A%B%d"`
     
-    # define our function 
+    
+    ############################################################################
+    #
+    #   getrandomphrase - uses a list of known phrases in a file
+    #                   - phrase needs to be min 7 chars long
+    #                   - combines this with a random number between 0 and 999
+    #
+    ############################################################################
+    
     getrandomphrase () {
         if [ -f /jffs/scripts/rpg-phrases.txt ]; then
             phrasecount=`wc -l /jffs/scripts/rpg-phrases.txt | cut -d " " -f 1`
@@ -29,19 +38,29 @@ First of all, create the following as /jffs/scripts/rpg-passgen.sh and ensure yo
                 phrasepasswd=$datepasswd
             else
                 randomnumber=`tr -cd 0-9 </dev/urandom | head -c 7`
-                phrasetext=`sed -n $(( $randomnumber % $phrasecount + 1 ))p /jffs/scripts/rpg-phrases.txt`
-                if [ $phrasetext == "" ]; then
-                    # we hit a blank line in file, bailing  
-                    phrasepasswd=$datepasswd 
+                if [ $randomnumber == "" ]; then
+                    # cannot get a random number, bailing
+                    phrasepasswd=$datepasswd
                 else
-                    if [ ${#phrasetext} -lt 7 ]; then
-                        # phrase is too short to make a valid password 
-                        phrasepasswd=$datepasswd
+                    phrasetext=`sed -n $(( $randomnumber % $phrasecount + 1 ))p /jffs/scripts/rpg-phrases.txt`
+                    if [ $phrasetext == "" ]; then
+                        # blank lines in file, bailing  
+                        phrasepasswd=$datepasswd 
                     else
-                        # we have a phrase now get the three digit number  
-                        randomnumber=`tr -cd 0-9 </dev/urandom | head -c 7`
-                        phrasenum=`printf "%03d" $(( $randomnumber % 1000 ))`
-                        phrasepasswd=$phrasetext$phrasenum
+                        if [ ${#phrasetext} -lt 7 ]; then
+                            # phrase is too short to make a valid password 
+                            phrasepasswd=$datepasswd
+                        else
+                            # we have a phrase now get the three digit number
+                            randomnumber=`tr -cd 0-9 </dev/urandom | head -c 7`
+                            if [ $randomnumber == "" ]; then
+                                # cannot get a random number, bailing
+                                phrasepasswd=$datepasswd
+                            else
+                                phrasenum=`printf "%03d" $(( $randomnumber % 1000 ))`
+                                phrasepasswd=$phrasetext$phrasenum
+                            fi
+                        fi
                     fi
                 fi
             fi
@@ -51,10 +70,54 @@ First of all, create the following as /jffs/scripts/rpg-passgen.sh and ensure yo
         fi
     }
     
-    # now call the function 
+    
+    ############################################################################
+    #
+    #   getrandopenssl - uses openssl rand function to create a password
+    #
+    ############################################################################
+    
+    getrandopenssl () {
+        phrasepasswd=`openssl rand 8 -base64`
+        if [ $phrasepasswd == "" ]; then
+            # we were unable to get something from openssl 
+            phrasepasswd=$datepasswd
+        fi
+    }
+    
+    
+    ############################################################################
+    #
+    #   getpasswdme - uses passwd.me api to get random password
+    #               - needs curl to be installed 
+    #
+    ############################################################################
+    
+    getpasswdme () {
+        ping -c 1 8.8.8.8
+        if [ $? == 0 ]; then
+            phrasepasswd=`curl -k "https://passwd.me/api/1.0/get_password.txt?type=pronounceable&length=12&charset=LOWERCASEALPHANUMERIC"`
+            if [ $phrasepasswd == "" ]; then
+                # we were unable to get something from passwd.me
+                phrasepasswd=$datepasswd
+            fi
+        else
+            # no network access at this time
+            phrasepasswd=$datepasswd
+        fi
+    }
+    
+    
+    # Now call the function we want to use 
+    
     getrandomphrase
     
-    # log what we have done 
+    # getrandopenssl
+    
+    # getpasswdme
+    
+    
+    # log what we have done
     logger -t $(basename $0) "Today's Guest1 password is :" $phrasepasswd
     
     # nvram settings for the three guest 2.4 networks
@@ -70,12 +133,12 @@ First of all, create the following as /jffs/scripts/rpg-passgen.sh and ensure yo
     # passwords have been changed but we need to restart the wifi for it to pick them up
     service restart_wireless
     
-    # now send out the email 
+    # now send out the email
     echo "Subject: Guest network password notification" >/tmp/mail.txt
     echo "From: \\"$FROMNAME\\"<$FROM>" >>/tmp/mail.txt
     echo "Date: `date -R`" >>/tmp/mail.txt
     echo "" >>/tmp/mail.txt
-    echo "Today's Guest1 password is : $phrasepasswd" >>/tmp/mail.txt
+    echo "Today's guest network password is : $phrasepasswd" >>/tmp/mail.txt
     echo "" >>/tmp/mail.txt
     
     cat /tmp/mail.txt | sendmail -H"exec openssl s_client -quiet \
@@ -85,7 +148,6 @@ First of all, create the following as /jffs/scripts/rpg-passgen.sh and ensure yo
     -au"$AUTH" -ap"$PASS" $TO 
     
     rm /tmp/mail.txt
-
 
 In the event that we cannot get a good phrase to create a password, we create one based on the date, so at least the password will change on a daily basis, even if it ends up being predictable! :)
 
@@ -105,7 +167,7 @@ Next, create the following as /jffs/scripts/rpg-phrases.txt :
     blacksabbath
     defleppard
 
-These phrases are the basis for the password - I've chosen band names, but you could use your kids names or places or anything you want. Ensure that each phrase is at least 7 characters long (+3 for random number = min length of 10 characters) and that there are no blank lines. Try and have a reasonable number of entries in here, or you will end up with the same phrase being picked on a regular basis. My full phrases file contains about 30 or 40 different bands!
+These phrases are the basis for the password - I've chosen band names, but you could use your kids names or places or anything you want. Ensure that each phrase is at least 7 characters long (+3 for random number = min length of 10 characters) and that there are no blank lines. Try and have a reasonable number of entries in here, or you will end up with the same phrase being picked on a regular basis. My full phrases file now contains about 70 or 80 different bands! :)
 
 To get this process to run at 4am each day, add the following into /jffs/scripts/init-start and make it executable :
 
