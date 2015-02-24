@@ -139,7 +139,7 @@ token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 # <record domain="router.yourdomain.com" priority="" ttl="21600" subdomain="home" type="A" id="yyyyyyyy">...</record>
 id=yyyyyyyy
 
-/usr/sbin/curl --fail "https://pddimp.yandex.ru/nsapi/edit_a_record.xml?token=$token&domain=yourdomain.com&subdomain=home&record_id=$id&ttl=900&content=$1" > /dev/null 2>&1
+/usr/sbin/curl --silent "https://pddimp.yandex.ru/nsapi/edit_a_record.xml?token=$token&domain=yourdomain.com&subdomain=home&record_id=$id&ttl=900&content=router.yourdomain.com" > /dev/null 2>&1
 if [ $? -eq 0 ];
 then
     /sbin/ddns_custom_updated 1
