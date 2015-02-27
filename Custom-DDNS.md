@@ -22,10 +22,11 @@ Here is a working example, for afraid.org's free DDNS (you must update the URL t
 
 ```
 ----- HTTPS -----                                                                                                           
-#!/bin/sh    
-KEY=xxxxxxxxREPLACE WITH KEYxxxxxxxxx                                                                                                                                                  
-URL=/dynamic/update.php?$KEY                                                                                                                            
-(echo "GET $URL"; sleep 5) | openssl s_client -quiet -connect freedns.afraid.org:443
+#!/bin/sh
+KEY="PASTE_YOUR_KEY_HERE"
+
+curl -s "https://freedns.afraid.org/dynamic/update.php?$KEY" > /dev/null
+
 if [ $? -eq 0 ]; then
     /sbin/ddns_custom_updated 1
 else
