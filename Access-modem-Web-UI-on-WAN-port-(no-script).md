@@ -1,4 +1,4 @@
-This guide provides an easy configuration to access web-based UI of your xDSL/Cable modem connected to the wan port of your Asus router. **Important! - This only works if you are able to acess the modem's configuration.** For this to work and avoid issues, Modem and Router will be configured on different subnets.
+This guide provides an easy configuration to access web-based UI of your xDSL/Cable modem connected to the wan port of your Asus router. **Important! - This only works if you are able to acess the modem's configuration (some ISP have restrictions on their equipment).** For this to work and avoid issues, Modem and Router will be configured on different subnets.
 
 ![What we will do.](http://s22.postimg.org/s5vwfy80h/untitled.png)
 
