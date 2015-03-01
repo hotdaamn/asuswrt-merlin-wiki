@@ -37,7 +37,7 @@ First of all, create the following as /jffs/scripts/rpg-passgen.sh and ensure yo
                 # file is empty
                 phrasepasswd=$datepasswd
             else
-                randomnumber=`tr -cd 0-9 </dev/urandom | head -c 7`
+                randomnumber=`tr -cd 0-9 </dev/urandom | head -c 7 | sed 's/^0*//'`
                 if [ $randomnumber == "" ]; then
                     # cannot get a random number, bailing
                     phrasepasswd=$datepasswd
@@ -52,7 +52,7 @@ First of all, create the following as /jffs/scripts/rpg-passgen.sh and ensure yo
                             phrasepasswd=$datepasswd
                         else
                             # we have a phrase now get the three digit number
-                            randomnumber=`tr -cd 0-9 </dev/urandom | head -c 7`
+                            randomnumber=`tr -cd 0-9 </dev/urandom | head -c 7 | sed 's/^0*//'`
                             if [ $randomnumber == "" ]; then
                                 # cannot get a random number, bailing
                                 phrasepasswd=$datepasswd
