@@ -88,11 +88,11 @@ I figured i'd share a quick 'how to' in case you wanted to do this.
 
 5) add entries like this to the advanced config page.
 
-`tls-auth /jffs/ov/s/static.key 0
-ca /jffs/ov/s/ca.crt
-dh /jffs/ov/s/dh.pem
-cert /jffs/ov/s/server.crt
-key /jffs/ov/s/server.key`
+     tls-auth /jffs/ov/s/static.key 0
+     ca /jffs/ov/s/ca.crt
+     dh /jffs/ov/s/dh.pem
+     cert /jffs/ov/s/server.crt
+     key /jffs/ov/s/server.key
 
 You can consult this page for details of the actual parameters.
 https://openvpn.net/index.php/open-source/documentation/howto.html#server
