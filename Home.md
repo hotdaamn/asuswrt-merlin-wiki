@@ -21,7 +21,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 1. [About OpenVPN](/RMerl/asuswrt-merlin/wiki/About-OpenVPN)
 2. [Setting up OpenVPN](/RMerl/asuswrt-merlin/wiki/Configuring-OpenVPN)
 3. [Generating certs with Easy-RSA](/RMerl/asuswrt-merlin/wiki/Generating-OpenVPN-keys-using-Easy-RSA)
-4. [Reducing NVRAM requirements because of large certificates](/RMerl/asuswrt-merlin/wiki/reducing-nvram-usage-because-of-large-certificatesdate)
+4. [Reducing NVRAM requirements because of large certificates](/RMerl/asuswrt-merlin/wiki/reducing-nvram-for-openvpn-certs)
 
 ### External software repositories
 1. [Setting up Optware](/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
