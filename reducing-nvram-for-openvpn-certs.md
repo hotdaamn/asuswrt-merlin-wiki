@@ -22,7 +22,7 @@ I figured i'd share a quick 'how to' in case you wanted to do this.
     /jffs/ov/s/server.key
     /jffs/ov/s/static.key
 
-4) Remove the nvram entries.  You can do this either by command line.  or you can just put a single space in each field holding the certificates you are moving to nvram and apply in the GUI.
+4) Remove the nvram entries.  You can do this either by command line.  or you can just put a single space in each field holding the certificates within the GUI that you are moving to jffs and apply in the GUI.
 
 5) add entries like this to the advanced config page.
 
