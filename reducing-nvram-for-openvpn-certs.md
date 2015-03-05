@@ -3,6 +3,7 @@
 If you are like me, I run 2 vpn servers and 2 vpn clients at any time.  I find that I always run very close to the edge of running out of nvram.  What I do now is I use my jffs volume to hold the certificates rather than storing them in nvram.  
 
 I figured i'd share a quick 'how to' in case you wanted to do this.
+
 1) Copy all your certificates out so you have them.
 
 2) Create a folder structure to your liking on /jffs.  THis is mine:
