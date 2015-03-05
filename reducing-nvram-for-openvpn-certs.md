@@ -8,8 +8,9 @@ I figured i'd share a quick 'how to' in case you wanted to do this.
 
 ** Note: If you want an easy way to export the certificates you currently have in nvram to files, you can use something like this.  This is just quick and dirty.  It will dump the nvram paramters to your current directory based on the name of hte entry.  Then you can move them around as you see fit.
 
+    mkdir /jffs/ov
     nvram show | egrep ^vpn_crt | cut -d"=" -f1 | while read e; do   
-     nvram get $e > $e
+     nvram get $e > /jffs/ov/$e
     done 
 
 2) Create a folder structure to your liking on /jffs.  This is mine:
