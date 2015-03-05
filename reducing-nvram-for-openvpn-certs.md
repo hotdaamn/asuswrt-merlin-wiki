@@ -11,6 +11,7 @@ I figured i'd share a quick 'how to' in case you wanted to do this.
      /jffs/ov/c  <- client ones.  My 2 clients use the same certs but you could also make this 'c1' and 'c2'
 
 3) Create your certificates in your structure (example):
+
     /jffs/ov/c/ca.crt
     /jffs/ov/s/ca.crt
     /jffs/ov/s/ca.key
