@@ -24,7 +24,7 @@ I figured i'd share a quick 'how to' in case you wanted to do this.
 
 4) Remove the nvram entries.  You can do this either by command line.  or you can just put a single space in each field holding the certificates within the GUI that you are moving to jffs and apply in the GUI.
 
-5) add entries like this to the advanced config page.
+5) add entries similar to these to the advanced settings -> custom configs page in the GUI depending on what certs you use and what path you put them in.  For tls-auth, you need a zero or a one after the name depending on if it is a client (1) or server (0) entry.  Consult the openvpn link below.
 
      tls-auth /jffs/ov/s/static.key 0
      ca /jffs/ov/s/ca.crt
