@@ -33,6 +33,8 @@ This is a partial list of features and changes that Asuswrt-merlin offers over t
 * Configurable min/max UPNP ports
 * IPSec kernel support
 * DNS-based Filtering, can be applied globally or per client
+* Custom DDNS (through a user script)
+* Advanced NAT loopback (as an alternative to the default one)
 
 **Web interface:**
 * Improved client list, with DHCP hostnames
@@ -45,3 +47,4 @@ This is a partial list of features and changes that Asuswrt-merlin offers over t
 * Display the Ethernet port states
 * The various MAC/IP selection pulldowns will also display hostnames when possible instead of just NetBIOS names
 * Wireless site survey
+* Advanced Wireless client list display, including automated refresh
