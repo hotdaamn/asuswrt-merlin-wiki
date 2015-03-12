@@ -6,7 +6,7 @@ I figured i'd share a quick 'how to' in case you wanted to do this.
 
 1) Copy all your certificates out so you have them.
 
-** Note: If you want an easy way to export the certificates you currently have in nvram to files, you can use something like this.  This is just quick and dirty.  It will dump the nvram paramters to your current directory based on the name of hte entry.  Then you can move them around as you see fit.
+** Note: If you want an easy way to export the certificates you currently have in nvram to files, you can use something like this.  This is just quick and dirty.  It will dump the nvram paramters to your current directory based on the name of hte entry.  Then you can move them around as you see fit.  Also note that I am replacing the '>' character with a line break because the asus firmware adds '>' instead of linebreaks in nvram.
 
     mkdir /jffs/ov
     nvram show | egrep ^vpn_crt | cut -d"=" -f1 | while read e; do   
