@@ -10,7 +10,7 @@ I figured i'd share a quick 'how to' in case you wanted to do this.
 
     mkdir /jffs/ov
     nvram show | egrep ^vpn_crt | cut -d"=" -f1 | while read e; do   
-     nvram get $e > /jffs/ov/$e
+     nvram get $e | sed 's/>/\n/g' > /jffs/ov/$e
     done 
 
 2) Create a folder structure to your liking on /jffs.  This is mine:
@@ -31,7 +31,7 @@ I figured i'd share a quick 'how to' in case you wanted to do this.
 
 4) remove nvram entries and bypass the GUI restriction requiring them to have something in the fields.  To do this, you need to put a single space in each field on the "content modification of Keys & Certification" link in the GUI. This is so the GUI thinks you have values in there...  But the real content is overriden by the entries and the jffs data.
 
-5) add entries similar to these to the advanced settings -> custom configs page in the GUI depending on what certs you use and what path you put them in.  For tls-auth, you need a zero or a one after the name depending on if it is a client (1) or server (0) entry.  Consult the openvpn link below. You must edit the files and add the line breaks back as the nvram modifies them into ">".
+5) add entries similar to these to the advanced settings -> custom configs page in the GUI depending on what certs you use and what path you put them in.  For tls-auth, you need a zero or a one after the name depending on if it is a client (1) or server (0) entry.  Consult the openvpn link below. 
 
      tls-auth /jffs/ov/s/static.key 0
      ca /jffs/ov/s/ca.crt
