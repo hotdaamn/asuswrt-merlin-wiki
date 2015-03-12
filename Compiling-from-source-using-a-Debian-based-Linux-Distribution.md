@@ -43,6 +43,14 @@ If you have Debian x64 (amd64) edition you need the extra packages `lib32z1-dev`
 sudo apt-get --no-install-recommends install lib32z1-dev lib32stdc++6
 ```
 
+Starting debian 7, if you're on amd64, you'll need to setup multiarch gcc, you'll need to add i386 arch to package dependencies, to get libelf1 / libelf-dev 32 bits. to do so:
+
+```bash
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install libelf-dev:i386 libefl1:i386
+```
+
 If you're unsure whether you have Debian x64 or not, use the following command line instead:
 
 ```bash
