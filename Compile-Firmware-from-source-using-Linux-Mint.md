@@ -75,7 +75,7 @@ git clone https://github.com/RMerl/asuswrt-merlin.git
 sudo ln -s $HOME/asuswrt-merlin/tools/brcm /opt/brcm
 export PATH=$PATH:/opt/brcm/hndtools-mipsel-linux/bin:/opt/brcm/hndtools-mipsel-uclibc/bin
 sudo mkdir -p /media/ASUSWRT/
-sudo ln -s $HOME/asuswrt-merlin/media/ASUSWRT/asuswrt
+sudo ln -s $HOME/asuswrt-merlin /media/ASUSWRT/asuswrt
 ```
 
 ## Ready to build: manual approach
