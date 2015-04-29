@@ -48,7 +48,7 @@ Starting debian 7, if you're on amd64, you'll need to setup multiarch gcc, you'l
 ```bash
 sudo dpkg --add-architecture i386
 sudo apt-get update
-sudo apt-get install libelf-dev:i386 libefl1:i386
+sudo apt-get install libelf-dev:i386 libelf1:i386
 ```
 
 If you're unsure whether you have Debian x64 or not, use the following command line instead:
