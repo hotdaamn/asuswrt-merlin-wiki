@@ -23,9 +23,8 @@ Here is a working example, for afraid.org's free DDNS (you must update the URL t
 ```
 ----- HTTPS -----                                                                                                           
 #!/bin/sh
-KEY="PASTE_YOUR_KEY_HERE"
 
-curl -s "https://freedns.afraid.org/dynamic/update.php?$KEY" > /dev/null
+curl -k "https://freedns.afraid.org/dynamic/update.php?PASTE_YOUR_KEY_HERE" >/dev/null
 
 if [ $? -eq 0 ]; then
     /sbin/ddns_custom_updated 1
