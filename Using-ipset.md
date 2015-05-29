@@ -130,9 +130,10 @@ nice ipset --destroy BluetackLevel2
 exit $?
 ```
 
+##Peerguardian V3
 If you want to have different blocklist, grouped by one, then this is a variant, where you can add multiple blocklists in one script...
 
-
+```
 #!/bin/sh
 
 logger "PeerGuardian rules"
@@ -183,3 +184,4 @@ nice ipset --destroy BluetackLevel2
 
 logger "exiting Peerguarding rules"
 exit $?
+```
