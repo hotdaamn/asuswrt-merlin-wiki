@@ -185,3 +185,12 @@ nice ipset --destroy BluetackLevel2
 logger "exiting Peerguarding rules"
 exit $?
 ```
+The output will be in router logs:
+```
+May 29 09:03:21 admin: PeerGuardian rules
+May 29 09:03:21 admin: Loading ipset modules
+May 29 09:03:21 admin: Create the BluetackLevel1 (primary) if does not exists
+May 29 09:03:22 admin: Destroy this transient set just in case
+May 29 09:03:22 admin: Load the latest rule(s)
+May 29 09:04:04 admin: exiting Peerguarding rules
+```
