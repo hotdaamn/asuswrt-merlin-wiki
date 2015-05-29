@@ -129,3 +129,57 @@ nice ipset --destroy BluetackLevel2
 
 exit $?
 ```
+
+If you want to have different blocklist, grouped by one, then this is a variant, where you can add multiple blocklists in one script...
+
+
+#!/bin/sh
+
+logger "PeerGuardian rules"
+
+logger "Loading ipset modules"
+lsmod | grep "ipt_set" > /dev/null 2>&1 || \
+for module in ip_set ip_set_iptreemap ipt_set; do
+    insmod $module
+done
+
+logger "Create the BluetackLevel1 (primary) if does not exists"
+if [ "$(ipset --swap BluetackLevel1 BluetackLevel1 2>&1 | grep 'Unknown set')" != "" ]; then
+  ipset --create BluetackLevel1 iptreemap && \
+  iptables -I FORWARD -m set --set BluetackLevel1 src,dst -j DROP
+fi
+logger "Destroy this transient set just in case"
+ipset --destroy BluetackLevel2 > /dev/null 2>&1
+
+logger "Load the latest rule(s)"
+
+(
+	 
+	(
+		(
+		 nice wget -q -O - "http://list.iblocklist.com/?list=dgxtneitpuvgqqcpfulq&fileformat=p2p&archiveformat=gz" | \
+	         nice gunzip | nice cut -d: -f2 | nice grep -E "^[-0-9.]+$"  \
+		) && \
+		(
+	 	 nice wget -q -O - "http://list.iblocklist.com/?list=llvtlsjyoyiczbkjsxpf&fileformat=p2p&archiveformat=gz" | \
+        	 nice gunzip | nice cut -d: -f2 | nice grep -E "^[-0-9.]+$"  \
+		) && \
+		(
+		 nice wget -q -O - "http://list.iblocklist.com/?list=ydxerpxkpcfqjaybcssw&fileformat=p2p&archiveformat=gz" | \
+		 nice gunzip | nice cut -d: -f2 | nice grep -E "^[-0-9.]+$"  \
+		)
+	) | \
+	(  
+      		nice sed '/^$/d' | \
+	        nice sed 's/^/-A BluetackLevel2 /' | \
+		nice sed '1s/^/-N BluetackLevel2 iptreemap\n/' && \
+		echo -e "\nCOMMIT\n" \
+	)
+#) > output
+) | \
+nice ipset --restore && \
+nice ipset --swap BluetackLevel2 BluetackLevel1 && \
+nice ipset --destroy BluetackLevel2
+
+logger "exiting Peerguarding rules"
+exit $?
