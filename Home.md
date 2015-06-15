@@ -36,7 +36,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 10. [Minidlna Upnp Media Server through debian](/RMerl/asuswrt-merlin/wiki/Media-Server-through-debian) (link list)
 11. [Installing RuTorrent through Entware](https://www.asuswrt.eu/rutorrent-on-asuswrt-router-through-entware) (External link)
 12. [Webcam video surveillance Optware](https://www.asuswrt.eu/webcam-video-surveillance-via-mjpg-streamer/) (External link)
-
+13. [Installing Deluge through Entware](/RMerl/asuswrt-merlin/wiki/Installing-Deluge-through-Entware)
 
 ### Development
 1. [Download the latest source code from GitHub](/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub)
