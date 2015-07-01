@@ -47,6 +47,10 @@ service restart_ntpc
 ```
 chmod +x /jffs/scripts/wan-start
 ```
-7 - Reboot router and make sure it works by visiting [this page](http://www.opendns.com/support/article/64)
+7 - Block outgoing DNS lookups at boot:
+```
+echo 'iptables -A OUTPUT -p tcp --dport 53 -j DROP' >> /jffs/scripts/firewall-start
+```
+8 - Reboot router and make sure it works by visiting [this page](http://www.opendns.com/support/article/64)
 
 More info here http://forums.smallnetbuilder.com/showthread.php?t=11645
