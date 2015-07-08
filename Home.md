@@ -26,16 +26,16 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 ### External software repositories
 1. [Setting up Optware](/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
 2. [Setting up Entware](/RMerl/asuswrt-merlin/wiki/Entware) (Optware alternative)
-3. [Setting up Entware-Arm](https://www.asuswrt.eu/how-to-install-entware-arm) (External link)
-4. [Webcam video surveillance Entware](https://www.asuswrt.eu/webcam-video-surveillance-via-mjpg-streamer-entware/) (External link)
+3. [Setting up Entware-Arm](https://www.hqt.ro/how-to-install-entware-arm) (External link)
+4. [Webcam video surveillance Entware](http://www.hqt.ro/webcam-video-surveillance-via-mjpg-streamer-entware/) (External link)
 5. [Installing Transmission through Optware](/RMerl/asuswrt-merlin/wiki/Transmission-through-Optware)
 6. [Installing Transmission through Entware](/RMerl/asuswrt-merlin/wiki/Installing-Transmission-through-Entware)
-7. [Cherokee Web Server](https://www.asuswrt.eu/cherokee-web-server-through-optware) (External link)
-8. [PyLoad Download Manager through Optware](https://www.asuswrt.eu/pyload-download-manager-through-optware) (External link)
+7. [Cherokee Web Server](http://www.hqt.ro/cherokee-web-server-through-optware) (External link)
+8. [PyLoad Download Manager through Optware](http://www.hqt.ro/pyload-download-manager-through-optware) (External link)
 9. [Lighttpd web server with PHP support through Entware](/RMerl/asuswrt-merlin/wiki/Lighttpd-web-server-with-PHP-support-through-Entware)
 10. [Minidlna Upnp Media Server through debian](/RMerl/asuswrt-merlin/wiki/Media-Server-through-debian) (link list)
-11. [Installing RuTorrent through Entware](https://www.asuswrt.eu/rutorrent-on-asuswrt-router-through-entware) (External link)
-12. [Webcam video surveillance Optware](https://www.asuswrt.eu/webcam-video-surveillance-via-mjpg-streamer/) (External link)
+11. [Installing RuTorrent through Entware](http://www.hqt.ro/rutorrent-on-asuswrt-router-through-entware) (External link)
+12. [Webcam video surveillance Optware](http://www.hqt.ro/webcam-video-surveillance-via-mjpg-streamer) (External link)
 13. [Installing Deluge through Entware](/RMerl/asuswrt-merlin/wiki/Installing-Deluge-through-Entware)
 
 ### Development
