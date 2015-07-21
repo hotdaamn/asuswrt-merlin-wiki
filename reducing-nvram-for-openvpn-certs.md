@@ -1,4 +1,6 @@
 
+# **DO NOT USE THIS FOR ASUS FIRMWARES ON OR GREATER THAN 378.55!!*
+
 ### Reducing nvram usage because of large certificates/date
 If you are like me, I run 2 vpn servers and 2 vpn clients at any time.  I find that I always run very close to the edge of running out of nvram.  What I do now is I use my jffs volume to hold the certificates rather than storing them in nvram.  
 
