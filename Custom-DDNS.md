@@ -123,11 +123,16 @@ RECORDNAME= # Name of the A record
 API= # Your CloudFlare API Key
 IP=${1}
 
-curl -s --data "a=rec_edit&tkn=$API&email=$EMAIL&z=$ZONE&id=$RECORDID&type=A&name=$RECORDNAME&ttl=1&content=$IP" https://www.cloudflare.com/api_json.html
+curl -fs -o /dev/null -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE/dns_records/$RECORDID" \
+	-H "X-Auth-Email: $EMAIL" \
+	-H "X-Auth-Key: $API" \
+	-H "Content-Type: application/json" \
+	--data '{"name":"'$RECORDNAME'","content":"'$IP'"}'
+
 if [ $? -eq 0 ]; then
-  /sbin/ddns_custom_updated 1
+	/sbin/ddns_custom_updated 1
 else
-  /sbin/ddns_custom_updated 0
+	/sbin/ddns_custom_updated 0
 fi
 ```
 
