@@ -127,7 +127,7 @@ curl -fs -o /dev/null -X PUT "https://api.cloudflare.com/client/v4/zones/$ZONE/d
 	-H "X-Auth-Email: $EMAIL" \
 	-H "X-Auth-Key: $API" \
 	-H "Content-Type: application/json" \
-	--data '{"name":"'$RECORDNAME'","content":"'$IP'"}'
+	--data '{"id":"'$RECORDID'","type":"A","name":"'$RECORDNAME'","content":"'$IP'"}'
 
 if [ $? -eq 0 ]; then
 	/sbin/ddns_custom_updated 1
