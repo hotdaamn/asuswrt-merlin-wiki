@@ -72,6 +72,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 12. [Transfer (sync) a backup to a remote location using Rsync through a SSH tunnel between 2 Asus routers](/RMerl/asuswrt-merlin/wiki/Transfer-(sync)-a-backup-to-a-remote-location-using-Rsync-through-a-SSH-tunnel-between-2-Asus-routers)
 13. [Setting a random password for guest wifi]
 (/RMerl/asuswrt-merlin/wiki/Setting-a-random-password-for-guest-wifi)
+14. [Tinc VPN on AsusWRT-Merlin](http://nwgat.ninja/tinc-vpn-on-asuswrt-merlin/) (External Link)
 
 ### Reference:
 1. [FAQ](/RMerl/asuswrt-merlin/wiki/FAQ)
