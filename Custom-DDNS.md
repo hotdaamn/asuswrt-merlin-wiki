@@ -154,3 +154,21 @@ else
     /sbin/ddns_custom_updated 0
 fi
 ```
+
+### [Namecheap](https://www.namecheap.com)
+If you use Namecheap for your domains, this script can update any A record on your account. The script is currently (as of Aug 1 2015) required because the built-in script uses HTTP, while Namecheap requires HTTPS. To use this, replace `HOSTNAME`, `DOMAIN` and `PASSWORD` with your own values. You can refer to the [DDNS FAQ at Namecheap](https://www.namecheap.com/support/knowledgebase/article.aspx/36/11/how-do-i-start-using-dynamic-dns) for steps required. 
+```
+#!/bin/sh
+# Update the following variables:
+HOSTNAME=[hostname]
+DOMAIN=[domain.com]
+PASSWORD=XXXXXXXXXXXXXXXXXXXXXXXX
+
+# Should be no need to modify anything beyond this point
+/usr/sbin/wget -qO - https://dynamicdns.park-your-domain.com/update?host=$HOSTNAME&domain=$DOMAIN&password=$PASSWORD&ip=
+if [ $? -eq 0 ]; then
+  /sbin/ddns_custom_updated 1
+else
+  /sbin/ddns_custom_updated 0
+fi
+```
