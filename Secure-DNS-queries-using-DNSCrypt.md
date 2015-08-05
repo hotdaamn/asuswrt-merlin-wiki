@@ -53,4 +53,4 @@ echo 'iptables -A OUTPUT -p tcp --dport 53 -j DROP' >> /jffs/scripts/firewall-st
 ```
 8 - Reboot router and make sure it works by visiting [this page](http://www.opendns.com/support/article/64)
 
-More info here http://forums.smallnetbuilder.com/showthread.php?t=11645
+More info here http://www.snbforums.com/threads/dnscrypt-from-opendns.11645/
