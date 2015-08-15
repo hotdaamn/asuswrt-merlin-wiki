@@ -172,3 +172,26 @@ else
   /sbin/ddns_custom_updated 0
 fi
 ```
+
+### [DNS-O-Matci](https://www.dnsomatic.com)
+If you use DNS-O-Matic to update your domains, this script can update all or a single host record on your account.  To use this, replace `dnsomatic_username`, `dnsomatic_password` with your own values. You can refer to the [DNS-O-Matic API Documentation](https://www.dnsomatic.com/wiki/api#sample_updates) for additional info.
+
+Note: the HOSTNAME specified in the script below will update all records setup in your DNS-O-Matic account to have it only update a single host you will need to modify it accordingly.  In some cases this may require you to specify the host entry, sometimes the domain entry.  
+
+To troubleshoot update issues you can run the curl command directly from the command line by passing in your details and removing the --silent option.  If you get back good and your IP address back you've got it setup correctly.  If you get back nohost, you're not passing in the correct hostname value.
+ 
+```
+#!/bin/sh
+# Update the following variables:
+USERNAME=dnsomatic_username
+PASSWORD=dnsomatic_password
+HOSTNAME=all.dnsomatic.com
+
+# Should be no need to modify anything beyond this point
+/usr/sbin/curl -k --silent "https://$USERNAME:$PASSWORD@updates.dnsomatic.com/nic/update?hostname=$HOSTNAME&wildcard=NOCHG&mx=NOCHG&backmx=NOCHG&myip=" > /dev/null 
+if [ $? -eq 0 ]; then
+  /sbin/ddns_custom_updated 1
+else
+  /sbin/ddns_custom_updated 0
+fi
+```
