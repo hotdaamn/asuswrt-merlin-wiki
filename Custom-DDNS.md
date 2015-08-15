@@ -173,7 +173,7 @@ else
 fi
 ```
 
-### [DNS-O-Matci](https://www.dnsomatic.com)
+### [DNS-O-Matic](https://www.dnsomatic.com)
 If you use DNS-O-Matic to update your domains, this script can update all or a single host record on your account.  To use this, replace `dnsomatic_username`, `dnsomatic_password` with your own values. You can refer to the [DNS-O-Matic API Documentation](https://www.dnsomatic.com/wiki/api#sample_updates) for additional info.
 
 Note: the HOSTNAME specified in the script below will update all records setup in your DNS-O-Matic account to have it only update a single host you will need to modify it accordingly.  In some cases this may require you to specify the host entry, sometimes the domain entry.  
