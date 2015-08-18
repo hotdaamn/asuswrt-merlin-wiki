@@ -81,8 +81,7 @@ Now save the script as openvpn-event with no extension!
 
     iptables -t mangle -A PREROUTING -i br0 -j MARK --set-mark 1
 
-        iptables -t mangle -A PREROUTING -i br0 -m iprange --src-range 192.168.x.xxx -j MARK --set-mark 0
-        iptables -t mangle -A PREROUTING -i br0 -m iprange --src-range 192.168.x.xxx -j MARK --set-mark 0
+    iptables -t mangle -A PREROUTING -i br0 -m iprange --src-range 192.168.x.xxx -j MARK --set-mark 0
 
     exit 1
 
