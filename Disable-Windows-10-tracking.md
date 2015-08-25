@@ -135,7 +135,7 @@ do
 done
 
 # Create ip set
-if [ "x$(ipset --swap Win10tracking Win10tracking 2>&1 | grep 'Unknown set')" != "x" ]
+if [ "$(ipset --swap Win10tracking Win10tracking 2>&1 | grep 'Unknown set')" != "" ];
 then
   ipset -N Win10tracking iphash
 fi
