@@ -116,13 +116,13 @@ www.msftncsi.com
 I took mine list from [here](http://forums.zyxmon.org/go.php?https://github.com/10se1ucgo/DisableWinTracking/blob/master/run.py#L208). Now put following content to `/jffs/scripts/firewall-start`:
 ```
 #!/bin/sh
-if [ ! -f /jffs/configs/dnsmasq.conf.add ] || \
-  [ -n "$(find /jffs/data -maxdepth 1 -type f -name Win10tracking.txt -newer /jffs/configs/dnsmasq.conf.add)" ];
+DNSMASQ_CFG=/jffs/configs/dnsmasq.conf.add
+if [ ! -f $DNSMASQ_CFG ] || [ "$(grep Win10tracking $DNSMASQ_CFG)" = "" ];
 then
-  rm -f /jffs/configs/dnsmasq.conf.add
+  rm -f $DNSMASQ_CFG
   for i in `cat /jffs/Win10tracking.txt`;
   do
-    echo "ipset=/$i/Win10tracking" >> /jffs/configs/dnsmasq.conf.add
+    echo "ipset=/$i/Win10tracking" >> $DNSMASQ_CFG
   done
   service restart_dnsmasq
 fi
