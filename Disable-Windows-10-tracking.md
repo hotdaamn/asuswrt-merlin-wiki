@@ -144,12 +144,12 @@ fi
 iptables-save | grep Win10tracking > /dev/null 2>&1 || \
   iptables -I FORWARD -m set --set Win10tracking src,dst -j DROP
 ```
-Don't forget to make scripts executable and reboot router to take effect:
+Don't forget to make script executable and reboot router to take effect:
 ```
 chmod +x /jffs/scripts/firewall-start
 reboot
 ```
-You may check it's working by trying to open some site from list (view.atdmt.com for example). Then check "black list" is populated with IP addresses:
+You may check it's working by trying to open some site from list (view.atdmt.com for example). Then check "black list" is populated with some IP addresses:
 ```
 ipset --list Win10tracking
 ```
