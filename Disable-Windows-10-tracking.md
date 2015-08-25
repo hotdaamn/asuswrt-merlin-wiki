@@ -2,7 +2,7 @@ _Please note, this how-to will work only on asuswrt-merlin releases newer then 3
 
 This solution consists of two parts:
 
-* collecting resolved IP from unwanted domains list to IP set with dnsmasq,
+* collecting resolved IPs from unwanted domains list to IP set with dnsmasq,
 * dropping traffic from/to collected IPs with firewall rule.
 
 First, enable JFFS custom scripts and configs from WebUI. Put following list of unwanted domains to `/jffs/Win10tracking.txt`:
