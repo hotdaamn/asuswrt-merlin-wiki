@@ -1,4 +1,4 @@
-when the USB disk is getting to slow mounted, you can use the following script to delay the minidlna start do not screw the mount points. Put following content to `/jffs/scripts/post-mount`:
+When the USB disk is getting to slow mounted, you can use the following script to delay the minidlna start do not screw the mount points. Put following content to `/jffs/scripts/post-mount`:
 
 ```
 #!/bin/sh
@@ -19,7 +19,7 @@ fi
 The `minidlna.conf` I took from the original provided from Asus like in example this:
 
 ```
-`network_interface=br0
+network_interface=br0
 port=8200
 friendly_name=RT-AC56U
 db_dir=/tmp/mnt/DISK1/Router
