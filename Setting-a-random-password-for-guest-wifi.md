@@ -8,7 +8,7 @@ The password is made up of a phrase selected from a text file (I used various ba
 
 edit : following comments on the forums, I have added a couple of alternate functions that provide different ways of creating a random password. getrandopenssl uses the openssl rand option, and getpasswdme uses curl to access the https://passwd.me api. These may require additional software to be installed over & above the default busy box installation.
 
-First of all, create the following as /jffs/scripts/rpg-passgen.sh and ensure you make it executable :
+First of all, create the following as `/jffs/scripts/rpg-passgen.sh` and ensure you make it executable :
 
     #!/bin/sh
     
