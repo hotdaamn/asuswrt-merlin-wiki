@@ -36,7 +36,7 @@ Give right permission
 chmod a+rx /jffs/scripts/firewall-start
 ```
 
-Go to [router.asus.com/Advanced_VirtualServer_Content.asp](Port forwarding page) and redirect port 80 to 81, after reboot you should have access from wan.
+Go to [Port forwarding page](router.asus.com/Advanced_VirtualServer_Content.asp) and redirect port 80 to 81, after reboot you should have access from wan.
 
 ![wan](http://i47.tinypic.com/309hgqr.png)
 
