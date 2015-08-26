@@ -15,7 +15,7 @@ First follow one of these links to setup your toolchain, ignore the very last st
 Instead of running `make DEVICEMODEL`, run:
 
 ```bash
-make clean 2>&1 | grep -o 'arm.*gcc'
+ make clean 2>&1 | grep -oE '(mipsel|arm).*gcc' | uniq
 ```
 
 Then change into the directory of the program you want to compile and run:
