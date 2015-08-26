@@ -165,7 +165,7 @@ DOMAIN=[domain.com]
 PASSWORD=XXXXXXXXXXXXXXXXXXXXXXXX
 
 # Should be no need to modify anything beyond this point
-/usr/sbin/wget -qO - https://dynamicdns.park-your-domain.com/update?host=$HOSTNAME&domain=$DOMAIN&password=$PASSWORD&ip=
+/usr/sbin/wget -qO - "https://dynamicdns.park-your-domain.com/update?host=$HOSTNAME&domain=$DOMAIN&password=$PASSWORD&ip="
 if [ $? -eq 0 ]; then
   /sbin/ddns_custom_updated 1
 else
