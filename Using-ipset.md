@@ -33,7 +33,7 @@ then
         ipset -A TorNodes $IP
     done
 fi
-[ -z "$(iptables-save | grep TorNodes)" ] && iptables -I INPUT -m set --set TorNodes src -j DROP
+[ -z "$(iptables-save | grep TorNodes)" ] && iptables -I INPUT -m set --match-set TorNodes src -j DROP
 
 # Block incoming traffic from some countries. cn and pk is for China and Pakistan. See other countries code at http://www.ipdeny.com/ipblocks/
 if [ "$(ipset --swap BlockedCountries BlockedCountries 2>&1 | grep 'Unknown set')" != "" ]
@@ -48,7 +48,24 @@ then
         done
     done
 fi
-[ -z "$(iptables-save | grep BlockedCountries)" ] && iptables -I INPUT -m set --set BlockedCountries src -j DROP
+[ -z "$(iptables-save | grep BlockedCountries)" ] && iptables -I INPUT -m set --match-set BlockedCountries src -j DROP
+
+# Block Microsoft telemetry spying servers
+if [ "$(ipset --swap MicrosoftSpyServers MicrosoftSpyServers 2>&1 | grep 'Unknown set')" != "" ]
+then
+    ipset -N MicrosoftSpyServers iphash
+    for IP in 23.99.10.11 63.85.36.35 63.85.36.50 64.4.6.100 64.4.54.22 64.4.54.32 64.4.54.254 \
+              65.52.100.7 65.52.100.9 65.52.100.11 65.52.100.91 65.52.100.92 65.52.100.93 65.52.100.94 \
+              65.55.29.238 65.55.39.10 65.55.44.108 65.55.163.222 65.55.252.43 65.55.252.63 65.55.252.71 \
+              65.55.252.92 65.55.252.93 66.119.144.157 93.184.215.200 104.76.146.123 111.221.29.177 \
+              131.107.113.238 131.253.40.37 134.170.52.151 134.170.58.190 134.170.115.60 134.170.115.62 \
+              134.170.188.248 157.55.129.21 157.55.133.204 157.56.91.77 168.62.187.13 191.234.72.183 \
+              191.234.72.186 191.234.72.188 191.234.72.190 204.79.197.200 207.46.223.94 207.68.166.254
+    do
+        ipset -A MicrosoftSpyServers $IP
+    done
+fi
+[ -z "$(iptables-save | grep MicrosoftSpyServers)" ] && iptables -I FORWARD -m set --match-set MicrosoftSpyServers dst -j DROP
 ```
 and make it executable:
 ```
