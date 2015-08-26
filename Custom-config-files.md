@@ -33,7 +33,7 @@ The list of available config overrides:
  * minidlna.conf
  * mt-daap.service
  * pptpd.conf
- * profile (shell profile, only profile.add suypported)
+ * profile (shell profile, only profile.add supported)
  * radvd.conf
  * smb.conf
  * snmpd.conf
