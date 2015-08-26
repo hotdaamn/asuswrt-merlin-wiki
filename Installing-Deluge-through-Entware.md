@@ -1,4 +1,5 @@
-This tutorial is based on the "Installing Transmission through Entware" tutorial by TeHashX. I have tested it on my AC68U, but assume it will work just as well on other Entware enabled routers running Asuswrt-Merlin.
+This tutorial is based on the "Installing Transmission through Entware" tutorial by TeHashX. I have tested it on my AC68U, but assume it will work just as well on other Entware enabled ARM routers running Asuswrt-Merlin.
+
 
 ## Introduction
 Deluge is a BitTorrent client written in Python. It is free, open source software and aims to be a lightweight, secure, feature-rich client. 
