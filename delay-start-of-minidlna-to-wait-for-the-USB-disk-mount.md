@@ -1,15 +1,7 @@
-when the USB disk is getting to slow mounted, you can use the following script to delay the minidlna start do not screw the mount points. 
+when the USB disk is getting to slow mounted, you can use the following script to delay the minidlna start do not screw the mount points. Put following content to `/jffs/scripts/post-mount`:
 
 ```
-#!/bin/bash
-sleep 2m
-# the script will wait for 2 Minutes, than all the USB Disks should be ready.....
-datestr=$(date +%Y%m%d_%H%M%S)
-# date used to add to the log file (append) so all the logs will be collected with the date and time no log overwriting....
-
-# Variables you need to change for your needs:
-ps=/jffs/ps
-# just using the jffs to export the running processes and get the result to do the next steps....
+#!/bin/sh
 
 mountpoint=/tmp/mnt/DISK1
 # the disk you use for media server
@@ -17,24 +9,14 @@ mountpoint=/tmp/mnt/DISK1
 dlna_config=/tmp/mnt/DISK1/Scripts/minidlna.conf
 # the configuration file created for minidlna to use the custom settings.
 
-#--------------DO NOT CHANGE ----------------------
-if grep $mountpoint /etc/mtab &>/dev/null; then
-echo $datestr "USB disk for media server operation is mounted" >> /tmp/syslog.log
-else exit
-fi
-#when the script can not fine the the USB disk or it is not mounted yet, than the action will be Exit and the script stops..... otherwise we will go further.....
 
-/bin/ps > $ps
-if
-grep minidlna /jffs/ps &>/dev/null; then
-echo $datestr "minidlna server is already started and is not using its new configuration" >> /tmp/syslog.log
-else
-/usr/sbin/minidlna -f $dlna_config -R
+if [ $1 = $mountpoint ]
+then
+  /usr/sbin/minidlna -f $dlna_config -R
 fi
-rm $ps
 ```
 
-the minidlna.conf I took from the original provided from Asus like in example this:
+The `minidlna.conf` I took from the original provided from Asus like in example this:
 
 ```
 `network_interface=br0
@@ -56,10 +38,10 @@ so the script will load this configuration file and load minidlna with the above
 
 **IMPORTANT: you need to disable the Media Server in the GUI interface to work proper. **
 
-For the automatic start you need to add the following line to /jffs/scripts/post-mount
+Don't forget to make script executable:
 
 ```
-sh /tmp/mnt/DISK1/Scripts/mini_dlna.conf & 
+chmod +x /jffs/scripts/post-mount
 ```
 
-When the disk will still not be ready than you can add this to cron to run every X amount of minutes / hours.
+Reboot router to take effect. 
