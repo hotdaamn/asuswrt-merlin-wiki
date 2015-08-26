@@ -21,6 +21,6 @@ The goal with this project is to provide an alternative to Asuswrt which will be
 4. **Targeting the novice and average user.** Asuswrt is designed to target both the novice and the average users.  This project will aim at the same target userbase.  There is enough doors left open with Optware and user-scripts so advanced users can fulfill their own requirements themselves.  Not overcrowding the webui with esoteric features will ensure that novice users won't be scared away.
 
 
-Thanks to Optware and user-scripts, many features not integrated in the firmware can be manually added.  If you are advanced enough to need a feature, you will quite often be skilled enough to manually add it.
+Thanks to Entware/Optware and user-scripts, many features not integrated in the firmware can be manually added.  If you are advanced enough to need a feature, you will quite often be skilled enough to manually add it.
 
 That does not mean you shouldn't ask for feature requests.  Please, still do.  Just don't be disappointed if your request gets rejected.  With enough people asking for the same feature, it might make it popular enough to eventually be implemented.  Or you might be pointed at an alternative way to achieve your goal.
