@@ -27,7 +27,7 @@ The next step: you need to somehow tell Hurricane Electric what your current IPv
 
 ### Configuring a tunnel endpoint update script
 
-For the second method, you will need to enable the [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS) partition.  Once that's done, create a [wan-start](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts) user script that will take care of updating HE with your current WAN IP.  Here is an example script:
+For the second method, you will need to enable the [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS) partition and custom configs and scripts.  Once that's done, create a `/jffs/scripts/wan-start` [user script](https://github.com/RMerl/asuswrt-merlin/wiki/User-scripts) that will take care of updating HE with your current WAN IP.  Here is an example script:
 
 NOTE: If your tunnel was made before 19th Jan 2014, you need to uncomment the second wget line in the script, and comment the first. That's because old tunnels need your md5'd password, and newer ones need the tunnel update key.
 
@@ -85,6 +85,10 @@ echo "" >> $STARTUP_SCRIPT_LOG_FILE
 rm /tmp/wget.tmp.$etime
 ```
 
+and don't forget to make it executable:
+```
+chmod +x /jffs/scripts/wan-start
+```
 Edit the parameters at the top to enter your UserID (it's an hexadecimal value, found on the Main Page of your account info in Tunnel Broker - right after you log in), password and tunnelID (found on the page where you see all the details of your tunnel).
 
 You can manually execute the script, then check the content of /tmp/ipv6.log to ensure that the script is running correctly.
