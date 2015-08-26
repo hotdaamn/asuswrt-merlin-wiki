@@ -6,7 +6,7 @@ This guide is specifically tailored for ASUS routers running Merlin Firmware.
 
 ## Prerequisites ##
 
-* An Asuswrt-Merlin compatible router with Asuswrt-Merlin installed
+* An Asuswrt-Merlin compatible ARM-based router with Asuswrt-Merlin installed (fwmarks on MIPS are broken)
 * [JFFS](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS) partion enabled and formatted
 * A working VPN on your router (tested manually making sure the VPN works)
 * A [winSCP](http://winscp.net/eng/download.php#download2) client setup with SSH enabled on your ROUTER
