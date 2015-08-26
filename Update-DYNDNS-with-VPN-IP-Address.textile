@@ -31,4 +31,4 @@ ez-ipupdate -S dyndns -u user:password -h host.dyndns.org -a $VPNIP
 exit 0
 </code></pre>
 
-do a chmod 700 /jffs/scripts/up.sh
+do a `chmod 700 /jffs/scripts/up.sh`
