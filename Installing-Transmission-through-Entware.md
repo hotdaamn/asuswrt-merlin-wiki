@@ -12,12 +12,7 @@ For this I will assume your disk is mounted as /mnt/sda1/ (just adjust the paths
 
 I will also assume that your disk is already formatted as either Ext2 or Ext3.  If not, look on the web for information on how to reformat your disk.
 
-Initial steps:
-
-* Enable the JFFS partition (as explained [here](https://github.com/RMerl/asuswrt-merlin/wiki/JFFS))
-* Setup Entware (as explained [here](https://github.com/RMerl/asuswrt-merlin/wiki/Entware))
-
-Install the nano editor (unless you are already comfortable with the vi editor):
+[Setup Entware](https://github.com/RMerl/asuswrt-merlin/wiki/Entware#the-easy-way) and install the nano editor (unless you are already comfortable with the vi editor):
 
 ```
 opkg install nano
@@ -27,7 +22,6 @@ opkg install nano
 We need to install Transmission:
 
 ```
-opkg install transmission-daemon
 opkg install transmission-web
 ```
 
@@ -92,7 +86,7 @@ Everything is now configured.  You can manually start it immediately (it will au
 /opt/etc/init.d/S88transmission start
 ```
 
-Access it through http://192.168.1.1:9091/transmission 
+Access it through http://asus.router.com:9091/transmission 
 ### EMAIL NOTIFICATIONS
 If you have a slow internet connection and you want to be notified when a torrent has finished downloading, place the following script which I called _tmail.sh_ in /jffs/scripts but first don't forget to fill: SMTP, FROM, TO, USER and PASS with your credentials.
 
