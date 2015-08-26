@@ -33,37 +33,4 @@ patch -p1 < /home/router/Downloads/sonybdp-sx90.patch
 
 ***
 
-Now we are ready to build the firmware
-
-* For RT-N66U
-
-```
-cd /home/router/asuswrt-merlin/release/src-rt-6.x
-```
-
-```
-make clean
-```
-
-```
-make rt-n66u
-```
-**The compiled firmware image will be created in /home/router/asuswrt-merlin/release/src-rt/image/**
-* For RT-AC66U
-
-```
-sudo mkdir /home/router/asuswrt-merlin/release/src-rt-6.x/wl/sysdeps/default/linux
-```
-
-```
-cd /home/router/asuswrt-merlin/release/src-rt-6.x
-```
-
-```
-make clean
-```
-```
-make rt-ac66u
-```
-**The compiled firmware image will be created in /home/router/asuswrt-merlin/release/src-rt-6.x/image/**
-***
+Now we are ready to [build the firmware](https://github.com/RMerl/asuswrt-merlin/wiki/Compiling-from-source-using-a-Debian-based-Linux-Distribution).
