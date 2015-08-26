@@ -169,7 +169,7 @@ Next, create the following as /jffs/scripts/rpg-phrases.txt :
 
 These phrases are the basis for the password - I've chosen band names, but you could use your kids names or places or anything you want. Ensure that each phrase is at least 7 characters long (+3 for random number = min length of 10 characters) and that there are no blank lines. Try and have a reasonable number of entries in here, or you will end up with the same phrase being picked on a regular basis. My full phrases file now contains about 70 or 80 different bands! :)
 
-To get this process to run at 4am each day, add the following into /jffs/scripts/init-start and make it executable :
+To get this process to run at 4am each day, add the following into `/jffs/scripts/init-start` and make it executable :
 
     #!/bin/sh
     cru a ResetGuestPassword "0 4 * * * /jffs/scripts/rpg-passgen.sh"
