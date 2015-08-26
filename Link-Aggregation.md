@@ -47,10 +47,10 @@ Usage is as follows.
 **To Make the Configuration persistent across reboots.**
 
 1. Enable JFFS partition
-2. Edit /jffs/scripts/services-start to call the script at each boot
-
-`/Path/to/LinkAgg 3 4`
-
+2. Edit `/jffs/scripts/services-start` to call the script at each boot
+```
+/Path/to/LinkAgg 3 4
+```
 **Additional Notes.**
 
 Any additional configuration can be done manually in the services-start script
@@ -58,8 +58,6 @@ Any additional configuration can be done manually in the services-start script
 The Script above will use the sysfs driver because it does not require any additional packages.
 
 Optionally users can choose to install entware - ifenslave package.
-
-*** entware is for MIPS based routers only ***
 
 More Info Here http://forums.smallnetbuilder.com/showthread.php?t=12735
 
@@ -79,7 +77,7 @@ Apply the following changes to the router's nvram:
 
 **Step 2 - Create/Edit services-start script**
 
-Include the following code in services-start script located in /jffs/scripts/ (you will need to create this file from scratch, if you haven't done so already, with the right permissions)
+Include the following code in services-start script located in `/jffs/scripts/` (you will need to create this file from scratch, if you haven't done so already, with the right permissions)
 
     #!/bin/sh
 
