@@ -1,20 +1,14 @@
 ## Introduction ##
 
-*This guide is adapted from a [how-to](http://forums.smallnetbuilder.com/showthread.php?t=9449) posted by [ryzhov_al](http://forums.smallnetbuilder.com/member.php?u=13498) on the [SmallNetBuilder forums](http://forums.smallnetbuilder.com). The guide provided here on the wiki has been modified to include translation enhancements and to better describe the steps involved, however the commands provided are identical.*
-
 This guide will help you setup advertisement filtering (similar to [Adblock Plus](http://adblockplus.org)) through your router. It is suggested to use in conjunction with a mobile device (such as an iOS or Android smartphone), as filtering a PC will cause performance loss due to hardware limitations on the router. This guide uses [privoxy](http://www.privoxy.org) (a proxy server) to capture and filter traffic from mobile devices.
 
 ## Prerequisites ##
 
-To setup advertisement filtering on your router, you will need the following:
-
-* An Asuswrt-Merlin compatible router with Asuswrt-Merlin installed
-* A USB disk connected to the router
-* A working Entware environment. Instructions to setup Entware can be found in [this guide](https://github.com/RMerl/asuswrt-merlin/wiki/Entware).
+To setup advertisement filtering on your router, you will need a working Entware environment. Instructions to setup Entware can be found in [this guide](https://github.com/RMerl/asuswrt-merlin/wiki/Entware).
 
 ## Installation ##
 
-First, install the necessary packages through Entware:
+First, install the necessary packages:
 
     opkg install bash wget-ssl sed privoxy
 
@@ -47,8 +41,8 @@ If you have already set up manually assigned IP addresses via DHCP you can find 
 
 Next, add a rule to iptables to intercept traffic from the device and pass it through privoxy for advertisement filtering:
 
-    echo \#!/bin/sh > /jffs/scripts/firewall-start
-    echo iptables -t nat -A PREROUTING --source [the static IP address you provided] -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 3128 >> /jffs/scripts/firewall-start
+    echo "#!/bin/sh" > /jffs/scripts/firewall-start
+    echo "iptables -t nat -A PREROUTING --source [the static IP address you provided] -p tcp -m tcp --dport 80 -j REDIRECT --to-ports 3128" >> /jffs/scripts/firewall-start
     chmod +x /jffs/scripts/firewall-start
 
 *(Ensure you replace [the static IP address you provided] with the static IP address you assigned in the previous step.)*
