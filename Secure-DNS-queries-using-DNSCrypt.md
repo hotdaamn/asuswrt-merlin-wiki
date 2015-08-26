@@ -10,7 +10,7 @@ Tell router to use new resolver:
 ```
 echo "no-resolv" > /jffs/configs/dnsmasq.conf.add
 echo "server=127.0.0.1#65053" >> /jffs/configs/dnsmasq.conf.add
-
+```
 
 You can block using other DNS-servers on clients (optional):
 ```
