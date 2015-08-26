@@ -18,6 +18,9 @@ echo "#!/bin/sh" >> /jffs/scripts/firewall-start
 echo "iptables -A OUTPUT -p tcp --dport 53 -j DROP" >> /jffs/scripts/firewall-start
 chmod +x /jffs/scripts/firewall-start
 ```
-Reboot router and make sure it works by visiting [this page](http://www.opendns.com/support/article/64). 
+Reboot router to take effect:
+```
+reboot
+```
 
 More info and discussion [here](http://www.snbforums.com/threads/dnscrypt-from-opendns.11645/).
