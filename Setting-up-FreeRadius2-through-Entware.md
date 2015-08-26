@@ -155,13 +155,13 @@ You will need:
 
 Now you should only have ec-server_cert.pem, ec-server_key.pem and dh in your certs directory.
 
-4 - **Edit eap.conf** (/opt/etc/freeradius2/eap.conf)
+4 - **Edit eap.conf** (`/opt/etc/freeradius2/eap.conf`)
 
 ```
 cd /opt/etc/freeradius2 && vi eap.conf
 ```
 
-Change private key pass to the password you have used to encrypt the ec-server_key.pem
+Change private key pass to the password you have used to encrypt the `ec-server_key.pem`
 
 4.1 - **Open an other terminal**
 
@@ -173,22 +173,22 @@ cd /opt/etc/freeradius2/certs
 openssl x509 -noout -in ec-server_cert.pem -issuer
 ```
 
-5 - **Edit clients.conf** (/opt/etc/freeradius2/clients.conf)
+5 - **Edit clients.conf** (`/opt/etc/freeradius2/clients.conf`)
 
-* Change network range, netmask at client line. I'm assuming that the IP-address of the router = 192.168.1.1. If this is not the case change it : here and in /opt/etc/freeradius2/radiusd.conf & /opt/etc/freeradius2/sites/inner-tunnel. 
+* Change network range, netmask at client line. I'm assuming that the IP-address of the router = 192.168.1.1. If this is not the case change it : here and in `/opt/etc/freeradius2/radiusd.conf` & `/opt/etc/freeradius2/sites/inner-tunnel`. 
 * For the secret key of the access point I recommended a 32 chars key. It is possible to use longer keys then 32 chars but I found out that the WiFi became slower. (copy this to a text editor for later if you're already using on a wired device).
-Use a site like [this one](http://goo.gl/Muhc) to generate the key and do not use strange punctations, etc ... I'm not sure which one are allowed and which one not.
+Use a site like [this one](http://goo.gl/Muhc) to generate the key and do not use strange punctuations, etc ... I'm not sure which one are allowed and which one not.
 
-6 - **Edit users file** (/opt/etc/freeradius2/users)
+6 - **Edit users file** (`/opt/etc/freeradius2/users`)
 
 Change the login name and password to the one you are going to use.
 You also can add, change attributes like session-timeout to a more appropriate value for you.
 
-7 - **Edit radiusd.conf** (/opt/etc/freeradius2/radiusd.conf)
+7 - **Edit radiusd.conf** (`/opt/etc/freeradius2/radiusd.conf`)
 
 We are going to change the max request value dependent on the number of wireless clients that are going to connect with our radius server.
 
-max_requests: The maximum number of requests which the server keeps
+`max_requests`: The maximum number of requests which the server keeps
 track of.  This should be 256 multiplied by the number of clients.
 e.g. With 4 clients, this number should be 1024.
 
@@ -214,14 +214,14 @@ Use the wired device now if you are not using it and login to the routers webint
 
 Go to the "Radius Setting" tab and change the IP-address of the radius server to the IP-address of your router.
 Change port to 1812
-Enter the secret from the clients.conf which we still have open in a texteditor or open clients.conf in a telnet, ssh session to copy, paste it.
+Enter the secret from the `clients.conf` which we still have open in a texteditor or open `clients.conf` in a telnet, ssh session to copy, paste it.
 Do the same thing for the other band if you are using it.
 At this moment server should be running successfully and being able to receive authentication request.
 
 ## Configuring wireless clients
 
-On Windows 7, 8 we need first to import the ec-cacert.der or ec-cacert.p12.
-Place ec-cacert.(der-p12) on a USB stick or something portable that you could copy the cert over to the wireless clients.
+On Windows 7, 8 we need first to import the `ec-cacert.der` or `ec-cacert.p12`.
+Place `ec-cacert.(der-p12)` on a USB stick or something portable that you could copy the cert over to the wireless clients.
 
 ```
 1. Open mmc as administrator -> File Add/Remove snap-in -> certificates -> add 
