@@ -71,15 +71,25 @@ Transfer your domain to Google and enjoy free DDNS and other features.
 
 set -u
 
+U=xxxx
+P=xxxx
+H=xxxx
+
 # args: username password hostname
-google_dns_update() {             
-  case $(curl -s https://$1:$2@domains.google.com/nic/update?hostname=$3) in
-    good*|nochg*) /sbin/ddns_custom_updated 1 ;;                             
-    *) /sbin/ddns_custom_updated 0 ;;                                       
-  esac                                                                      
-}                                                                           
-                                               
-google_dns_update <username> <password> <subdomain>
+google_dns_update() {
+  CMD=$(curl -s https://$1:$2@domains.google.com/nic/update?hostname=$3)
+  logger "google-ddns-updated: $CMD"
+  case "$CMD" in
+    good*|nochg*) /sbin/ddns_custom_updated 1 ;;
+    abuse) /sbin/ddns_custom_updated 1 ;;
+    *) /sbin/ddns_custom_updated 0 ;;
+  esac
+}
+
+google_dns_update $U $P $H
+
+exit 0
+
 ```
 
 ### [DyNS](http://dyns.cx)
