@@ -53,7 +53,10 @@ fi
 Free DNS server that also offers DDNS services.
 ```
 #!/bin/sh
-wget -qO - "http://update.dnsexit.com/RemoteUpdate.sv?login=<username>&password=<password>&host=<domain>&myip="
+USER=
+PASS=
+DOMAIN=
+wget -qO - "http://update.dnsexit.com/RemoteUpdate.sv?login=$USER&password=$PASS&host=$DOMAIN"
 if [ $? -eq 0 ]; then
   /sbin/ddns_custom_updated 1
 else
