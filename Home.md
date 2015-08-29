@@ -23,10 +23,10 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 3. [Generating certs with Easy-RSA](/RMerl/asuswrt-merlin/wiki/Generating-OpenVPN-keys-using-Easy-RSA)
 
 ### External software repositories
-1. [Setting up Optware](/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
-2. [Setting up Entware](/RMerl/asuswrt-merlin/wiki/Entware) (Optware alternative)
-3. [Setting up Entware-Arm](https://www.hqt.ro/how-to-install-entware-arm) (External link)
-4. [Webcam video surveillance Entware](http://www.hqt.ro/webcam-video-surveillance-via-mjpg-streamer-entware/) (External link)
+1. [Setting up New Generation Optware](http://www.hqt.ro/how-to-install-new-generation-optware/) (External link)
+2. [Setting up Optware](/RMerl/asuswrt-merlin/wiki/Initialize-OPTWARE)
+3. [Setting up Entware](/RMerl/asuswrt-merlin/wiki/Entware) (Optware alternative)
+4. [Setting up Entware-Arm](https://www.hqt.ro/how-to-install-entware-arm) (External link)
 5. [Installing Transmission through Optware](/RMerl/asuswrt-merlin/wiki/Transmission-through-Optware)
 6. [Installing Transmission through Entware](/RMerl/asuswrt-merlin/wiki/Installing-Transmission-through-Entware)
 7. [Cherokee Web Server](http://www.hqt.ro/cherokee-web-server-through-optware) (External link)
@@ -36,6 +36,7 @@ _As with any Wiki, this documentation is a constant work-in-progress.  If you ha
 11. [Installing RuTorrent through Entware](http://www.hqt.ro/rutorrent-on-asuswrt-router-through-entware) (External link)
 12. [Webcam video surveillance Optware](http://www.hqt.ro/webcam-video-surveillance-via-mjpg-streamer) (External link)
 13. [Installing Deluge through Entware](/RMerl/asuswrt-merlin/wiki/Installing-Deluge-through-Entware)
+14. [Webcam video surveillance Entware](http://www.hqt.ro/webcam-video-surveillance-via-mjpg-streamer-entware/) (External link)
 
 ### Development
 1. [Download the latest source code from GitHub](/RMerl/asuswrt-merlin/wiki/Download-the-latest-source-code-from-GitHub)
