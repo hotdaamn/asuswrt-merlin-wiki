@@ -14,7 +14,7 @@ The installation and configuration process must be done through telnet or SSH.  
 
 ###The easy way
 
-Starting with v3.0.0.4.270.25 a new script has been introduced to facilitate Entware installation, just type in terminal:
+Starting with v3.0.0.4.270.25 a new script has been introduced to facilitate Entware installation. After installing a [USB drive](https://github.com/Entware/entware/wiki/USB-Storage-setup), just type in terminal:
 ```
 entware-setup.sh
 ```
