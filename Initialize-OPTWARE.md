@@ -53,5 +53,5 @@ When that is done plug it in one of the USB slots of your router
 ![uninstall](http://members.home.nl/frits.pruymboom/Deinstal%20download%20master%201.png)
 
 Now i know you were wondering why install something if we are going to delete it anyway,
-Well that's the job that asus did for us so we don't have to mount optware because if you would do it with command line there is a lot that you can mount at the wrong point.
-And the leftovers from Download Master are the basic maps that you need to run optware.
+Well that's the job that ASUS did for us so we don't have to mount optware because if you would do it with command line there is a lot that you can mount at the wrong point.
+And the leftovers from Download Master are the basic aps that you need to run optware.
