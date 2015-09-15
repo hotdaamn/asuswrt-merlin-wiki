@@ -18,11 +18,11 @@ Save the time for fake-hwclock initially.  Run this once before you reboot.
 ```
 
 
-(optional) You can block using other DNS-servers on clients:
+(optional) You can redirect using other DNS-servers on clients:
+add to firewall-start or nat-start
 ```
-echo "#!/bin/sh" >> /jffs/scripts/firewall-start
-echo "iptables -A OUTPUT -p tcp --dport 53 -j DROP" >> /jffs/scripts/firewall-start
-chmod +x /jffs/scripts/firewall-start
+iptables -t nat -A PREROUTING -i br0 -p udp --dport 53 -j DNAT --to $(nvram get lan_ipaddr)
+iptables -t nat -A PREROUTING -i br0 -p tcp --dport 53 -j DNAT --to $(nvram get lan_ipaddr)
 ```
 
 Reboot router to take effect:
