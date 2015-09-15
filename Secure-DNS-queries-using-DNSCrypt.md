@@ -12,7 +12,7 @@ echo "no-resolv" > /jffs/configs/dnsmasq.conf.add
 echo "server=127.0.0.1#65053" >> /jffs/configs/dnsmasq.conf.add
 ```
 
-Save the time for fake-hwclock initially.  Run this:
+Save the time for fake-hwclock initially.  Run this once before you reboot.
 ```
 /opt/bin/fake-hwclock
 ```
