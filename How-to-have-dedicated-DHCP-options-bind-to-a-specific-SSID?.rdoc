@@ -60,7 +60,7 @@ Example:
  client provides name: Eric-PC
  DHCPREQUEST(br0) 172.30.20.231 00:ff:57:99:d8:98 
  tags: lan, br0
- DHCPACK(br0) 172.30.20.231 00:ff:57:99:d8:98 Eric-Sekkei
+ DHCPACK(br0) 172.30.20.231 00:ff:57:99:d8:98 Eric-PC
  requested options: 1:netmask, 15:domain-name, 3:router, 6:dns-server, 
  requested options: 44:netbios-ns, 46:netbios-nodetype, 47:netbios-scope, 
  requested options: 31:router-discovery, 33:static-route, 121:classless-static-route, 
