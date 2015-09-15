@@ -3,9 +3,9 @@ As the following configuration is applied to a specific interface, you need to i
 `nvram show | grep WiFiTest`
 
 Which should result something similar to:
-`wl0.2_ssid=WiFiTest
-size: 48528 bytes (17008 left)
-wl_ssid=WiFiTest`
+ wl0.2_ssid=WiFiTest
+ size: 48528 bytes (17008 left)
+ wl_ssid=WiFiTest
 
 This example give us wl0.2 as the interface that we need to tweak.
 
@@ -14,32 +14,31 @@ This example give us wl0.2 as the interface that we need to tweak.
 Create the following file: /jffs/scripts/dnsmasq.postconf
 Give it the following permission: chmod +xxx /jffs/scripts/dnsmasq.postconf
 Its content should be:
-`#!/bin/sh
-CONFIG=$1
-source /usr/sbin/helper.sh
-logger "dnsmasq-dhcp: Configure wl0.2 to have special DHCP"
-ifconfig wl0.2 172.30.20.2 netmask 255.255.255.0
-iptables -D INPUT -i wl0.2 -j ACCEPT
-iptables -I INPUT -i wl0.2 -j ACCEPT
-ebtables -t broute -D BROUTING -i wl0.2 -p ipv4 -j DROP
-ebtables -t broute -I BROUTING -i wl0.2 -p ipv4 -j DROP
-pc_append "
-log-dhcp
-interface=wl0.2
-dhcp-option=wl0.2,3,172.30.20.1
-dhcp-option=wl0.2,6,8.8.8.8,8.8.4.4
-" /tmp/etc/dnsmasq.conf`
+ #!/bin/sh
+ CONFIG=$1
+ source /usr/sbin/helper.sh
+ logger "dnsmasq-dhcp: Configure wl0.2 to have special DHCP"
+ ifconfig wl0.2 172.30.20.2 netmask 255.255.255.0
+ iptables -D INPUT -i wl0.2 -j ACCEPT
+ iptables -I INPUT -i wl0.2 -j ACCEPT
+ ebtables -t broute -D BROUTING -i wl0.2 -p ipv4 -j DROP
+ ebtables -t broute -I BROUTING -i wl0.2 -p ipv4 -j DROP
+ pc_append "
+ log-dhcp
+ interface=wl0.2
+ dhcp-option=wl0.2,3,172.30.20.1
+ dhcp-option=wl0.2,6,8.8.8.8,8.8.4.4
+ " /tmp/etc/dnsmasq.conf
 
 Feel free to customize the DHCP option and range.
 
 ## Service-start Script
 You need to create this file to ensure the DHCP service is restarted after the WiFi interface have been mounted.
-Create the following file: /jffs/scripts/services-start
-Give it the following permission: chmod +xxx /jffs/scripts/services-start
+Create the following file: `/jffs/scripts/services-start`
+Give it the following permission: `chmod +xxx /jffs/scripts/services-start`
 Its content should be:
-`#!/bin/sh
-service restart_dnsmasq`
-
+ #!/bin/sh
+ service restart_dnsmasq`
 
 ## Debug
 You can restart the dnsmasq server by doing service:
