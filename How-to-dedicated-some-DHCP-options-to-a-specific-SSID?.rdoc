@@ -1,6 +1,6 @@
-# Identify SSID Interface
+= Identify SSID Interface
 As the following configuration is applied to a specific interface, you need to identify which interface / virtual interface your SSID is using, to do so you can use the following command:
-(({nvram show | grep WiFiTest}))
+ nvram show | grep WiFiTest
 
 Which should result something similar to:
  wl0.2_ssid=WiFiTest
@@ -11,8 +11,10 @@ This example give us wl0.2 as the interface that we need to tweak.
 
 # Scripts
 ## DNSMasq Script
-Create the following file: /jffs/scripts/dnsmasq.postconf
-Give it the following permission: chmod +xxx /jffs/scripts/dnsmasq.postconf
+Create the following file: 
+ /jffs/scripts/dnsmasq.postconf
+Give it the following permission: 
+ chmod +xxx /jffs/scripts/dnsmasq.postconf
 Its content should be:
  #!/bin/sh
  CONFIG=$1
@@ -34,19 +36,21 @@ Feel free to customize the DHCP option and range.
 
 ## Service-start Script
 You need to create this file to ensure the DHCP service is restarted after the WiFi interface have been mounted.
-Create the following file: `/jffs/scripts/services-start`
-Give it the following permission: `chmod +xxx /jffs/scripts/services-start`
+Create the following file: 
+ /jffs/scripts/services-start
+Give it the following permission: 
+ chmod +xxx /jffs/scripts/services-start
 Its content should be:
  #!/bin/sh
  service restart_dnsmasq
 
 ## Debug
 You can restart the dnsmasq server by doing service:
-(({service restart_dnsmasq}))
+ service restart_dnsmasq
 
 It does avoid to reboot the router.
 
 Also ensure you DHCP configuration have the following configuration:
-(({log-dhcp}))
+ log-dhcp
 
 It will produce more advance logs that could help you.  
