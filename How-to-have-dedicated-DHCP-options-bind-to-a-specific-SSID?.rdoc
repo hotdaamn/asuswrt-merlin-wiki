@@ -55,26 +55,26 @@ Also ensure you DHCP configuration have the following configuration:
 
 This last one produce more advance logs that could help you.
 Example:
- 637407747 available DHCP range: 172.30.20.2 -- 172.30.20.254
- 637407747 vendor class: MSFT 5.0
- 637407747 client provides name: Eric-PC
- 637407747 DHCPREQUEST(br0) 172.30.20.231 00:ff:57:99:d8:98 
- 637407747 tags: lan, br0
- 637407747 DHCPACK(br0) 172.30.20.231 00:ff:57:99:d8:98 Eric-Sekkei
- 637407747 requested options: 1:netmask, 15:domain-name, 3:router, 6:dns-server, 
- 637407747 requested options: 44:netbios-ns, 46:netbios-nodetype, 47:netbios-scope, 
- 637407747 requested options: 31:router-discovery, 33:static-route, 121:classless-static-route, 
- 637407747 requested options: 249, 252, 43:vendor-encap
- 637407747 next server: 172.30.20.1
- 637407747 sent size:  1 option: 53 message-type  5
- 637407747 sent size:  4 option: 54 server-identifier  172.30.20.1
- 637407747 sent size:  4 option: 51 lease-time  1d
- 637407747 sent size:  4 option: 58 T1  12h
- 637407747 sent size:  4 option: 59 T2  21h
- 637407747 sent size:  4 option:  1 netmask  255.255.255.0
- 637407747 sent size:  4 option: 28 broadcast  172.30.20.255
- 637407747 sent size: 14 option: 81 FQDN  03:ff:ff:45:72:69:63:2d:53:65:6b:6b:65:69
- 637407747 sent size:  1 option:252   0a
- 637407747 sent size:  8 option:  6 dns-server  172.30.20.1, 172.30.20.1
- 637407747 sent size:  4 option:  3 router  172.30.20.1
- 
+ available DHCP range: 172.30.20.2 -- 172.30.20.254
+ vendor class: MSFT 5.0
+ client provides name: Eric-PC
+ DHCPREQUEST(br0) 172.30.20.231 00:ff:57:99:d8:98 
+ tags: lan, br0
+ DHCPACK(br0) 172.30.20.231 00:ff:57:99:d8:98 Eric-Sekkei
+ requested options: 1:netmask, 15:domain-name, 3:router, 6:dns-server, 
+ requested options: 44:netbios-ns, 46:netbios-nodetype, 47:netbios-scope, 
+ requested options: 31:router-discovery, 33:static-route, 121:classless-static-route, 
+ requested options: 249, 252, 43:vendor-encap
+ next server: 172.30.20.1
+ sent size:  1 option: 53 message-type  5
+ sent size:  4 option: 54 server-identifier  172.30.20.1
+ sent size:  4 option: 51 lease-time  1d
+ sent size:  4 option: 58 T1  12h
+ sent size:  4 option: 59 T2  21h
+ sent size:  4 option:  1 netmask  255.255.255.0
+ sent size:  4 option: 28 broadcast  172.30.20.255
+ sent size: 14 option: 81 FQDN  03:ff:ff:45:72:69:63:2d:53:65:6b:6b:65:69
+ sent size:  1 option:252   0a
+ sent size:  8 option:  6 dns-server  172.30.20.1, 172.30.20.1
+ sent size:  4 option:  3 router  172.30.20.1
+  
