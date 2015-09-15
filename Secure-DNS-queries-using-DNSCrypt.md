@@ -13,9 +13,9 @@ echo "server=127.0.0.1#65053" >> /jffs/configs/dnsmasq.conf.add
 ```
 
 Save the time for fake-hwclock initially.  Run this:
-...
+```
 /opt/bin/fake-hwclock
-...
+```
 
 
 (optional) You can block using other DNS-servers on clients:
