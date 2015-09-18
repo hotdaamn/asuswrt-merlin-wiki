@@ -14,7 +14,7 @@ To download the source code for compilation purposes, you will need the followin
 
 * A Linux-based operating environment (either a dedicated machine running Linux, or a virtual machine using [VMware](http://www.vmware.com) or [VirtualBox](https://www.virtualbox.org/)).
 * git distributed version control system (usually available in the package manager of your Linux distribution)
-* At least 1GB free hard drive space
+* At least 10GB free hard drive space (as of v378.55)
 
 ## Downloading the Source Code ##
 
