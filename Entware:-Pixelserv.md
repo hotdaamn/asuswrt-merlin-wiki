@@ -1,11 +1,9 @@
 * Work in progress
 * If possible define verification (test) criteria for each step
 
-[http://www.snbforums.com/threads/pixelserv-a-better-one-pixel-webserver-for-adblock.26114/](http://www.snbforums.com/threads/pixelserv-a-better-one-pixel-webserver-for-adblock.26114/)
-
-
 [Source: SNB forums](http://www.snbforums.com/threads/pixelserv-a-better-one-pixel-webserver-for-adblock.26114/)
-### Pixelserv Installation Process
+
+### ARM Pixelserv Installation Process
 1. [Arm Pixelserv binary:] (http://www.linksysinfo.org/index.php?threads/pixelserv-compiled-to-run-on-router-wrt54g.30509/page-9#post-263530)
 
 2. [Step 1: Install PixelServer]
