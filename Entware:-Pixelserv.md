@@ -7,11 +7,7 @@
 1. [Copy Arm Pixelserv binary to /opt/sbin:] (http://www.linksysinfo.org/index.php?threads/pixelserv-compiled-to-run-on-router-wrt54g.30509/page-9#post-263530)
 
 2. [Step 1: Install PixelServer]
-`$ cat /opt/etc/init.d/S81pixelserv
-
-#!/bin/sh
-
-ENABLED=yes
+`ENABLED=yes
 PROCS=pixelserv
 ARGS="192.168.1.1 -p 8080"
 PREARGS=""
