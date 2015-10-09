@@ -208,3 +208,24 @@ else
   /sbin/ddns_custom_updated 0
 fi
 ```
+
+### [Duck DNS](https://www.duckdns.org)
+
+Just replace ``yoursubdomain`` and ``your-token`` with the values you got from duckdns. The hostname you set up in the GUI doesn't matter, but I recommend setting it to your subdomain anyway.
+
+```shell
+#!/bin/sh
+
+# register a subdomain at https://www.duckdns.org/ to get your token
+SUBDOMAIN="yoursubdomain"
+TOKEN="your-token"
+
+# no modification below needed
+curl --silent "https://www.duckdns.org/update?domains=$SUBDOMAIN&token=$TOKEN&ip=" >/dev/null 2>&1
+if [ $? -eq 0 ];
+then
+    /sbin/ddns_custom_updated 1
+else
+    /sbin/ddns_custom_updated 0
+fi
+```
