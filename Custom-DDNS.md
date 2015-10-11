@@ -229,3 +229,64 @@ else
     /sbin/ddns_custom_updated 0
 fi
 ```
+
+### [EasyDNS] (https://www.easydns.com/)
+```
+#!/bin/sh
+#
+# This script provides dynamic DNS update support for the EasyDNS service on
+# the Merlin asuswrt router firmware.
+#
+#  
+#	Command Line examples you can try in your web browser or CLI
+# wget -qO - "http://api.cp.easydns.com/dyn/tomato.php?login=EDIT-ME&password=EDIT-ME&wildcard=no&hostname=EDIT.ME.EM&0ED.IT0.0ME.TOO"
+#
+# curl -k "http://EDIT-USER:EDIT-PASSWORD@api.cp.easydns.com/dyn/tomato.php?&wildcard=no&hostname=EDIT-ME&myip=0ED.IT0.0ME.TOO"
+
+
+date >> /tmp/ddns-start.log
+echo "$#: $*" >> /tmp/ddns-start.log
+
+# This should be the domain (or hostname) to be updated.
+# Seems as you can add more DDNS with this method, This works for me very well
+# as I need two A records to be updated from DDNS.
+# 	You should be able to add a C, D, etc if needed. 
+DOMAIN_A=ADD DOMAIN HERE
+DOMAIN_B=ADD 2nd DOMAIN HERE
+
+# This is where your EasyDNS user name and the update token obtained from
+# EasyDNS needs to be modified.
+EASYDNS_USERNAME=Change to your login name.
+EASYDNS_PASSWORD=Change to your taken.
+
+# Set wildcard "on" if you want this to map any host under your domain
+# to the new IP address otherwise "off".
+WILDCARD=off
+
+# This is set directly from http://helpwiki.easydns.com/index.php/Dynamic_DNS#Setting_up_your_system_to_use_Dynamic_DNS
+# Their possibly may be another URI_BASE='https://members.easydns.com/dyn/dyndns.php' 
+# I have had no luck with this other URI so far, but the one currently set works great. 
+URI_BASE="http://api.cp.easydns.com/dyn/tomato.php"
+
+# This is where your wan IP comes from.
+WAN_IP=$1
+
+# This is curl, update to DOMAIN_A
+curl --silent -k -u "$EASYDNS_USERNAME:$EASYDNS_PASSWORD" \
+        "$URI_BASE?wildcard=$WILDCARD&hostname=$DOMAIN_A&myip=$WAN_IP"
+
+# This is curl update to DOMAIN_B Remove the comment from the last 
+# two lines from this section to activate the secound DDNS updater.  
+# If you need more updaters you should be able to copy the curl lines, and change
+# DOMAIN_B to DOMAIN_X if you are on the same account and server. If not you will 
+# Need to make a few other changes for each. 
+#curl --silent -k -u "$EASYDNS_USERNAME:$EASYDNS_PASSWORD" \
+#        "$URI_BASE?wildcard=$WILDCARD&hostname=$DOMAIN_B&myip=$WAN_IP"
+
+# The last lines tell the web gui that we have or have not updated. 
+if [ $? -eq 0 ]; then
+        /sbin/ddns_custom_updated 1
+else
+        /sbin/ddns_custom_updated 0
+fi
+```
