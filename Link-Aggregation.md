@@ -17,7 +17,7 @@ NIC bonding in mode 802.3ad achieves 2 goals.
 1. Increased Throughput
 2. Failover Protection
 
-But requires either a Switch/PC/NAS which also supports Link Aggregation.
+But requires either a Switch/PC/NAS which also supports Dynamic Link Aggregation(read supports LACP).
 
 ***
 
