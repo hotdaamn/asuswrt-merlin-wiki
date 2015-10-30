@@ -1,4 +1,4 @@
-You can download the firmware from [http://www.lostrealm.ca/asuswrt-merlin/download](http://www.lostrealm.ca/asuswrt-merlin/download).
+You can download the firmware from [http://asuswrt.lostrealm.ca/download](http://asuswrt.lostrealm.ca/download).
 
 Since Asuswrt-merlin is mostly a variant of the original Asuswrt, it means that there is no special procedure to flash it.  Just flash it the same way you would flash any regular Asus firmware.  A few notes:
 
