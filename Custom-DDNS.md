@@ -290,3 +290,23 @@ else
         /sbin/ddns_custom_updated 0
 fi
 ```
+
+### [Dy.fi] (http://www.dy.fi/)
+```
+#!/bin/sh
+# http://www.dy.fi/page/specification
+# Just edit USERNAME, PASSWORD and HOSTNAME according to your setup, and you should be good to go :)
+
+USERNAME="yourusername@whatever.com"
+PASSWORD="yourtopsecretpassword"
+HOSTNAME="yourhostname.dy.fi"
+
+curl -D - --user $USERNAME:$PASSWORD https://www.dy.fi/nic/update?hostname=$HOSTNAME >/dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+        /sbin/ddns_custom_updated 1
+else
+        /sbin/ddns_custom_updated 0
+fi
+
+```
