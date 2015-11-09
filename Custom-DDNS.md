@@ -292,10 +292,11 @@ fi
 ```
 
 ### [Dy.fi] (http://www.dy.fi/)
+Just edit USERNAME, PASSWORD and HOSTNAME according to your setup, and you should be good to go. Dy.fi drops hosts after 7 days of inactivity, so I'd also recommend setting the "Forced refresh interval (in days)" setting in the web ui to 7.
+
 ```
 #!/bin/sh
 # http://www.dy.fi/page/specification
-# Just edit USERNAME, PASSWORD and HOSTNAME according to your setup, and you should be good to go :)
 
 USERNAME="yourusername@whatever.com"
 PASSWORD="yourtopsecretpassword"
