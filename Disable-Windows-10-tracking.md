@@ -144,10 +144,10 @@ fi
 iptables-save | grep Win10tracking > /dev/null 2>&1 && exit
 case $(uname -m) in
   armv7l)
-    iptables -I FORWARD -m set --set Win10tracking src,dst -j DROP
+    iptables -I FORWARD -m set --match-set Win10tracking src,dst -j DROP
     ;;
   mips)
-    iptables -I FORWARD -m set --match-set Win10tracking src,dst -j DROP
+    iptables -I FORWARD -m set --set Win10tracking src,dst -j DROP
     ;;
 esac
 ```
