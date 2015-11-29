@@ -23,6 +23,16 @@ done
 IPSET_LISTS_DIR=/jffs/ipset_lists
 [ -d "$IPSET_LISTS_DIR" ] || mkdir -p $IPSET_LISTS_DIR
 
+# Different routers got different iptables syntax
+case $(uname -m) in
+  armv7l)
+    MATCH_SET='--match-set'
+    ;;
+  mips)
+    MATCH_SET='--set'
+    ;;
+esac
+
 # Block traffic from Tor nodes
 if [ "$(ipset --swap TorNodes TorNodes 2>&1 | grep 'Unknown set')" != "" ]
 then
@@ -33,7 +43,7 @@ then
         ipset -A TorNodes $IP
     done
 fi
-[ -z "$(iptables-save | grep TorNodes)" ] && iptables -I INPUT -m set --match-set TorNodes src -j DROP
+[ -z "$(iptables-save | grep TorNodes)" ] && iptables -I INPUT -m set $MATCH_SET TorNodes src -j DROP
 
 # Block incoming traffic from some countries. cn and pk is for China and Pakistan. See other countries code at http://www.ipdeny.com/ipblocks/
 if [ "$(ipset --swap BlockedCountries BlockedCountries 2>&1 | grep 'Unknown set')" != "" ]
@@ -48,7 +58,7 @@ then
         done
     done
 fi
-[ -z "$(iptables-save | grep BlockedCountries)" ] && iptables -I INPUT -m set --match-set BlockedCountries src -j DROP
+[ -z "$(iptables-save | grep BlockedCountries)" ] && iptables -I INPUT -m set $MATCH_SET BlockedCountries src -j DROP
 
 # Block Microsoft telemetry spying servers
 if [ "$(ipset --swap MicrosoftSpyServers MicrosoftSpyServers 2>&1 | grep 'Unknown set')" != "" ]
@@ -65,7 +75,7 @@ then
         ipset -A MicrosoftSpyServers $IP
     done
 fi
-[ -z "$(iptables-save | grep MicrosoftSpyServers)" ] && iptables -I FORWARD -m set --match-set MicrosoftSpyServers dst -j DROP
+[ -z "$(iptables-save | grep MicrosoftSpyServers)" ] && iptables -I FORWARD -m set $MATCH_SET MicrosoftSpyServers dst -j DROP
 ```
 and make it executable:
 ```
@@ -89,6 +99,16 @@ do
     insmod $module
 done
 
+# Different routers got different iptables syntax
+case $(uname -m) in
+  armv7l)
+    MATCH_SET='--match-set'
+    ;;
+  mips)
+    MATCH_SET='--set'
+    ;;
+esac
+
 # PeerGuardian rules
 if [ "$(ipset --swap BluetackLevel1 BluetackLevel1 2>&1 | grep 'Unknown set')" != "" ]
 then
@@ -100,7 +120,7 @@ then
         ipset -A BluetackLevel1 $IP
     done
 fi
-iptables -I FORWARD -m set --set BluetackLevel1 src,dst -j DROP
+iptables -I FORWARD -m set $MATCH_SET BluetackLevel1 src,dst -j DROP
 ```
 and run it:
 ```
@@ -124,10 +144,20 @@ for module in ip_set ip_set_iptreemap ipt_set; do
     insmod $module
 done
 
+# Different routers got different iptables syntax
+case $(uname -m) in
+  armv7l)
+    MATCH_SET='--match-set'
+    ;;
+  mips)
+    MATCH_SET='--set'
+    ;;
+esac
+
 # Create the BluetackLevel1 (primary) if does not exists
 if [ "$(ipset --swap BluetackLevel1 BluetackLevel1 2>&1 | grep 'Unknown set')" != "" ]; then
   ipset --create BluetackLevel1 iptreemap && \
-  iptables -I FORWARD -m set --set BluetackLevel1 src,dst -j DROP
+  iptables -I FORWARD -m set $MATCH_SET BluetackLevel1 src,dst -j DROP
 fi
 # Destroy this transient set just in case
 ipset --destroy BluetackLevel2 > /dev/null 2>&1
@@ -161,10 +191,19 @@ for module in ip_set ip_set_iptreemap ipt_set; do
     insmod $module
 done
 
+case $(uname -m) in
+  armv7l)
+    MATCH_SET='--match-set'
+    ;;
+  mips)
+    MATCH_SET='--set'
+    ;;
+esac
+
 logger "Create the BluetackLevel1 (primary) if does not exists"
 if [ "$(ipset --swap BluetackLevel1 BluetackLevel1 2>&1 | grep 'Unknown set')" != "" ]; then
   ipset --create BluetackLevel1 iptreemap && \
-  iptables -I FORWARD -m set --set BluetackLevel1 src,dst -j DROP
+  iptables -I FORWARD -m set $MATCH_SET BluetackLevel1 src,dst -j DROP
 fi
 logger "Destroy this transient set just in case"
 ipset --destroy BluetackLevel2 > /dev/null 2>&1
