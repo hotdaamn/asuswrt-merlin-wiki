@@ -141,8 +141,15 @@ then
 fi
 
 # Apply iptables rule
-iptables-save | grep Win10tracking > /dev/null 2>&1 || \
-  iptables -I FORWARD -m set --set Win10tracking src,dst -j DROP
+iptables-save | grep Win10tracking > /dev/null 2>&1 && exit
+case $(uname -m) in
+  armv7l)
+    iptables -I FORWARD -m set --set Win10tracking src,dst -j DROP
+    ;;
+  mips)
+    iptables -I FORWARD -m set --match-set Win10tracking src,dst -j DROP
+    ;;
+esac
 ```
 Don't forget to make script executable and reboot router to take effect:
 ```
