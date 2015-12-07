@@ -71,8 +71,8 @@ The list of available postconf scripts is:
  * hosts.postconf
  * minidlna.postconf
  * mt-daap.postconf
- * openvpnclient1.postconf (and openvpnclient2.postconf)
- * openvpnserver1.postconf (and openvpnserver2.postconf)
+ * openvpnclient1.postconf (1 through 5)
+ * openvpnserver1.postconf (1 through 5)
  * passwd.postconf
  * pptpd.postconf
  * radvd.postconf
